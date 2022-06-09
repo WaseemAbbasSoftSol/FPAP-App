@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -8,17 +7,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="270dp"
         android:id="@+id/nav_header_main">
 
         <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_back"
-            android:id="@+id/back"
             android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/_20dp"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="@dimen/_20dp" />
+            android:src="@drawable/ic_back" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="80dp"
@@ -66,9 +65,52 @@
             android:background="@color/grey_lite"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_alignParentBottom="true"
+            android:layout_above="@id/tv_english_med"
             android:layout_marginBottom="10dp" />
 
+        <TextView
+            android:id="@+id/tv_english_med"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/line2"
+            android:layout_marginStart="@dimen/_20dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/label_english_med"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_10dp"
+            android:textSize="@dimen/_12sp" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/sth_med"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line"
+            android:theme="@style/SCBSwitch"
+            android:layout_marginTop="@dimen/_5dp"
+            android:layout_marginStart="@dimen/_10dp"
+            android:layout_toRightOf="@id/tv_english_med" />
+
+        <TextView
+            android:id="@+id/tv_urdu_med"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line"
+            android:layout_marginStart="@dimen/_20dp"
+            android:layout_toRightOf="@id/sth_med"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="@dimen/_10dp"
+            android:text="@string/label_urdu_med"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sp" />
+
+        <View
+            android:id="@+id/line2"
+            android:background="@color/grey_lite"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/_20dp"
+           />
 
     </RelativeLayout>
 </layout>

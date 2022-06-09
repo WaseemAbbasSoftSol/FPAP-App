@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:fitsSystemWindows="true"
+            app:itemTextAppearance="@style/NavigationDrawerText"
             android:paddingTop="@dimen/_16dp"
             android:paddingBottom="@dimen/_16dp"
             app:headerLayout="@layout/header_layout"

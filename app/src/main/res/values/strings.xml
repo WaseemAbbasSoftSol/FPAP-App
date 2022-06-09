@@ -26,4 +26,6 @@
     <string name="label_certificate">Certificate</string>
     <string name="label_profile">Profile</string>
     <string name="label_signout">Signout</string>
+    <string name="label_english_med">English med</string>
+    <string name="label_urdu_med">Urdu med</string>
 </resources>

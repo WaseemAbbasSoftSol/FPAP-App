@@ -44,4 +44,22 @@
         <item name="android:layout_marginRight">@dimen/_20dp</item>
     </style>
 
+    <!--SwitchCompat Style-->
+    <style name="SCBSwitch" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">@color/green</item>
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">@color/primary
+        </item>
+        <!-- inactive track color (30% transparency) -->
+        <item name="android:colorForeground">#42221f1f
+        </item>
+    </style>
+
+    <!--NavigationDrawer-->
+    <style name="NavigationDrawerText" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
 </resources>
