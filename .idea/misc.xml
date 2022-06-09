@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="app/src/main/res/layout/base_toolbar.xml" value="0.1260135135135135" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_dashboard_detail.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.22688564476885645" />
         <entry key="app/src/main/res/layout/fragment_recover_password.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/fragment_signup.xml" value="0.19427083333333334" />

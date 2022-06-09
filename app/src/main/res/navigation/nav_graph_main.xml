@@ -8,6 +8,16 @@
     <fragment
         android:id="@+id/dashboard_fragment"
         android:name="com.softsolutions.fpap.ui.main.dashboard.DashboardFragment"
-        tools:layout="@layout/fragment_dashboard"/>
+        tools:layout="@layout/fragment_dashboard">
+
+        <action
+            android:id="@+id/action_dashboard_to_dashboard_detail_fragment"
+            app:destination="@id/dashboard_detail_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/dashboard_detail_fragment"
+        android:name="com.softsolutions.fpap.ui.main.dashboard.detail.DashboardDetailFragment"
+        tools:layout="@layout/fragment_dashboard_detail"/>
 
 </navigation>
