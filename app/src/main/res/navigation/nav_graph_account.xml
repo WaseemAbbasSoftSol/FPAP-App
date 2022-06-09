@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/account_graph"
+    app:startDestination="@id/login_fragment">
+
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="com.softsolutions.fpap.ui.account.LoginFragment"
+        tools:layout="@layout/fragment_login" >
+
+        <action
+            android:id="@+id/action_loginfragment_to_signup_fragment"
+            app:destination="@id/signup_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+
+        <action
+            android:id="@+id/action_loginfragment_to_recover_password_fragment"
+            app:destination="@id/recover_password_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/signup_fragment"
+        android:name="com.softsolutions.fpap.ui.account.SignUpFragment"
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signup_fragment_to_login_fragment"
+            app:destination="@id/login_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/recover_password_fragment"
+        android:name="com.softsolutions.fpap.ui.account.RecoverPasswordFragment"
+        tools:layout="@layout/fragment_recover_password"/>
+
+</navigation>

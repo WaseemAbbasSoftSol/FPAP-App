@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:id="@+id/nav_header_main">
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            android:id="@+id/back"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/_20dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:elevation="4dp"
+            android:src="@drawable/im_user"
+            android:layout_above="@id/tv_nav_header_name"
+            android:id="@+id/profile_image"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="5dp">
+
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <TextView
+            android:id="@+id/tv_nav_header_name"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv_nav_header_class"
+            android:layout_marginBottom="2dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="Jolliya Rafique"
+            android:textColor="@color/purple"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/tv_nav_header_class"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/line"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Class 10th"
+            android:textColor="@color/grey"
+            android:textSize="14sp" />
+
+
+        <View
+            android:id="@+id/line"
+            android:background="@color/grey_lite"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp" />
+
+
+    </RelativeLayout>
+</layout>

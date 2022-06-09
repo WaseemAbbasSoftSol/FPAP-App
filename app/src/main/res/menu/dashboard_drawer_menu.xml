@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group>
+
+        <item
+            android:id="@+id/dashboard"
+            android:icon="@drawable/ic_home_menu"
+            android:title="@string/label_dashboard" />
+
+    </group>
+
+    <item
+        android:id="@+id/certificate"
+        android:icon="@drawable/ic_certificate_menu"
+        android:title="@string/label_certificate" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_profile_menu"
+        android:title="@string/label_profile" />
+    <item
+        android:id="@+id/signout"
+        android:icon="@drawable/ic_signout_menu"
+        android:title="@string/label_signout" />
+
+</menu>

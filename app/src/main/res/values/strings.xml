@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">FPAP</string>
+    <string name="toolbar">Toolbar</string>
+    <string name="label_email">Email ID</string>
+    <string name="label_number">Enter Mobile</string>
+    <string name="label_mobile">Mobile #</string>
+    <string name="label_qulification">Qualification</string>
+    <string name="label_region">Region</string>
+    <string name="label_city">City</string>
+    <string name="label_dob">Date of Birth</string>
+    <string name="label_gender">Gender</string>
+    <string name="label_set_acc">Set Account details for FPAP Website\nand App</string>
+    <string name="label_pass">Password</string>
+    <string name="label_confirm_pass">Retype Password</string>
+    <string name="label_login">LOGIN</string>
+    <string name="label_forgot_pass">Forgot Password?</string>
+    <string name="label_new_user">New User?</string>
+    <string name="label_register_now">Register Now</string>
+    <string name="label_register">Register</string>
+    <string name="label_existing_user">Existing user?</string>
+    <string name="label_login_now">Login now</string>
+    <string name="label_send_pass">Send Password</string>
+    <string name="label_welcome_text">Welcome to LSBE Online Course</string>
+    <string name="label_human_rights">Human Rights</string>
+    <string name="label_dashboard">Dashboard</string>
+    <string name="label_certificate">Certificate</string>
+    <string name="label_profile">Profile</string>
+    <string name="label_signout">Signout</string>
+</resources>
