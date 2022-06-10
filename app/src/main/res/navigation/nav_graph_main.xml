@@ -13,11 +13,47 @@
         <action
             android:id="@+id/action_dashboard_to_dashboard_detail_fragment"
             app:destination="@id/dashboard_detail_fragment"/>
+
+        <action
+            android:id="@+id/action_dashboard_to_profile_fragmet"
+            app:destination="@id/profile_fragment"/>
+        <action
+            android:id="@+id/action_dashboard_certificate_fragment"
+            app:destination="@id/certificate_fragment"/>
+
     </fragment>
 
     <fragment
         android:id="@+id/dashboard_detail_fragment"
         android:name="com.softsolutions.fpap.ui.main.dashboard.detail.DashboardDetailFragment"
-        tools:layout="@layout/fragment_dashboard_detail"/>
+        tools:layout="@layout/fragment_dashboard_detail">
+        <action
+            android:id="@+id/action_dashboard_detail_to_mcqs_fragment"
+            app:destination="@id/mcqs_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/mcqs_fragment"
+        android:name="com.softsolutions.fpap.ui.main.mcqs.McqsFragment"
+        tools:layout="@layout/fragment_mcqs">
+        <action
+            android:id="@+id/action_mcq_fragment_to_result_fragment"
+            app:destination="@id/result_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/result_fragment"
+        android:name="com.softsolutions.fpap.ui.main.ResultFragment"
+        tools:layout="@layout/fragment_result"/>
+
+    <fragment
+        android:id="@+id/profile_fragment"
+        android:name="com.softsolutions.fpap.ui.main.profile.ProfileFragment"
+        tools:layout="@layout/fragment_profile"/>
+
+    <fragment
+        android:id="@+id/certificate_fragment"
+        android:name="com.softsolutions.fpap.ui.main.certificate.CertificateFragment"
+        tools:layout="@layout/fragment_certificate"/>
 
 </navigation>
