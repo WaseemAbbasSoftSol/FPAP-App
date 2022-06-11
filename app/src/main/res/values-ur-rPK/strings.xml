@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">FPAP</string>
     <string name="toolbar" translatable="false">Toolbar</string>
-    <string name="toolbar_urdu" translatable="false">ٹول بار</string>
     <string name="label_email" translatable="false">Email ID</string>
     <string name="label_number" translatable="false">Enter Mobile</string>
     <string name="label_mobile" translatable="false">Mobile #</string>
@@ -21,13 +20,11 @@
     <string name="label_existing_user" translatable="false">Existing user?</string>
     <string name="label_login_now" translatable="false">Login now</string>
     <string name="label_send_pass" translatable="false">Send Password</string>
-    <string name="label_welcome_text" translatable="false">Welcome to LSBE Online Course</string>
-    <string name="dashboard_toolbar" translatable="false">LSBE Online Course</string>
-    <string name="dashboard_subject" translatable="false">Subject</string>
-    <string name="dashboard_subject_urdu" translatable="false">مضمون</string>
+    <string name="label_welcome_text" translatable="false">LSBE آن لائن کورس میں خوش آمدید</string>
+    <string name="dashboard_toolbar" translatable="false">آن لائن کورس</string>
+    <string name="dashboard_subject" translatable="false">مضمون</string>
     <string name="label_welcome_text_urdu" translatable="false">خوش آمدید</string>
     <string name="label_human_rights" translatable="false">Human Rights</string>
-    <string name="label_human_rights_urdu" translatable="false">انسانی حقوق</string>
     <string name="label_dashboard" translatable="false">Dashboard</string>
     <string name="label_certificate" translatable="false">Certificate</string>
     <string name="label_profile" translatable="false">Profile</string>

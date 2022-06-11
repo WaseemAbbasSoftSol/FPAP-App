@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
-import android.widget.Toast
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
@@ -18,39 +17,38 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.data.PrefRepository
 import com.softsolutions.fpap.databinding.FragmentDashboardBinding
+import com.softsolutions.fpap.databinding.FragmentDashboardUrduBinding
 import com.softsolutions.fpap.model.Dashboard
 import com.softsolutions.fpap.ui.account.SignoutDialog
 import com.softsolutions.fpap.ui.common.OnListItemClickListener
-import com.softsolutions.fpap.ui.main.MainFragmentDirections
 import kotlinx.android.synthetic.main.base_toolbar.view.*
 import java.util.*
 
 
-class DashboardFragment:Fragment(),OnListItemClickListener<Dashboard> {
-    private lateinit var binding:FragmentDashboardBinding
+class DashboadFragmentUrdu: Fragment(), OnListItemClickListener<Dashboard> {
+    private lateinit var binding: FragmentDashboardUrduBinding
     private lateinit var prefRepository: PrefRepository
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentDashboardBinding.inflate(inflater,container,false)
+        binding= FragmentDashboardUrduBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
         prefRepository= PrefRepository(requireActivity().application)
 
-
-//      binding.appbar.toolbar.tv_toolbar.text=resources.getString(R.string.dashboard_toolbar)
-//        binding.appbar.toolbar.back.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_ham_menu))
+//        binding.appbar.toolbar.tv_toolbar.text=resources.getString(R.string.dashboard_toolbar)
+//        binding.appbar.toolbar.back.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_ham_menu))
 //        binding.appbar.toolbar.back.setOnClickListener {
-//
+//          //  binding.drawerlayout.openDrawer(GravityCompat.START)
 //        }
         val list= arrayListOf<Dashboard>()
         for (i in 0..7){
-            val sub=resources.getString(R.string.dashboard_subject)
+            val sub=resources.getString(R.string.dashboard_subject_urdu)
             list.add(Dashboard("","$sub $i"))
         }
-        val adapter=DashboardAdapter(requireContext(), list,this,true,false)
-        val layoutManager=GridLayoutManager(requireContext(), 3)
+        val adapter=DashboardAdapter(requireContext(), list,this,true, true)
+        val layoutManager= GridLayoutManager(requireContext(), 3)
         binding.appbar.rvDashboard.layoutManager=layoutManager
         binding.appbar.rvDashboard.adapter=adapter
 
@@ -59,7 +57,7 @@ class DashboardFragment:Fragment(),OnListItemClickListener<Dashboard> {
     }
 
     override fun onItemClick(item: Dashboard, pos: Int) {
-       findNavController().navigate(MainFragmentDirections.actionDashboardToDashboardDetailFragment())
+      //  findNavController().navigate(DashboardFragmentDirections.actionDashboardToDashboardDetailFragment())
     }
 
     private fun setLocate(Lang: String) {

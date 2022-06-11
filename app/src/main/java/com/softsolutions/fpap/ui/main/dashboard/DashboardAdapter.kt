@@ -16,7 +16,8 @@ class DashboardAdapter(
     val context: Context,
     private val list: List<Dashboard>,
     private val listener:OnListItemClickListener<Dashboard>,
-    private val isDashboard:Boolean
+    private val isDashboard:Boolean,
+    private val isUrdu:Boolean
 
 ) :
     RecyclerView.Adapter<DashboardAdapter.ItemRecyclerViewHolder>() {
@@ -29,13 +30,24 @@ class DashboardAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemRecyclerViewHolder {
         if (isDashboard){
-            return ItemRecyclerViewHolder(
-                LayoutInflater.from(context).inflate(
-                    R.layout.item_dashboard,
-                    parent,
-                    false
+            if (isUrdu){
+                return ItemRecyclerViewHolder(
+                    LayoutInflater.from(context).inflate(
+                        R.layout.item_dashboard_urdu,
+                        parent,
+                        false
+                    )
                 )
-            )
+            }else{
+                return ItemRecyclerViewHolder(
+                    LayoutInflater.from(context).inflate(
+                        R.layout.item_dashboard,
+                        parent,
+                        false
+                    )
+                )
+            }
+
         }else{
             return ItemRecyclerViewHolder(
                 LayoutInflater.from(context).inflate(
@@ -59,6 +71,7 @@ class DashboardAdapter(
             } else holder.support.visibility=View.GONE
         }
         holder.cardView.setOnClickListener {
+            if(isUrdu)return@setOnClickListener
             listener.onItemClick(dashboardObject,position)
         }
     }

@@ -27,7 +27,7 @@ class ResultFragment:Fragment(),OnListItemClickListener<Dashboard> {
             list.add(Dashboard("", "subject $i"))
         }
      val layoutManager=GridLayoutManager(requireContext(),3)
-        val adapter=DashboardAdapter(requireContext(), list,this,false)
+        val adapter=DashboardAdapter(requireContext(), list,this,false,false)
         binding.rvAnotherCourse.layoutManager=layoutManager
         binding.rvAnotherCourse.adapter=adapter
         return binding.root

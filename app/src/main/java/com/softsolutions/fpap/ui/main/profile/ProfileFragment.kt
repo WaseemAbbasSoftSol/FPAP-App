@@ -18,6 +18,7 @@ class ProfileFragment:Fragment() {
         binding= FragmentProfileBinding.inflate(inflater,container,false)
         binding.toolbarLayout.tv_toolbar.text="Profile"
         binding.lifecycleOwner=this
+
         return binding.root
     }
 }
