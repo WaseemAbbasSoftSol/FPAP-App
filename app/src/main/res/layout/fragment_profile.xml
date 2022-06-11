@@ -13,72 +13,84 @@
 
         <include
             android:id="@+id/toolbar_layout"
-            layout="@layout/base_toolbar"/>
+            layout="@layout/base_toolbar" />
 
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_1"
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_0dp"
+            android:fillViewport="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:elevation="5dp"
-            app:cardCornerRadius="15dp">
+            app:layout_constraintBottom_toBottomOf="parent">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="10dp">
+                android:paddingBottom="@dimen/_10dp">
 
-                <LinearLayout
-                    android:id="@+id/ll_edit"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="right"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:id="@+id/ic_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_edit" />
-                </LinearLayout>
-                <!-- <ImageView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_gravity="right"
-                     android:id="@+id/ic_edit"
-                     android:src="@drawable/ic_edit" />-->
-
-                <FrameLayout
-                    android:id="@+id/frameLayout"
-                    android:layout_width="115dp"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center">
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/circleImageView"
-                        android:src="@drawable/im_user"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:scaleType="centerCrop"
-                        app:civ_border_color="#e4f5fd"
-                        app:civ_border_width="2dp" />
-
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|bottom"
-                        android:layout_marginRight="-1dp"
-                        android:backgroundTint="#32D200"
-                        android:src="@drawable/ic_tick"
-                        app:fabCustomSize="24dp"
-                        app:maxImageSize="12dp" />
-                </FrameLayout>
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp">
+
+                        <LinearLayout
+                            android:id="@+id/ll_edit"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="right"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/ic_edit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_edit" />
+                        </LinearLayout>
+                        <!-- <ImageView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="right"
+                             android:id="@+id/ic_edit"
+                             android:src="@drawable/ic_edit" />-->
+
+                        <FrameLayout
+                            android:id="@+id/frameLayout"
+                            android:layout_width="115dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/circleImageView"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/im_user"
+                                app:civ_border_color="#e4f5fd"
+                                app:civ_border_width="2dp" />
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|bottom"
+                                android:layout_marginRight="-1dp"
+                                android:backgroundTint="#32D200"
+                                android:src="@drawable/ic_tick"
+                                app:fabCustomSize="24dp"
+                                app:maxImageSize="12dp" />
+                        </FrameLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -238,6 +250,138 @@
                 android:hint="@string/label_city" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_email2"
+                    style="@style/AppTheme.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_city">
+
+                    <EditText
+                        android:id="@+id/ed_email2"
+                        style="@style/AppTheme.Field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/label_email"
+                        android:inputType="textEmailAddress" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/label_mobile"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@id/et_email"
+                    app:layout_constraintTop_toBottomOf="@id/et_email2" />
+
+                <LinearLayout
+                    android:id="@+id/ll_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_phone">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/relativeid"
+                        style="@style/AppTheme.TextInputLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_14sp"
+                        android:layout_weight="0.3"
+                        android:background="@android:color/transparent"
+                        android:backgroundTint="@color/grey"
+                        app:boxBackgroundColor="@android:color/transparent">
+
+                        <!--   app:ccp_arrowColor="@color/navy_blue"-->
+                        <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                            android:id="@+id/ccp"
+                            android:layout_width="80dp"
+                            android:layout_height="45dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_gravity="left"
+                            android:background="@drawable/bg_underline_country_code"
+                            android:gravity="center_vertical|left"
+                            android:paddingBottom="0dp"
+                            app:ccp_defaultNameCode="PK"
+                            app:ccp_enablePhoneAutoFormatter="true"
+                            app:ccp_hideNameCode="true"
+                            app:ccp_keyboardAutoPopOnSearch="true"
+                            app:ccp_showFlag="true"
+                            app:ccp_textColor="#848484"
+                            app:ccp_textFont="poppins_medium.ttf"
+                            app:ccp_textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/et_number"
+                        style="@style/AppTheme.TextInputLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.69">
+
+                        <EditText
+                            android:id="@+id/ed_number"
+                            style="@style/AppTheme.Field"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/label_number"
+                            android:inputType="number" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_pass"
+                    style="@style/AppTheme.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_number">
+
+                    <EditText
+                        android:id="@+id/ed_pass"
+                        style="@style/AppTheme.Field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/label_pass"
+                        android:inputType="textPassword" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_submit"
+                    style="@style/AppTheme.ContainedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:text="@string/label_submit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_pass" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
