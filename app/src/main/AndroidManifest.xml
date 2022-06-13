@@ -3,12 +3,15 @@
     package="com.softsolutions.fpap">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".CustomActivity"
+            android:exported="false" />
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -21,9 +24,11 @@
         <activity
             android:name=".AccountActivity"
             android:exported="false" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"/>
+        <activity android:name="com.softsolutions.ProfileActivity"
+            android:exported="false"/>
+        <activity android:name="com.softsolutions.CertificateActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>

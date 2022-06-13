@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.softsolutions.fpap.CustomActivity
 import com.softsolutions.fpap.MainActivity
 import com.softsolutions.fpap.databinding.FragmentLoginBinding
 import kotlinx.android.synthetic.main.base_toolbar.view.*
@@ -28,7 +29,7 @@ class LoginFragment: Fragment() {
             findNavController().navigate(LoginFragmentDirections.actionLoginfragmentToSignupFragment())
         }
         binding.btnLogin.setOnClickListener{
-            startActivity(Intent(requireActivity(), MainActivity::class.java))
+            startActivity(Intent(requireActivity(), CustomActivity::class.java))
             requireActivity().finish()
         }
         return binding.root

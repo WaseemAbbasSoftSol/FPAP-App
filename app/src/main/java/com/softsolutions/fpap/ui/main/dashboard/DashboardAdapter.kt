@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.softsolutions.fpap.model.Dashboard
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.ui.common.OnListItemClickListener
+import com.softsolutions.fpap.utils.setTextViewFont
 import de.hdodenhof.circleimageview.CircleImageView
 
 class DashboardAdapter(
@@ -17,7 +18,7 @@ class DashboardAdapter(
     private val list: List<Dashboard>,
     private val listener:OnListItemClickListener<Dashboard>,
     private val isDashboard:Boolean,
-    private val isUrdu:Boolean
+    private val isUrduMedium:Boolean=false
 
 ) :
     RecyclerView.Adapter<DashboardAdapter.ItemRecyclerViewHolder>() {
@@ -30,15 +31,7 @@ class DashboardAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemRecyclerViewHolder {
         if (isDashboard){
-            if (isUrdu){
-                return ItemRecyclerViewHolder(
-                    LayoutInflater.from(context).inflate(
-                        R.layout.item_dashboard_urdu,
-                        parent,
-                        false
-                    )
-                )
-            }else{
+
                 return ItemRecyclerViewHolder(
                     LayoutInflater.from(context).inflate(
                         R.layout.item_dashboard,
@@ -46,7 +39,6 @@ class DashboardAdapter(
                         false
                     )
                 )
-            }
 
         }else{
             return ItemRecyclerViewHolder(
@@ -63,6 +55,7 @@ class DashboardAdapter(
     override fun onBindViewHolder(holder: ItemRecyclerViewHolder, position: Int) {
         val dashboardObject = list[position]
           holder.title.text = dashboardObject.title
+        if (isUrduMedium) setTextViewFont(holder.title,R.font.alvi_nastaleeq_regular,context,18)
         if (!isDashboard){
             holder.support = holder.itemView.findViewById(R.id.iv_contact_support)
             if (position == 4){
@@ -71,7 +64,6 @@ class DashboardAdapter(
             } else holder.support.visibility=View.GONE
         }
         holder.cardView.setOnClickListener {
-            if(isUrdu)return@setOnClickListener
             listener.onItemClick(dashboardObject,position)
         }
     }

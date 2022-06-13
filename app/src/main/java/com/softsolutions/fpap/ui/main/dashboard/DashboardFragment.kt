@@ -15,13 +15,16 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.softsolutions.fpap.CustomActivity
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.data.PrefRepository
 import com.softsolutions.fpap.databinding.FragmentDashboardBinding
 import com.softsolutions.fpap.model.Dashboard
 import com.softsolutions.fpap.ui.account.SignoutDialog
 import com.softsolutions.fpap.ui.common.OnListItemClickListener
+import com.softsolutions.fpap.ui.isUrduMedium
 import com.softsolutions.fpap.ui.main.MainFragmentDirections
+import com.softsolutions.fpap.utils.setTextViewFont
 import kotlinx.android.synthetic.main.base_toolbar.view.*
 import java.util.*
 
@@ -37,46 +40,22 @@ class DashboardFragment:Fragment(),OnListItemClickListener<Dashboard> {
         binding= FragmentDashboardBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
         prefRepository= PrefRepository(requireActivity().application)
-
-
-//      binding.appbar.toolbar.tv_toolbar.text=resources.getString(R.string.dashboard_toolbar)
-//        binding.appbar.toolbar.back.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_ham_menu))
-//        binding.appbar.toolbar.back.setOnClickListener {
-//
-//        }
+        if (isUrduMedium) setTextViewFont(binding.appbar.tvWelcome,R.font.alvi_nastaleeq_regular,requireContext(),22)
         val list= arrayListOf<Dashboard>()
         for (i in 0..7){
             val sub=resources.getString(R.string.dashboard_subject)
             list.add(Dashboard("","$sub $i"))
         }
-        val adapter=DashboardAdapter(requireContext(), list,this,true,false)
+        val adapter=DashboardAdapter(requireContext(), list,this,true, isUrduMedium)
         val layoutManager=GridLayoutManager(requireContext(), 3)
         binding.appbar.rvDashboard.layoutManager=layoutManager
         binding.appbar.rvDashboard.adapter=adapter
-
 
         return binding.root
     }
 
     override fun onItemClick(item: Dashboard, pos: Int) {
-       findNavController().navigate(MainFragmentDirections.actionDashboardToDashboardDetailFragment())
+       findNavController().navigate(DashboardFragmentDirections.actionDashboardToDashboardDetailFragment())
     }
 
-    private fun setLocate(Lang: String) {
-        val locale = Locale(Lang)
-        Locale.setDefault(locale)
-        val config = Configuration()
-        config.locale = locale
-        requireActivity().baseContext.resources.updateConfiguration(config, requireActivity().baseContext.resources.displayMetrics)
-        val editor = requireActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
-        editor.putString("My_Lang", Lang)
-        editor.apply()
-    }
-    private fun loadLocate() {
-        val sharedPreferences = requireActivity().getSharedPreferences("Settings", Activity.MODE_PRIVATE)
-        val language = sharedPreferences.getString("My_Lang", "")
-        if (language != null) {
-            setLocate(language)
-        }
-    }
 }

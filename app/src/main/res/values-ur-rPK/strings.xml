@@ -1,63 +1,63 @@
 <resources>
     <string name="app_name">FPAP</string>
-    <string name="toolbar" translatable="false">Toolbar</string>
-    <string name="label_email" translatable="false">Email ID</string>
-    <string name="label_number" translatable="false">Enter Mobile</string>
-    <string name="label_mobile" translatable="false">Mobile #</string>
-    <string name="label_qulification" translatable="false">Qualification</string>
-    <string name="label_region" translatable="false">Region</string>
-    <string name="label_city" translatable="false">City</string>
-    <string name="label_dob" translatable="false">Date of Birth</string>
-    <string name="label_gender" translatable="false">Gender</string>
-    <string name="label_set_acc" translatable="false">Set Account details for FPAP Website\nand App</string>
-    <string name="label_pass" translatable="false">Password</string>
-    <string name="label_confirm_pass" translatable="false">Retype Password</string>
-    <string name="label_login" translatable="false">LOGIN</string>
-    <string name="label_forgot_pass" translatable="false">Forgot Password?</string>
-    <string name="label_new_user" translatable="false">New User?</string>
-    <string name="label_register_now" translatable="false">Register Now</string>
-    <string name="label_register" translatable="false">Register</string>
-    <string name="label_existing_user" translatable="false">Existing user?</string>
-    <string name="label_login_now" translatable="false">Login now</string>
-    <string name="label_send_pass" translatable="false">Send Password</string>
-    <string name="label_welcome_text" translatable="false">LSBE آن لائن کورس میں خوش آمدید</string>
+    <string name="toolbar" translatable="false">ٹول بار</string>
+    <!--<string name="label_email" translatable="false">ای میل کا پتہ</string>-->
+  <!--  <string name="label_number" translatable="false">موبائل نمبر</string>-->
+  <!--  <string name="label_mobile" translatable="false">موبائل</string>-->
+    <!--<string name="label_region" translatable="false">علاقہ</string>-->
+ <!--   <string name="label_city" translatable="false">شہر</string>-->
+<!--    <string name="label_dob" translatable="false">تاریخ پیدائش</string>-->
+  <!--  <string name="label_gender" translatable="false">صنف</string>-->
+    <string name="label_set_acc" translatable="false">ویب سائٹ اور ایپ کے لیے اکاؤنٹ کی تفصیلات سیٹ کریں۔</string>
+    <!--<string name="label_pass" translatable="false">پاس ورڈ</string>-->
+    <string name="label_confirm_pass" translatable="false">دوبارہ پاسوورڈ لکھئے</string>
+    <string name="label_login" translatable="false">لاگ ان کریں</string>
+    <string name="label_forgot_pass" translatable="false">پاسورڈ بھول گے؟</string>
+    <string name="label_new_user" translatable="false">نیا صارف؟</string>
+    <string name="label_register_now" translatable="false">ابھی رجسٹر کریں</string>
+    <string name="label_register" translatable="false">رجسٹر کریں</string>
+    <string name="label_existing_user" translatable="false">موجودہ صارف؟</string>
+    <string name="label_login_now" translatable="false">ابھی لاگ ان کریں</string>
+    <string name="label_send_pass" translatable="false">پاس ورڈ بھیجیں</string>
+    <string name="label_welcome_text" translatable="false"> آن لائن کورس میں خوش آمدید</string>
     <string name="dashboard_toolbar" translatable="false">آن لائن کورس</string>
     <string name="dashboard_subject" translatable="false">مضمون</string>
     <string name="label_welcome_text_urdu" translatable="false">خوش آمدید</string>
-    <string name="label_human_rights" translatable="false">Human Rights</string>
-    <string name="label_dashboard" translatable="false">Dashboard</string>
-    <string name="label_certificate" translatable="false">Certificate</string>
-    <string name="label_profile" translatable="false">Profile</string>
-    <string name="label_signout" translatable="false">Signout</string>
-    <string name="label_english_med" translatable="false">English med</string>
-    <string name="label_urdu_med" translatable="false">Urdu med</string>
-    <string name="label_internal_personal" translatable="false">Intepersonal Relationships</string>
-    <string name="label_lorem_ipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</string>
-    <string name="label_start_with_pre_test" translatable="false">Start your course with the pre test\ngiven below:</string>
-    <string name="label_step1" translatable="false">Step 1</string>
-    <string name="label_pre_test" translatable="false">Pre-Test</string>
-    <string name="label_question" translatable="false">Questions</string>
-    <string name="label_no_of_question" translatable="false">10 Questions</string>
-    <string name="label_start_test" translatable="false">Start Test</string>
-    <string name="label_correct_ans" translatable="false">Correct Ans</string>
+    <string name="label_human_rights" translatable="false">انسانی حقوق</string>
+    <string name="label_dashboard" translatable="false">ڈیش بورڈ</string>
+    <string name="label_certificate" translatable="false">سرٹیفیکیٹ</string>
+    <string name="label_profile" translatable="false">پروفائل</string>
+    <string name="label_signout" translatable="false">لاگ آوٹ</string>
+    <string name="label_english_med" translatable="false">انگریزی میڈیم</string>
+    <string name="label_urdu_med" translatable="false">اردو میڈیم</string>
+    <string name="label_internal_personal" translatable="false">باہمی تعلقات</string>
+    <string name="label_lorem_ipsum" translatable="false">ایک ٹیلے پر واقع مزار خواجہ فریدالدین گنج شکرؒ کے احاطہء صحن میں ذرا سی ژالہ باری چاندی کے ڈھیروں کی مثل بڑے غضب کا نظارا دیتی ہے۔ایک ٹیلے پر واقع مزار خواجہ فریدالدین گنج شکرؒ کے احاطہء صحن میں ذرا سی ژالہ باری چاندی کے ڈھیروں کی مثل بڑے غضب کا نظارا دیتی ہے۔ایک ٹیلے پر واقع مزار خواجہ فریدالدین گنج شکرؒ کے احاطہء صحن میں ذرا سی ژالہ باری چاندی کے ڈھیروں کی مثل بڑے غضب کا نظارا دیتی ہے۔</string>
+    <string name="label_start_with_pre_test" translatable="false">ذیل میں دیے گئے پری ٹیسٹ کے ساتھ اپنا کورس شروع کریں۔</string>
+    <string name="label_step1" translatable="false">مرحلہ نمبر 1</string>
+    <string name="label_pre_test" translatable="false">پری ٹیسٹ</string>
+    <string name="label_question" translatable="false">سوالات</string>
+    <string name="label_no_of_question" translatable="false">10 سوالات</string>
+    <string name="label_start_test" translatable="false">ٹیسٹ شروع کریں</string>
+    <string name="label_correct_ans" translatable="false">درست جوابات</string>
     <string name="label_05" translatable="false">05</string>
-    <string name="label_incorrect_ans" translatable="false">Incorrect Ans</string>
-    <string name="label_test_passed" translatable="false">Test Passed</string>
-    <string name="label_congo" translatable="false">Congratulations</string>
-    <string name="label_desc" translatable="false">You have passed the test. Now you can\ndownload your passing certificate for this\ncourse.</string>
-    <string name="label_desc1" translatable="false">You have passed the test. Now you can\ndownload all courses achievements certificate.</string>
-    <string name="label_download_certificate" translatable="false">Download Certificate</string>
-    <string name="label_chose_another_course" translatable="false">Choose another course to study</string>
+    <string name="label_incorrect_ans" translatable="false">غلط جوابات</string>
+    <string name="label_test_passed" translatable="false">امتحان پاس کیا</string>
+    <string name="label_congo" translatable="false">مبارک ہو</string>
+    <string name="label_desc" translatable="false">آپ نے امتحان پاس کر لیا ہے۔ اب آپ اس کورس کے لیے سرٹیفکیٹ ڈاؤن لوڈ کر سکتے ہیں۔</string>
+  <!--  <string name="label_desc1" translatable="false">آپ نے امتحان پاس کر لیا ہے۔ اب آپ اس کورس کے لیے سرٹیفکیٹ ڈاؤن لوڈ کر سکتے ہیں۔</string>-->
+    <string name="label_download_certificate" translatable="false">سرٹیفکیٹ ڈاؤن لوڈ کریں۔</string>
+    <string name="label_chose_another_course" translatable="false">مطالعہ کرنے کے لیے ایک اور کورس کا انتخاب کریں۔</string>
     <string name="label_dummy_time" translatable="false">02:22 Mins</string>
-    <string name="dummy_question" translatable="false">The number of fundamental particles in an atom of the lightest isotope carbon are</string>
-    <string name="label_submit" translatable="false">Submit</string>
-    <string name="label_user_name" translatable="false">Jolliya Rafique</string>
-    <string name="label_course_certificate" translatable="false">Course Certificate</string>
+    <string name="dummy_question" translatable="false">ہلکے آاسوٹوپس کاربن کے ایٹم میں بنیادی ذرات کی تعداد کتنی ہے۔</string>
+    <string name="label_submit" translatable="false">بھیجیں</string>
+    <!--<string name="label_user_name" translatable="false">جولیہ رفیق</string>-->
+    <!--<string name="label_course_certificate" translatable="false">کورس سرٹیفکیٹ</string>-->
     <string name="label_insani_haqooq" translatable="false">انسانی حقوق</string>
-    <string name="label_status" translatable="false">Status</string>
-    <string name="label_date" translatable="false">Date</string>
+    <string name="label_status" translatable="false">حالت</string>
+    <string name="label_date" translatable="false">تاریخ</string>
     <string name="label_dummy_date" translatable="false">03 June,2022</string>
-    <string name="label_download" translatable="false">DOWNLOAD</string>
-    <string name="label_course_achievement" translatable="false">All Course Achievement\nCertificate</string>
-    <string name="label_are_you_sure_to_signout" translatable="false">Are you sure you want\nto signout?</string>
+    <string name="label_download" translatable="false">ڈاؤن لوڈ کریں</string>
+<!--    <string name="label_course_achievement" translatable="false">تمام کورس کی کامیابیوں کا سرٹیفکیٹ</string>-->
+    <string name="label_are_you_sure_to_signout" translatable="false">کیا آپ واقعی سائن آؤٹ کرنا چاہتے ہیں؟</string>
+    <string name="label_question_01" translatable="false">سوال 01</string>
 </resources>

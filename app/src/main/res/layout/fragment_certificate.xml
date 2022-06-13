@@ -91,7 +91,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semi_bold"
-                        android:text="@string/label_congo"
+                        android:text="Congratulations"
                         android:textColor="@color/purple"
                         android:textSize="@dimen/_16sp"
                         app:layout_constraintStart_toStartOf="@id/tv_all_course_achievements"
@@ -114,7 +114,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10dp"
-                        android:text="@string/label_download"
+                        android:text="Download"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_desc" />
