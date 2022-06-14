@@ -11,7 +11,7 @@ import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentResultBinding
 import com.softsolutions.fpap.model.Dashboard
 import com.softsolutions.fpap.ui.common.OnListItemClickListener
-import com.softsolutions.fpap.ui.isUrduMedium
+import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.ui.main.dashboard.DashboardAdapter
 import com.softsolutions.fpap.utils.setTextViewFont
 import kotlinx.android.synthetic.main.base_toolbar.view.*
@@ -26,12 +26,12 @@ class ResultFragment:Fragment(),OnListItemClickListener<Dashboard> {
         binding= FragmentResultBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
         if (isUrduMedium){
-            setTextViewFont(binding.tvStatus, R.font.alvi_nastaleeq_regular,requireContext(),30)
-            setTextViewFont(binding.tvCongo, R.font.alvi_nastaleeq_regular,requireContext(),26)
-            setTextViewFont(binding.tvDesc, R.font.alvi_nastaleeq_regular,requireContext(),20)
-            setTextViewFont(binding.btnDownload, R.font.alvi_nastaleeq_regular,requireContext())
-            setTextViewFont(binding.tvChooseAnotherCourse, R.font.alvi_nastaleeq_regular,requireContext(),26)
-            setTextViewFont(binding.toolbarLayout.tv_toolbar, R.font.alvi_nastaleeq_regular,requireContext(),26)
+//            setTextViewFont(binding.tvStatus, R.font.alvi_nastaleeq_regular,requireContext(),30)
+//            setTextViewFont(binding.tvCongo, R.font.alvi_nastaleeq_regular,requireContext(),26)
+//            setTextViewFont(binding.tvDesc, R.font.alvi_nastaleeq_regular,requireContext(),20)
+//            setTextViewFont(binding.btnDownload, R.font.alvi_nastaleeq_regular,requireContext())
+//            setTextViewFont(binding.tvChooseAnotherCourse, R.font.alvi_nastaleeq_regular,requireContext(),26)
+//            setTextViewFont(binding.toolbarLayout.tv_toolbar, R.font.alvi_nastaleeq_regular,requireContext(),26)
             binding.toolbarLayout.back.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_back_right))
         }
         val list= arrayListOf<Dashboard>()

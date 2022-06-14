@@ -55,7 +55,9 @@ class DashboardAdapter(
     override fun onBindViewHolder(holder: ItemRecyclerViewHolder, position: Int) {
         val dashboardObject = list[position]
           holder.title.text = dashboardObject.title
-        if (isUrduMedium) setTextViewFont(holder.title,R.font.alvi_nastaleeq_regular,context,18)
+        if (isUrduMedium) {
+
+        }
         if (!isDashboard){
             holder.support = holder.itemView.findViewById(R.id.iv_contact_support)
             if (position == 4){

@@ -13,12 +13,13 @@ class AccountActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_account)
         val locale = Locale("en")
         Locale.setDefault(locale)
         val config = Configuration()
         config.locale = locale
         baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+        setContentView(R.layout.activity_account)
         navController = findNavController(R.id.nav_host_account)
+
     }
 }

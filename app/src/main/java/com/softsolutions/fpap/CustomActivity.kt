@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.CompoundButton
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
+import androidx.constraintlayout.utils.widget.ImageFilterView
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -15,7 +17,7 @@ import com.softsolutions.CertificateActivity
 import com.softsolutions.ProfileActivity
 import com.softsolutions.fpap.databinding.ActivityCustomBinding
 import com.softsolutions.fpap.ui.account.SignoutDialog
-import com.softsolutions.fpap.ui.isUrduMedium
+import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.utils.loadLocate
 import com.softsolutions.fpap.utils.setLocate
 import com.softsolutions.fpap.utils.setTextViewFont
@@ -27,23 +29,25 @@ class CustomActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         loadLocate(this)
-        binding= ActivityCustomBinding.inflate(layoutInflater)
+        binding = ActivityCustomBinding.inflate(layoutInflater)
         setContentView(binding.root)
         navController = findNavController(R.id.nav_host_main)
         visibilityNavElements(navController)
-        binding.toolbar.tv_toolbar.text=resources.getString(R.string.dashboard_toolbar)
+        binding.toolbar.tv_toolbar.text = resources.getString(R.string.dashboard_toolbar)
         binding.toolbar.back.setOnClickListener {
             binding.drawerlayout.openDrawer(GravityCompat.START)
         }
-        val headerView = binding.navigationView.inflateHeaderView(R.layout.header_layout)
-        val switchCompat=headerView.findViewById<SwitchCompat>(R.id.sth_med)
+        val headerView = binding.navigationView.inflateHeaderView(R.layout.drawer_header_layout)
+        val switchCompat = headerView.findViewById<SwitchCompat>(R.id.sth_med)
+        val back = headerView.findViewById<ImageFilterView>(R.id.back)
         switchCompat.isChecked = isUrduMedium
-        if (isUrduMedium){
-            setTextViewFont(binding.toolbar.tv_toolbar, R.font.alvi_nastaleeq_regular,this,26)
+        if (isUrduMedium) {
+            setTextViewFont(binding.toolbar.tv_toolbar, R.font.alvi_nastaleeq_regular, this, 26)
+            back.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_back_right))
         }
 
         switchCompat.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked){
+            if (isChecked) {
        //  binding.drawerlayout.layoutDirection = View.LAYOUT_DIRECTION_RTL
                 setLocate("ur",this)
                finish()

@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.softsolutions.fpap.data.PrefRepository
-import com.softsolutions.fpap.ui.common.isEnglishMedium
+import com.softsolutions.fpap.ui.common.isUrduMedium
 
 private const val SPLASH_TIME_OUT=1000L
 class SplashActivity : AppCompatActivity() {
@@ -16,9 +16,9 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         prefRepository= PrefRepository(application)
 
-        if (prefRepository.getMedium()!=null){
-            isEnglishMedium = prefRepository.getMedium()=="English Medium"
-        }else isEnglishMedium = true
+        isUrduMedium = if (prefRepository.getMedium()!=null){
+            prefRepository.getMedium()=="ur"
+        }else false
 
         Handler(Looper.getMainLooper()).postDelayed({
             goToAccountActivity()

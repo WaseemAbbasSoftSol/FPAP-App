@@ -20,6 +20,7 @@
         <entry key="app/src/main/res/drawable/ic_login_back.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_signup_back.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_tick.xml" value="0.1" />
+        <entry key="app/src/main/res/font-ur-rPK/poppins_regular.xml" value="0.1638888888888889" />
         <entry key="app/src/main/res/layout/activity_account.xml" value="0.16576086956521738" />
         <entry key="app/src/main/res/layout/activity_custom.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
@@ -27,6 +28,7 @@
         <entry key="app/src/main/res/layout/base_toolbar.xml" value="0.1260135135135135" />
         <entry key="app/src/main/res/layout/base_toolbar_urdu.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/dialog_signout.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/drawer_header_layout.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/fragment_certificate.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_dashboard_detail.xml" value="0.19322916666666667" />
