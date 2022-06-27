@@ -1,10 +1,9 @@
-package com.softsolutions
+package com.softsolutions.fpap
 
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.softsolutions.fpap.CustomActivity
 import com.softsolutions.fpap.databinding.FragmentProfileBinding
 import kotlinx.android.synthetic.main.base_toolbar.view.*
 import java.util.*
@@ -27,7 +26,7 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        startActivity(Intent(this, CustomActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 }

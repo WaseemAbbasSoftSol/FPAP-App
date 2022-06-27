@@ -5,23 +5,6 @@
     android:id="@+id/nav_graph_main"
     app:startDestination="@id/dashboard_fragment">
 
-
-    <fragment
-        android:id="@+id/main_fragment"
-        android:name="com.softsolutions.fpap.ui.main.MainFragment"
-        tools:layout="@layout/main_fragment">
-        <action
-            android:id="@+id/action_dashboard_to_dashboard_detail_fragment"
-            app:destination="@id/dashboard_detail_fragment"/>
-
-        <action
-            android:id="@+id/action_dashboard_to_profile_fragmet"
-            app:destination="@id/profile_fragment"/>
-        <action
-            android:id="@+id/action_dashboard_certificate_fragment"
-            app:destination="@id/certificate_fragment"/>
-    </fragment>
-
     <fragment
         android:id="@+id/dashboard_fragment"
         android:name="com.softsolutions.fpap.ui.main.dashboard.DashboardFragment"

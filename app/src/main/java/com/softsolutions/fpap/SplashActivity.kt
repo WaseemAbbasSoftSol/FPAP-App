@@ -30,8 +30,4 @@ class SplashActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun goToMainActivity() {
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
-    }
 }

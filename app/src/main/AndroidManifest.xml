@@ -3,6 +3,7 @@
     package="com.softsolutions.fpap">
 
     <application
+        android:name=".FPAP_App"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".CustomActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
@@ -24,10 +25,9 @@
         <activity
             android:name=".AccountActivity"
             android:exported="false" />
-        <activity android:name=".MainActivity"/>
-        <activity android:name="com.softsolutions.ProfileActivity"
+        <activity android:name=".ProfileActivity"
             android:exported="false"/>
-        <activity android:name="com.softsolutions.CertificateActivity"
+        <activity android:name=".CertificateActivity"
             android:exported="false"/>
     </application>
 

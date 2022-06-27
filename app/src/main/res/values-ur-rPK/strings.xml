@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">FPAP</string>
     <string name="toolbar" translatable="false">ٹول بار</string>
+    <string name="access_token" translatable="false">31bf3856ad364e35</string>
     <!--<string name="label_email" translatable="false">ای میل کا پتہ</string>-->
   <!--  <string name="label_number" translatable="false">موبائل نمبر</string>-->
   <!--  <string name="label_mobile" translatable="false">موبائل</string>-->
