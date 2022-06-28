@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semi_bold"
                 android:textColor="@color/purple"
-                android:textSize="20sp"
+                android:textSize="@dimen/_20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:text="@string/label_question_01" />
@@ -53,7 +53,7 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/poppins_medium"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="@dimen/_16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_question_no"
                 tools:text="@string/dummy_question" />

@@ -20,7 +20,8 @@ class LoginFragment: Fragment() {
     ): View? {
         binding= FragmentLoginBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
-        binding.toolbar.tv_toolbar.text="Login"
+        binding.toolbar.tvToolbar.text="Login"
+        binding.toolbar.back.visibility=View.GONE
        binding.tvForgotPass.setOnClickListener{
           findNavController().navigate(LoginFragmentDirections.actionLoginfragmentToRecoverPasswordFragment())
        }

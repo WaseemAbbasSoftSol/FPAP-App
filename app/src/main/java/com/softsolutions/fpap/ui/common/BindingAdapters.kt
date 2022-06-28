@@ -6,6 +6,7 @@ import android.net.Uri
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.*
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -169,7 +170,7 @@ fun <T> setSpinnerItems(view: MaterialAutoCompleteTextView, items: List<T>, isSp
 //}
 //
 @BindingAdapter("navigation")
-fun navigateUp(view: ImageView, isEnabled: Boolean) {
+fun navigateUp(view: AppCompatImageView, isEnabled: Boolean) {
     view.setOnClickListener {
         it.findNavController().navigateUp()
     }

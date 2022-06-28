@@ -28,7 +28,7 @@ class SignUpFragment : Fragment() {
     ): View? {
         binding = FragmentSignupBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
-        binding.toolbar.tv_toolbar.text="New User Registration"
+        binding.toolbar.tvToolbar.text="New User Registration"
         binding.tvExistingUser.setOnClickListener {
             findNavController().navigate(SignUpFragmentDirections.actionSignupFragmentToLoginFragment())
         }

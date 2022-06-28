@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.softsolutions.fpap.ui.common.FragmentOnBackPressed
 import com.softsolutions.fpap.utils.loadLocate
+import kotlinx.android.synthetic.main.activity_account.*
 import java.util.*
 
 
@@ -21,5 +23,12 @@ class AccountActivity : AppCompatActivity() {
         setContentView(R.layout.activity_account)
         navController = findNavController(R.id.nav_host_account)
 
+    }
+
+    override fun onBackPressed() {
+        when(val currentFragment = nav_host_account.childFragmentManager.fragments[0]) {
+            is FragmentOnBackPressed -> currentFragment.onBackPressed()
+            else -> if(!navController.popBackStack()) finish()
+        }
     }
 }

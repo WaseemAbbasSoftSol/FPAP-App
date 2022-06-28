@@ -17,9 +17,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 private const val BASE_URL = ""
+private const val LOCAL_URL = "http://localhost:55691/"
 
 val viewModelsModule= module {
-    viewModel { AccountViewModel() }
+    viewModel { AccountViewModel(get()) }
     }
 
   val repositoriesModule = module {
@@ -37,7 +38,7 @@ val viewModelsModule= module {
     }
 
     fun createApi(factory: GsonConverterFactory, client: OkHttpClient) = Retrofit.Builder()
-        .baseUrl(BASE_URL)
+        .baseUrl(LOCAL_URL)
         .addConverterFactory(factory)
         .client(client)
         .build()

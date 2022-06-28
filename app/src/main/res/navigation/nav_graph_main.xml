@@ -39,20 +39,4 @@
         android:name="com.softsolutions.fpap.ui.main.ResultFragment"
         tools:layout="@layout/fragment_result"/>
 
-    <fragment
-        android:id="@+id/profile_fragment"
-        android:name="com.softsolutions.fpap.ui.main.profile.ProfileFragment"
-        tools:layout="@layout/fragment_profile"/>
-
-    <fragment
-        android:id="@+id/certificate_fragment"
-        android:name="com.softsolutions.fpap.ui.main.certificate.CertificateFragment"
-        tools:layout="@layout/fragment_certificate"/>
-    <action
-        android:id="@+id/action_global_to_profile_fragment"
-        app:destination="@id/profile_fragment"/>
-
-    <action
-        android:id="@+id/action_global_to_certificate_fragment"
-        app:destination="@id/certificate_fragment"/>
 </navigation>

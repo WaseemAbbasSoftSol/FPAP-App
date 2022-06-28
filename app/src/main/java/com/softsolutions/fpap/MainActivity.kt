@@ -14,11 +14,13 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.softsolutions.fpap.databinding.ActivityMainBinding
 import com.softsolutions.fpap.ui.account.SignoutDialog
+import com.softsolutions.fpap.ui.common.FragmentOnBackPressed
 import com.softsolutions.fpap.ui.common.isUrduMedium
+import com.softsolutions.fpap.ui.main.certificate.CertificateActivity
+import com.softsolutions.fpap.ui.main.profile.ProfileActivity
 import com.softsolutions.fpap.utils.loadLocate
 import com.softsolutions.fpap.utils.setLocate
-import com.softsolutions.fpap.utils.setTextViewFont
-import kotlinx.android.synthetic.main.base_toolbar.view.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding:ActivityMainBinding
@@ -30,8 +32,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         navController = findNavController(R.id.nav_host_main)
         visibilityNavElements(navController)
-        binding.toolbar.tv_toolbar.text = resources.getString(R.string.dashboard_toolbar)
-        binding.toolbar.back.setOnClickListener {
+        binding.toolbar.tvToolbar.text = resources.getString(R.string.dashboard_toolbar)
+        binding.toolbar.navHamMenu.setOnClickListener {
             binding.drawerlayout.openDrawer(GravityCompat.START)
         }
         val headerView = binding.navigationView.inflateHeaderView(R.layout.drawer_header_layout)
@@ -39,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         val back = headerView.findViewById<ImageFilterView>(R.id.back)
         switchCompat.isChecked = isUrduMedium
         if (isUrduMedium) {
-            setTextViewFont(binding.toolbar.tv_toolbar, R.font.alvi_nastaleeq_regular, this, 26)
             back.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_back_right))
         }
 
@@ -65,12 +66,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.certificate->{
                     //findNavController(R.id.nav_host_main).navigate(R.id.action_global_to_certificate_fragment)
                     startActivity(Intent(this, CertificateActivity::class.java))
-                    finish()
                 }
               //  R.id.profile->findNavController(R.id.nav_host_main).navigate(R.id.action_global_to_profile_fragment)
                 R.id.profile->{
                     startActivity(Intent(this, ProfileActivity::class.java))
-                    finish()
                 }
 
                 R.id.signout->{
@@ -92,12 +91,15 @@ class MainActivity : AppCompatActivity() {
                 R.id.dashboard_fragment -> {
                  //   binding.mainAppbar.visibility = View.VISIBLE
                     // UiHelpers.setCustomMargins(binding.mainToolbar, 12, 0,0,0)
-                    binding.toolbar.visibility= View.VISIBLE
-                    binding.toolbar.back.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_ham_menu))
+                    binding.toolbar.root.visibility= View.VISIBLE
+                    binding.toolbar.navHamMenu.visibility=View.VISIBLE
+                    binding.toolbar.back.visibility=View.GONE
+                    //binding.toolbar.back.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_ham_menu))
                 }
-                R.id.dashboard_detail_fragment, R.id.mcqs_fragment,R.id.result_fragment,R.id.certificate_fragment,R.id.profile_fragment -> {
+                R.id.dashboard_detail_fragment, R.id.mcqs_fragment,R.id.result_fragment -> {
                   //  binding.toolbar.back.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_back))
-                    binding.toolbar.visibility= View.GONE
+                    binding.toolbar.root.visibility= View.GONE
+                    binding.toolbar.navHamMenu.visibility=View.GONE
                 }
                 else -> {
                     hideNavigation()
@@ -112,5 +114,11 @@ class MainActivity : AppCompatActivity() {
        // binding.mainAppbar.visibility = View.GONE
     }
 
+    override fun onBackPressed() {
+        when(val currentFragment = nav_host_main.childFragmentManager.fragments[0]) {
+            is FragmentOnBackPressed -> currentFragment.onBackPressed()
+            else -> if(!navController.popBackStack()) finish()
+        }
+    }
 
 }

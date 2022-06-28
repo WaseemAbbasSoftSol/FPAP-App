@@ -65,4 +65,5 @@
     <string name="label_course_achievement" translatable="false">All Course Achievement\nCertificate</string>
     <string name="label_are_you_sure_to_signout" translatable="false">Are you sure you want\nto signout?</string>
     <string name="label_question_01" translatable="false">Question 01</string>
+    <string name="press_back_again" translatable="false">Press Back Again to exit</string>
 </resources>

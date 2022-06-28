@@ -1,11 +1,9 @@
-package com.softsolutions.fpap
+package com.softsolutions.fpap.ui.main.profile
 
-import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.softsolutions.fpap.databinding.FragmentProfileBinding
-import kotlinx.android.synthetic.main.base_toolbar.view.*
 import java.util.*
 
 
@@ -20,13 +18,11 @@ class ProfileActivity : AppCompatActivity() {
         val config = Configuration()
         config.locale = locale
         baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
-
-        binding.toolbarLayout.tv_toolbar.text="Profile"
+        binding.tvToolbar.text="Profile"
+        binding.back.setOnClickListener {
+            onBackPressed()
+        }
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
-    }
+
 }

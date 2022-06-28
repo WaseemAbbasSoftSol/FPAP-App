@@ -17,7 +17,7 @@ class RecoverPasswordFragment: Fragment() {
     ): View? {
         binding= FragmentRecoverPasswordBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
-        binding.toolbar.tv_toolbar.text="Password Recovery"
+        binding.toolbar.tvToolbar.text="Password Recovery"
         return binding.root
     }
 }

@@ -16,7 +16,9 @@
 
         <include
             android:id="@+id/toolbar"
-            layout="@layout/base_toolbar" />
+            layout="@layout/base_toolbar"
+
+            />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -153,7 +155,7 @@
                         android:layout_height="wrap_content"
                         isSpinner="@{true}"
                         android:text="Matric"
-                        itemsList="@{viewModel.qualificationList}"
+                        itemsList="@{viewModel.qualificaationList}"
                         android:cursorVisible="false"
                         android:focusable="false"
                         android:drawableEnd="@drawable/ic_drop_down_arrow"
@@ -211,6 +213,8 @@
                     <AutoCompleteTextView
                         android:id="@+id/tv_dob"
                         style="@style/AppTheme.Field"
+                        android:cursorVisible="false"
+                        android:focusable="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_question_mark"

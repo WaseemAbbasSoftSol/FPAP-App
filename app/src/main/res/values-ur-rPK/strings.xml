@@ -61,4 +61,5 @@
 <!--    <string name="label_course_achievement" translatable="false">تمام کورس کی کامیابیوں کا سرٹیفکیٹ</string>-->
     <string name="label_are_you_sure_to_signout" translatable="false">کیا آپ واقعی سائن آؤٹ کرنا چاہتے ہیں؟</string>
     <string name="label_question_01" translatable="false">سوال 01</string>
+    <string name="press_back_again" translatable="false">باہر نکلنے کے لیے دوبارہ دبائیں</string>
 </resources>
