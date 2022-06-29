@@ -7,4 +7,6 @@ class BaseCommonList(
     val text:String,
     @SerializedName("Value")
     val value:String
-)
+){
+    override fun toString(): String = text
+}

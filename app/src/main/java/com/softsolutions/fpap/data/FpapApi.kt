@@ -26,7 +26,7 @@ interface FpapApi {
         @Query("Password")password:String
     ):Response<BaseResponse<User>>
 
-    @POST("register")
+    @POST("forgetpassword")
     @Headers("Content-Type:application/json")
     suspend fun forgotPassword(
         @Body params:ForgotPassword
@@ -42,5 +42,9 @@ interface FpapApi {
     @POST("getcitylist")
     suspend fun getCitiesList():Response<BaseResponse<List<BaseCommonList>>>
 
+    @POST("dashboard")
+    suspend fun getDashboardData(
+        @Query("MemberID")memberId:Int
+    ):Response<BaseResponse<User>>
 
 }

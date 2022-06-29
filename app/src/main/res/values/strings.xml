@@ -2,7 +2,6 @@
     <string name="app_name">FPAP</string>
     <string name="toolbar" translatable="false">Toolbar</string>
     <string name="access_token" translatable="false">31bf3856ad364e35</string>
-    <string name="toolbar_urdu" translatable="false">ٹول بار</string>
     <string name="label_email" translatable="false">Email ID</string>
     <string name="label_number" translatable="false">Enter Mobile</string>
     <string name="label_mobile" translatable="false">Mobile #</string>
@@ -25,10 +24,7 @@
     <string name="label_welcome_text" translatable="false">Welcome to LSBE Online Course</string>
     <string name="dashboard_toolbar" translatable="false">LSBE Online Course</string>
     <string name="dashboard_subject" translatable="false">Subject</string>
-    <string name="dashboard_subject_urdu" translatable="false">مضمون</string>
-    <string name="label_welcome_text_urdu" translatable="false">خوش آمدید</string>
     <string name="label_human_rights" translatable="false">Human Rights</string>
-    <string name="label_human_rights_urdu" translatable="false">انسانی حقوق</string>
     <string name="label_dashboard" translatable="false">Dashboard</string>
     <string name="label_certificate" translatable="false">Certificate</string>
     <string name="label_profile" translatable="false">Profile</string>
@@ -57,7 +53,6 @@
     <string name="label_submit" translatable="false">Submit</string>
     <string name="label_user_name" translatable="false">Jolliya Rafique</string>
     <string name="label_course_certificate" translatable="false">Course Certificate</string>
-    <string name="label_insani_haqooq" translatable="false">انسانی حقوق</string>
     <string name="label_status" translatable="false">Status</string>
     <string name="label_date" translatable="false">Date</string>
     <string name="label_dummy_date" translatable="false">03 June,2022</string>
@@ -66,4 +61,12 @@
     <string name="label_are_you_sure_to_signout" translatable="false">Are you sure you want\nto signout?</string>
     <string name="label_question_01" translatable="false">Question 01</string>
     <string name="press_back_again" translatable="false">Press Back Again to exit</string>
+    <string name="label_field_required" translatable="false">This field is required</string>
+    <string name="label_pass_not_matched" translatable="false">Password not matched</string>
+    <string name="label_enter_email" translatable="false">Please enter your email</string>
+    <string name="loading" translatable="false">Loading…</string>
+    <string name="plz_wait" translatable="false">Please wait…</string>
+    <string name="label_sign_out" translatable="false">Sign Out</string>
+    <string name="label_yes" translatable="false">Yes</string>
+    <string name="label_no" translatable="false">No</string>
 </resources>

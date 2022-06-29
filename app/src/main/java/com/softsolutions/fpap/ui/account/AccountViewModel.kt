@@ -6,8 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.softsolutions.fpap.data.FpapRepository
+import com.softsolutions.fpap.data.PrefRepository
 import com.softsolutions.fpap.model.Dashboard
 import com.softsolutions.fpap.model.RequestState
+import com.softsolutions.fpap.model.account.ForgotPassword
 import com.softsolutions.fpap.model.account.Register
 import com.softsolutions.fpap.model.account.User
 import com.softsolutions.fpap.model.common.BaseCommonList
@@ -16,7 +18,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AccountViewModel(
-    private val repository: FpapRepository
+    private val repository: FpapRepository,
+    val prefRepository: PrefRepository
 ):ViewModel() {
 
     private val _state = MutableLiveData<RequestState>()
@@ -93,6 +96,31 @@ class AccountViewModel(
         }
     }
 
+    fun recoverForgotPassword(email:ForgotPassword) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                _state.postValue(RequestState.LOADING)
+                val response = repository.forgotPassword(email)
+                if (response.isSuccessful) {
+                    response.body().let {
+                        _user.postValue(it!!.data)
+                    }
+                } else {
+                    response.errorBody().let {
+                        Log.d(APP_TAG, it!!.string())
+                    }
+                }
+                _state.postValue(RequestState.DONE)
+            } catch (e: Exception) {
+                _state.postValue(RequestState.ERROR)
+                e.printStackTrace()
+            } catch (t: Throwable) {
+                _state.postValue(RequestState.ERROR)
+                t.printStackTrace()
+            }
+        }
+    }
+
     private fun getQualificationLists() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
@@ -117,7 +145,7 @@ class AccountViewModel(
     private fun getRegionLists() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = repository.getQualificationList()
+                val response = repository.getRegionList()
                 if (response.isSuccessful) {
                     response.body().let {
                         _regionList.postValue(it!!.data)
@@ -138,7 +166,7 @@ class AccountViewModel(
     private fun getCitiesLists() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = repository.getQualificationList()
+                val response = repository.getCitiesList()
                 if (response.isSuccessful) {
                     response.body().let {
                         _citiesList.postValue(it!!.data)
@@ -156,10 +184,13 @@ class AccountViewModel(
         }
     }
 
-    val qualificaationList = arrayListOf<Dashboard>(
-        Dashboard("", "Matric"),
-        Dashboard("", "Intermidiate"),
-        Dashboard("", "Bachelors"),
-        Dashboard("", "Mphil"),
+    val qualificaationList = arrayListOf<BaseCommonList>(
+        BaseCommonList("Matric", "1"),
+        BaseCommonList("Intermidiate", "2"),
+        BaseCommonList("Bachelors", "3"),
     )
+
+    fun saveUser(user: User)=prefRepository.saveUser(user)
+    fun getTheUser()=prefRepository.getUser()
+    fun deleteUser()=prefRepository.deleteUserFromPref()
 }

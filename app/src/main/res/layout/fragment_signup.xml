@@ -172,11 +172,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/et_qualification">
 
-                    <EditText
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/ed_region"
                         style="@style/AppTheme.Field"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        isSpinner="@{true}"
+                        android:text="Lahore"
+                        itemsList="@{viewModel.regionList}"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:drawableEnd="@drawable/ic_drop_down_arrow"
                         android:hint="@string/label_region"
                         android:inputType="textPersonName" />
 
@@ -191,11 +197,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/et_region">
 
-                    <AutoCompleteTextView
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/sp_city"
                         style="@style/AppTheme.Field"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        isSpinner="@{true}"
+                        android:text="Lahore"
+                        itemsList="@{viewModel.citiesList}"
+                        android:cursorVisible="false"
+                        android:focusable="false"
                         android:drawableEnd="@drawable/ic_drop_down_arrow"
                         android:hint="@string/label_city" />
 
@@ -248,6 +259,7 @@
                     android:layout_marginTop="@dimen/_8dp"
                     app:layout_constraintStart_toStartOf="@id/et_email"
                     app:layout_constraintTop_toBottomOf="@id/et_gender"
+                    android:layout_marginEnd="@dimen/_20dp"
                     android:text="@string/label_set_acc"
                     android:fontFamily="@font/poppins_semi_bold"
                     android:textColor="@color/purple"
@@ -325,6 +337,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/et_confirm_pass" />
 
                 <LinearLayout
+                    android:id="@+id/ll_login_now"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="@id/et_email"
@@ -358,6 +371,13 @@
 
 
                 </LinearLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="@dimen/_10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ll_login_now"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

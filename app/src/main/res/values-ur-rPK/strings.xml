@@ -2,15 +2,7 @@
     <string name="app_name">FPAP</string>
     <string name="toolbar" translatable="false">ٹول بار</string>
     <string name="access_token" translatable="false">31bf3856ad364e35</string>
-    <!--<string name="label_email" translatable="false">ای میل کا پتہ</string>-->
-  <!--  <string name="label_number" translatable="false">موبائل نمبر</string>-->
-  <!--  <string name="label_mobile" translatable="false">موبائل</string>-->
-    <!--<string name="label_region" translatable="false">علاقہ</string>-->
- <!--   <string name="label_city" translatable="false">شہر</string>-->
-<!--    <string name="label_dob" translatable="false">تاریخ پیدائش</string>-->
-  <!--  <string name="label_gender" translatable="false">صنف</string>-->
     <string name="label_set_acc" translatable="false">ویب سائٹ اور ایپ کے لیے اکاؤنٹ کی تفصیلات سیٹ کریں۔</string>
-    <!--<string name="label_pass" translatable="false">پاس ورڈ</string>-->
     <string name="label_confirm_pass" translatable="false">دوبارہ پاسوورڈ لکھئے</string>
     <string name="label_login" translatable="false">لاگ ان کریں</string>
     <string name="label_forgot_pass" translatable="false">پاسورڈ بھول گے؟</string>
@@ -23,7 +15,6 @@
     <string name="label_welcome_text" translatable="false"> آن لائن کورس میں خوش آمدید</string>
     <string name="dashboard_toolbar" translatable="false">آن لائن کورس</string>
     <string name="dashboard_subject" translatable="false">مضمون</string>
-    <string name="label_welcome_text_urdu" translatable="false">خوش آمدید</string>
     <string name="label_human_rights" translatable="false">انسانی حقوق</string>
     <string name="label_dashboard" translatable="false">ڈیش بورڈ</string>
     <string name="label_certificate" translatable="false">سرٹیفیکیٹ</string>
@@ -45,21 +36,24 @@
     <string name="label_test_passed" translatable="false">امتحان پاس کیا</string>
     <string name="label_congo" translatable="false">مبارک ہو</string>
     <string name="label_desc" translatable="false">آپ نے امتحان پاس کر لیا ہے۔ اب آپ اس کورس کے لیے سرٹیفکیٹ ڈاؤن لوڈ کر سکتے ہیں۔</string>
-  <!--  <string name="label_desc1" translatable="false">آپ نے امتحان پاس کر لیا ہے۔ اب آپ اس کورس کے لیے سرٹیفکیٹ ڈاؤن لوڈ کر سکتے ہیں۔</string>-->
     <string name="label_download_certificate" translatable="false">سرٹیفکیٹ ڈاؤن لوڈ کریں۔</string>
     <string name="label_chose_another_course" translatable="false">مطالعہ کرنے کے لیے ایک اور کورس کا انتخاب کریں۔</string>
     <string name="label_dummy_time" translatable="false">02:22 Mins</string>
     <string name="dummy_question" translatable="false">ہلکے آاسوٹوپس کاربن کے ایٹم میں بنیادی ذرات کی تعداد کتنی ہے۔</string>
     <string name="label_submit" translatable="false">بھیجیں</string>
-    <!--<string name="label_user_name" translatable="false">جولیہ رفیق</string>-->
-    <!--<string name="label_course_certificate" translatable="false">کورس سرٹیفکیٹ</string>-->
-    <string name="label_insani_haqooq" translatable="false">انسانی حقوق</string>
     <string name="label_status" translatable="false">حالت</string>
     <string name="label_date" translatable="false">تاریخ</string>
     <string name="label_dummy_date" translatable="false">03 June,2022</string>
     <string name="label_download" translatable="false">ڈاؤن لوڈ کریں</string>
-<!--    <string name="label_course_achievement" translatable="false">تمام کورس کی کامیابیوں کا سرٹیفکیٹ</string>-->
     <string name="label_are_you_sure_to_signout" translatable="false">کیا آپ واقعی سائن آؤٹ کرنا چاہتے ہیں؟</string>
     <string name="label_question_01" translatable="false">سوال 01</string>
     <string name="press_back_again" translatable="false">باہر نکلنے کے لیے دوبارہ دبائیں</string>
+    <string name="label_field_required" translatable="false">اس کو پر کرنا ضروری ہے</string>
+    <string name="label_pass_not_matched" translatable="false">پاس ورڈ مماثل نہیں ہے۔</string>
+    <string name="label_enter_email" translatable="false">براہ کرم اپنا ای میل درج کریں۔</string>
+    <string name="loading" translatable="false">لوڈ ہو رہا ہے</string>
+    <string name="plz_wait" translatable="false">برائے مہربانی انتظار کریں</string>
+    <string name="label_sign_out" translatable="false">سائن آؤٹ</string>
+    <string name="label_yes" translatable="false">جی ہاں</string>
+    <string name="label_no" translatable="false">جی نہیں</string>
 </resources>

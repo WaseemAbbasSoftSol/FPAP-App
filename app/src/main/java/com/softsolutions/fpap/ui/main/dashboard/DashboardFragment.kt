@@ -14,17 +14,17 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.softsolutions.fpap.R
-import com.softsolutions.fpap.data.PrefRepository
 import com.softsolutions.fpap.databinding.FragmentDashboardBinding
 import com.softsolutions.fpap.model.Dashboard
 import com.softsolutions.fpap.ui.common.FragmentOnBackPressed
 import com.softsolutions.fpap.ui.common.OnListItemClickListener
 import com.softsolutions.fpap.ui.common.isUrduMedium
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class DashboardFragment:Fragment(),FragmentOnBackPressed,OnListItemClickListener<Dashboard> {
     private lateinit var binding:FragmentDashboardBinding
-    private lateinit var prefRepository: PrefRepository
+    private val mViewModel:DashboardViewModel by viewModel()
     private var back=0
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,10 +33,6 @@ class DashboardFragment:Fragment(),FragmentOnBackPressed,OnListItemClickListener
     ): View? {
         binding= FragmentDashboardBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
-        prefRepository= PrefRepository(requireActivity().application)
-        if (isUrduMedium){
-
-        }
         val list= arrayListOf<Dashboard>()
         for (i in 0..7){
             val sub=resources.getString(R.string.dashboard_subject)
@@ -44,12 +40,16 @@ class DashboardFragment:Fragment(),FragmentOnBackPressed,OnListItemClickListener
         }
         val adapter=DashboardAdapter(requireContext(), list,this,true, isUrduMedium)
         val layoutManager=GridLayoutManager(requireContext(), 3)
-        binding.appbar.rvDashboard.layoutManager=layoutManager
-        binding.appbar.rvDashboard.adapter=adapter
+        binding.rvDashboard.layoutManager=layoutManager
+        binding.rvDashboard.adapter=adapter
 
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.viewModel=mViewModel
+    }
     override fun onItemClick(item: Dashboard, pos: Int) {
        findNavController().navigate(DashboardFragmentDirections.actionDashboardToDashboardDetailFragment())
     }

@@ -6,6 +6,7 @@ import com.softsolutions.fpap.data.FpapRepository
 import com.softsolutions.fpap.data.OAuthInterceptor
 import com.softsolutions.fpap.data.PrefRepository
 import com.softsolutions.fpap.ui.account.AccountViewModel
+import com.softsolutions.fpap.ui.main.dashboard.DashboardViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -20,7 +21,8 @@ private const val BASE_URL = ""
 private const val LOCAL_URL = "http://localhost:55691/"
 
 val viewModelsModule= module {
-    viewModel { AccountViewModel(get()) }
+    viewModel { AccountViewModel(get(), get()) }
+    viewModel { DashboardViewModel(get(), get()) }
     }
 
   val repositoriesModule = module {

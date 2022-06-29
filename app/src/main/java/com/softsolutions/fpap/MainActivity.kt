@@ -46,16 +46,14 @@ class MainActivity : AppCompatActivity() {
 
         switchCompat.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
-       //  binding.drawerlayout.layoutDirection = View.LAYOUT_DIRECTION_RTL
                 setLocate("ur",this)
-               finish()
                 startActivity(Intent(this,MainActivity::class.java))
+                finish()
             }
             else {
-                //binding.drawerlayout.layoutDirection = View.LAYOUT_DIRECTION_LTR
                 setLocate("en",this)
-                finish()
                 startActivity(Intent(this,MainActivity::class.java))
+                finish()
 
             }
         })
@@ -64,17 +62,15 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.dashboard -> ""
                 R.id.certificate->{
-                    //findNavController(R.id.nav_host_main).navigate(R.id.action_global_to_certificate_fragment)
                     startActivity(Intent(this, CertificateActivity::class.java))
                 }
-              //  R.id.profile->findNavController(R.id.nav_host_main).navigate(R.id.action_global_to_profile_fragment)
                 R.id.profile->{
                     startActivity(Intent(this, ProfileActivity::class.java))
                 }
 
                 R.id.signout->{
                     val dialog= SignoutDialog()
-                   // dialog.show(supportFragmentManager, "")
+                    dialog.show(supportFragmentManager, "")
                 }
 
             }
@@ -111,7 +107,6 @@ class MainActivity : AppCompatActivity() {
     }
     private fun hideNavigation() { //Hide both drawer and bottom navigation bar
         binding.drawerlayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED) //Locked mode on swipe
-       // binding.mainAppbar.visibility = View.GONE
     }
 
     override fun onBackPressed() {
