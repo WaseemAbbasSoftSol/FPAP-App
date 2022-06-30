@@ -85,15 +85,11 @@ class MainActivity : AppCompatActivity() {
             binding.toolbar.back.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_back))
             when (destination.id) {
                 R.id.dashboard_fragment -> {
-                 //   binding.mainAppbar.visibility = View.VISIBLE
-                    // UiHelpers.setCustomMargins(binding.mainToolbar, 12, 0,0,0)
                     binding.toolbar.root.visibility= View.VISIBLE
                     binding.toolbar.navHamMenu.visibility=View.VISIBLE
                     binding.toolbar.back.visibility=View.GONE
-                    //binding.toolbar.back.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_ham_menu))
                 }
                 R.id.dashboard_detail_fragment, R.id.mcqs_fragment,R.id.result_fragment -> {
-                  //  binding.toolbar.back.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_back))
                     binding.toolbar.root.visibility= View.GONE
                     binding.toolbar.navHamMenu.visibility=View.GONE
                 }
@@ -105,7 +101,8 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    private fun hideNavigation() { //Hide both drawer and bottom navigation bar
+    //Hide both drawer and bottom navigation bar
+    private fun hideNavigation() {
         binding.drawerlayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED) //Locked mode on swipe
     }
 
