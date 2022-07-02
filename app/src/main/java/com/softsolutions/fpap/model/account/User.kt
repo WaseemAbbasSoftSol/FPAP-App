@@ -18,4 +18,8 @@ data class User(
     val memberInfo : MemberInfo,
     @SerializedName("SubjectList")
     val subjectList : List<SubjectList>,
-)
+){
+    fun removeCountryCodeFromNumber():String{
+        return  phoneNumber.substring(1)
+    }
+}

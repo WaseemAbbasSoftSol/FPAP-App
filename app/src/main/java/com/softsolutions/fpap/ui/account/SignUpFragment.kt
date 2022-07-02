@@ -2,18 +2,27 @@ package com.softsolutions.fpap.ui.account
 
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
+import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputLayout
+import com.softsolutions.fpap.MainActivity
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentSignupBinding
 import com.softsolutions.fpap.model.account.Register
 import com.softsolutions.fpap.model.common.BaseCommonList
+import com.softsolutions.fpap.utils.MEMBER_SIGNUP_SUCCESSFULLY
+import com.softsolutions.fpap.utils.hideProgressOnButton
+import com.softsolutions.fpap.utils.makeProgressOnButton
 import kotlinx.android.synthetic.main.base_toolbar.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
@@ -28,6 +37,9 @@ class SignUpFragment : Fragment() {
 
     private val countryCode="92"
     private var qualificationId=0
+    private var regionId=0
+    private var cityId=0
+    private var gender="Male"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,19 +77,54 @@ class SignUpFragment : Fragment() {
                 val item = parent.getItemAtPosition(position)
                 if (item is BaseCommonList) run {
                     val board: BaseCommonList = item
-                    Toast.makeText(requireContext(),"${board.value}, ${board.text}", Toast.LENGTH_SHORT).show()
+                    qualificationId=board.value.toInt()
+                }
+            }
+
+        binding.spRegion.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, _, position, _ ->
+                val item = parent.getItemAtPosition(position)
+                if (item is BaseCommonList) run {
+                    val region: BaseCommonList = item
+                    regionId=region.value.toInt()
+                }
+            }
+
+        binding.spCity.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, _, position, _ ->
+                val item = parent.getItemAtPosition(position)
+                if (item is BaseCommonList) run {
+                    val city: BaseCommonList = item
+                    cityId=city.value.toInt()
+                }
+            }
+
+        binding.spGender.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, _, position, _ ->
+                val item = parent.getItemAtPosition(position)
+                if (item is BaseCommonList) run {
+                    val gende: BaseCommonList = item
+                    gender=gende.value
                 }
             }
 
         binding.btnRegister.setOnClickListener {
             if (validateFields()){
+                makeProgressOnButton(binding.btnRegister,R.string.plz_wait)
                 val number=binding.edNumber.text.toString()
                 val mobileNumber="$countryCode$number"
-                val register=Register(binding.edEmail.text.toString(),mobileNumber,0,0,0, binding.edPass.text.toString()
-                ,binding.tvDob.text.toString(),"")
+                val register=Register(binding.edEmail.text.toString(),mobileNumber,qualificationId,regionId,cityId,
+                    binding.edPass.text.toString()
+                ,binding.tvDob.text.toString(),gender)
                 mViewModel.register(register)
             }
         }
+        hideValidation(binding.edEmail,binding.etEmail)
+        hideValidation(binding.edNumber,binding.etNumber)
+        hideValidation(binding.tvDob,binding.etDob)
+        hideValidation(binding.edEmail2,binding.etEmail2)
+        hideValidation(binding.edPass,binding.etPass)
+        hideValidation(binding.edConfirmPass,binding.etConfirmPass)
         return binding.root
     }
 
@@ -95,6 +142,44 @@ class SignUpFragment : Fragment() {
                 mViewModel.saveUser(it)
             }
         })
+        mViewModel.message.observe(viewLifecycleOwner) {
+            if (it == MEMBER_SIGNUP_SUCCESSFULLY) {
+                Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
+                startActivity(Intent(requireContext(), MainActivity::class.java))
+                requireActivity().finish()
+            }
+        }
+        mViewModel.errorMessage.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            if (it.isNotEmpty()){
+                Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
+                hideProgressOnButton(binding.btnRegister, "Register")
+            }
+        })
+        mViewModel.qualificationList.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            if (it.isNotEmpty()){
+                binding.spQualification.setText(it[0].text)
+                qualificationId=it[0].value.toInt()
+            }
+        })
+        mViewModel.citiesList.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            if (it.isNotEmpty()){
+                binding.spCity.setText(it[0].text)
+                cityId=it[0].value.toInt()
+            }
+        })
+        mViewModel.regionList.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            if (it.isNotEmpty()){
+                binding.spRegion.setText(it[0].text)
+                regionId=it[0].value.toInt()
+            }
+        })
+
+        hideValidation(binding.edEmail,binding.etEmail)
+        hideValidation(binding.edNumber,binding.etNumber)
+        hideValidation(binding.tvDob,binding.etDob)
+        hideValidation(binding.edEmail2,binding.etEmail2)
+        hideValidation(binding.edPass,binding.etPass)
+        hideValidation(binding.edConfirmPass,binding.etConfirmPass)
     }
 
     private fun validateFields():Boolean{
@@ -105,10 +190,6 @@ class SignUpFragment : Fragment() {
             }
             binding.edNumber.text.toString().trim().isEmpty() -> {
                 binding.etNumber.error=getString(R.string.label_field_required)
-                false
-            }
-            binding.edRegion.text.toString().trim().isEmpty() -> {
-                binding.etRegion.error=getString(R.string.label_field_required)
                 false
             }
             binding.tvDob.text.toString().trim().isEmpty() -> {
@@ -129,5 +210,19 @@ class SignUpFragment : Fragment() {
             }
             else -> true
         }
+    }
+
+    private  fun hideValidation(ed: EditText, tx: TextInputLayout){
+        ed.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable) {
+                if (s.toString().isNotEmpty()) {
+                    tx.error = ""
+                } else {
+                    tx.error = getString(R.string.label_field_required)
+                }
+            }
+        })
     }
 }

@@ -1,7 +1,9 @@
 package com.softsolutions.fpap.data
 
 import com.softsolutions.fpap.model.BaseResponse
+import com.softsolutions.fpap.model.DashboardDetail
 import com.softsolutions.fpap.model.account.ForgotPassword
+import com.softsolutions.fpap.model.account.Login
 import com.softsolutions.fpap.model.account.Register
 import com.softsolutions.fpap.model.account.User
 import com.softsolutions.fpap.model.common.BaseCommonList
@@ -22,8 +24,7 @@ interface FpapApi {
     @POST("signin")
     @Headers("Content-Type:application/json")
     suspend fun login(
-        @Query("email")email:String,
-        @Query("Password")password:String
+        @Body params:Login
     ):Response<BaseResponse<User>>
 
     @POST("forgetpassword")
@@ -46,5 +47,12 @@ interface FpapApi {
     suspend fun getDashboardData(
         @Query("MemberID")memberId:Int
     ):Response<BaseResponse<User>>
+
+    @POST("getCoursedetail")
+    suspend fun getDashboardDetail(
+        @Query("ClassId")classId:Int,
+        @Query("SubjectId")subjectId:Int,
+        @Query("medium")medium:Boolean,
+    ):Response<BaseResponse<DashboardDetail>>
 
 }

@@ -14,10 +14,12 @@ import com.softsolutions.fpap.databinding.FragmentDashboardDetailBinding
 import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.utils.setTextViewFont
 import kotlinx.android.synthetic.main.layout_start_test_bottom.view.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class DashboardDetailFragment:Fragment() {
     private lateinit var binding:FragmentDashboardDetailBinding
+    //private val mViewModel:DashboardDetailViewModel by viewModel()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -27,22 +29,6 @@ class DashboardDetailFragment:Fragment() {
         binding.lifecycleOwner=this
         if (isUrduMedium) {
             binding.back.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_back_right))
-//            setTextViewFont(binding.tvHeader,R.font.alvi_nastaleeq_regular,requireContext(),26)
-//            setTextViewFont(binding.tvToolbar,R.font.alvi_nastaleeq_regular,requireContext(),26)
-//            setTextViewFont(binding.tvDetail,R.font.alvi_nastaleeq_regular,requireContext(),20)
-//            setTextViewFont(binding.tvDetail2,R.font.alvi_nastaleeq_regular,requireContext(),20)
-//            setTextViewFont(binding.tvDetail3,R.font.alvi_nastaleeq_regular,requireContext(),20)
-//            setTextViewFont(binding.bottomLayout.tv_start_test,R.font.alvi_nastaleeq_regular,requireContext(),22)
-//            setTextViewFont(binding.bottomLayout.tv_step1,R.font.alvi_nastaleeq_regular,requireContext(),20)
-//            setTextViewFont(binding.bottomLayout.tv_pre_test,R.font.alvi_nastaleeq_regular,requireContext(),22)
-//            setTextViewFont(binding.bottomLayout.tv_question,R.font.alvi_nastaleeq_regular,requireContext(),20)
-//            setTextViewFont(binding.bottomLayout.tv_no_of_question,R.font.alvi_nastaleeq_regular,requireContext(),22)
-//            setTextViewFont(binding.bottomLayout.tv_correct_answer,R.font.alvi_nastaleeq_regular,requireContext(),20)
-//            setTextViewFont(binding.bottomLayout.tv_no_of_corrent_answer,R.font.alvi_nastaleeq_regular,requireContext(),22)
-//            setTextViewFont(binding.bottomLayout.tv_incorrect_answer,R.font.alvi_nastaleeq_regular,requireContext(),20)
-//            setTextViewFont(binding.bottomLayout.tv_no_of_incorrent_answer,R.font.alvi_nastaleeq_regular,requireContext(),22)
-//            setTextViewFont(binding.bottomLayout.btn_start_test,R.font.alvi_nastaleeq_regular,requireContext(),18)
-
         }
         binding.bottomLayout.btn_start_test.setOnClickListener {
             findNavController().navigate(DashboardDetailFragmentDirections.actionDashboardDetailToMcqsFragment())
@@ -67,5 +53,10 @@ class DashboardDetailFragment:Fragment() {
         })
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+      //  binding.viewModel=mViewModel
     }
 }

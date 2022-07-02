@@ -12,10 +12,12 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.DialogFragment
 import com.softsolutions.fpap.AccountActivity
+import com.softsolutions.fpap.data.PrefRepository
 import com.softsolutions.fpap.databinding.DialogSignoutBinding
 
 class SignoutDialog : DialogFragment() {
     private lateinit var binding:DialogSignoutBinding
+    private lateinit var prefRepository: PrefRepository
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,10 +25,9 @@ class SignoutDialog : DialogFragment() {
         // Inflate the layout for this fragment
         binding= DialogSignoutBinding.inflate(inflater, container, false)
         binding.lifecycleOwner=this
-
-
-
+        prefRepository= PrefRepository(requireActivity().application)
         binding.btnYes!!.setOnClickListener {
+            prefRepository.deleteUserFromPref()
             dialog!!.dismiss()
             startActivity(Intent(requireContext(), AccountActivity::class.java))
             requireActivity().finish()

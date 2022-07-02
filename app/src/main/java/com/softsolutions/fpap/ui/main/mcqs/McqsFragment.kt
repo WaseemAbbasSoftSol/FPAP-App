@@ -23,10 +23,6 @@ class McqsFragment:Fragment() {
         binding= FragmentMcqsBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
         if (isUrduMedium){
-//            setTextViewFont(binding.tvQuestionNo, R.font.alvi_nastaleeq_regular,requireContext(),26)
-//            setTextViewFont(binding.tvQuestion, R.font.alvi_nastaleeq_regular,requireContext(),22)
-//            setTextViewFont(binding.btnSubmit, R.font.alvi_nastaleeq_regular,requireContext())
-//            setTextViewFont(binding.toolbarLayout.tv_toolbar, R.font.alvi_nastaleeq_regular,requireContext(),26)
             binding.toolbarLayout.back.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_back_right))
         }
        binding.btnSubmit.setOnClickListener {

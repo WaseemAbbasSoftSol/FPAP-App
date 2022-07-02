@@ -5,7 +5,9 @@
     tools:context=".ui.guide.details.GuideDetailFragment">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.softsolutions.fpap.ui.main.dashboard.detail.DashboardDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,9 +57,11 @@
 
                             <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/back"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:padding="@dimen/_10dp"
                                 android:elevation="8dp"
+                                app:navigation="@{true}"
                                 android:src="@drawable/ic_back"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"

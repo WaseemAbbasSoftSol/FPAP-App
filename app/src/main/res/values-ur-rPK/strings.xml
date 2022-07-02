@@ -56,4 +56,7 @@
     <string name="label_sign_out" translatable="false">سائن آؤٹ</string>
     <string name="label_yes" translatable="false">جی ہاں</string>
     <string name="label_no" translatable="false">جی نہیں</string>
+    <string name="option_a" translatable="false">ا:</string>
+    <string name="relative_atomic_number" translatable="false">جوہری عدد</string>
+    <string name="no_of_mcqs" translatable="false">01 از 10</string>
 </resources>

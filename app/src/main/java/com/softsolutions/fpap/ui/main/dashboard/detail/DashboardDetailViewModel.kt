@@ -1,4 +1,4 @@
-package com.softsolutions.fpap.ui.main.dashboard
+package com.softsolutions.fpap.ui.main.dashboard.detail
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -7,46 +7,47 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.softsolutions.fpap.data.FpapRepository
 import com.softsolutions.fpap.data.PrefRepository
+import com.softsolutions.fpap.model.DashboardDetail
 import com.softsolutions.fpap.model.RequestState
-import com.softsolutions.fpap.model.account.User
+import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.utils.APP_TAG
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class DashboardViewModel(
+class DashboardDetailViewModel(
     private val repository: FpapRepository,
     prefRepository: PrefRepository
-) : ViewModel() {
-    private val _state = MutableLiveData<RequestState>()
-    val state: LiveData<RequestState> = _state
+):ViewModel() {
+    private val _state=MutableLiveData<RequestState>()
+    val state:LiveData<RequestState> = _state
 
-    private val _user = MutableLiveData<User>()
-    val user: LiveData<User> = _user
+    private val _dashboardData=MutableLiveData<DashboardDetail>()
+    val dashboardData:LiveData<DashboardDetail> = _dashboardData
 
-    private var memberId = 0
+    private var classId=0
+    private var subjectId=0
 
     init {
-        memberId = prefRepository.getUser()!!.memberId
-        getDashboardData()
+        classId=prefRepository.getUser()!!.memberInfo.classId
+     getDashboardDetailData()
     }
-
-    private fun getDashboardData() {
-        viewModelScope.launch(Dispatchers.IO) {
+    private fun getDashboardDetailData(){
+        viewModelScope.launch(Dispatchers.IO){
             try {
                 _state.postValue(RequestState.LOADING)
-                val response = repository.getDashboardData(memberId)
-                if (response.isSuccessful) {
+                val response=repository.getDashboardDetail(classId, subjectId, isUrduMedium)
+                if (response.isSuccessful){
                     response.body().let {
-                        _user.postValue(it!!.data)
+                        _dashboardData.postValue(it!!.data)
                     }
-                } else response.errorBody().let {
+                }else response.errorBody().let {
                     Log.d(APP_TAG, it!!.string())
                 }
                 _state.postValue(RequestState.DONE)
-            } catch (e: Exception) {
+            }catch (e:Exception){
                 _state.postValue(RequestState.ERROR)
                 e.printStackTrace()
-            } catch (t: Throwable) {
+            }catch (t:Throwable){
                 _state.postValue(RequestState.ERROR)
                 t.printStackTrace()
             }

@@ -21,12 +21,18 @@ class SplashActivity : AppCompatActivity() {
         }else false
 
         Handler(Looper.getMainLooper()).postDelayed({
-            goToAccountActivity()
+            if (prefRepository.getUser()!=null)goToMainActivity()
+           else goToAccountActivity()
         }, SPLASH_TIME_OUT)
     }
 
     private fun goToAccountActivity() {
         startActivity(Intent(this, AccountActivity::class.java))
+        finish()
+    }
+
+    private fun goToMainActivity() {
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 

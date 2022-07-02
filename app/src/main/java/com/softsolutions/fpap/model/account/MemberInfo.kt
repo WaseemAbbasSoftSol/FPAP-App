@@ -60,6 +60,18 @@ data class MemberInfo (
     @SerializedName("ProvinceId")
     val provinceId : Int,
     @SerializedName("LivePage")
-    val livePage : String
+    val livePage : String,
+    @SerializedName("DOB")
+    val dob:String,
+    @SerializedName("CityId")
+    val cityId:Int,
+    @SerializedName("QualificationId")
+    val qualificationId:Int,
+    @SerializedName("RegionId")
+    val regionId:Int,
+    @SerializedName("GenderName")
+    val gender:String,
+    @SerializedName("EmailId")
+    val email:String
 
 )

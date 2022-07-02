@@ -7,6 +7,8 @@ import com.softsolutions.fpap.data.OAuthInterceptor
 import com.softsolutions.fpap.data.PrefRepository
 import com.softsolutions.fpap.ui.account.AccountViewModel
 import com.softsolutions.fpap.ui.main.dashboard.DashboardViewModel
+import com.softsolutions.fpap.ui.main.dashboard.detail.DashboardDetailViewModel
+import com.softsolutions.fpap.ui.main.profile.ProfileViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -17,12 +19,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-private const val BASE_URL = ""
-private const val LOCAL_URL = "http://localhost:55691/"
+private const val BASE_URL = "https://api.fares.pk/"
 
 val viewModelsModule= module {
     viewModel { AccountViewModel(get(), get()) }
     viewModel { DashboardViewModel(get(), get()) }
+    viewModel { DashboardDetailViewModel(get(), get()) }
+    viewModel { ProfileViewModel(get(), get()) }
     }
 
   val repositoriesModule = module {
@@ -40,7 +43,7 @@ val viewModelsModule= module {
     }
 
     fun createApi(factory: GsonConverterFactory, client: OkHttpClient) = Retrofit.Builder()
-        .baseUrl(LOCAL_URL)
+        .baseUrl(BASE_URL)
         .addConverterFactory(factory)
         .client(client)
         .build()

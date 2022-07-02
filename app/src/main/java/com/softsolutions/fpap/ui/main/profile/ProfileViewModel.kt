@@ -1,4 +1,4 @@
-package com.softsolutions.fpap.ui.account
+package com.softsolutions.fpap.ui.main.profile
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -7,20 +7,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.softsolutions.fpap.data.FpapRepository
 import com.softsolutions.fpap.data.PrefRepository
-import com.softsolutions.fpap.model.Dashboard
 import com.softsolutions.fpap.model.RequestState
-import com.softsolutions.fpap.model.account.ForgotPassword
-import com.softsolutions.fpap.model.account.Login
-import com.softsolutions.fpap.model.account.Register
 import com.softsolutions.fpap.model.account.User
 import com.softsolutions.fpap.model.common.BaseCommonList
 import com.softsolutions.fpap.utils.APP_TAG
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AccountViewModel(
+class ProfileViewModel(
     private val repository: FpapRepository,
-    private val prefRepository: PrefRepository
+    prefRepository: PrefRepository
 ):ViewModel() {
 
     private val _state = MutableLiveData<RequestState>()
@@ -44,93 +40,21 @@ class AccountViewModel(
     private val _citiesList = MutableLiveData<List<BaseCommonList>>()
     val citiesList: LiveData<List<BaseCommonList>> = _citiesList
 
+    var qualificationId=0
+    var regionId=0
+    var cityId=0
+
     init {
         _qualifiationList.value = emptyList()
         _regionList.value = emptyList()
         _citiesList.value = emptyList()
+        _user.value=prefRepository.getUser()!!
+        qualificationId=prefRepository.getUser()!!.memberInfo.qualificationId
+        regionId=prefRepository.getUser()!!.memberInfo.regionId
+        cityId=prefRepository.getUser()!!.memberInfo.cityId
         getQualificationLists()
         getRegionLists()
         getCitiesLists()
-    }
-
-    fun register(register: Register) {
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                _state.postValue(RequestState.LOADING)
-                val response = repository.register(register)
-                if (response.isSuccessful) {
-                    response.body().let {
-                        _user.postValue(it!!.data)
-                        _message.postValue(it.responseMessage)
-                        _errorMessage.postValue(it.errorMessage)
-                    }
-                } else {
-                    response.errorBody().let {
-                        Log.d(APP_TAG, it!!.string())
-                    }
-                }
-                _state.postValue(RequestState.DONE)
-            } catch (e: Exception) {
-                _state.postValue(RequestState.ERROR)
-                e.printStackTrace()
-            } catch (t: Throwable) {
-                _state.postValue(RequestState.ERROR)
-                t.printStackTrace()
-            }
-        }
-    }
-
-    fun login(login:Login) {
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                _state.postValue(RequestState.LOADING)
-                val response = repository.login(login)
-                if (response.isSuccessful) {
-                    response.body().let {
-                        _user.postValue(it!!.data)
-                        _message.postValue(it.responseMessage)
-                        _errorMessage.postValue(it.errorMessage)
-                    }
-                } else {
-                    response.errorBody().let {
-                        Log.d(APP_TAG, it!!.string())
-                    }
-                }
-                _state.postValue(RequestState.DONE)
-            } catch (e: Exception) {
-                _state.postValue(RequestState.ERROR)
-                e.printStackTrace()
-            } catch (t: Throwable) {
-                _state.postValue(RequestState.ERROR)
-                t.printStackTrace()
-            }
-        }
-    }
-
-    fun recoverForgotPassword(email:ForgotPassword) {
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                _state.postValue(RequestState.LOADING)
-                val response = repository.forgotPassword(email)
-                if (response.isSuccessful) {
-                    response.body().let {
-                        _message.postValue(it!!.responseMessage)
-                        _errorMessage.postValue(it.errorMessage)
-                    }
-                } else {
-                    response.errorBody().let {
-                        Log.d(APP_TAG, it!!.string())
-                    }
-                }
-                _state.postValue(RequestState.DONE)
-            } catch (e: Exception) {
-                _state.postValue(RequestState.ERROR)
-                e.printStackTrace()
-            } catch (t: Throwable) {
-                _state.postValue(RequestState.ERROR)
-                t.printStackTrace()
-            }
-        }
     }
 
     private fun getQualificationLists() {
@@ -196,13 +120,5 @@ class AccountViewModel(
         }
     }
 
-    fun saveUser(user: User)=prefRepository.saveUser(user)
-    fun getTheUser()=prefRepository.getUser()
-    fun deleteUser()=prefRepository.deleteUserFromPref()
 
-    val genderList= arrayListOf<BaseCommonList>(
-        BaseCommonList("Male", "Male"),
-        BaseCommonList("Female", "Female"),
-        BaseCommonList("Trans Gender", "Trans Gender"),
-    )
 }

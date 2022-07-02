@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_dashboard_detail">
         <action
             android:id="@+id/action_dashboard_detail_to_mcqs_fragment"
-            app:destination="@id/mcqs_fragment"/>
+            app:destination="@id/mcqs_fragment_main"/>
     </fragment>
 
     <fragment
@@ -32,6 +32,12 @@
         <action
             android:id="@+id/action_mcq_fragment_to_result_fragment"
             app:destination="@id/result_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/mcqs_fragment_main"
+        android:name="com.softsolutions.fpap.ui.main.mcqs.McqsContainerFragment"
+        tools:layout="@layout/fragment_mcqs_main_container">
     </fragment>
 
     <fragment
