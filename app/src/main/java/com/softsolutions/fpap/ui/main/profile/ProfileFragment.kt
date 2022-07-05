@@ -4,11 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
+import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentProfileBinding
+import com.softsolutions.fpap.ui.main.profile.update.UpdateProfileFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class ProfileFragment:Fragment() {
     private lateinit var binding:FragmentProfileBinding
@@ -21,7 +26,7 @@ class ProfileFragment:Fragment() {
         binding= FragmentProfileBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
         binding.llEdit.setOnClickListener {
-            Toast.makeText(requireContext(),"Clicked", Toast.LENGTH_SHORT).show()
+           goToUpdateProfile()
         }
         return binding.root
     }
@@ -29,6 +34,11 @@ class ProfileFragment:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel=mViewModel
+        mViewModel.user.observe(viewLifecycleOwner){
+            if (it!=null){
+                profileImage=it.memberInfo.image
+            }
+        }
         mViewModel.qualificationList.observe(viewLifecycleOwner, Observer {
             if (it.isNotEmpty()){
                 for ((i,value) in it.withIndex()){
@@ -61,6 +71,18 @@ class ProfileFragment:Fragment() {
                 }
             }
         })
+        Glide.with(this).load(profileImage).into(binding.circleImageView)
     }
 
+    private fun goToUpdateProfile(){
+        val fragment: Fragment =UpdateProfileFragment()
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.profile_frame, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }
+    companion object{
+        var profileImage=""
+    }
 }

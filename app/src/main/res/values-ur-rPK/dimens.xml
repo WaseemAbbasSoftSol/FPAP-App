@@ -32,4 +32,6 @@
     <dimen name="_26sp">32sp</dimen>
     <dimen name="_30sp">36sp</dimen>
 
+
+    <dimen name="grid_expected_size">120dp</dimen>
 </resources>

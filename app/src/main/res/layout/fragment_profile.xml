@@ -92,12 +92,6 @@
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/ic_edit" />
                         </LinearLayout>
-                        <!-- <ImageView
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:layout_gravity="right"
-                             android:id="@+id/ic_edit"
-                             android:src="@drawable/ic_edit" />-->
 
                         <FrameLayout
                             android:id="@+id/frameLayout"
@@ -130,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/poppins_semi_bold"
-                    android:text="@string/label_user_name"
+                    android:text="@{viewModel.user.memberInfo.name}"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     tools:text="Cristiano Ronaldo" />
@@ -322,6 +316,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/tv_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -333,6 +328,7 @@
                     app:layout_constraintTop_toBottomOf="@id/et_email2" />
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/ll_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

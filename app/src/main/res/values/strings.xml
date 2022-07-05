@@ -72,4 +72,5 @@
     <string name="option_a" translatable="false">A:</string>
     <string name="relative_atomic_number" translatable="false">Relative Atomic Number</string>
     <string name="no_of_mcqs" translatable="false">01 of 10</string>
+    <string name="label_name">Name:</string>
 </resources>

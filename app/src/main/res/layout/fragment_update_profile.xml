@@ -73,7 +73,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
@@ -82,6 +82,10 @@
                         <FrameLayout
                             android:id="@+id/frameLayout"
                             android:layout_width="115dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center">
 
@@ -103,55 +107,25 @@
                                 android:src="@drawable/ic_camera"
                                 app:fabCustomSize="24dp"
                                 app:maxImageSize="12dp" />
+
                         </FrameLayout>
 
-                        <TextView
+                        <ProgressBar
+                            android:id="@+id/image_progrss"
+                            android:visibility="gone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/poppins_semi_bold"
-                            android:text="@string/label_user_name"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"
-                            tools:text="Cristiano Ronaldo" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            />
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_gravity="center"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <ImageView
-                                android:paddingTop="5dp"
-                                android:paddingRight="10dp"
-                                android:paddingBottom="10dp"
-                                android:id="@+id/phone_icon"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:src="@drawable/ic_calling" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:layout_constraintStart_toEndOf="@id/phone_icon"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:drawablePadding="10dp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:paddingTop="10dp"
-                                android:paddingRight="10dp"
-                                android:paddingBottom="10dp"
-                                android:textColor="@color/black"
-                                android:textSize="14sp"
-                                android:text="@{viewModel.user.phoneNumber}"
-                                tools:text="+92 300 1234 567" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_email"
+                    android:id="@+id/et_name"
                     style="@style/AppTheme.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -161,58 +135,34 @@
                     app:layout_constraintTop_toBottomOf="@+id/cv_1">
 
                     <EditText
+                        android:id="@+id/ed_name"
+                        style="@style/AppTheme.Field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/label_name"
+                        android:text="@{viewModel.user.memberInfo.name}"
+                        android:inputType="textEmailAddress" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_email"
+                    style="@style/AppTheme.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_name">
+
+                    <EditText
                         android:id="@+id/ed_email"
                         style="@style/AppTheme.Field"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/label_email"
                         android:text="@{viewModel.user.memberInfo.email}"
-                        android:cursorVisible="false"
-                        android:focusable="false"
                         android:inputType="textEmailAddress" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_gender"
-                    style="@style/AppTheme.TextInputLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/et_email">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/sp_gender"
-                        style="@style/AppTheme.Field"
-                        android:text="@{viewModel.user.memberInfo.gender}"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/label_gender" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_dob"
-                    style="@style/AppTheme.TextInputLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/et_gender">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/tv_dob"
-                        style="@style/AppTheme.Field"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@{viewModel.user.memberInfo.dob}"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:drawableEnd="@drawable/ic_question_mark"
-                        android:hint="@string/label_dob" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -223,15 +173,18 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/et_dob">
+                    app:layout_constraintTop_toBottomOf="@+id/et_email">
 
-                    <AutoCompleteTextView
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/sp_qualification"
                         style="@style/AppTheme.Field"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        isSpinner="@{true}"
+                        itemsList="@{viewModel.qualificationList}"
                         android:cursorVisible="false"
                         android:focusable="false"
+                        android:drawableEnd="@drawable/ic_drop_down_arrow"
                         android:hint="@string/label_qulification" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -245,13 +198,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/et_qualification">
 
-                    <EditText
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/ed_region"
                         style="@style/AppTheme.Field"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        isSpinner="@{true}"
+                        itemsList="@{viewModel.regionList}"
                         android:cursorVisible="false"
                         android:focusable="false"
+                        android:drawableEnd="@drawable/ic_drop_down_arrow"
                         android:hint="@string/label_region"
                         android:inputType="textPersonName" />
 
@@ -266,13 +222,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/et_region">
 
-                    <AutoCompleteTextView
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/sp_city"
                         style="@style/AppTheme.Field"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        isSpinner="@{true}"
+                        itemsList="@{viewModel.citiesList}"
                         android:cursorVisible="false"
                         android:focusable="false"
+                        android:drawableEnd="@drawable/ic_drop_down_arrow"
                         android:hint="@string/label_city" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -374,8 +333,6 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/label_number"
                             android:text="@{viewModel.user.removeCountryCodeFromNumber()}"
-                            android:cursorVisible="false"
-                            android:focusable="false"
                             android:inputType="number" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -405,13 +362,12 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:visibility="gone"
-                    android:id="@+id/btn_submit"
+                    android:id="@+id/btn_update"
                     style="@style/AppTheme.ContainedButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10dp"
-                    android:text="Submit"
+                    android:text="Update"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/et_pass" />
