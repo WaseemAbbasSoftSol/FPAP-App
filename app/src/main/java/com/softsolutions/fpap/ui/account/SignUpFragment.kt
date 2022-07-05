@@ -39,7 +39,7 @@ class SignUpFragment : Fragment() {
     private var qualificationId=0
     private var regionId=0
     private var cityId=0
-    private var gender="Male"
+    private var gender=""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -113,7 +113,7 @@ class SignUpFragment : Fragment() {
                 makeProgressOnButton(binding.btnRegister,R.string.plz_wait)
                 val number=binding.edNumber.text.toString()
                 val mobileNumber="$countryCode$number"
-                val register=Register(binding.edEmail.text.toString(),mobileNumber,qualificationId,regionId,cityId,
+                val register=Register(binding.edName.text.toString().trim(),binding.edEmail.text.toString(),mobileNumber,qualificationId,regionId,cityId,
                     binding.edPass.text.toString()
                 ,binding.tvDob.text.toString(),gender)
                 mViewModel.register(register)
@@ -157,33 +157,42 @@ class SignUpFragment : Fragment() {
         })
         mViewModel.qualificationList.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             if (it.isNotEmpty()){
-                binding.spQualification.setText(it[0].text)
-                qualificationId=it[0].value.toInt()
+                //binding.spQualification.setText(it[0].text)
+               // qualificationId=it[0].value.toInt()
             }
         })
         mViewModel.citiesList.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             if (it.isNotEmpty()){
-                binding.spCity.setText(it[0].text)
-                cityId=it[0].value.toInt()
+              //  binding.spCity.setText(it[0].text)
+               // cityId=it[0].value.toInt()
             }
         })
         mViewModel.regionList.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             if (it.isNotEmpty()){
-                binding.spRegion.setText(it[0].text)
-                regionId=it[0].value.toInt()
+            //    binding.spRegion.setText(it[0].text)
+              //  regionId=it[0].value.toInt()
             }
         })
 
+        hideValidation(binding.edName,binding.etName)
         hideValidation(binding.edEmail,binding.etEmail)
         hideValidation(binding.edNumber,binding.etNumber)
         hideValidation(binding.tvDob,binding.etDob)
         hideValidation(binding.edEmail2,binding.etEmail2)
         hideValidation(binding.edPass,binding.etPass)
         hideValidation(binding.edConfirmPass,binding.etConfirmPass)
+        hideValidation(binding.spQualification,binding.etQualification)
+        hideValidation(binding.spRegion,binding.etRegion)
+        hideValidation(binding.spCity,binding.etCity)
+        hideValidation(binding.spGender,binding.etGender)
     }
 
     private fun validateFields():Boolean{
         return when {
+            binding.edName.text.toString().trim().isEmpty() -> {
+                binding.etName.error=getString(R.string.label_field_required)
+                false
+            }
             binding.edEmail.text.toString().trim().isEmpty() -> {
                 binding.etEmail.error=getString(R.string.label_field_required)
                 false
@@ -192,8 +201,24 @@ class SignUpFragment : Fragment() {
                 binding.etNumber.error=getString(R.string.label_field_required)
                 false
             }
+            qualificationId==0->{
+                binding.etQualification.error = getString(R.string.label_field_required)
+                false
+            }
+            regionId==0->{
+                binding.etRegion.error = getString(R.string.label_field_required)
+                false
+            }
+            cityId==0->{
+                binding.etCity.error = getString(R.string.label_field_required)
+                false
+            }
             binding.tvDob.text.toString().trim().isEmpty() -> {
                 binding.etDob.error=getString(R.string.label_field_required)
+                false
+            }
+            gender==""->{
+                binding.etGender.error = getString(R.string.label_field_required)
                 false
             }
             binding.edEmail2.text.toString().trim().isEmpty() -> {

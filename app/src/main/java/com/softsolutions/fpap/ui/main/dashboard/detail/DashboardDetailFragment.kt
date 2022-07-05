@@ -19,7 +19,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardDetailFragment:Fragment() {
     private lateinit var binding:FragmentDashboardDetailBinding
-    //private val mViewModel:DashboardDetailViewModel by viewModel()
+    private val mViewModel:DashboardDetailViewModel by viewModel()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments.let {
+            val args=DashboardDetailFragmentArgs.fromBundle(it!!)
+            mViewModel.subjectId=args.subjectId
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -57,6 +64,12 @@ class DashboardDetailFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-      //  binding.viewModel=mViewModel
+        binding.viewModel=mViewModel
+        mViewModel.dashboardData.observe(viewLifecycleOwner){
+            if (it!=null){
+                binding.tvToolbar.text=it.introTitle
+                binding.tvHeader.text=it.introTitle
+            }
+        }
     }
 }

@@ -20,6 +20,6 @@ data class User(
     val subjectList : List<SubjectList>,
 ){
     fun removeCountryCodeFromNumber():String{
-        return  phoneNumber.substring(1)
+        return  phoneNumber.substring(2)
     }
 }

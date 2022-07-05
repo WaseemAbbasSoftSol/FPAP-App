@@ -20,6 +20,9 @@
         android:id="@+id/dashboard_detail_fragment"
         android:name="com.softsolutions.fpap.ui.main.dashboard.detail.DashboardDetailFragment"
         tools:layout="@layout/fragment_dashboard_detail">
+        <argument
+            android:name="subjectId"
+            app:argType="integer"/>
         <action
             android:id="@+id/action_dashboard_detail_to_mcqs_fragment"
             app:destination="@id/mcqs_fragment_main"/>

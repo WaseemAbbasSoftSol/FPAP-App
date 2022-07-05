@@ -1,9 +1,12 @@
 package com.softsolutions.fpap
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.CompoundButton
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.constraintlayout.utils.widget.ImageFilterView
@@ -12,9 +15,12 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
+import com.softsolutions.fpap.data.PrefRepository
 import com.softsolutions.fpap.databinding.ActivityMainBinding
 import com.softsolutions.fpap.ui.account.SignoutDialog
 import com.softsolutions.fpap.ui.common.FragmentOnBackPressed
+import com.softsolutions.fpap.ui.common.isProfieChanged
 import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.ui.main.certificate.CertificateActivity
 import com.softsolutions.fpap.ui.main.profile.ProfileActivity
@@ -23,13 +29,20 @@ import com.softsolutions.fpap.utils.setLocate
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding:ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+    private lateinit var prefRepository: PrefRepository
+
+    private lateinit var tvName: TextView
+    private lateinit var tvClass: TextView
+    private lateinit var memberImage: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         loadLocate(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        prefRepository = PrefRepository(application)
         navController = findNavController(R.id.nav_host_main)
         visibilityNavElements(navController)
         binding.toolbar.tvToolbar.text = resources.getString(R.string.dashboard_toolbar)
@@ -37,6 +50,10 @@ class MainActivity : AppCompatActivity() {
             binding.drawerlayout.openDrawer(GravityCompat.START)
         }
         val headerView = binding.navigationView.inflateHeaderView(R.layout.drawer_header_layout)
+
+        tvName = headerView.findViewById(R.id.tv_nav_header_name)
+        memberImage = headerView.findViewById(R.id.profile_image)
+        initializeRepository()
         val switchCompat = headerView.findViewById<SwitchCompat>(R.id.sth_med)
         val back = headerView.findViewById<ImageFilterView>(R.id.back)
         switchCompat.isChecked = isUrduMedium
@@ -46,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
         switchCompat.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
-                setLocate("ur",this)
+                setLocate("ur", this)
                 startActivity(Intent(this,MainActivity::class.java))
                 finish()
             }
@@ -68,8 +85,8 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(this, ProfileActivity::class.java))
                 }
 
-                R.id.signout->{
-                    val dialog= SignoutDialog()
+                R.id.signout -> {
+                    val dialog = SignoutDialog()
                     dialog.show(supportFragmentManager, "")
                 }
 
@@ -77,7 +94,11 @@ class MainActivity : AppCompatActivity() {
             binding.drawerlayout.closeDrawer(GravityCompat.START)
             true
         }
-
+        isProfieChanged.observe(this) {
+            if (it) {
+                initializeRepository()
+            }
+        }
     }
 
     private fun visibilityNavElements(navController: NavController) {
@@ -107,10 +128,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        when(val currentFragment = nav_host_main.childFragmentManager.fragments[0]) {
+        when (val currentFragment = nav_host_main.childFragmentManager.fragments[0]) {
             is FragmentOnBackPressed -> currentFragment.onBackPressed()
-            else -> if(!navController.popBackStack()) finish()
+            else -> if (!navController.popBackStack()) finish()
         }
     }
 
+    @SuppressLint("SetTextI18n")
+    fun initializeRepository() {
+        tvName.text = prefRepository.getUser()!!.memberInfo.name
+        val img = prefRepository.getUser()!!.memberInfo.image
+        Glide.with(this).load(img).into(memberImage)
+    }
 }

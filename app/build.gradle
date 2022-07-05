@@ -16,13 +16,15 @@ android {
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        setProperty("archivesBaseName", "FPAP " + versionName)
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -68,6 +70,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
     implementation 'com.github.razir.progressbutton:progressbutton:2.0.0'
     implementation 'com.zhihu.android:matisse:0.5.3-beta3'
+    implementation 'com.github.mike14u:shimmer-recyclerview-x:1.0.4'
 
     //di
     implementation "org.koin:koin-androidx-scope:$koin_version"

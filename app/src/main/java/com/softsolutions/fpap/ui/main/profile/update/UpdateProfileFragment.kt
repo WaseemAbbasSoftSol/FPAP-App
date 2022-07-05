@@ -18,6 +18,8 @@ import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentUpdateProfileBinding
 import com.softsolutions.fpap.model.UpdateProfile
 import com.softsolutions.fpap.model.common.BaseCommonList
+import com.softsolutions.fpap.ui.common.isProfieChanged
+import com.softsolutions.fpap.ui.main.profile.ProfileFragment
 import com.softsolutions.fpap.ui.main.profile.ProfileViewModel
 import com.softsolutions.fpap.utils.*
 import com.zhihu.matisse.Matisse
@@ -89,6 +91,7 @@ class UpdateProfileFragment : Fragment() {
         binding.viewModel = mViewModel
         mViewModel.updateUser.observe(viewLifecycleOwner) {
             if (it != null) {
+                ProfileFragment.profileImage.value=it.memberInfo.image
                 mViewModel.deleteUser()
                 mViewModel.saveUser(it)
             }
@@ -108,7 +111,8 @@ class UpdateProfileFragment : Fragment() {
         }
         mViewModel.imageUpdateMessage.observe(viewLifecycleOwner){
             if (it.isNotEmpty()){
-                binding.imageProgrss.visibility=View.VISIBLE
+                isProfieChanged.value=true
+                binding.imageProgrss.visibility=View.GONE
                 Toast.makeText(requireContext(), it.toString(),Toast.LENGTH_SHORT).show()
             }
         }
@@ -162,9 +166,9 @@ class UpdateProfileFragment : Fragment() {
                         {
                             default(format = Bitmap.CompressFormat.JPEG)
                         }
-                        binding.imageProgrss.visibility=View.VISIBLE
                         mViewModel.updateProfileImage(compressedImageFile)
                     }
+                    binding.imageProgrss.visibility=View.VISIBLE
                 }
             }
         }

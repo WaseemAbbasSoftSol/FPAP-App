@@ -43,7 +43,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_email"
+                    android:id="@+id/et_name"
                     style="@style/AppTheme.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -51,6 +51,26 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iv_back">
+
+                    <EditText
+                        android:id="@+id/ed_name"
+                        style="@style/AppTheme.Field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/label_name"
+                        android:inputType="textPersonName" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_email"
+                    style="@style/AppTheme.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_name">
 
                     <EditText
                         android:id="@+id/ed_email"
@@ -155,6 +175,7 @@
                         android:layout_height="wrap_content"
                         isSpinner="@{true}"
                         itemsList="@{viewModel.qualificationList}"
+                        android:text="Select Qualification"
                         android:cursorVisible="false"
                         android:focusable="false"
                         android:drawableEnd="@drawable/ic_drop_down_arrow"
@@ -178,6 +199,7 @@
                         android:layout_height="wrap_content"
                         isSpinner="@{true}"
                         itemsList="@{viewModel.regionList}"
+                        android:text="Select Region"
                         android:cursorVisible="false"
                         android:focusable="false"
                         android:drawableEnd="@drawable/ic_drop_down_arrow"
@@ -202,6 +224,7 @@
                         android:layout_height="wrap_content"
                         isSpinner="@{true}"
                         itemsList="@{viewModel.citiesList}"
+                        android:text="Select City"
                         android:cursorVisible="false"
                         android:focusable="false"
                         android:drawableEnd="@drawable/ic_drop_down_arrow"
@@ -246,7 +269,7 @@
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_drop_down_arrow"
                         isSpinner="@{true}"
-                        android:text="Male"
+                        android:text="Select Gender"
                         itemsList="@{viewModel.genderList}"
                         android:cursorVisible="false"
                         android:focusable="false"

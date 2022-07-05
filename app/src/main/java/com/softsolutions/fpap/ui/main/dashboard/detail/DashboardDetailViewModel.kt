@@ -25,7 +25,7 @@ class DashboardDetailViewModel(
     val dashboardData:LiveData<DashboardDetail> = _dashboardData
 
     private var classId=0
-    private var subjectId=0
+    var subjectId=0
 
     init {
         classId=prefRepository.getUser()!!.memberInfo.classId
@@ -35,7 +35,7 @@ class DashboardDetailViewModel(
         viewModelScope.launch(Dispatchers.IO){
             try {
                 _state.postValue(RequestState.LOADING)
-                val response=repository.getDashboardDetail(classId, subjectId, isUrduMedium)
+                val response=repository.getDashboardDetail(classId, 758, isUrduMedium)
                 if (response.isSuccessful){
                     response.body().let {
                         _dashboardData.postValue(it!!.data)

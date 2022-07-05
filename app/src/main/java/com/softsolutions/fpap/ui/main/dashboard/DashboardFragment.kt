@@ -16,13 +16,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentDashboardBinding
 import com.softsolutions.fpap.model.Dashboard
+import com.softsolutions.fpap.model.SubjectList
 import com.softsolutions.fpap.ui.common.FragmentOnBackPressed
 import com.softsolutions.fpap.ui.common.OnListItemClickListener
 import com.softsolutions.fpap.ui.common.isUrduMedium
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class DashboardFragment:Fragment(),FragmentOnBackPressed,OnListItemClickListener<Dashboard> {
+class DashboardFragment:Fragment(),FragmentOnBackPressed,OnListItemClickListener<SubjectList> {
     private lateinit var binding:FragmentDashboardBinding
     private val mViewModel:DashboardViewModel by viewModel()
     private var back=0
@@ -33,25 +34,24 @@ class DashboardFragment:Fragment(),FragmentOnBackPressed,OnListItemClickListener
     ): View? {
         binding= FragmentDashboardBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
-        val list= arrayListOf<Dashboard>()
-        for (i in 0..7){
-            val sub=resources.getString(R.string.dashboard_subject)
-            list.add(Dashboard("","$sub $i"))
-        }
-        val adapter=DashboardAdapter(requireContext(), list,this,true, isUrduMedium)
-        val layoutManager=GridLayoutManager(requireContext(), 3)
-        binding.rvDashboard.layoutManager=layoutManager
-        binding.rvDashboard.adapter=adapter
-
+        binding.rvDashboard.showShimmerAdapter()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel=mViewModel
+        mViewModel.user.observe(viewLifecycleOwner){
+            if (it.subjectList.isNotEmpty()){
+                val adapter=TempAdapter(requireContext(), it.subjectList,this)
+                val layoutManager=GridLayoutManager(requireContext(), 3)
+                binding.rvDashboard.layoutManager=layoutManager
+                binding.rvDashboard.adapter=adapter
+            }
+        }
     }
-    override fun onItemClick(item: Dashboard, pos: Int) {
-       findNavController().navigate(DashboardFragmentDirections.actionDashboardToDashboardDetailFragment())
+    override fun onItemClick(item: SubjectList, pos: Int) {
+       findNavController().navigate(DashboardFragmentDirections.actionDashboardToDashboardDetailFragment(item.id))
     }
 
     override fun onBackPressed() {

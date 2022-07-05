@@ -33,18 +33,23 @@
                 android:textColor="@color/purple"
                 app:layout_constraintTop_toTopOf="parent"/>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.mikelau.views.shimmer.ShimmerRecyclerViewX
                 android:id="@+id/rv_dashboard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@id/tv_welcome"
                 app:layout_constraintTop_toBottomOf="@id/tv_welcome"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="3"
                 tools:listitem="@layout/item_dashboard"
                 android:layout_marginStart="@dimen/_20dp"
                 android:layout_marginEnd="@dimen/_20dp"
-                android:layout_marginTop="@dimen/_10dp"/>
+                android:layout_marginTop="@dimen/_10dp"
+                app:shimmer_demo_angle="10"
+                app:shimmer_demo_child_count="8"
+                app:shimmer_demo_grid_child_count="3"
+                app:shimmer_demo_layout="@layout/item_dashobard_shimmer"
+                app:shimmer_demo_layout_manager_type="grid"
+                app:spanCount="3"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

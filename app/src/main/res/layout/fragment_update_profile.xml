@@ -93,6 +93,7 @@
                                 android:id="@+id/circleImageView"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
+                                imageUrl="@{viewModel.user.memberInfo.image}"
                                 android:scaleType="centerCrop"
                                 android:src="@drawable/im_user"
                                 app:civ_border_color="#e4f5fd"

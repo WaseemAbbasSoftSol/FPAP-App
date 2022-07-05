@@ -1,6 +1,7 @@
 package com.softsolutions.fpap.data
 
 import com.softsolutions.fpap.model.BaseResponse
+import com.softsolutions.fpap.model.CourseCertificate
 import com.softsolutions.fpap.model.DashboardDetail
 import com.softsolutions.fpap.model.UpdateProfile
 import com.softsolutions.fpap.model.account.ForgotPassword
@@ -68,4 +69,9 @@ interface FpapApi {
         @Part("memberid") memberId: RequestBody,
         @Part ProfileImage: MultipartBody.Part?
     ): Response<BaseResponse<User>>
+
+    @POST("getCourseCertificate")
+    suspend fun getCourseCertificate(
+       @Query("MemberID") memberId: Int
+    ): Response<BaseResponse<List<CourseCertificate>>>
 }

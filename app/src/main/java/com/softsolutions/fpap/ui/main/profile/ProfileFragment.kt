@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.softsolutions.fpap.R
@@ -34,9 +35,9 @@ class ProfileFragment:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel=mViewModel
-        mViewModel.user.observe(viewLifecycleOwner){
-            if (it!=null){
-                profileImage=it.memberInfo.image
+        profileImage.observe(viewLifecycleOwner){
+            if (it.isNotEmpty()){
+                Glide.with(this).load(it).into(binding.circleImageView)
             }
         }
         mViewModel.qualificationList.observe(viewLifecycleOwner, Observer {
@@ -71,7 +72,7 @@ class ProfileFragment:Fragment() {
                 }
             }
         })
-        Glide.with(this).load(profileImage).into(binding.circleImageView)
+
     }
 
     private fun goToUpdateProfile(){
@@ -83,6 +84,6 @@ class ProfileFragment:Fragment() {
         fragmentTransaction.commit()
     }
     companion object{
-        var profileImage=""
+        var profileImage=MutableLiveData<String>()
     }
 }

@@ -3,6 +3,8 @@ package com.softsolutions.fpap.model.account
 import com.google.gson.annotations.SerializedName
 
 data class Register(
+    @SerializedName("Name")
+    val name:String,
     @SerializedName("emailid")
     val email: String,
     @SerializedName("PhoneNumber")

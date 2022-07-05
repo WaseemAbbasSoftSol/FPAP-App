@@ -3,7 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/drawable/ic_rectangle_590.xml" value="0.1395" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/drawable/ic_rectangle_844.xml" value="0.1395" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/activity_main.xml" value="0.18645833333333334" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/drawer_header_layout.xml" value="0.18645833333333334" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/fragment_dashboard.xml" value="0.18645833333333334" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/fragment_dashboard_detail.xml" value="0.18645833333333334" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/fragment_profile.xml" value="0.18645833333333334" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/fragment_signup.xml" value="0.25" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/fragment_update_profile.xml" value="0.25" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/item_course_certificate.xml" value="0.25" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/item_dashboard.xml" value="0.17239583333333333" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/item_dashobard_shimmer.xml" value="0.18541666666666667" />
         <entry key="app/src/main/res/drawable-v24/ic_edit.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_gradient.xml" value="0.1" />
@@ -12,7 +23,6 @@
         <entry key="app/src/main/res/drawable/bg_underline_country_code.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_bg_whole.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_calling.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_camera.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_certificate_menu.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_contact_support_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_drawer_background.xml" value="0.1" />
@@ -20,57 +30,33 @@
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_home_menu.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_login_back.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_mcq_next.xml" value="0.1005" />
-        <entry key="app/src/main/res/drawable/ic_mcq_pre.xml" value="0.1005" />
-        <entry key="app/src/main/res/drawable/ic_next_mcq.xml" value="0.1005" />
-        <entry key="app/src/main/res/drawable/ic_q_d.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_q_dd.xml" value="0.103" />
         <entry key="app/src/main/res/drawable/ic_signup_back.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_tick.xml" value="0.1" />
-        <entry key="app/src/main/res/font-ur-rPK/poppins_regular.xml" value="0.1638888888888889" />
-        <entry key="app/src/main/res/layout/activity_account.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_custom.xml" value="0.19427083333333334" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.125" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/activity_account.xml" value="0.16576086956521738" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="app/src/main/res/layout/base_toolbar.xml" value="0.1260135135135135" />
-        <entry key="app/src/main/res/layout/base_toolbar_urdu.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/dialog_signout.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/drawer_header_layout.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/fragment_certificate.xml" value="0.19427083333333334" />
-        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_dashboard_detail.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/fragment_dashboard_detail_urdu.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/fragment_dashboard_urdu.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.22688564476885645" />
         <entry key="app/src/main/res/layout/fragment_mcqs.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/fragment_mcqs_main_container.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/fragment_mcqs_options.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/fragment_mcqs_urdu.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/fragment_recover_password.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/fragment_result.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/fragment_signup.xml" value="0.13793103448275862" />
-        <entry key="app/src/main/res/layout/fragment_update_profile.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/fragment_urdu_results.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/header_layout.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/item_choose_another_course_urdu.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/fragment_signup.xml" value="0.19427083333333334" />
+        <entry key="app/src/main/res/layout/header_layout.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/item_chose_another_course.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/item_course_certificate.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/item_dashboard.xml" value="0.19427083333333334" />
-        <entry key="app/src/main/res/layout/item_dashboard_urdu.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/item_mcqs_options.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/layout_start_test_bottom.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/layout_start_test_bottom_urdu.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/main_fragment.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/partial_app_bar.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/partial_app_bar_urdu.xml" value="0.19427083333333334" />
+        <entry key="app/src/main/res/layout/partial_app_bar.xml" value="0.11" />
         <entry key="app/src/main/res/menu/dashboard_drawer_menu.xml" value="0.19427083333333334" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
