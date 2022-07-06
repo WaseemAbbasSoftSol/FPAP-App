@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +19,7 @@ import com.softsolutions.fpap.data.PrefRepository
 import com.softsolutions.fpap.databinding.ActivityMainBinding
 import com.softsolutions.fpap.ui.account.SignoutDialog
 import com.softsolutions.fpap.ui.common.FragmentOnBackPressed
-import com.softsolutions.fpap.ui.common.isProfieChanged
+import com.softsolutions.fpap.ui.common.isProfileImageChanged
 import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.ui.main.certificate.CertificateActivity
 import com.softsolutions.fpap.ui.main.profile.ProfileActivity
@@ -32,9 +31,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var prefRepository: PrefRepository
-
     private lateinit var tvName: TextView
-    private lateinit var tvClass: TextView
     private lateinit var memberImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         tvName = headerView.findViewById(R.id.tv_nav_header_name)
         memberImage = headerView.findViewById(R.id.profile_image)
-        initializeRepository()
+        setNavHeaderViews()
         val switchCompat = headerView.findViewById<SwitchCompat>(R.id.sth_med)
         val back = headerView.findViewById<ImageFilterView>(R.id.back)
         switchCompat.isChecked = isUrduMedium
@@ -61,42 +58,38 @@ class MainActivity : AppCompatActivity() {
             back.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_back_right))
         }
 
-        switchCompat.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+        switchCompat.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 setLocate("ur", this)
-                startActivity(Intent(this,MainActivity::class.java))
                 finish()
-            }
-            else {
-                setLocate("en",this)
-                startActivity(Intent(this,MainActivity::class.java))
+                overridePendingTransition(0, 0);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            } else {
+                setLocate("en", this)
                 finish()
-
+                overridePendingTransition(0, 0);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
             }
-        })
+        }
 
         binding.navigationView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.dashboard -> ""
-                R.id.certificate->{
-                    startActivity(Intent(this, CertificateActivity::class.java))
-                }
-                R.id.profile->{
-                    startActivity(Intent(this, ProfileActivity::class.java))
-                }
-
+                R.id.dashboard -> hideNavigation()
+                R.id.certificate-> startActivity(Intent(this, CertificateActivity::class.java))
+                R.id.profile-> startActivity(Intent(this, ProfileActivity::class.java))
                 R.id.signout -> {
                     val dialog = SignoutDialog()
                     dialog.show(supportFragmentManager, "")
                 }
-
             }
             binding.drawerlayout.closeDrawer(GravityCompat.START)
             true
         }
-        isProfieChanged.observe(this) {
+        isProfileImageChanged.observe(this) {
             if (it) {
-                initializeRepository()
+                setNavHeaderViews()
             }
         }
     }
@@ -122,11 +115,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    //Hide both drawer and bottom navigation bar
-    private fun hideNavigation() {
-        binding.drawerlayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED) //Locked mode on swipe
-    }
-
+    private fun hideNavigation() = binding.drawerlayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
     override fun onBackPressed() {
         when (val currentFragment = nav_host_main.childFragmentManager.fragments[0]) {
             is FragmentOnBackPressed -> currentFragment.onBackPressed()
@@ -135,7 +124,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    fun initializeRepository() {
+    private fun setNavHeaderViews() {
         tvName.text = prefRepository.getUser()!!.memberInfo.name
         val img = prefRepository.getUser()!!.memberInfo.image
         Glide.with(this).load(img).into(memberImage)

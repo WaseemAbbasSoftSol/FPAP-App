@@ -203,6 +203,6 @@ class AccountViewModel(
     val genderList= arrayListOf<BaseCommonList>(
         BaseCommonList("Male", "Male"),
         BaseCommonList("Female", "Female"),
-        BaseCommonList("Trans Gender", "Trans Gender"),
+        BaseCommonList("Transgender", "Trans Gender"),
     )
 }

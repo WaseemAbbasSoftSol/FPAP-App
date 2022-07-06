@@ -10,6 +10,7 @@
         android:id="@+id/drawerlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/ic_bg_whole"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,6 +38,8 @@
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigation_view"
             android:layout_width="280dp"
+
+            android:backgroundTint="#F0F0FE"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:itemTextAppearance="@style/NavigationDrawerText"

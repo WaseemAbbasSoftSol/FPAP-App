@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
+import com.mikelau.views.shimmer.ShimmerRecyclerViewX
 
 import de.hdodenhof.circleimageview.CircleImageView
 //
@@ -101,6 +102,26 @@ fun loadImage(
 //    mAdapter.setItemClickListener(itemClickListener)
 //    mAdapter.onItemViewClick = onItemViewClick
 //}
+
+@BindingAdapter(
+    value = ["itemsList", "itemLayout", "itemClickListener", "hasFixSize", "onItemViewClick"],
+    requireAll = false
+)
+fun <T> setItems(
+    view: ShimmerRecyclerViewX, itemsList: List<T>, layout: Int,
+    itemClickListener: OnListItemClickListener<T>?, hasFixSize: Boolean = false,
+    onItemViewClick: OnItemViewClickListener<T>?
+) {
+    val mAdapter = GenericRecyclerViewAdapter(itemsList, layout)
+    view.isNestedScrollingEnabled = false
+    view.setHasFixedSize(hasFixSize)
+    view.adapter = mAdapter
+    mAdapter.setItemClickListener(itemClickListener)
+    mAdapter.onItemViewClick = onItemViewClick
+    if (itemsList.isEmpty()){
+        view.showShimmerAdapter()
+    }
+}
 
 @BindingAdapter(value = ["itemsList", "isSpinner"], requireAll = false)
 fun <T> setSpinnerItems(view: MaterialAutoCompleteTextView, items: List<T>, isSpinner: Boolean = false) {

@@ -68,11 +68,11 @@
             <TextView
                 android:id="@+id/tv_step1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_t20dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="@string/label_step1"
                 android:textColor="@color/grey"
-                android:textSize="12sp"
+                android:textSize="@dimen/_12sp"
                 app:layout_constraintEnd_toEndOf="@id/first_guide"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -80,11 +80,11 @@
             <TextView
                 android:id="@+id/tv_pre_test"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_tt20dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/label_pre_test"
                 android:textColor="@color/purple"
-                android:textSize="14sp"
+                android:textSize="@dimen/_14sp"
                 app:layout_constraintEnd_toEndOf="@id/tv_step1"
                 app:layout_constraintStart_toStartOf="@id/tv_step1"
                 app:layout_constraintTop_toBottomOf="@id/tv_step1" />
@@ -92,11 +92,11 @@
             <TextView
                 android:id="@+id/tv_question"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_t20dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="@string/label_question"
                 android:textColor="@color/grey"
-                android:textSize="12sp"
+                android:textSize="@dimen/_12sp"
                 app:layout_constraintEnd_toEndOf="@id/second_guide"
                 app:layout_constraintStart_toStartOf="@id/first_guide"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -104,11 +104,11 @@
             <TextView
                 android:id="@+id/tv_no_of_question"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_tt20dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/label_no_of_question"
                 android:textColor="@color/purple"
-                android:textSize="14sp"
+                android:textSize="@dimen/_14sp"
                 app:layout_constraintEnd_toEndOf="@id/tv_question"
                 app:layout_constraintStart_toStartOf="@id/tv_question"
                 app:layout_constraintTop_toBottomOf="@id/tv_question" />
@@ -117,9 +117,9 @@
                 android:id="@+id/btn_start_test"
                 style="@style/AppTheme.ContainedButton"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_30dp"
+                android:layout_height="@dimen/_b30dp"
                 android:text="@string/label_start_test"
-                android:textSize="@dimen/_12sp"
+                android:textSize="@dimen/_b12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/second_guide"
                 app:layout_constraintTop_toTopOf="parent"

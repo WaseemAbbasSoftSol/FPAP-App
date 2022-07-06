@@ -9,6 +9,7 @@ import com.softsolutions.fpap.model.account.Login
 import com.softsolutions.fpap.model.account.Register
 import com.softsolutions.fpap.model.account.User
 import com.softsolutions.fpap.model.common.BaseCommonList
+import com.softsolutions.fpap.model.mcq.Mcq
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -74,4 +75,10 @@ interface FpapApi {
     suspend fun getCourseCertificate(
        @Query("MemberID") memberId: Int
     ): Response<BaseResponse<List<CourseCertificate>>>
+
+
+    @POST("fpapMCQsTest")
+    suspend fun getMcqsList(
+        @Query("UnitId") unitId: Int
+    ): Response<BaseResponse<List<Mcq>>>
 }

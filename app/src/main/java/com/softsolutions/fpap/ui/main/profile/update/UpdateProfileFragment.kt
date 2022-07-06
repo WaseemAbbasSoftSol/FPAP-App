@@ -1,6 +1,7 @@
 package com.softsolutions.fpap.ui.main.profile.update
 
 import android.app.Activity
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -11,14 +12,13 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.softsolutions.fpap.MainActivity
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentUpdateProfileBinding
 import com.softsolutions.fpap.model.UpdateProfile
 import com.softsolutions.fpap.model.common.BaseCommonList
-import com.softsolutions.fpap.ui.common.isProfieChanged
+import com.softsolutions.fpap.ui.common.isProfileImageChanged
 import com.softsolutions.fpap.ui.main.profile.ProfileFragment
 import com.softsolutions.fpap.ui.main.profile.ProfileViewModel
 import com.softsolutions.fpap.utils.*
@@ -30,11 +30,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
 
 class UpdateProfileFragment : Fragment() {
     private lateinit var binding: FragmentUpdateProfileBinding
-    private val countryCode="92"
     private val mViewModel: ProfileViewModel by viewModel()
+    private val countryCode="92"
+    private val myCalendar: Calendar = Calendar.getInstance()
 
     private var mImage: File? = null
     override fun onCreateView(
@@ -83,6 +86,33 @@ class UpdateProfileFragment : Fragment() {
                 }
             }
 
+        binding.spGender.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, _, position, _ ->
+                val item = parent.getItemAtPosition(position)
+                if (item is BaseCommonList) run {
+                    val gender: BaseCommonList = item
+                    mViewModel.genderId=gender.value
+                }
+            }
+
+        val date =
+            DatePickerDialog.OnDateSetListener { view, year, month, day ->
+                myCalendar[Calendar.YEAR] = year
+                myCalendar[Calendar.MONTH] = month
+                myCalendar[Calendar.DAY_OF_MONTH] = day
+                updateLabel()
+            }
+
+        binding.tvDob.setOnClickListener {
+            DatePickerDialog(
+                requireContext(),
+                date,
+                myCalendar.get(Calendar.YEAR),
+                myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
+
+        }
         return binding.root
     }
 
@@ -111,7 +141,7 @@ class UpdateProfileFragment : Fragment() {
         }
         mViewModel.imageUpdateMessage.observe(viewLifecycleOwner){
             if (it.isNotEmpty()){
-                isProfieChanged.value=true
+                isProfileImageChanged.value=true
                 binding.imageProgrss.visibility=View.GONE
                 Toast.makeText(requireContext(), it.toString(),Toast.LENGTH_SHORT).show()
             }
@@ -173,5 +203,10 @@ class UpdateProfileFragment : Fragment() {
             }
         }
 
+    }
+    private fun updateLabel() {
+        val myFormat = "MM/dd/yy"
+        val dateFormat = SimpleDateFormat(myFormat, Locale.US)
+        binding.tvDob.setText(dateFormat.format(myCalendar.time))
     }
 }

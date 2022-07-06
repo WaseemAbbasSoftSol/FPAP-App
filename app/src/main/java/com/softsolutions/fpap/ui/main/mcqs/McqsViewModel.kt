@@ -1,4 +1,4 @@
-package com.softsolutions.fpap.ui.main.dashboard
+package com.softsolutions.fpap.ui.main.mcqs
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -8,45 +8,50 @@ import androidx.lifecycle.viewModelScope
 import com.softsolutions.fpap.data.FpapRepository
 import com.softsolutions.fpap.data.PrefRepository
 import com.softsolutions.fpap.model.RequestState
-import com.softsolutions.fpap.model.SubjectList
-import com.softsolutions.fpap.model.account.User
+import com.softsolutions.fpap.model.mcq.Mcq
 import com.softsolutions.fpap.utils.APP_TAG
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class DashboardViewModel(
+class McqsViewModel(
     private val repository: FpapRepository,
     prefRepository: PrefRepository
-) : ViewModel() {
+):ViewModel() {
+
     private val _state = MutableLiveData<RequestState>()
     val state: LiveData<RequestState> = _state
 
-    private val _user = MutableLiveData<User>()
-    val user: LiveData<User> = _user
+    private val _message = MutableLiveData<String>()
+    val message: LiveData<String> = _message
 
-    private val _subjects = MutableLiveData<List<SubjectList>>()
-    val subjects: LiveData<List<SubjectList>> = _subjects
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: LiveData<String> = _errorMessage
 
-    private var memberId = 0
+    private val _mcq = MutableLiveData<List<Mcq>>()
+    val mcq: LiveData<List<Mcq>> = _mcq
+
+    var unitId=0
 
     init {
-        memberId = prefRepository.getUser()!!.memberId
-        _subjects.value= emptyList()
-        getDashboardData()
+        _mcq.value= emptyList()
+        getMcqsList()
     }
 
-    private fun getDashboardData() {
+    private fun getMcqsList() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 _state.postValue(RequestState.LOADING)
-                val response = repository.getDashboardData(memberId)
+                val response = repository.getMcqsList(unitId)
                 if (response.isSuccessful) {
                     response.body().let {
-                        _user.postValue(it!!.data)
-                        _subjects.postValue(it.data.subjectList)
+                        _mcq.postValue(it!!.data)
+                        _message.postValue(it.responseMessage)
+                        _errorMessage.postValue(it.errorMessage)
                     }
-                } else response.errorBody().let {
-                    Log.d(APP_TAG, it!!.string())
+                } else {
+                    response.errorBody().let {
+                        Log.d(APP_TAG, it!!.string())
+                    }
                 }
                 _state.postValue(RequestState.DONE)
             } catch (e: Exception) {

@@ -119,12 +119,13 @@ class SignUpFragment : Fragment() {
                 mViewModel.register(register)
             }
         }
-        hideValidation(binding.edEmail,binding.etEmail)
-        hideValidation(binding.edNumber,binding.etNumber)
-        hideValidation(binding.tvDob,binding.etDob)
-        hideValidation(binding.edEmail2,binding.etEmail2)
-        hideValidation(binding.edPass,binding.etPass)
-        hideValidation(binding.edConfirmPass,binding.etConfirmPass)
+        binding.edEmail.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable) {
+                binding.edEmail2.text = s
+            }
+        })
         return binding.root
     }
 

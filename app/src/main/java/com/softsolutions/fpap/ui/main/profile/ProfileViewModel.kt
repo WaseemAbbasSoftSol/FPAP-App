@@ -58,6 +58,7 @@ class ProfileViewModel(
     var qualificationId=0
     var regionId=0
     var cityId=0
+    var genderId=""
 
     init {
         memberId=prefRepository.getUser()!!.memberId
@@ -68,6 +69,7 @@ class ProfileViewModel(
         qualificationId=prefRepository.getUser()!!.memberInfo.qualificationId
         regionId=prefRepository.getUser()!!.memberInfo.regionId
         cityId=prefRepository.getUser()!!.memberInfo.cityId
+        genderId=prefRepository.getUser()!!.memberInfo.gender
         getQualificationLists()
         getRegionLists()
         getCitiesLists()
@@ -201,4 +203,16 @@ class ProfileViewModel(
     fun saveUser(user: User)=prefRepository.saveUser(user)
     fun getTheUser()=prefRepository.getUser()
     fun deleteUser()=prefRepository.deleteUserFromPref()
+
+    val genderList= arrayListOf<BaseCommonList>(
+        BaseCommonList("Male", "Male"),
+        BaseCommonList("Female", "Female"),
+        BaseCommonList("Transgender", "Trans Gender"),
+    )
+
+    fun genderText():String{
+        return if (genderId=="Trans Gender")
+            "Transgender"
+        else genderId
+    }
 }

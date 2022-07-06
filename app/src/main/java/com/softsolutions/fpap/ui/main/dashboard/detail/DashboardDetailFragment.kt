@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.softsolutions.fpap.R
@@ -20,6 +21,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class DashboardDetailFragment:Fragment() {
     private lateinit var binding:FragmentDashboardDetailBinding
     private val mViewModel:DashboardDetailViewModel by viewModel()
+    private var imageLink="https://ikddata.ilmkidunya.com/images/subjectimages/"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments.let {
@@ -69,6 +71,8 @@ class DashboardDetailFragment:Fragment() {
             if (it!=null){
                 binding.tvToolbar.text=it.introTitle
                 binding.tvHeader.text=it.introTitle
+                imageLink += it.subjectImage
+                Glide.with(requireContext()).load(imageLink).into(binding.guideDetailImage)
             }
         }
     }

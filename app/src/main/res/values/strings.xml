@@ -10,7 +10,7 @@
     <string name="label_city" translatable="false">City</string>
     <string name="label_dob" translatable="false">Date of Birth</string>
     <string name="label_gender" translatable="false">Gender</string>
-    <string name="label_set_acc" translatable="false">Set Account details for FPAP Website\nand App</string>
+    <string name="label_set_acc" translatable="false">Set Account details for FPAP\nWebsite and App</string>
     <string name="label_pass" translatable="false">Password</string>
     <string name="label_confirm_pass" translatable="false">Retype Password</string>
     <string name="label_login" translatable="false">LOGIN</string>
@@ -71,6 +71,6 @@
     <string name="label_no" translatable="false">No</string>
     <string name="option_a" translatable="false">A:</string>
     <string name="relative_atomic_number" translatable="false">Relative Atomic Number</string>
-    <string name="no_of_mcqs" translatable="false">01 of 10</string>
+    <string name="no_of_mcqs" translatable="false">of</string>
     <string name="label_name">Name:</string>
 </resources>

@@ -40,7 +40,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="320dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/im_dashboard_detail"
+                        tools:src="@drawable/im_dashboard_detail"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <!--app:popupTheme="@style/AppTheme.AppBarOverlay"-->

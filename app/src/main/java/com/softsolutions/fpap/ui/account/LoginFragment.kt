@@ -78,8 +78,8 @@ class LoginFragment: Fragment() {
                 hideProgressOnButton(binding.btnLogin, "LOGIN")
             }
         })
-        hideValidation(binding.edEmail, binding.etEmail)
-        hideValidation(binding.edPass, binding.etPass)
+      //  hideValidation(binding.edEmail, binding.etEmail)
+       // hideValidation(binding.edPass, binding.etPass)
     }
     private fun validateFields():Boolean{
         return when {

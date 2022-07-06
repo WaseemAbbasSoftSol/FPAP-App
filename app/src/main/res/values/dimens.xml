@@ -30,6 +30,15 @@
     <dimen name="_26sp">26sp</dimen>
     <dimen name="_30sp">30sp</dimen>
 
+<!--Buttons Dimens-->
+    <dimen name="_b30dp">30dp</dimen>
+
+    <dimen name="_b12sp">12sp</dimen>
+
+    <!--TextView Dimens-->
+    <dimen name="_t20dp">20dp</dimen>
+    <dimen name="_tt20dp">20dp</dimen>
+
 
     <dimen name="grid_expected_size">120dp</dimen>
 </resources>

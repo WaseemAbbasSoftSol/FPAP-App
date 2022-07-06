@@ -6,11 +6,13 @@
     android:layout_margin="@dimen/_5dp"
     app:cardCornerRadius="@dimen/_5dp"
     android:elevation="@dimen/_5dp"
+
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/cardview"
         android:background="@color/grey_001"
         android:padding="@dimen/_10dp">
 

@@ -35,7 +35,7 @@ class DashboardDetailViewModel(
         viewModelScope.launch(Dispatchers.IO){
             try {
                 _state.postValue(RequestState.LOADING)
-                val response=repository.getDashboardDetail(classId, 758, isUrduMedium)
+                val response=repository.getDashboardDetail(54, subjectId, isUrduMedium)
                 if (response.isSuccessful){
                     response.body().let {
                         _dashboardData.postValue(it!!.data)

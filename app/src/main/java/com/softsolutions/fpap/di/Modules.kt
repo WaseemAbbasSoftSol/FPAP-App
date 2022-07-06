@@ -9,6 +9,7 @@ import com.softsolutions.fpap.ui.account.AccountViewModel
 import com.softsolutions.fpap.ui.main.certificate.CertificateViewModel
 import com.softsolutions.fpap.ui.main.dashboard.DashboardViewModel
 import com.softsolutions.fpap.ui.main.dashboard.detail.DashboardDetailViewModel
+import com.softsolutions.fpap.ui.main.mcqs.McqsViewModel
 import com.softsolutions.fpap.ui.main.profile.ProfileViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -28,6 +29,7 @@ val viewModelsModule= module {
     viewModel { DashboardDetailViewModel(get(), get()) }
     viewModel { ProfileViewModel(get(), get()) }
     viewModel { CertificateViewModel(get(), get()) }
+    viewModel { McqsViewModel(get(), get()) }
     }
 
   val repositoriesModule = module {
