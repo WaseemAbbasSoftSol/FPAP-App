@@ -20,6 +20,8 @@ class McqsContainerFragment:Fragment() {
     private var mcqList = arrayListOf<Mcq>()
     private var currentIndex=0
     private var totalQuestion=0
+
+    private var q=0
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -28,27 +30,14 @@ class McqsContainerFragment:Fragment() {
         binding= FragmentMcqsMainContainerBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
 
-        val list= arrayListOf<McqsOption>()
-        list.add(McqsOption(0,"question one", "", false))
-        list.add(McqsOption(0,"question two", "", false))
-        list.add(McqsOption(0,"question three", "", true))
-        list.add(McqsOption(0,"question four", "", false))
-        for (i in 0..4){
-            totalQuestion++
-            mcqList.add(Mcq(0,0,0,"","",list))
-        }
-
-        setQuestion(mcqList[0], 0,0)
-        previewButton()
-
         binding.ivNext.setOnClickListener{
-            currentIndex++
+            ++currentIndex
             if (isUrduMedium)setQuestion(mcqList[currentIndex],R.anim.slide_in_left, R.anim.slide_out_right)
             else setQuestion(mcqList[currentIndex],R.anim.slide_in_right, R.anim.slide_out_left)
             previewButton()
         }
         binding.ivPre.setOnClickListener {
-            currentIndex--
+            --currentIndex
             if (isUrduMedium) setQuestion(mcqList[currentIndex],R.anim.slide_in_right, R.anim.slide_out_left)
             else setQuestion(mcqList[currentIndex],R.anim.slide_in_left, R.anim.slide_out_right)
             previewButton()
@@ -66,9 +55,11 @@ class McqsContainerFragment:Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mViewModel.mcq.observe(viewLifecycleOwner){
             if (it.isNotEmpty()){
+                totalQuestion=it.size
                 mcqList.addAll(it)
                 setQuestion(mcqList[0], 0,0)
                 previewButton()
+
             }
         }
 
@@ -78,10 +69,11 @@ class McqsContainerFragment:Fragment() {
     private fun setQuestion(mcq : Mcq?, animEnter: Int, animExit: Int) {
         val bundle = Bundle()
         bundle.putSerializable("answer", mcq)
-        bundle.putInt("questionNo", ++currentIndex)
+        bundle.putInt("questionNo", currentIndex)
 
         val s=getString(R.string.no_of_mcqs)
-        binding.tvNoOfQuestion.text = "$q $s $totalQuestion"
+        val nn=currentIndex+1
+        binding.tvNoOfQuestion.text = "$nn $s $totalQuestion"
 
         val frag = McqsOptionsFragment()
         val transaction = activity?.supportFragmentManager?.beginTransaction()

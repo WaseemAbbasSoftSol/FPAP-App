@@ -41,7 +41,7 @@ class McqsViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 _state.postValue(RequestState.LOADING)
-                val response = repository.getMcqsList(unitId)
+                val response = repository.getMcqsList(3800)
                 if (response.isSuccessful) {
                     response.body().let {
                         _mcq.postValue(it!!.data)

@@ -26,6 +26,7 @@ class McqsOptionsFragment:Fragment(), McqsOptionAdapter.OnMcqsOptionClickListene
         val bundle = this.arguments
         mcq = bundle!!.getSerializable("answer") as Mcq?
         qNo= bundle.getInt("questionNo")
+        qNo += 1
         binding.tvQuestionNo.text = "Question $qNo"
         //val adapter=McqsOptionAdapter(requireContext(),mcq!!.answer, this)
         val adapter=McqsOptionAdapter(requireContext(),mcq!!.answer, this)
