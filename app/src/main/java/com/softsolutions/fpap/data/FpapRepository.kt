@@ -4,6 +4,7 @@ import com.softsolutions.fpap.model.UpdateProfile
 import com.softsolutions.fpap.model.account.ForgotPassword
 import com.softsolutions.fpap.model.account.Login
 import com.softsolutions.fpap.model.account.Register
+import com.softsolutions.fpap.model.mcq.SubmitMcq
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
@@ -19,6 +20,6 @@ class FpapRepository(private val fpapApi: FpapApi) {
  suspend fun update(update:UpdateProfile)=fpapApi.update(update)
  suspend fun updateProfileImage(memberId: RequestBody, image: MultipartBody.Part?) = fpapApi.updateProfileImage(memberId, image)
  suspend fun getCourseCertificate(memberId: Int)=fpapApi.getCourseCertificate(memberId)
- suspend fun getMcqsList(unitId:Int)=fpapApi.getMcqsList(unitId
- )
+ suspend fun getMcqsList(unitId:Int, testId:Int)=fpapApi.getMcqsList(unitId, testId)
+ suspend fun submitMcq(mcqsList:List<SubmitMcq>)=fpapApi.submitMcqsTest(mcqsList)
 }

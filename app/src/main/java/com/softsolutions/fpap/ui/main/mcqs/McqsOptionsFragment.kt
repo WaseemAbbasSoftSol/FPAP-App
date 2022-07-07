@@ -36,11 +36,11 @@ class McqsOptionsFragment:Fragment(), McqsOptionAdapter.OnMcqsOptionClickListene
     }
 
     override fun onOptionClick(position: Int, item: McqsOption) {
-        listener!!.onOptionSelected(position, item)
+        listener!!.onOptionSelected(position, item, mcq!!.questionId,mcq!!.testId)
     }
 
     interface OptionSelectedCallback{
-        fun onOptionSelected(position: Int, item: McqsOption)
+        fun onOptionSelected(position: Int, item: McqsOption, questionId:Int, testId:Int)
     }
 
     fun setOptionClickedCallback(listener: OptionSelectedCallback) {

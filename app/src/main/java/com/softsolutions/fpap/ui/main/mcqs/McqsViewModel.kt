@@ -9,6 +9,8 @@ import com.softsolutions.fpap.data.FpapRepository
 import com.softsolutions.fpap.data.PrefRepository
 import com.softsolutions.fpap.model.RequestState
 import com.softsolutions.fpap.model.mcq.Mcq
+import com.softsolutions.fpap.model.mcq.SubmitMcq
+import com.softsolutions.fpap.model.mcq.SubmittedMcq
 import com.softsolutions.fpap.utils.APP_TAG
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,9 +32,14 @@ class McqsViewModel(
     private val _mcq = MutableLiveData<List<Mcq>>()
     val mcq: LiveData<List<Mcq>> = _mcq
 
+    private val _submitMcqs = MutableLiveData<SubmittedMcq>()
+    val submitMcqs: LiveData<SubmittedMcq> = _submitMcqs
+
     var unitId=0
+    var memberId=0
 
     init {
+        memberId=prefRepository.getUser()!!.memberId
         _mcq.value= emptyList()
         getMcqsList()
     }
@@ -41,10 +48,37 @@ class McqsViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 _state.postValue(RequestState.LOADING)
-                val response = repository.getMcqsList(3800)
+                val response = repository.getMcqsList(3800,1943)
                 if (response.isSuccessful) {
                     response.body().let {
                         _mcq.postValue(it!!.data)
+                        _message.postValue(it.responseMessage)
+                        _errorMessage.postValue(it.errorMessage)
+                    }
+                } else {
+                    response.errorBody().let {
+                        Log.d(APP_TAG, it!!.string())
+                    }
+                }
+                _state.postValue(RequestState.DONE)
+            } catch (e: Exception) {
+                _state.postValue(RequestState.ERROR)
+                e.printStackTrace()
+            } catch (t: Throwable) {
+                _state.postValue(RequestState.ERROR)
+                t.printStackTrace()
+            }
+        }
+    }
+
+    fun submitMcqsList(list:List<SubmitMcq>) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                _state.postValue(RequestState.LOADING)
+                val response = repository.submitMcq(list)
+                if (response.isSuccessful) {
+                    response.body().let {
+                        _submitMcqs.postValue(it!!.data)
                         _message.postValue(it.responseMessage)
                         _errorMessage.postValue(it.errorMessage)
                     }

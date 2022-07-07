@@ -2,16 +2,17 @@ package com.softsolutions.fpap.ui.main.mcqs
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.model.mcq.McqsOption
+import com.softsolutions.fpap.utils.APP_TAG
 
 class McqsOptionAdapter(
     val context: Context,
@@ -19,7 +20,7 @@ class McqsOptionAdapter(
     private val listener: OnMcqsOptionClickListener
 ) :
     RecyclerView.Adapter<McqsOptionAdapter.ItemRecyclerViewHolder>() {
-private var backPosition=-1
+     private var backPosition = -1
     class ItemRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
          val tvoption=itemView.findViewById<TextView>(R.id.tv_option_a)
          val tvq=itemView.findViewById<TextView>(R.id.tv_quest_a)
@@ -39,23 +40,42 @@ private var backPosition=-1
     @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: ItemRecyclerViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val item = options[position]
-        holder.tvoption.text=item.answerText
+        holder.tvq.text = item.answerText
+        holder.tvoption.setOption(position)
         holder.itemView.setOnClickListener {
-            backPosition=position
+           item.userSelectedPosition=position.toString()
+            item.isSelected=true
+            backPosition = position
             listener.onOptionClick(position, item)
             notifyDataSetChanged()
         }
 
-        if (backPosition==position){
+//        if (item.selectedPosition == position) {
+//            holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
+//            holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
+//            if (item.isCorrect) holder.cardView.setBackgroundResource(R.color.green)
+//            else holder.cardView.setBackgroundResource(R.color.red)
+//        }
+        if (backPosition == position) {
             holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
             holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
             if (item.isCorrect) holder.cardView.setBackgroundResource(R.color.green)
             else holder.cardView.setBackgroundResource(R.color.red)
-        }else {
+        } else {
             holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.black))
             holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.black))
             holder.cardView.setBackgroundResource(R.color.grey_001)
         }
+
+
+//        if ( "" != item.userSelectedPosition){
+//            if (item.userSelectedPosition==position.toString()){
+//                holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
+//                holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
+//                if (item.isCorrect) holder.cardView.setBackgroundResource(R.color.green)
+//                else holder.cardView.setBackgroundResource(R.color.red)
+//            }
+//        }
 
     }
 
@@ -65,5 +85,21 @@ private var backPosition=-1
 
     interface OnMcqsOptionClickListener {
         fun onOptionClick(position: Int, item: McqsOption)
+    }
+
+    private fun isAnySelected(): Boolean {
+        for (answer in options) {
+            if (answer.isSelected) return true
+        }
+        return false
+    }
+
+    private fun TextView.setOption(position: Int){
+        when (position) {
+            0 -> this.text = context.getString(R.string.opn_a)
+            1 -> this.text = context.getString(R.string.opn_b)
+            2 -> this.text = context.getString(R.string.opn_c)
+            else -> this.text = context.getString(R.string.opn_d)
+        }
     }
 }

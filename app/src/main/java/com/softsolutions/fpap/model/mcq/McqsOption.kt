@@ -10,5 +10,7 @@ data class McqsOption(
     @SerializedName("AnswerImage")
     val answerImage: String,
     @SerializedName("Correct")
-    val isCorrect: Boolean
+    val isCorrect: Boolean,
+    var userSelectedPosition : String ="",
+    var isSelected:Boolean=false
 )

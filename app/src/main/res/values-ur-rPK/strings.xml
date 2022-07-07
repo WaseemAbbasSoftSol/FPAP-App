@@ -59,4 +59,10 @@
     <string name="option_a" translatable="false">ا:</string>
     <string name="relative_atomic_number" translatable="false">جوہری عدد</string>
     <string name="no_of_mcqs" translatable="false"> از </string>
+    <string name="label_name" translatable="false">نام:</string>
+    <string name="opn_a" translatable="false">ا:</string>
+    <string name="opn_b" translatable="false">ب:</string>
+    <string name="opn_c" translatable="false">ج:</string>
+    <string name="opn_d" translatable="false">د:</string>
+    <string name="label_are_you_sure_submit" translatable="false">کیا آپ واقعی جمع کروانا چاہتے ہیں؟</string>
 </resources>

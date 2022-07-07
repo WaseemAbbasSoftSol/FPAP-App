@@ -10,6 +10,8 @@ import com.softsolutions.fpap.model.account.Register
 import com.softsolutions.fpap.model.account.User
 import com.softsolutions.fpap.model.common.BaseCommonList
 import com.softsolutions.fpap.model.mcq.Mcq
+import com.softsolutions.fpap.model.mcq.SubmitMcq
+import com.softsolutions.fpap.model.mcq.SubmittedMcq
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -79,6 +81,12 @@ interface FpapApi {
 
     @POST("fpapMCQsTest")
     suspend fun getMcqsList(
-        @Query("UnitId") unitId: Int
+        @Query("UnitId") unitId: Int,
+        @Query("TestId") testId: Int
     ): Response<BaseResponse<List<Mcq>>>
+
+    @POST("MCqsSubmit")
+    suspend fun submitMcqsTest(
+        @Body params:List<SubmitMcq>
+    ): Response<BaseResponse<SubmittedMcq>>
 }

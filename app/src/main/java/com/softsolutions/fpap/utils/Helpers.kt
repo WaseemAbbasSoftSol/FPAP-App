@@ -18,6 +18,8 @@ import com.softsolutions.fpap.ui.common.isUrduMedium
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -90,5 +92,14 @@ fun makeProgressOnButton(view: Button, loadingTextRes: Int) {
 }
 fun hideProgressOnButton(view: Button, text:String) {
     view.hideProgress(text)
+}
+
+fun splitDateAndTime(dateTime: String): String {
+    val date = dateTime.substring(0, dateTime.indexOf('T'))
+    val time = dateTime.substring(dateTime.indexOf('T') + 1)
+    val parser: DateFormat = SimpleDateFormat("yyyy-MM-dd")
+    val formater: DateFormat = SimpleDateFormat("dd MMM, yyyy")
+    val convertedDate: Date = parser.parse(date)
+    return formater.format(convertedDate)
 }
 

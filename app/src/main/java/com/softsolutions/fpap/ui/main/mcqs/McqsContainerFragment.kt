@@ -4,50 +4,96 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentMcqsMainContainerBinding
 import com.softsolutions.fpap.model.mcq.Mcq
 import com.softsolutions.fpap.model.mcq.McqsOption
+import com.softsolutions.fpap.model.mcq.SubmitMcq
+import com.softsolutions.fpap.ui.common.SubmitDialog
 import com.softsolutions.fpap.ui.common.isUrduMedium
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class McqsContainerFragment:Fragment() {
-    private lateinit var binding:FragmentMcqsMainContainerBinding
-    private val mViewModel:McqsViewModel by viewModel()
+    private lateinit var binding: FragmentMcqsMainContainerBinding
+    private val mViewModel: McqsViewModel by viewModel()
     private var mcqList = arrayListOf<Mcq>()
-    private var currentIndex=0
-    private var totalQuestion=0
+    private var currentIndex = 0
+    private var totalQuestion = 0
+    private var testId = 0
 
-    private var q=0
+    private var attemptedMcqsList = arrayListOf<SubmitMcq>()
+    private var tempList= arrayListOf<SubmitMcq>()
+
+    private var q = 0
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments.let {
+            val args = McqsContainerFragmentArgs.fromBundle(it!!)
+            testId = args.testId
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentMcqsMainContainerBinding.inflate(inflater,container,false)
-        binding.lifecycleOwner=this
-
-        binding.ivNext.setOnClickListener{
+        binding = FragmentMcqsMainContainerBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        if (isUrduMedium) {
+            binding.toolbarLayout.back.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_back_right
+                )
+            )
+            binding.ivPre.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_mcq_next
+                )
+            )
+            binding.ivNext.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_mcq_pre
+                )
+            )
+        }
+        attemptedMcqsList.clear()
+        binding.ivNext.setOnClickListener {
             ++currentIndex
-            if (isUrduMedium)setQuestion(mcqList[currentIndex],R.anim.slide_in_left, R.anim.slide_out_right)
-            else setQuestion(mcqList[currentIndex],R.anim.slide_in_right, R.anim.slide_out_left)
+            if (isUrduMedium) setQuestion(
+                mcqList[currentIndex],
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
+            )
+            else setQuestion(mcqList[currentIndex], R.anim.slide_in_right, R.anim.slide_out_left)
             previewButton()
         }
         binding.ivPre.setOnClickListener {
             --currentIndex
-            if (isUrduMedium) setQuestion(mcqList[currentIndex],R.anim.slide_in_right, R.anim.slide_out_left)
-            else setQuestion(mcqList[currentIndex],R.anim.slide_in_left, R.anim.slide_out_right)
+            if (isUrduMedium) setQuestion(
+                mcqList[currentIndex],
+                R.anim.slide_in_right,
+                R.anim.slide_out_left
+            )
+            else setQuestion(mcqList[currentIndex], R.anim.slide_in_left, R.anim.slide_out_right)
             previewButton()
         }
-        if (isUrduMedium){
-            binding.toolbarLayout.back.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_back_right))
-            binding.ivPre.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_mcq_next))
-            binding.ivNext.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_mcq_pre))
-        }
 
+        binding.btnSubmit.setOnClickListener {
+            val dialog = SubmitDialog()
+            dialog.show(requireActivity().supportFragmentManager, "")
+            dialog.setDialogPositiveClick(object :
+                SubmitDialog.OnDialogPositiveButtonClickListener {
+                override fun onyesButtonClik(isClicked: Boolean) {
+                    if (isClicked) mViewModel.submitMcqsList(attemptedMcqsList)
+                }
+            })
+        }
         return binding.root
     }
 
@@ -62,8 +108,6 @@ class McqsContainerFragment:Fragment() {
 
             }
         }
-
-
     }
 
     private fun setQuestion(mcq : Mcq?, animEnter: Int, animExit: Int) {
@@ -82,15 +126,27 @@ class McqsContainerFragment:Fragment() {
         transaction?.replace(R.id.fl_mcqs_option_host, frag)
         transaction?.commit()
         frag.setOptionClickedCallback(object : McqsOptionsFragment.OptionSelectedCallback {
-            override fun onOptionSelected(position: Int, item: McqsOption) {
-                //  Toast.makeText(requireContext(),"finally ${item.isCorrect}", Toast.LENGTH_SHORT).show()
+            override fun onOptionSelected(
+                position: Int,
+                item: McqsOption,
+                questionId: Int,
+                testId: Int
+            ) {
+                val submitMcq = SubmitMcq(mViewModel.memberId, testId, questionId, item.id)
+                if (attemptedMcqsList.size > 0) {
+                    if (!attemptedMcqsList.contains(submitMcq)){
+                        attemptedMcqsList.add(submitMcq)
+                    }
+                } else attemptedMcqsList.add(submitMcq)
             }
         })
     }
 
     private fun previewButton() {
         binding.ivPre.visibility=if (currentIndex>=1) View.VISIBLE else View.INVISIBLE
-        binding.ivNext.visibility=if (currentIndex<mcqList.size-1) View.VISIBLE else View.INVISIBLE
-
+        binding.ivNext.visibility =
+            if (currentIndex < mcqList.size - 1) View.VISIBLE else View.INVISIBLE
+        binding.btnSubmit.visibility =
+            if (currentIndex == mcqList.size - 1) View.VISIBLE else View.GONE
     }
 }

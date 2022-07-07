@@ -22,6 +22,7 @@ class DashboardDetailFragment:Fragment() {
     private lateinit var binding:FragmentDashboardDetailBinding
     private val mViewModel:DashboardDetailViewModel by viewModel()
     private var imageLink="https://ikddata.ilmkidunya.com/images/subjectimages/"
+    private var testId=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments.let {
@@ -40,7 +41,7 @@ class DashboardDetailFragment:Fragment() {
             binding.back.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_back_right))
         }
         binding.bottomLayout.btn_start_test.setOnClickListener {
-            findNavController().navigate(DashboardDetailFragmentDirections.actionDashboardDetailToMcqsFragment())
+            findNavController().navigate(DashboardDetailFragmentDirections.actionDashboardDetailToMcqsFragment(testId))
         }
         binding.appbar.addOnOffsetChangedListener(object : OnOffsetChangedListener {
             var isShow = false
@@ -69,6 +70,7 @@ class DashboardDetailFragment:Fragment() {
         binding.viewModel=mViewModel
         mViewModel.dashboardData.observe(viewLifecycleOwner){
             if (it!=null){
+                testId=it.testId
                 binding.tvToolbar.text=it.introTitle
                 binding.tvHeader.text=it.introTitle
                 imageLink += it.subjectImage

@@ -72,5 +72,10 @@
     <string name="option_a" translatable="false">A:</string>
     <string name="relative_atomic_number" translatable="false">Relative Atomic Number</string>
     <string name="no_of_mcqs" translatable="false">of</string>
-    <string name="label_name">Name:</string>
+    <string name="label_name" translatable="false">Name:</string>
+    <string name="opn_a" translatable="false">A:</string>
+    <string name="opn_b" translatable="false">B:</string>
+    <string name="opn_c" translatable="false">C:</string>
+    <string name="opn_d" translatable="false">D:</string>
+    <string name="label_are_you_sure_submit" translatable="false">Are you sure you want\nto submit?</string>
 </resources>
