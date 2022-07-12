@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.softsolutions.fpap.R
@@ -130,14 +131,20 @@ class McqsContainerFragment:Fragment() {
                 position: Int,
                 item: McqsOption,
                 questionId: Int,
-                testId: Int
+                testId: Int,
+                isAnySelected:Boolean
             ) {
+                if (isAnySelected){
+                    Toast.makeText(requireContext(),"you cannot select multiple options", Toast.LENGTH_SHORT).show()
+                    return
+                }
                 val submitMcq = SubmitMcq(mViewModel.memberId, testId, questionId, item.id)
-                if (attemptedMcqsList.size > 0) {
-                    if (!attemptedMcqsList.contains(submitMcq)){
-                        attemptedMcqsList.add(submitMcq)
-                    }
-                } else attemptedMcqsList.add(submitMcq)
+                attemptedMcqsList.add(submitMcq)
+//                if (attemptedMcqsList.size > 0) {
+//                    if (!attemptedMcqsList.contains(submitMcq)){
+//                        attemptedMcqsList.add(submitMcq)
+//                    }
+//                } else attemptedMcqsList.add(submitMcq)
             }
         })
     }

@@ -15,5 +15,7 @@ data class Mcq(
     @SerializedName("QuestionImage")
     val questionImage: String,
     @SerializedName("Answers")
-    val answer: List<McqsOption>
+    val answer: List<McqsOption>,
+    var isAnySelected:Boolean=false,
+    var isOp:Int=0
 ):Serializable

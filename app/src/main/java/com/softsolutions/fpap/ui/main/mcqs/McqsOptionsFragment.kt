@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.softsolutions.fpap.databinding.FragmentMcqsOptionsBinding
 import com.softsolutions.fpap.model.mcq.Mcq
@@ -29,18 +28,19 @@ class McqsOptionsFragment:Fragment(), McqsOptionAdapter.OnMcqsOptionClickListene
         qNo += 1
         binding.tvQuestionNo.text = "Question $qNo"
         //val adapter=McqsOptionAdapter(requireContext(),mcq!!.answer, this)
-        val adapter=McqsOptionAdapter(requireContext(),mcq!!.answer, this)
+        val adapter=McqsOptionAdapter(requireContext(),mcq!!.answer, this,mcq!!)
         binding.rvMcqs.adapter=adapter
 
         return binding.root
     }
 
     override fun onOptionClick(position: Int, item: McqsOption) {
-        listener!!.onOptionSelected(position, item, mcq!!.questionId,mcq!!.testId)
+        listener!!.onOptionSelected(position, item, mcq!!.questionId,mcq!!.testId, mcq!!.isAnySelected)
+        mcq!!.isAnySelected=true
     }
 
     interface OptionSelectedCallback{
-        fun onOptionSelected(position: Int, item: McqsOption, questionId:Int, testId:Int)
+        fun onOptionSelected(position: Int, item: McqsOption, questionId:Int, testId:Int, isAnySelected:Boolean)
     }
 
     fun setOptionClickedCallback(listener: OptionSelectedCallback) {
