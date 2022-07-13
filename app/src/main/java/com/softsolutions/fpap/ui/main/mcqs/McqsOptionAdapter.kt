@@ -21,6 +21,7 @@ class McqsOptionAdapter(
 ) :
     RecyclerView.Adapter<McqsOptionAdapter.ItemRecyclerViewHolder>() {
      private var currentSelectedPosition = -1
+    private var correctPosition=-1
     class ItemRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
          val tvoption=itemView.findViewById<TextView>(R.id.tv_option_a)
          val tvq=itemView.findViewById<TextView>(R.id.tv_quest_a)
@@ -43,56 +44,56 @@ class McqsOptionAdapter(
         holder.tvq.text = item.answerText
         holder.tvoption.setOption(position)
         holder.itemView.setOnClickListener {
-           item.userSelectedPosition=position.toString()
             currentSelectedPosition = position
             listener.onOptionClick(position, item)
-            item.isSelected=true
             mcq.isOp=mcq.isOp+1
+            for ((i,value ) in options.withIndex()){
+                if (value.isCorrect){
+                    correctPosition=i
+                    break
+                }
+            }
             notifyDataSetChanged()
         }
 
-//        if (item.selectedPosition == position) {
-//            holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
-//            holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
-//            if (item.isCorrect) holder.cardView.setBackgroundResource(R.color.green)
-//            else holder.cardView.setBackgroundResource(R.color.red)
-//        }
         if (mcq.isOp==1){
             if (currentSelectedPosition == position) {
                 holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
                 holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
-                if (item.isCorrect) holder.cardView.setBackgroundResource(R.color.green)
+                if (item.isCorrect) {
+                    holder.cardView.setBackgroundResource(R.color.green)
+                }
                 else{
                     holder.cardView.setBackgroundResource(R.color.red)
-                    for ((i,value ) in options.withIndex()){
-                        if (value.isCorrect){
-                            if (i==position){
-                                holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
-                                holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
-                                holder.cardView.setBackgroundResource(R.color.green)
-                            }
-                            break
-                        }
-                    }
+                   mcq.wrongSelectedPosition=position
+                    mcq.isWrongSelected=true
                 }
-            } else {
+            }
+            else if (correctPosition==position){
+                holder.cardView.setBackgroundResource(R.color.green)
+                holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
+                holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
+            }
+
+            else{
+                holder.cardView.setBackgroundResource(R.color.grey_001)
                 holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.black))
                 holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.black))
-                holder.cardView.setBackgroundResource(R.color.grey_001)
             }
         }
+            if (isAnySelected()){
+                if (item.isCorrect) {
+                    holder.cardView.setBackgroundResource(R.color.green)
+                    holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
+                    holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
+                }
+                else if (mcq.wrongSelectedPosition==position && mcq.isWrongSelected){
+                    holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
+                    holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
+                    holder.cardView.setBackgroundResource(R.color.red)
+                }
 
-
-
-//        if ( "" != item.userSelectedPosition){
-//            if (item.userSelectedPosition==position.toString()){
-//                holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
-//                holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
-//                if (item.isCorrect) holder.cardView.setBackgroundResource(R.color.green)
-//                else holder.cardView.setBackgroundResource(R.color.red)
-//            }
-//        }
-
+            }
     }
 
     override fun getItemCount(): Int {
@@ -104,9 +105,7 @@ class McqsOptionAdapter(
     }
 
     private fun isAnySelected(): Boolean {
-        for (answer in options) {
-            if (answer.isSelected) return true
-        }
+            if (mcq.isAnySelected) return true
         return false
     }
 

@@ -25,8 +25,11 @@
     <string name="label_internal_personal" translatable="false">باہمی تعلقات</string>
     <string name="label_lorem_ipsum" translatable="false">ایک ٹیلے پر واقع مزار خواجہ فریدالدین گنج شکرؒ کے احاطہء صحن میں ذرا سی ژالہ باری چاندی کے ڈھیروں کی مثل بڑے غضب کا نظارا دیتی ہے۔ایک ٹیلے پر واقع مزار خواجہ فریدالدین گنج شکرؒ کے احاطہء صحن میں ذرا سی ژالہ باری چاندی کے ڈھیروں کی مثل بڑے غضب کا نظارا دیتی ہے۔ایک ٹیلے پر واقع مزار خواجہ فریدالدین گنج شکرؒ کے احاطہء صحن میں ذرا سی ژالہ باری چاندی کے ڈھیروں کی مثل بڑے غضب کا نظارا دیتی ہے۔</string>
     <string name="label_start_with_pre_test" translatable="false">ذیل میں دیے گئے پری ٹیسٹ کے ساتھ اپنا کورس شروع کریں۔</string>
+    <string name="label_start_with_post_test" translatable="false">ذیل میں دیے گئے پوسٹ ٹیسٹ کے ساتھ اپنا کورس شروع کریں۔</string>
     <string name="label_step1" translatable="false">مرحلہ نمبر 1</string>
+    <string name="label_step2" translatable="false">مرحلہ نمبر 2</string>
     <string name="label_pre_test" translatable="false">پری ٹیسٹ</string>
+    <string name="label_post_test" translatable="false">پوسٹ ٹیسٹ</string>
     <string name="label_question" translatable="false">سوالات</string>
     <string name="label_no_of_question" translatable="false">10 سوالات</string>
     <string name="label_start_test" translatable="false">ٹیسٹ شروع کریں</string>
@@ -34,8 +37,11 @@
     <string name="label_05" translatable="false">05</string>
     <string name="label_incorrect_ans" translatable="false">غلط جوابات</string>
     <string name="label_test_passed" translatable="false">امتحان پاس کیا</string>
+    <string name="label_test_failed" translatable="false">ناکام ہو چکے ہیں</string>
     <string name="label_congo" translatable="false">مبارک ہو</string>
-    <string name="label_desc" translatable="false">آپ نے امتحان پاس کر لیا ہے۔ اب آپ اس کورس کے لیے سرٹیفکیٹ ڈاؤن لوڈ کر سکتے ہیں۔</string>
+    <string name="label_ops" translatable="false">اوپس</string>
+    <string name="label_desc" translatable="false">آپ نے امتحان پاس کر لیا ہے۔</string>
+    <string name="label_desc_failed" translatable="false">آپ امتحان میں ناکام ہو گئے ہیں</string>
     <string name="label_download_certificate" translatable="false">سرٹیفکیٹ ڈاؤن لوڈ کریں۔</string>
     <string name="label_chose_another_course" translatable="false">مطالعہ کرنے کے لیے ایک اور کورس کا انتخاب کریں۔</string>
     <string name="label_dummy_time" translatable="false">02:22 Mins</string>

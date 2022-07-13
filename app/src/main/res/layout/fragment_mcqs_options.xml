@@ -51,7 +51,7 @@
                 android:textSize="@dimen/_16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_question_no"
-                android:text="@string/dummy_question" />
+                tools:text="@string/dummy_question" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_mcqs"

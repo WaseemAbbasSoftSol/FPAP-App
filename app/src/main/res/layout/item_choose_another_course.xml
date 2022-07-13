@@ -4,17 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-       <variable
-           name="obj"
-           type="com.softsolutions.fpap.model.SubjectList" />
+<!--        <variable-->
+<!--            name="obj"-->
+<!--            type="com.softsolutions.fpap.model.SubjectList" />-->
     </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview"
         app:cardCornerRadius="@dimen/_5dp"
         android:elevation="@dimen/_2dp"
+        app:cardUseCompatPadding="true"
         android:padding="@dimen/_5dp"
         android:layout_margin="@dimen/_5dp"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -26,7 +31,7 @@
                 android:id="@+id/iv_dashboard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:imageUrl="@{obj.image1}"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:src="@drawable/ic_item_dashboard"/>
@@ -36,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="@string/label_human_rights"
-                android:text="@{obj.subName()}"
+
                 android:textSize="@dimen/_12sp"
                 android:textColor="@color/black"
                 android:padding="@dimen/_10dp"
@@ -51,4 +56,17 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_contact_support"
+        android:layout_width="@dimen/_25dp"
+        android:layout_height="@dimen/_25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="@dimen/_10dp"
+        android:src="@drawable/ic_contact_support_24"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

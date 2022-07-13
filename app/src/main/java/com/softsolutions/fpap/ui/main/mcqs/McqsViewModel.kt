@@ -26,6 +26,9 @@ class McqsViewModel(
     private val _message = MutableLiveData<String>()
     val message: LiveData<String> = _message
 
+    private val _mcqSubmittedMsg = MutableLiveData<String>()
+    val mcqSubmittedMsg: LiveData<String> = _mcqSubmittedMsg
+
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage
 
@@ -35,8 +38,9 @@ class McqsViewModel(
     private val _submitMcqs = MutableLiveData<SubmittedMcq>()
     val submitMcqs: LiveData<SubmittedMcq> = _submitMcqs
 
-    var unitId=0
     var memberId=0
+    var unitId=0
+    var testId=0
 
     init {
         memberId=prefRepository.getUser()!!.memberId
@@ -48,7 +52,7 @@ class McqsViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 _state.postValue(RequestState.LOADING)
-                val response = repository.getMcqsList(3800,1943)
+                val response = repository.getMcqsList(unitId,testId)
                 if (response.isSuccessful) {
                     response.body().let {
                         _mcq.postValue(it!!.data)
@@ -81,6 +85,7 @@ class McqsViewModel(
                         _submitMcqs.postValue(it!!.data)
                         _message.postValue(it.responseMessage)
                         _errorMessage.postValue(it.errorMessage)
+                        _mcqSubmittedMsg.postValue(it.responseMessage)
                     }
                 } else {
                     response.errorBody().let {

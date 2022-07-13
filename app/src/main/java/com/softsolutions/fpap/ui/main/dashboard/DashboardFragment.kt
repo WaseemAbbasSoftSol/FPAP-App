@@ -42,9 +42,10 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
 
     inner class OnDashboardSubjectClickListener : OnListItemClickListener<SubjectList> {
         override fun onItemClick(item: SubjectList, pos: Int) {
+            val subjeName= if (!item.subName().isNullOrEmpty())item.subName() else ""
             findNavController().navigate(
                 DashboardFragmentDirections.actionDashboardToDashboardDetailFragment(
-                    item.id
+                    item.id,subjeName
                 )
             )
         }

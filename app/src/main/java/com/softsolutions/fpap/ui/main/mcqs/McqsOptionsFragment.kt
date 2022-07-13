@@ -13,6 +13,7 @@ class McqsOptionsFragment:Fragment(), McqsOptionAdapter.OnMcqsOptionClickListene
     private lateinit var binding:FragmentMcqsOptionsBinding
     private var mcq: Mcq? = null
     private var qNo=0
+    private var questionText=""
     private var listener: OptionSelectedCallback? = null
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,8 +26,10 @@ class McqsOptionsFragment:Fragment(), McqsOptionAdapter.OnMcqsOptionClickListene
         val bundle = this.arguments
         mcq = bundle!!.getSerializable("answer") as Mcq?
         qNo= bundle.getInt("questionNo")
+        questionText= bundle.getString("question").toString()
         qNo += 1
         binding.tvQuestionNo.text = "Question $qNo"
+        binding.tvQuestion.text=questionText
         //val adapter=McqsOptionAdapter(requireContext(),mcq!!.answer, this)
         val adapter=McqsOptionAdapter(requireContext(),mcq!!.answer, this,mcq!!)
         binding.rvMcqs.adapter=adapter

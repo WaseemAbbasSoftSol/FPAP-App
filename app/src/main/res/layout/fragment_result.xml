@@ -9,15 +9,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <include
+            android:visibility="gone"
             android:id="@+id/toolbar_layout"
             layout="@layout/base_toolbar"/>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -32,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_test_passed"
-                    android:textSize="@dimen/_22sp"
+                    android:textSize="@dimen/_18sp"
                     android:layout_marginStart="@dimen/_20dp"
                     android:layout_marginEnd="@dimen/_20dp"
                     android:textColor="@color/black"
@@ -47,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_congo"
-                    android:textSize="@dimen/_18sp"
+                    android:textSize="@dimen/_15sp"
                     android:textColor="@color/purple"
                     android:fontFamily="@font/poppins_semi_bold"
                     app:layout_constraintStart_toStartOf="@id/tv_status"
@@ -70,8 +71,9 @@
                     />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_download"
+                    android:id="@+id/btn_test_again"
                     style="@style/AppTheme.ContainedButton"
+                    android:visibility="gone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10dp"
@@ -86,14 +88,15 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/btn_download">
+                    app:layout_constraintTop_toBottomOf="@id/btn_test_again">
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:visibility="gone"
                         android:id="@+id/tv_choose_another_course"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/label_chose_another_course"
-                        android:textSize="@dimen/_20sp"
+                        android:textSize="@dimen/_18sp"
                         android:textColor="@color/black"
                         android:fontFamily="@font/poppins_semi_bold"
                         android:layout_marginStart="@dimen/_20dp"
@@ -104,6 +107,7 @@
                         />
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:visibility="gone"
                         android:id="@+id/rv_another_course"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

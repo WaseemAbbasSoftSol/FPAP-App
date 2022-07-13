@@ -71,6 +71,7 @@ dependencies {
     implementation 'com.github.razir.progressbutton:progressbutton:2.0.0'
     implementation 'com.zhihu.android:matisse:0.5.3-beta3'
     implementation 'com.github.mike14u:shimmer-recyclerview-x:1.0.4'
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 
     //di
     implementation "org.koin:koin-androidx-scope:$koin_version"

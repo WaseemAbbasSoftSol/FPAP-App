@@ -1,6 +1,7 @@
 package com.softsolutions.fpap.model
 
 import com.google.gson.annotations.SerializedName
+import com.softsolutions.fpap.ui.common.isUrduMedium
 
 data class SubjectList (
     @SerializedName("SubjectTypes")
@@ -19,6 +20,8 @@ data class SubjectList (
     val id: Int,
     @SerializedName("Name")
     val name: String,
+    @SerializedName("NameUrdu")
+    val urduName:String,
     @SerializedName("Url")
     val url: String,
     @SerializedName("Image")
@@ -61,4 +64,12 @@ data class SubjectList (
     val hasGroup: Boolean,
     @SerializedName("IsAppShowing")
     val isAppShowing: Boolean,
-)
+    @SerializedName("IsPassed")
+    val isPassed:Boolean
+){
+    fun subName():String{
+        return if (isUrduMedium)
+            urduName
+        else name
+    }
+}

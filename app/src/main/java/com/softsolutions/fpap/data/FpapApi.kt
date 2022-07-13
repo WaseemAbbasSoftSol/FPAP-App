@@ -54,6 +54,7 @@ interface FpapApi {
 
     @POST("getCoursedetail")
     suspend fun getDashboardDetail(
+        @Query("MemberId")memberId: Int,
         @Query("ClassId")classId:Int,
         @Query("SubjectId")subjectId:Int,
         @Query("medium")medium:Boolean,

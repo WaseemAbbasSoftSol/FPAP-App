@@ -36,5 +36,9 @@ data class DashboardDetail(
     @SerializedName("IsSubmitPreTest")
     val isSumbmittedPreTest: Boolean,
     @SerializedName("IsSubmitPostTest")
-    val isSubmittedPostTest: Boolean
+    val isSubmittedPostTest: Boolean,
+    @SerializedName("IsPassed")
+    val isPassed:Boolean,
+    @SerializedName("IsFailed")
+    val isFailed:Boolean
 )

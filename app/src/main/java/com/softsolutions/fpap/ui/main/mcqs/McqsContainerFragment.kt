@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentMcqsMainContainerBinding
 import com.softsolutions.fpap.model.mcq.Mcq
@@ -14,6 +15,8 @@ import com.softsolutions.fpap.model.mcq.McqsOption
 import com.softsolutions.fpap.model.mcq.SubmitMcq
 import com.softsolutions.fpap.ui.common.SubmitDialog
 import com.softsolutions.fpap.ui.common.isUrduMedium
+import com.softsolutions.fpap.ui.main.dashboard.detail.DashboardDetailFragment
+import com.softsolutions.fpap.utils.makeProgressOnButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class McqsContainerFragment:Fragment() {
@@ -22,17 +25,18 @@ class McqsContainerFragment:Fragment() {
     private var mcqList = arrayListOf<Mcq>()
     private var currentIndex = 0
     private var totalQuestion = 0
-    private var testId = 0
+
 
     private var attemptedMcqsList = arrayListOf<SubmitMcq>()
-    private var tempList= arrayListOf<SubmitMcq>()
 
     private var q = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments.let {
             val args = McqsContainerFragmentArgs.fromBundle(it!!)
-            testId = args.testId
+            mViewModel.unitId=args.unitId
+            mViewModel.testId=args.testId
+
         }
     }
 
@@ -91,6 +95,7 @@ class McqsContainerFragment:Fragment() {
             dialog.setDialogPositiveClick(object :
                 SubmitDialog.OnDialogPositiveButtonClickListener {
                 override fun onyesButtonClik(isClicked: Boolean) {
+                    makeProgressOnButton(binding.btnSubmit,R.string.plz_wait)
                     if (isClicked) mViewModel.submitMcqsList(attemptedMcqsList)
                 }
             })
@@ -106,7 +111,13 @@ class McqsContainerFragment:Fragment() {
                 mcqList.addAll(it)
                 setQuestion(mcqList[0], 0,0)
                 previewButton()
-
+                binding.cl.visibility=View.VISIBLE
+            }
+        }
+        mViewModel.mcqSubmittedMsg.observe(viewLifecycleOwner){
+            if (it=="Certificate Detail found"){
+                findNavController().navigate(McqsContainerFragmentDirections.actionMcqToDashboardDetailFragment(DashboardDetailFragment.subjectId,
+                DashboardDetailFragment.subjectName))
             }
         }
     }
@@ -115,6 +126,7 @@ class McqsContainerFragment:Fragment() {
         val bundle = Bundle()
         bundle.putSerializable("answer", mcq)
         bundle.putInt("questionNo", currentIndex)
+        bundle.putString("question", mcq!!.questionText)
 
         val s=getString(R.string.no_of_mcqs)
         val nn=currentIndex+1
@@ -140,11 +152,6 @@ class McqsContainerFragment:Fragment() {
                 }
                 val submitMcq = SubmitMcq(mViewModel.memberId, testId, questionId, item.id)
                 attemptedMcqsList.add(submitMcq)
-//                if (attemptedMcqsList.size > 0) {
-//                    if (!attemptedMcqsList.contains(submitMcq)){
-//                        attemptedMcqsList.add(submitMcq)
-//                    }
-//                } else attemptedMcqsList.add(submitMcq)
             }
         })
     }
