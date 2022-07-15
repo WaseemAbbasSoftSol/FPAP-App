@@ -1,6 +1,7 @@
 package com.softsolutions.fpap.model.account
 
 import com.google.gson.annotations.SerializedName
+import com.softsolutions.fpap.utils.splitDateAndTime
 
 data class MemberInfo (
     @SerializedName("ID")
@@ -74,4 +75,7 @@ data class MemberInfo (
     @SerializedName("EmailId")
     val email:String
 
-)
+){
+    val dateOfBirth:String
+    get() = splitDateAndTime(dob)
+}

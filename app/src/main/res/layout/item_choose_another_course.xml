@@ -41,7 +41,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="@string/label_human_rights"
-
                 android:textSize="@dimen/_12sp"
                 android:textColor="@color/black"
                 android:padding="@dimen/_10dp"
@@ -59,7 +58,8 @@
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/iv_contact_support"
+        android:id="@+id/iv_passed"
+        android:visibility="gone"
         android:layout_width="@dimen/_25dp"
         android:layout_height="@dimen/_25dp"
         app:layout_constraintEnd_toEndOf="parent"

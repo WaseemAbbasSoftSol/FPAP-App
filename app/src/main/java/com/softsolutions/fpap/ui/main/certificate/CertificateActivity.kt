@@ -2,6 +2,7 @@ package com.softsolutions.fpap.ui.main.certificate
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softsolutions.fpap.databinding.FragmentCertificateBinding
@@ -22,6 +23,7 @@ class CertificateActivity : AppCompatActivity() {
         baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
 
         binding.tvToolbar.text="Certificate"
+        binding.clBottom.visibility= View.GONE
 
         binding.back.setOnClickListener {
             onBackPressed()

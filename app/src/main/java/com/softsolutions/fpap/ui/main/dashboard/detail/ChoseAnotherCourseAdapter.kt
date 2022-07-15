@@ -4,11 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.softsolutions.fpap.R
-import com.softsolutions.fpap.model.Dashboard
 import com.softsolutions.fpap.model.SubjectList
 import com.softsolutions.fpap.ui.common.OnListItemClickListener
 import de.hdodenhof.circleimageview.CircleImageView
@@ -22,9 +22,9 @@ class ChoseAnotherCourseAdapter(
 
     class ItemRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var title: TextView = itemView.findViewById(R.id.tv_title)
-        var iv: CircleImageView = itemView.findViewById(R.id.tv_title)
+        var iv: ImageView = itemView.findViewById(R.id.iv_dashboard)
         var cardView: CardView = itemView.findViewById(R.id.cardview)
-        lateinit var support: CircleImageView
+        var support: CircleImageView=itemView.findViewById(R.id.iv_passed)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemRecyclerViewHolder {
@@ -35,23 +35,15 @@ class ChoseAnotherCourseAdapter(
                     false
                 )
             )
-
-
-
     }
 
     override fun onBindViewHolder(holder: ItemRecyclerViewHolder, position: Int) {
-        val dashboardObject = list[position]
-        holder.title.text = dashboardObject.subName()
-//        if (!isDashboard){
-//            holder.support = holder.itemView.findViewById(R.id.iv_contact_support)
-//            if (position == 4){
-//                holder.support.visibility= View.VISIBLE
-//                holder.title.setTextColor(context.resources.getColor(R.color.green))
-//            } else holder.support.visibility= View.GONE
-//        }
+        val item = list[position]
+        holder.title.text = item.subName()
+        if (item.isPassed) holder.support.visibility=View.VISIBLE
         holder.cardView.setOnClickListener {
-            listener.onItemClick(dashboardObject,position)
+            if (item.isPassed)return@setOnClickListener
+            listener.onItemClick(item,position)
         }
     }
     override fun getItemCount(): Int {

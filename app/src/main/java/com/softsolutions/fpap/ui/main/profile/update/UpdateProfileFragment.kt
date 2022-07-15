@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,6 +39,7 @@ class UpdateProfileFragment : Fragment() {
     private val mViewModel: ProfileViewModel by viewModel()
     private val countryCode="92"
     private val myCalendar: Calendar = Calendar.getInstance()
+    private var dob=""
 
     private var mImage: File? = null
     override fun onCreateView(
@@ -55,7 +57,7 @@ class UpdateProfileFragment : Fragment() {
             makeProgressOnButton(binding.btnUpdate, R.string.plz_wait)
             val phoneNumber=countryCode+binding.edNumber.text.toString()
             val update= UpdateProfile(mViewModel.memberId,binding.edName.text.toString().trim(), binding.edEmail.text.toString().trim(),
-            phoneNumber,mViewModel.qualificationId,mViewModel.regionId,mViewModel.cityId)
+            phoneNumber,mViewModel.qualificationId,mViewModel.regionId,mViewModel.cityId,dob,mViewModel.genderId)
             mViewModel.update(update)
         }
 
@@ -119,6 +121,12 @@ class UpdateProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = mViewModel
+        mViewModel.user.observe(viewLifecycleOwner){
+            if (it!=null){
+                val d=it.memberInfo.dob
+                dob = d.substring(0, d.indexOf('T'))
+            }
+        }
         mViewModel.updateUser.observe(viewLifecycleOwner) {
             if (it != null) {
                 ProfileFragment.profileImage.value=it.memberInfo.image
@@ -205,8 +213,11 @@ class UpdateProfileFragment : Fragment() {
 
     }
     private fun updateLabel() {
-        val myFormat = "MM/dd/yy"
+        val myFormat = "dd MMM, yyyy"
+        val serverFormat="yyyy-MM-dd"
         val dateFormat = SimpleDateFormat(myFormat, Locale.US)
+        val dateFormatForServer = SimpleDateFormat(serverFormat, Locale.US)
+        dob=dateFormatForServer.format(myCalendar.time)
         binding.tvDob.setText(dateFormat.format(myCalendar.time))
     }
 }

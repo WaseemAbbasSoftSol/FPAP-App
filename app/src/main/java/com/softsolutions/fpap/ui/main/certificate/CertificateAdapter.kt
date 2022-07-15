@@ -20,8 +20,10 @@ class CertificateAdapter(
 
     class ItemRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val tvEnglishTitle=itemView.findViewById<TextView>(R.id.tv_name_eng)
+    val tvUrduTitle=itemView.findViewById<TextView>(R.id.tv_name_urdu)
     val tvstatus=itemView.findViewById<TextView>(R.id.tv_pre_test)
     val date=itemView.findViewById<TextView>(R.id.tv_date)
+    val tvd=itemView.findViewById<TextView>(R.id.tv_question)
 
     val tvcertificate=itemView.findViewById<TextView>(R.id.tv_certificate)
     val tvdownload=itemView.findViewById<TextView>(R.id.tv_download)
@@ -40,7 +42,12 @@ class CertificateAdapter(
     override fun onBindViewHolder(holder: ItemRecyclerViewHolder, position: Int) {
         val item=list[position]
         holder.tvEnglishTitle.text=item.subjectName
+        holder.tvUrduTitle.text=item.urduName
         holder.tvstatus.text=item.status
+        if (item.status!="Not Attempt"){
+            holder.date.visibility=View.VISIBLE
+            holder.tvd.visibility=View.VISIBLE
+        }
         val dd=splitDateAndTime(item.date)
         holder.date.text=dd
         if (item.file != null){

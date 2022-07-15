@@ -40,6 +40,7 @@ class SignUpFragment : Fragment() {
     private var regionId=0
     private var cityId=0
     private var gender=""
+    private var dob=""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -115,7 +116,7 @@ class SignUpFragment : Fragment() {
                 val mobileNumber="$countryCode$number"
                 val register=Register(binding.edName.text.toString().trim(),binding.edEmail.text.toString(),mobileNumber,qualificationId,regionId,cityId,
                     binding.edPass.text.toString()
-                ,binding.tvDob.text.toString(),gender)
+                ,dob,gender)
                 mViewModel.register(register)
             }
         }
@@ -130,8 +131,15 @@ class SignUpFragment : Fragment() {
     }
 
     private fun updateLabel() {
-        val myFormat = "MM/dd/yy"
+//        val myFormat = "MM/dd/yy"
+//        val dateFormat = SimpleDateFormat(myFormat, Locale.US)
+//        binding.tvDob.setText(dateFormat.format(myCalendar.time))
+
+        val myFormat = "dd MMM, yyyy"
+        val serverFormat="yyyy-MM-dd"
         val dateFormat = SimpleDateFormat(myFormat, Locale.US)
+        val dateFormatForServer = SimpleDateFormat(serverFormat, Locale.US)
+        dob=dateFormatForServer.format(myCalendar.time)
         binding.tvDob.setText(dateFormat.format(myCalendar.time))
     }
 

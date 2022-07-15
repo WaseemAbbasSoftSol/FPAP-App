@@ -1,5 +1,6 @@
 package com.softsolutions.fpap.utils
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentResolver
 import android.content.Context
@@ -7,6 +8,8 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.provider.OpenableColumns
+import android.webkit.WebSettings
+import android.webkit.WebView
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
@@ -103,3 +106,14 @@ fun splitDateAndTime(dateTime: String): String {
     return formater.format(convertedDate)
 }
 
+@SuppressLint("SetJavaScriptEnabled")
+fun setWebView(context:Context,activity: Activity,webview:WebView) {
+    val myChrome = ChromeWebView(context, activity)
+    webview.webChromeClient = myChrome
+    val webSettings: WebSettings = webview.getSettings()
+    webSettings.javaScriptEnabled = true
+    webSettings.allowFileAccess = true
+    webSettings.setAppCacheEnabled(true)
+    webSettings.javaScriptCanOpenWindowsAutomatically = true;
+    webSettings.setPluginState(WebSettings.PluginState.ON);
+}

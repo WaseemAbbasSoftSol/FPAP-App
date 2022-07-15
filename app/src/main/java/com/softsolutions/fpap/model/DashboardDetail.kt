@@ -40,5 +40,7 @@ data class DashboardDetail(
     @SerializedName("IsPassed")
     val isPassed:Boolean,
     @SerializedName("IsFailed")
-    val isFailed:Boolean
+    val isFailed:Boolean,
+    @SerializedName("subjlist")
+    val subjectList:List<SubjectList>
 )

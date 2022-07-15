@@ -12,5 +12,7 @@ data class CourseCertificate(
     @SerializedName("Date")
     val date: String,
     @SerializedName("DownloadFile")
-    val file: String
+    val file: String,
+    @SerializedName("SubjectUrduName")
+    val urduName:String
 )

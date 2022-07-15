@@ -251,7 +251,7 @@
                         style="@style/AppTheme.Field"
                         android:cursorVisible="false"
                         android:focusable="false"
-                        android:text="@{viewModel.user.memberInfo.dob}"
+                        android:text="@{viewModel.user.memberInfo.dateOfBirth}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_question_mark"

@@ -53,6 +53,7 @@
     <string name="label_desc_failed" translatable="false">You have failed the test.</string>
     <string name="label_desc1" translatable="false">You have passed the test. Now you can\ndownload all courses achievements certificate.</string>
     <string name="label_download_certificate" translatable="false">Download Certificate</string>
+    <string name="label_test_again" translatable="false">Test Again</string>
     <string name="label_chose_another_course" translatable="false">Choose another course to study</string>
     <string name="label_dummy_time" translatable="false">02:22 Mins</string>
     <string name="dummy_question" translatable="false">The number of fundamental particles in an atom of the lightest isotope carbon are</string>

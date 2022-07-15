@@ -17,5 +17,9 @@ data class UpdateProfile(
     val regionId: Int,
     @SerializedName("CityId")
     val cityId: Int,
+    @SerializedName("DOB")
+    val dob:String,
+    @SerializedName("GenderName")
+    val genderName:String,
 ) {
 }
