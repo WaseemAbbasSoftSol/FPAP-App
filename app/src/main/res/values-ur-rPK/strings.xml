@@ -72,4 +72,18 @@
     <string name="opn_c" translatable="false">ج:</string>
     <string name="opn_d" translatable="false">د:</string>
     <string name="label_are_you_sure_submit" translatable="false">کیا آپ واقعی جمع کروانا چاہتے ہیں؟</string>
+    <string name="helpline_desc" translatable="false">مزید معلومات کے لیے آپ FPAP کے یوتھ ہیلپ لائن نمبر پر مفت رابطہ کر سکتے ہیں اور مرد اور خواتین کونسلرز سے معلومات حاصل کر سکتے ہیں۔</string>
+    <string name="service_u_can_access" translatable="false">وہ خدمات جن تک آپ Rahnuma-FPAP یوتھ ہیلپ لائن ڈائل کر سکتے ہیں۔</string>
+    <string name="registered_students" translatable="false">رجسٹرڈ طلباء</string>
+    <string name="label_complete" translatable="false">مکمل</string>
+    <string name="label_partial" translatable="false">جزوی</string>
+    <string name="label_single" translatable="false">سنگل</string>
+    <string name="label_helpline" translatable="false">ہیلپ لائن</string>
+    <string name="lahore" translatable="false">لاہور</string>
+    <string name="islamabad" translatable="false">اسلام آباد</string>
+    <string name="karachi" translatable="false">کراچی</string>
+    <string name="quetta" translatable="false">کوئٹہ</string>
+    <string name="peshawar" translatable="false">پشاور</string>
+    <string name="gilgit_baltistan" translatable="false">گلگت بلتستان</string>
+    <string name="label_report" translatable="false">رپورٹس</string>
 </resources>

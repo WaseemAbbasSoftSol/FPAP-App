@@ -85,4 +85,18 @@
     <string name="opn_c" translatable="false">C:</string>
     <string name="opn_d" translatable="false">D:</string>
     <string name="label_are_you_sure_submit" translatable="false">Are you sure you want\nto submit?</string>
+    <string name="helpline_desc" translatable="false"><![CDATA[For more information you can contact for free at youth helpline number of FPAP & get information from male & female counselors.]]></string>
+    <string name="service_u_can_access" translatable="false">Services you can access Rahnuma-FPAP Youth Helpline Dial toll free</string>
+    <string name="registered_students" translatable="false">Registered Students</string>
+    <string name="label_complete" translatable="false">Complete</string>
+    <string name="label_partial" translatable="false">Partial</string>
+    <string name="label_single" translatable="false">Single</string>
+    <string name="label_helpline" translatable="false">Helpline</string>
+    <string name="lahore" translatable="false">LAHORE</string>
+    <string name="islamabad" translatable="false">ISLAMABAD</string>
+    <string name="karachi" translatable="false">KARACHI</string>
+    <string name="quetta" translatable="false">QUETTA</string>
+    <string name="peshawar" translatable="false">PESHAWAR</string>
+    <string name="gilgit_baltistan" translatable="false">GILGIT BALTISTAN</string>
+    <string name="label_report" translatable="false">Reports</string>
 </resources>

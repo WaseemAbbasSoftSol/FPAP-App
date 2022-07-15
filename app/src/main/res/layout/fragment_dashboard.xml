@@ -19,46 +19,734 @@
         android:layout_height="match_parent"
        >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv_welcome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label_welcome_text"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="@dimen/_20dp"
-                android:layout_marginEnd="@dimen/_20dp"
-                android:textSize="@dimen/_16sp"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:textColor="@color/purple"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <com.mikelau.views.shimmer.ShimmerRecyclerViewX
-                android:id="@+id/rv_dashboard"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/tv_welcome"
-                app:layout_constraintTop_toBottomOf="@id/tv_welcome"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:hasFixSize="@{true}"
-                app:itemLayout="@{@layout/item_dashboard_two}"
-                app:itemsList="@{viewModel.subjects}"
-                app:itemClickListener="@{subjectClickListener}"
-                tools:listitem="@layout/item_dashboard"
-                android:layout_marginStart="@dimen/_20dp"
-                android:layout_marginEnd="@dimen/_20dp"
-                android:layout_marginTop="@dimen/_10dp"
-                app:shimmer_demo_angle="10"
-                app:shimmer_demo_child_count="8"
-                app:shimmer_demo_grid_child_count="3"
-                app:shimmer_demo_layout="@layout/item_dashobard_shimmer"
-                app:shimmer_demo_layout_manager_type="grid"
-                app:spanCount="3"/>
+                android:layout_height="match_parent">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/tv_welcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20dp"
+                    android:layout_marginEnd="@dimen/_20dp"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:text="@string/label_welcome_text"
+                    android:textColor="@color/purple"
+                    android:textSize="@dimen/_16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.mikelau.views.shimmer.ShimmerRecyclerViewX
+                    android:id="@+id/rv_dashboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20dp"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:layout_marginEnd="@dimen/_20dp"
+                    app:hasFixSize="@{true}"
+                    app:itemClickListener="@{subjectClickListener}"
+                    app:itemLayout="@{@layout/item_dashboard_two}"
+                    app:itemsList="@{viewModel.subjects}"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintStart_toStartOf="@id/tv_welcome"
+                    app:layout_constraintTop_toBottomOf="@id/tv_welcome"
+                    app:shimmer_demo_angle="10"
+                    app:shimmer_demo_child_count="8"
+                    app:shimmer_demo_grid_child_count="3"
+                    app:shimmer_demo_layout="@layout/item_dashobard_shimmer"
+                    app:shimmer_demo_layout_manager_type="grid"
+                    app:spanCount="3"
+                    tools:listitem="@layout/item_dashboard" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1dp"
+                    android:layout_marginStart="@dimen/_20dp"
+                    android:layout_marginEnd="@dimen/_20dp"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:background="@color/grey_lite"
+                    app:layout_constraintStart_toStartOf="@id/rv_dashboard"
+                    app:layout_constraintTop_toBottomOf="@id/rv_dashboard" />
+
+                <TextView
+                    android:id="@+id/tv_report"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20dp"
+                    android:layout_marginEnd="@dimen/_20dp"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:text="@string/label_report"
+                    android:textColor="@color/purple"
+                    android:textSize="@dimen/_16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_two"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20dp"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:layout_marginEnd="@dimen/_20dp"
+                    android:paddingBottom="50dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_report">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guide"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent=".50" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_1"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5dp"
+                        android:elevation="@dimen/_3dp"
+                        app:cardCornerRadius="@dimen/_10dp"
+                        app:layout_constraintEnd_toStartOf="@id/guide"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingBottom="@dimen/_20dp"
+                            android:background="@drawable/ic_bg_blue">
+
+                            <TextView
+                                android:id="@+id/tv_no_of_registered"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_tt30dp"
+                                android:layout_marginStart="@dimen/_20dp"
+                                android:layout_marginEnd="@dimen/_20dp"
+                                android:layout_marginTop="@dimen/_20dp"
+                                android:fontFamily="@font/poppins_semi_bold"
+                                android:text="18,000+"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_18sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_registered"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_tt30dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/registered_students"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_12sp"
+                                android:layout_marginStart="@dimen/_20dp"
+                                android:layout_marginEnd="@dimen/_20dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tv_no_of_registered" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_2"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5dp"
+                        android:elevation="@dimen/_3dp"
+                        app:cardCornerRadius="@dimen/_10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/guide"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingBottom="@dimen/_20dp"
+                            android:background="@drawable/ic_bg_yellow">
+
+                            <TextView
+                                android:id="@+id/tv_no_of_completed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_tt30dp"
+                                android:layout_marginStart="@dimen/_20dp"
+                                android:layout_marginTop="@dimen/_20dp"
+                                android:fontFamily="@font/poppins_semi_bold"
+                                android:text="8,000+"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_18sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_completed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_tt30dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/label_complete"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_12sp"
+                                app:layout_constraintStart_toStartOf="@id/tv_no_of_completed"
+                                app:layout_constraintTop_toBottomOf="@id/tv_no_of_completed" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_3"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5dp"
+                        android:layout_marginEnd="@dimen/_5dp"
+                        android:elevation="@dimen/_3dp"
+                        app:cardCornerRadius="@dimen/_10dp"
+                        app:layout_constraintEnd_toStartOf="@id/guide"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/cv_1">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingBottom="@dimen/_20dp"
+                            android:background="@drawable/ic_bg_orange">
+
+                            <TextView
+                                android:id="@+id/tv_no_of_partial"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_tt30dp"
+                                android:layout_marginStart="@dimen/_20dp"
+                                android:layout_marginTop="@dimen/_20dp"
+                                android:fontFamily="@font/poppins_semi_bold"
+                                android:text="6,000+"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_18sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_partial"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_tt30dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/label_partial"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_12sp"
+                                app:layout_constraintStart_toStartOf="@id/tv_no_of_partial"
+                                app:layout_constraintTop_toBottomOf="@id/tv_no_of_partial" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_4"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5dp"
+                        android:layout_marginTop="@dimen/_5dp"
+                        android:elevation="@dimen/_3dp"
+                        app:cardCornerRadius="@dimen/_10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/guide"
+                        app:layout_constraintTop_toBottomOf="@id/cv_2">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingBottom="@dimen/_20dp"
+                            android:background="@drawable/ic_bg_navy">
+
+                            <TextView
+                                android:id="@+id/tv_no_of_singal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_tt30dp"
+                                android:layout_marginStart="@dimen/_20dp"
+                                android:layout_marginTop="@dimen/_20dp"
+                                android:fontFamily="@font/poppins_semi_bold"
+                                android:text="700+"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_18sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_singal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_tt30dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/label_single"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_12sp"
+                                app:layout_constraintStart_toStartOf="@id/tv_no_of_singal"
+                                app:layout_constraintTop_toBottomOf="@id/tv_no_of_singal" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_helpline"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    app:layout_constraintBottom_toBottomOf="@id/cl_two"
+                    app:layout_constraintTop_toTopOf="@id/cl_three"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@drawable/ic_helpline"
+                    android:elevation="@dimen/_5dp"
+                    app:civ_border_width="20dp"
+                    app:civ_border_color="@color/white"
+                    android:layout_marginStart="@dimen/_20dp"
+                    android:layout_marginEnd="@dimen/_20dp"
+                    />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#E2E2F4"
+                    app:layout_constraintTop_toBottomOf="@id/cl_two">
+
+                    <TextView
+                        android:id="@+id/tv_helpline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_helpline"
+                        android:textSize="@dimen/_18sp"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:textColor="@color/purple"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginStart="@dimen/_20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                       />
+                    <TextView
+                        android:id="@+id/tv_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/helpline_desc"
+                        android:textSize="@dimen/_12sp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginStart="@dimen/_20dp"
+                        android:layout_marginEnd="@dimen/_20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_helpline"
+                        />
+                    <TextView
+                        android:id="@+id/tv_service"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/service_u_can_access"
+                        android:textSize="@dimen/_12sp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginStart="@dimen/_20dp"
+                        android:layout_marginEnd="@dimen/_20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_desc"
+                        />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_four"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20dp"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginEnd="@dimen/_20dp"
+                        android:paddingBottom="50dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_service">
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guide1"
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent=".50" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_lhr"
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_5dp"
+                            app:cardCornerRadius="@dimen/_10dp"
+                            android:elevation="@dimen/_3dp"
+                            app:layout_constraintEnd_toStartOf="@id/guide1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingBottom="@dimen/_20dp"
+                                android:background="@drawable/ic_bg_lhr"
+                                >
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/iv_lhr"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    android:layout_marginTop="@dimen/_10dp"
+                                    android:background="@drawable/bg_circle"
+                                    android:src="@drawable/ic_help_call"
+                                    app:civ_border_width="10dp"
+                                    app:civ_border_color="@color/grey_001"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/tv_lhr"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_tt25dp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="@string/lahore"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_14sp"
+                                    android:layout_marginTop="@dimen/_5dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/iv_lhr" />
+
+                                <TextView
+                                    android:id="@+id/tv_lhr_no"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_tt25dp"
+                                    android:fontFamily="@font/poppins_semi_bold"
+                                    android:text="042080044488"
+                                    android:textColor="@color/purple"
+                                    android:textSize="@dimen/_16sp"
+                                    app:layout_constraintStart_toStartOf="@id/tv_lhr"
+                                    app:layout_constraintTop_toBottomOf="@id/tv_lhr"
+                                    app:layout_constraintEnd_toEndOf="@id/tv_lhr"/>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_isb"
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5dp"
+                            app:cardCornerRadius="@dimen/_10dp"
+                            android:elevation="@dimen/_3dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@id/guide1"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingBottom="@dimen/_20dp"
+                                android:background="@drawable/ic_bg_isb"
+                                >
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/iv_isb"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    android:layout_marginTop="@dimen/_10dp"
+                                    android:background="@drawable/bg_circle"
+                                    android:src="@drawable/ic_help_call"
+                                    app:civ_border_width="10dp"
+                                    app:civ_border_color="@color/grey_001"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/tv_isb"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_tt25dp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="@string/islamabad"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_14sp"
+                                    android:layout_marginTop="@dimen/_5dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/iv_isb" />
+
+                                <TextView
+                                    android:id="@+id/tv_isb_no"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_tt25dp"
+                                    android:fontFamily="@font/poppins_semi_bold"
+                                    android:text="051080044488"
+                                    android:textColor="@color/purple"
+                                    android:textSize="@dimen/_16sp"
+                                    app:layout_constraintStart_toStartOf="@id/tv_isb"
+                                    app:layout_constraintTop_toBottomOf="@id/tv_isb"
+                                    app:layout_constraintEnd_toEndOf="@id/tv_isb"/>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_khi"
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_5dp"
+                            android:layout_marginTop="@dimen/_5dp"
+                            app:cardCornerRadius="@dimen/_10dp"
+                            android:elevation="@dimen/_3dp"
+                            app:layout_constraintEnd_toStartOf="@id/guide1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/cv_lhr">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingBottom="@dimen/_20dp"
+                                android:background="@drawable/ic_bg_khi"
+                                >
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/iv_khi"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    android:layout_marginTop="@dimen/_10dp"
+                                    android:background="@drawable/bg_circle"
+                                    android:src="@drawable/ic_help_call"
+                                    app:civ_border_width="10dp"
+                                    app:civ_border_color="@color/grey_001"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/tv_khi"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_tt25dp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="@string/karachi"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_14sp"
+                                    android:layout_marginTop="@dimen/_5dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/iv_khi" />
+
+                                <TextView
+                                    android:id="@+id/tv_khi_no"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_tt25dp"
+                                    android:fontFamily="@font/poppins_semi_bold"
+                                    android:text="021080044488"
+                                    android:textColor="@color/purple"
+                                    android:textSize="@dimen/_16sp"
+                                    app:layout_constraintStart_toStartOf="@id/tv_khi"
+                                    app:layout_constraintTop_toBottomOf="@id/tv_khi"
+                                    app:layout_constraintEnd_toEndOf="@id/tv_khi"/>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_quetta"
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5dp"
+                            android:layout_marginTop="@dimen/_5dp"
+                            app:cardCornerRadius="@dimen/_10dp"
+                            android:elevation="@dimen/_3dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@id/guide1"
+                            app:layout_constraintTop_toBottomOf="@id/cv_isb">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingBottom="@dimen/_20dp"
+                                android:background="@drawable/ic_bg_quetta"
+                                >
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/iv_quetta"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    android:layout_marginTop="@dimen/_10dp"
+                                    android:background="@drawable/bg_circle"
+                                    android:src="@drawable/ic_help_call"
+                                    app:civ_border_width="10dp"
+                                    app:civ_border_color="@color/grey_001"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/tv_quetta"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_tt25dp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="@string/quetta"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_14sp"
+                                    android:layout_marginTop="@dimen/_5dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/iv_quetta" />
+
+                                <TextView
+                                    android:id="@+id/tv_quetta_no"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_tt25dp"
+                                    android:fontFamily="@font/poppins_semi_bold"
+                                    android:text="081080044488"
+                                    android:textColor="@color/purple"
+                                    android:textSize="@dimen/_16sp"
+                                    app:layout_constraintStart_toStartOf="@id/tv_quetta"
+                                    app:layout_constraintTop_toBottomOf="@id/tv_quetta"
+                                    app:layout_constraintEnd_toEndOf="@id/tv_quetta"/>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_peshawar"
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_5dp"
+                            android:layout_marginTop="@dimen/_5dp"
+                            app:cardCornerRadius="@dimen/_10dp"
+                            android:elevation="@dimen/_3dp"
+                            app:layout_constraintEnd_toStartOf="@id/guide1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/cv_khi">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingBottom="@dimen/_20dp"
+                                android:background="@drawable/ic_bg_pshawar"
+                                >
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/iv_peshawar"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    android:layout_marginTop="@dimen/_10dp"
+                                    android:background="@drawable/bg_circle"
+                                    android:src="@drawable/ic_help_call"
+                                    app:civ_border_width="10dp"
+                                    app:civ_border_color="@color/grey_001"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/tv_peshawar"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_tt25dp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="@string/peshawar"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_14sp"
+                                    android:layout_marginTop="@dimen/_5dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/iv_peshawar" />
+
+                                <TextView
+                                    android:id="@+id/tv_peshawar_no"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_tt25dp"
+                                    android:fontFamily="@font/poppins_semi_bold"
+                                    android:text="091080044488"
+                                    android:textColor="@color/purple"
+                                    android:textSize="@dimen/_16sp"
+                                    app:layout_constraintStart_toStartOf="@id/tv_peshawar"
+                                    app:layout_constraintTop_toBottomOf="@id/tv_peshawar"
+                                    app:layout_constraintEnd_toEndOf="@id/tv_peshawar"/>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_gb"
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5dp"
+                            android:layout_marginTop="@dimen/_5dp"
+                            app:cardCornerRadius="@dimen/_10dp"
+                            android:elevation="@dimen/_3dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@id/guide1"
+                            app:layout_constraintTop_toBottomOf="@id/cv_quetta">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingBottom="@dimen/_20dp"
+                                android:background="@drawable/ic_bg_gb"
+                                >
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/iv_gb"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    android:layout_marginTop="@dimen/_10dp"
+                                    android:background="@drawable/bg_circle"
+                                    android:src="@drawable/ic_help_call"
+                                    app:civ_border_width="10dp"
+                                    app:civ_border_color="@color/grey_001"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/tv_gb"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_tt25dp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="@string/gilgit_baltistan"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_14sp"
+                                    android:layout_marginTop="@dimen/_5dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/iv_gb" />
+
+                                <TextView
+                                    android:id="@+id/tv_gb_no"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_tt25dp"
+                                    android:fontFamily="@font/poppins_semi_bold"
+                                    android:text="05811920334"
+                                    android:textColor="@color/purple"
+                                    android:textSize="@dimen/_16sp"
+                                    app:layout_constraintStart_toStartOf="@id/tv_gb"
+                                    app:layout_constraintTop_toBottomOf="@id/tv_gb"
+                                    app:layout_constraintEnd_toEndOf="@id/tv_gb"/>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
