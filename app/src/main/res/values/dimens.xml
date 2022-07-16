@@ -40,6 +40,7 @@
     <dimen name="_t20dp">20dp</dimen>
     <dimen name="_tt20dp">20dp</dimen>
     <dimen name="_tt25dp">25dp</dimen>
+    <dimen name="_t25_30dp">25dp</dimen>
     <dimen name="_tt30dp">30dp</dimen>
 
     <dimen name="grid_expected_size">120dp</dimen>

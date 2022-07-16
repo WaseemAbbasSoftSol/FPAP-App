@@ -5,10 +5,15 @@
       <map>
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/drawable/bg_circle.xml" value="0.1295" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/drawable/bg_rounded_button.xml" value="0.1265" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/drawable/bg_rounded_view.xml" value="0.1405" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/drawable/ic_back_right.xml" value="0.183" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/drawable/ic_bg_blue.xml" value="0.165" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/drawable/ic_bg_lhr.xml" value="0.1895" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/drawable/ic_bg_orange.xml" value="0.165" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/drawable/ic_bg_whole.xml" value="0.1855" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/drawable/ic_bg_yellow.xml" value="0.1405" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/drawable/ic_group_2349.xml" value="0.1295" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/drawable/ic_iv_key_msg.xml" value="0.1945" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/drawable/ic_rectangle_590.xml" value="0.1395" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/drawable/ic_rectangle_844.xml" value="0.1395" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/activity_account.xml" value="0.18645833333333334" />
@@ -18,8 +23,10 @@
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/dialog_submit_test.xml" value="0.18541666666666667" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/drawer_header_layout.xml" value="0.18645833333333334" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/fragment_certificate.xml" value="0.1574074074074074" />
-        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/fragment_dashboard.xml" value="0.23050139275766016" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/fragment_dashboard.xml" value="0.18" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/fragment_dashboard_detail.xml" value="0.18645833333333334" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/fragment_dashboard_detail_new.xml" value="0.33" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/fragment_login.xml" value="0.18645833333333334" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/fragment_mcqs_main_container.xml" value="0.18645833333333334" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/fragment_mcqs_options.xml" value="0.18645833333333334" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/fragment_profile.xml" value="0.18645833333333334" />
@@ -34,6 +41,7 @@
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/item_dashobard_shimmer.xml" value="0.18541666666666667" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/item_mcqs_options.xml" value="0.17239583333333333" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/layout_start_test_bottom.xml" value="0.18645833333333334" />
+        <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/layout_start_test_new.xml" value="0.22" />
         <entry key="app/src/main/res/drawable-v24/ic_edit.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_gradient.xml" value="0.1" />

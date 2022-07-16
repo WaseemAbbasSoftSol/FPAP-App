@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1dp"
+        android:layout_marginStart="@dimen/_20dp"
+        android:layout_marginEnd="@dimen/_20dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:background="@color/grey_lite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_start_test"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20dp"
+        android:layout_marginEnd="@dimen/_20dp"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:text="@string/label_start_with_pre_test"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16sp"
+        android:layout_marginTop="@dimen/_10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_One"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey_001"
+        android:paddingTop="@dimen/_20dp"
+        android:paddingBottom="@dimen/_20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_start_test">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_time_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/first_guide"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.50" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_one"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="@dimen/_3dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/first_guide"
+                app:layout_constraintTop_toTopOf="parent"
+                android:backgroundTint="@color/yellow"
+                android:background="@drawable/bg_rounded_view">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_yellow"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_test_yellow"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:layout_marginBottom="@dimen/_5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_step1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20dp"
+                    android:layout_marginStart="@dimen/_5dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toEndOf="@id/iv_yellow"
+                    app:layout_constraintTop_toTopOf="@id/iv_yellow"
+                    android:text="@string/label_step1" />
+
+                <TextView
+                    android:id="@+id/tv_pre_test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_t25_30dp"
+                    android:layout_marginStart="@dimen/_5dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toEndOf="@id/iv_yellow"
+                    app:layout_constraintTop_toBottomOf="@id/tv_step1"
+                    android:text="@string/label_pre_test" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_two"
+                android:layout_marginStart="@dimen/_3dp"
+                android:layout_marginEnd="@dimen/_20dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/first_guide"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:backgroundTint="@color/blue"
+                android:background="@drawable/bg_rounded_view">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_blue"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_questionmark_blue"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:layout_marginBottom="@dimen/_5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/tv_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20dp"
+                    android:layout_marginStart="@dimen/_5dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toEndOf="@id/iv_blue"
+                    app:layout_constraintTop_toTopOf="@id/iv_blue"
+                    android:text="@string/label_question" />
+
+                <TextView
+                    android:id="@+id/tv_no_of_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_t25_30dp"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toEndOf="@id/iv_blue"
+                    app:layout_constraintTop_toBottomOf="@id/tv_question"
+                    android:text="@string/label_no_of_question" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_start_test"
+                style="@style/AppTheme.ContainedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:text="@string/label_start_test"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_two" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:visibility="gone"
+                android:id="@+id/cl_inner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_two">
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/second_guide"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.50" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_four"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="@dimen/_3dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/second_guide"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:backgroundTint="@color/green_002"
+                    android:background="@drawable/bg_rounded_view">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_green"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_correct_answeers"
+                        android:layout_marginTop="@dimen/_5dp"
+                        android:layout_marginBottom="@dimen/_5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_correct_answer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20dp"
+                        android:layout_marginStart="@dimen/_5dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="12sp"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toEndOf="@id/iv_green"
+                        app:layout_constraintTop_toTopOf="@id/iv_green"
+                        android:text="@string/label_correct_ans" />
+
+                    <TextView
+                        android:id="@+id/tv_no_of_corrent_answer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_t25_30dp"
+                        android:layout_marginStart="@dimen/_5dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toEndOf="@id/iv_green"
+                        app:layout_constraintTop_toBottomOf="@id/tv_correct_answer"
+                        android:text="@string/label_05" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_five"
+                    android:layout_marginStart="@dimen/_3dp"
+                    android:layout_marginEnd="@dimen/_20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/second_guide"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:backgroundTint="@color/red_001"
+                    android:background="@drawable/bg_rounded_view">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_red"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_incorrect_ans"
+                        android:layout_marginTop="@dimen/_5dp"
+                        android:layout_marginBottom="@dimen/_5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/tv_incorrect_answer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20dp"
+                        android:layout_marginStart="@dimen/_5dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="12sp"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toEndOf="@id/iv_red"
+                        app:layout_constraintTop_toTopOf="@id/iv_red"
+                        android:text="@string/label_incorrect_ans" />
+
+                    <TextView
+                        android:id="@+id/tv_no_of_incorrent_answer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_t25_30dp"
+                        android:layout_marginStart="5dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toEndOf="@id/iv_red"
+                        app:layout_constraintTop_toBottomOf="@id/tv_incorrect_answer"
+                        android:text="@string/label_05" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

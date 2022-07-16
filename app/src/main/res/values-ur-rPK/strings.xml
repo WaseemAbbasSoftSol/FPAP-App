@@ -86,4 +86,7 @@
     <string name="peshawar" translatable="false">پشاور</string>
     <string name="gilgit_baltistan" translatable="false">گلگت بلتستان</string>
     <string name="label_report" translatable="false">رپورٹس</string>
+    <string name="content" translatable="false">مواد</string>
+    <string name="key_message" translatable="false">اہم پیغام</string>
+    <string name="key_message2" translatable="false">اہم پیغام</string>
 </resources>

@@ -138,9 +138,9 @@
 
 
                         <include
-                            android:visibility="gone"
+
                             android:id="@+id/bottom_layout"
-                            layout="@layout/layout_start_test_bottom"
+                            layout="@layout/layout_start_test_new"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:layout_constraintStart_toStartOf="parent"
@@ -200,7 +200,7 @@
                             />
                         <include
                             android:id="@+id/bottom_layout_post"
-                            layout="@layout/layout_start_test_bottom"
+                            layout="@layout/layout_start_test_new"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:layout_constraintStart_toStartOf="parent"

@@ -4,6 +4,9 @@ import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.text.Html
+import android.transition.Fade
+import android.transition.Transition
+import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +22,8 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentDashboardDetailBinding
+import com.softsolutions.fpap.databinding.FragmentDashboardDetailNewBinding
+import com.softsolutions.fpap.databinding.FragmentDashboardDetailNewBindingImpl
 import com.softsolutions.fpap.model.SubjectList
 import com.softsolutions.fpap.ui.common.OnListItemClickListener
 import com.softsolutions.fpap.ui.common.isUrduMedium
@@ -29,7 +34,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList> {
-    private lateinit var binding: FragmentDashboardDetailBinding
+    private lateinit var binding: FragmentDashboardDetailNewBinding
     private val mViewModel: DashboardDetailViewModel by viewModel()
     private var imageLink = "https://ikddata.ilmkidunya.com/images/subjectimages/"
     private var testId = 0
@@ -52,7 +57,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentDashboardDetailBinding.inflate(inflater,container,false)
+        binding= FragmentDashboardDetailNewBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
         if (isUrduMedium) {
             binding.back.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_back_right))
@@ -77,10 +82,12 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                 if (scrollRange + verticalOffset == 0) {
                     binding.tvHeader.visibility=View.GONE
                     binding.tvToolbar.visibility=View.VISIBLE
+                  //  binding.clProgress.fadeVisibility(View.VISIBLE,4000)
                     isShow = true
                 } else if (isShow) {
                     binding.tvHeader.visibility=View.VISIBLE
                     binding.tvToolbar.visibility=View.GONE
+                  //  binding.clProgress.fadeVisibility(View.GONE,500)
                 }
             }
         })
@@ -115,6 +122,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                     binding.bottomLayout.tv_no_of_question.text=it.totalQuestions.toString()
                     binding.clPost.visibility=View.VISIBLE
                     binding.tvDetail2Post.text = getHtmlText(it.courseContent)
+                    binding.tvDetailKeyMsg.text = getHtmlText(it.courseContent)
                     if (null!=it.video){
 //                        binding.cvPost.visibility=View.VISIBLE
 //                        setWebView(requireContext(),requireActivity(), binding.webviewPost)
@@ -195,4 +203,13 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
     override fun onItemClick(item: SubjectList, pos: Int) {
         Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_SHORT).show()
     }
+
+    fun View.fadeVisibility(visibility: Int, duration: Long = 400) {
+        val transition: Transition = Fade()
+        transition.duration = duration
+        transition.addTarget(this)
+        TransitionManager.beginDelayedTransition(this.parent as ViewGroup, transition)
+        this.visibility = visibility
+    }
+
 }

@@ -18,6 +18,10 @@
     <color name="purple">#383B86</color>
     <color name="green">#3BB052</color>
     <color name="red">#ff0000</color>
+    <color name="red_001">#FD5C37</color>
+    <color name="yellow">#FCC953</color>
+    <color name="blue">#379EFD</color>
+    <color name="green_002">#31C9A8</color>
     <color name="transparent">#00000000</color>
 
 </resources>
