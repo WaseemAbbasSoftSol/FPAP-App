@@ -77,7 +77,8 @@ class MainActivity : AppCompatActivity() {
         binding.navigationView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.dashboard -> hideNavigation()
-                R.id.certificate-> startActivity(Intent(this, CertificateActivity::class.java))
+               // R.id.certificate-> startActivity(Intent(this, CertificateActivity::class.java))
+                R.id.certificate-> findNavController(R.id.nav_host_main).navigate(R.id.action_dashboard_certificate_fragment)
                 R.id.profile-> startActivity(Intent(this, ProfileActivity::class.java))
                 R.id.signout -> {
                     val dialog = SignoutDialog()
@@ -103,7 +104,7 @@ class MainActivity : AppCompatActivity() {
                     binding.toolbar.navHamMenu.visibility=View.VISIBLE
                     binding.toolbar.back.visibility=View.GONE
                 }
-                R.id.dashboard_detail_fragment, R.id.mcqs_fragment,R.id.result_fragment -> {
+                R.id.dashboard_detail_fragment, R.id.mcqs_fragment,R.id.result_fragment,R.id.fragment_certificate -> {
                     binding.toolbar.root.visibility= View.GONE
                     binding.toolbar.navHamMenu.visibility=View.GONE
                 }

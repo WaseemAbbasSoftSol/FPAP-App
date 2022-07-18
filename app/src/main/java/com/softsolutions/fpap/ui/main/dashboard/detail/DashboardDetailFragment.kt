@@ -7,6 +7,7 @@ import android.text.Html
 import android.transition.Fade
 import android.transition.Transition
 import android.transition.TransitionManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +28,9 @@ import com.softsolutions.fpap.databinding.FragmentDashboardDetailNewBindingImpl
 import com.softsolutions.fpap.model.SubjectList
 import com.softsolutions.fpap.ui.common.OnListItemClickListener
 import com.softsolutions.fpap.ui.common.isUrduMedium
+import com.softsolutions.fpap.utils.APP_TAG
 import com.softsolutions.fpap.utils.ChromeWebView
+import com.softsolutions.fpap.utils.makeStatusBarTransparent
 import com.softsolutions.fpap.utils.setWebView
 import kotlinx.android.synthetic.main.layout_start_test_bottom.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -59,6 +62,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
     ): View? {
         binding= FragmentDashboardDetailNewBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
+        requireActivity().makeStatusBarTransparent()
         if (isUrduMedium) {
             binding.back.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_back_right))
         }
@@ -105,11 +109,12 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                 unitId=it.unitId
                 binding.tvToolbar.text=subjectName
                 binding.tvHeader.text=subjectName
-                imageLink += it.subjectImage
+                imageLink = "https://ikddata.ilmkidunya.com/images/subjectimages/${it.subjectImage}"
 
                 binding.tvDetail.text = getHtmlText(it.introContent)
 
                 Glide.with(requireContext()).load(imageLink).into(binding.guideDetailImage)
+                Log.d(APP_TAG,"ddd "+imageLink)
                 binding.bottomLayoutPost.tv_step1.text = getString(R.string.label_step2)
                 binding.bottomLayoutPost.tv_pre_test.text = getString(R.string.label_post_test)
 

@@ -16,6 +16,7 @@ import com.softsolutions.fpap.model.mcq.SubmitMcq
 import com.softsolutions.fpap.ui.common.SubmitDialog
 import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.ui.main.dashboard.detail.DashboardDetailFragment
+import com.softsolutions.fpap.utils.exitFullScreenMode
 import com.softsolutions.fpap.utils.makeProgressOnButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -47,6 +48,7 @@ class McqsContainerFragment:Fragment() {
     ): View? {
         binding = FragmentMcqsMainContainerBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
+        requireActivity().exitFullScreenMode()
         if (isUrduMedium) {
             binding.toolbarLayout.back.setImageDrawable(
                 ContextCompat.getDrawable(

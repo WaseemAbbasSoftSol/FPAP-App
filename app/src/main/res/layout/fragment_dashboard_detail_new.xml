@@ -210,7 +210,7 @@
                     android:id="@+id/tv_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_20dp"
+                    android:layout_marginTop="@dimen/_5dp"
                     android:fontFamily="@font/poppins_semi_bold"
                     tools:text="@string/label_internal_personal"
                     android:textColor="@color/purple"

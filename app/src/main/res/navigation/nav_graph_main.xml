@@ -14,6 +14,10 @@
             android:id="@+id/action_dashboard_to_dashboard_detail_fragment"
             app:destination="@id/dashboard_detail_fragment"/>
 
+        <action
+            android:id="@+id/action_dashboard_certificate_fragment"
+            app:destination="@id/fragment_certificate"/>
+
     </fragment>
 
     <fragment
@@ -56,6 +60,11 @@
             app:popUpTo="@id/dashboard_detail_fragment"
             app:popUpToInclusive="true"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/fragment_certificate"
+        android:name="com.softsolutions.fpap.ui.main.certificate.CertificateFragment"
+        tools:layout="@layout/fragment_certificate"/>
 
     <fragment
         android:id="@+id/result_fragment"

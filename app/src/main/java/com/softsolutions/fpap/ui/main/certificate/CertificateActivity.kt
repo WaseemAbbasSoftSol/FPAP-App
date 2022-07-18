@@ -11,6 +11,7 @@ import com.softsolutions.fpap.databinding.FragmentCertificateBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
+@Deprecated("This class is deprecated, Use CertificateFragment instead")
 class CertificateActivity : AppCompatActivity() {
     private lateinit var binding:FragmentCertificateBinding
     private val mViewModel:CertificateViewModel by viewModel()

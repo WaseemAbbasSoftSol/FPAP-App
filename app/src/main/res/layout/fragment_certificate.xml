@@ -26,6 +26,7 @@
                 android:padding="12dp"
                 android:layout_marginStart="@dimen/_15dp"
                 android:src="@drawable/ic_back"
+                app:navigation="@{true}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -82,7 +83,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_course"
-                    tools:listitem="@layout/item_course_certificate" />
+                    tools:listitem="@layout/item_course_certificate_new" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cl_bottom"

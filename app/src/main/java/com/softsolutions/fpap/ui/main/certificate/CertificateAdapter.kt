@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.model.CourseCertificate
+import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.utils.splitDateAndTime
 import java.security.cert.Certificate
 
@@ -19,20 +20,18 @@ class CertificateAdapter(
     RecyclerView.Adapter<CertificateAdapter.ItemRecyclerViewHolder>() {
 
     class ItemRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val tvEnglishTitle=itemView.findViewById<TextView>(R.id.tv_name_eng)
-    val tvUrduTitle=itemView.findViewById<TextView>(R.id.tv_name_urdu)
-    val tvstatus=itemView.findViewById<TextView>(R.id.tv_pre_test)
+    val tvsubjectName=itemView.findViewById<TextView>(R.id.tv_sub_name)
+    val tvstatus=itemView.findViewById<TextView>(R.id.tv_status)
     val date=itemView.findViewById<TextView>(R.id.tv_date)
-    val tvd=itemView.findViewById<TextView>(R.id.tv_question)
+    val download=itemView.findViewById<TextView>(R.id.tv_download)
+        val view=itemView.findViewById<View>(R.id.view2)
 
-    val tvcertificate=itemView.findViewById<TextView>(R.id.tv_certificate)
-    val tvdownload=itemView.findViewById<TextView>(R.id.tv_download)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemRecyclerViewHolder {
             return ItemRecyclerViewHolder(
                 LayoutInflater.from(context).inflate(
-                    R.layout.item_course_certificate,
+                    R.layout.item_course_certificate_new,
                     parent,
                     false
                 )
@@ -41,18 +40,33 @@ class CertificateAdapter(
 
     override fun onBindViewHolder(holder: ItemRecyclerViewHolder, position: Int) {
         val item=list[position]
-        holder.tvEnglishTitle.text=item.subjectName
-        holder.tvUrduTitle.text=item.urduName
-        holder.tvstatus.text=item.status
+        if (isUrduMedium){
+            holder.tvsubjectName.text=item.urduName
+            if (item.status=="Not Attempt"){
+                holder.tvstatus.text="ٹیسٹ نہیں دیا"
+            }
+
+        }
+        else{
+            holder.tvsubjectName.text=item.subjectName
+            holder.tvstatus.text=item.status
+        }
+
         if (item.status!="Not Attempt"){
             holder.date.visibility=View.VISIBLE
-            holder.tvd.visibility=View.VISIBLE
+            holder.view.visibility=View.VISIBLE
+            val dd=splitDateAndTime(item.date)
+            holder.date.text=dd
         }
-        val dd=splitDateAndTime(item.date)
-        holder.date.text=dd
+
         if (item.file != null){
-            holder.tvdownload.visibility=View.VISIBLE
-            holder.tvcertificate.visibility=View.VISIBLE
+            holder.download.visibility=View.VISIBLE
+//            holder.tvcertificate.visibility=View.VISIBLE
+        }
+        holder.download.setOnClickListener {
+            if (item.file!=null){
+                //download data
+            }
         }
     }
     override fun getItemCount(): Int {

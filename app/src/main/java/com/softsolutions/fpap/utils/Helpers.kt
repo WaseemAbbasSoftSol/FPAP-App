@@ -5,17 +5,23 @@ import android.app.Activity
 import android.content.ContentResolver
 import android.content.Context
 import android.content.res.Configuration
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.provider.OpenableColumns
+import android.view.View
+import android.view.WindowManager
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.widget.Button
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.github.razir.progressbutton.hideProgress
 import com.github.razir.progressbutton.showProgress
+import com.softsolutions.fpap.R
 import com.softsolutions.fpap.data.PrefRepository
 import com.softsolutions.fpap.ui.common.isUrduMedium
 import java.io.File
@@ -116,4 +122,31 @@ fun setWebView(context:Context,activity: Activity,webview:WebView) {
     webSettings.setAppCacheEnabled(true)
     webSettings.javaScriptCanOpenWindowsAutomatically = true;
     webSettings.setPluginState(WebSettings.PluginState.ON);
+}
+
+fun Activity.makeStatusBarTransparent() {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        window.apply {
+            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            decorView.systemUiVisibility =
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            statusBarColor = Color.TRANSPARENT
+            setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
+                        or WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+            )
+        }
+    }
+
+}
+@RequiresApi(Build.VERSION_CODES.R)
+fun Activity.exitFullScreenMode() {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        window.apply {
+            this.decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE)
+            statusBarColor = ContextCompat.getColor(context, R.color.primary)
+        }
+    }
+
 }

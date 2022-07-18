@@ -3,6 +3,7 @@ package com.softsolutions.fpap.ui.main.dashboard
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -12,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
@@ -22,6 +24,7 @@ import com.softsolutions.fpap.databinding.FragmentDashboardBinding
 import com.softsolutions.fpap.model.SubjectList
 import com.softsolutions.fpap.ui.common.FragmentOnBackPressed
 import com.softsolutions.fpap.ui.common.OnListItemClickListener
+import com.softsolutions.fpap.utils.exitFullScreenMode
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -29,6 +32,7 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
     private lateinit var binding: FragmentDashboardBinding
     private val mViewModel: DashboardViewModel by viewModel()
     private var back = 0
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,6 +40,7 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
     ): View {
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
+        requireActivity().exitFullScreenMode()
         binding.subjectClickListener = OnDashboardSubjectClickListener()
         getNumberAndMakePhoneCall()
         return binding.root
