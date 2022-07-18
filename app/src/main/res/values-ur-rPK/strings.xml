@@ -25,7 +25,9 @@
     <string name="label_internal_personal" translatable="false">باہمی تعلقات</string>
     <string name="label_lorem_ipsum" translatable="false">ایک ٹیلے پر واقع مزار خواجہ فریدالدین گنج شکرؒ کے احاطہء صحن میں ذرا سی ژالہ باری چاندی کے ڈھیروں کی مثل بڑے غضب کا نظارا دیتی ہے۔ایک ٹیلے پر واقع مزار خواجہ فریدالدین گنج شکرؒ کے احاطہء صحن میں ذرا سی ژالہ باری چاندی کے ڈھیروں کی مثل بڑے غضب کا نظارا دیتی ہے۔ایک ٹیلے پر واقع مزار خواجہ فریدالدین گنج شکرؒ کے احاطہء صحن میں ذرا سی ژالہ باری چاندی کے ڈھیروں کی مثل بڑے غضب کا نظارا دیتی ہے۔</string>
     <string name="label_start_with_pre_test" translatable="false">ذیل میں دیے گئے پری ٹیسٹ کے ساتھ اپنا کورس شروع کریں۔</string>
+    <string name="label_start_with_pre_test_result" translatable="false">آپ کے پری ٹیسٹ کا نتیجہ:</string>
     <string name="label_start_with_post_test" translatable="false">ذیل میں دیے گئے پوسٹ ٹیسٹ کے ساتھ اپنا کورس شروع کریں۔</string>
+    <string name="label_start_with_post_test_result" translatable="false">آپ کے پوسٹ ٹیسٹ کا نتیجہ:</string>
     <string name="label_step1" translatable="false">مرحلہ نمبر 1</string>
     <string name="label_step2" translatable="false">مرحلہ نمبر 2</string>
     <string name="label_pre_test" translatable="false">پری ٹیسٹ</string>

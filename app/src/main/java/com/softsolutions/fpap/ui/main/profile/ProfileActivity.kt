@@ -1,8 +1,11 @@
 package com.softsolutions.fpap.ui.main.profile
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.softsolutions.fpap.MainActivity
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.ActivityProfileBinding
 import com.softsolutions.fpap.databinding.FragmentProfileBinding
@@ -32,5 +35,8 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-
+    override fun onBackPressed() {
+       startActivity(Intent(this, MainActivity::class.java))
+        finish()
+}
 }

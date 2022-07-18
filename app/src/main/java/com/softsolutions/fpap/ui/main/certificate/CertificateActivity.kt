@@ -1,10 +1,12 @@
 package com.softsolutions.fpap.ui.main.certificate
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.softsolutions.fpap.MainActivity
 import com.softsolutions.fpap.databinding.FragmentCertificateBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
@@ -39,4 +41,8 @@ class CertificateActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+    }
 }

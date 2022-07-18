@@ -112,9 +112,10 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                 Glide.with(requireContext()).load(imageLink).into(binding.guideDetailImage)
                 binding.bottomLayoutPost.tv_step1.text = getString(R.string.label_step2)
                 binding.bottomLayoutPost.tv_pre_test.text = getString(R.string.label_post_test)
-                binding.bottomLayoutPost.tv_start_test.text=getString(R.string.label_start_with_post_test)
+
 
                 if (it.isSumbmittedPreTest){
+                    binding.bottomLayout.tv_start_test.text=getString(R.string.label_start_with_pre_test_result)
                     binding.bottomLayout.btn_start_test.visibility=View.GONE
                     binding.bottomLayout.cl_inner.visibility=View.VISIBLE
                     binding.bottomLayout.tv_no_of_corrent_answer.text=it.preCorrectAns.toString()
@@ -129,15 +130,20 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
 //                        binding.webviewPost.webViewClient = Browser_home()
 //                        binding.webviewPost.loadUrl(it.video)
                     }
+                }else{
+                    binding.bottomLayout.tv_start_test.text=getString(R.string.label_start_with_pre_test)
                 }
 
                 if (it.isSubmittedPostTest){
+                    binding.bottomLayoutPost.tv_start_test.text=getString(R.string.label_start_with_post_test_result)
                     binding.bottomLayoutPost.btn_start_test.visibility=View.GONE
                     binding.bottomLayoutPost.cl_inner.visibility=View.VISIBLE
                     binding.bottomLayoutPost.tv_no_of_corrent_answer.text=it.postCorrectAns.toString()
                     binding.bottomLayoutPost.tv_no_of_incorrent_answer.text=it.postIncorrectAns.toString()
                     binding.bottomLayoutPost.tv_no_of_question.text=it.totalQuestions.toString()
                    // binding.tvDetail2Post.text = getDescriptionText(it.courseContent)
+                }else{
+                    binding.bottomLayoutPost.tv_start_test.text=getString(R.string.label_start_with_post_test)
                 }
                 if (it.isPassed) {
                     binding.resultLayout.root.visibility = View.VISIBLE

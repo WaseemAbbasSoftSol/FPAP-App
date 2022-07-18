@@ -289,20 +289,30 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <de.hdodenhof.circleimageview.CircleImageView
+
+
+                <LinearLayout
                     android:id="@+id/iv_helpline"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     app:layout_constraintBottom_toBottomOf="@id/cl_two"
                     app:layout_constraintTop_toTopOf="@id/cl_three"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:src="@drawable/ic_helpline"
                     android:elevation="@dimen/_5dp"
-                    app:civ_border_width="20dp"
-                    app:civ_border_color="@color/white"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:backgroundTint="@color/white"
+                    android:background="@drawable/bg_rounded_view"
                     android:layout_marginStart="@dimen/_20dp"
-                    android:layout_marginEnd="@dimen/_20dp"
-                    />
+                    android:layout_marginEnd="@dimen/_20dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_helpline"
+                        />
+
+                </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cl_three"

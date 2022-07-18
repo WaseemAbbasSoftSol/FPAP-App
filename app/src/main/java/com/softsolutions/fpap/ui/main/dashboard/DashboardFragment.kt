@@ -1,5 +1,8 @@
 package com.softsolutions.fpap.ui.main.dashboard
 
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,6 +12,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -32,6 +37,7 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.subjectClickListener = OnDashboardSubjectClickListener()
+        getNumberAndMakePhoneCall()
         return binding.root
     }
 
@@ -63,10 +69,53 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
 
             back++
             Handler(Looper.getMainLooper()).postDelayed({
-                back=0
+                back = 0
             }, 2000)
             return
         }
         requireActivity().finish()
+    }
+
+    private fun getNumberAndMakePhoneCall() {
+        binding.tvLhrNo.setOnClickListener {
+            val no = binding.tvLhrNo.text.toString().trim()
+            makePhoneCall(no)
+        }
+        binding.tvIsbNo.setOnClickListener {
+            val no = binding.tvIsbNo.text.toString().trim()
+            makePhoneCall(no)
+        }
+        binding.tvKhiNo.setOnClickListener {
+            val no = binding.tvKhiNo.text.toString().trim()
+            makePhoneCall(no)
+        }
+        binding.tvQuettaNo.setOnClickListener {
+            val no = binding.tvQuettaNo.text.toString().trim()
+            makePhoneCall(no)
+        }
+        binding.tvPeshawarNo.setOnClickListener {
+            val no = binding.tvPeshawarNo.text.toString().trim()
+            makePhoneCall(no)
+        }
+        binding.tvGbNo.setOnClickListener {
+            val no = binding.tvGbNo.text.toString().trim()
+            makePhoneCall(no)
+        }
+    }
+
+    private fun makePhoneCall(phoneNumber: String) {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                android.Manifest.permission.CALL_PHONE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                requireActivity(), arrayOf(android.Manifest.permission.CALL_PHONE),
+                1000
+            )
+        } else {
+            val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$phoneNumber"))
+            startActivity(intent)
+        }
     }
 }

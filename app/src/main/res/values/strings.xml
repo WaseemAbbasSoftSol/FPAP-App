@@ -34,7 +34,9 @@
     <string name="label_internal_personal" translatable="false">Intepersonal Relationships</string>
     <string name="label_lorem_ipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</string>
     <string name="label_start_with_pre_test" translatable="false">Start your course with the pre test\ngiven below:</string>
+    <string name="label_start_with_pre_test_result" translatable="false">Your pre test result :</string>
     <string name="label_start_with_post_test" translatable="false">Start your course with the post test\ngiven below:</string>
+    <string name="label_start_with_post_test_result" translatable="false">Your post test result :</string>
     <string name="label_step1" translatable="false">Step 1</string>
     <string name="label_step2" translatable="false">Step 2</string>
     <string name="label_pre_test" translatable="false">Pre-Test</string>

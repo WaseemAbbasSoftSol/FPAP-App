@@ -40,7 +40,7 @@
     <!--TextView Dimens-->
     <dimen name="_t20dp">30dp</dimen>
     <dimen name="_tt20dp">35dp</dimen>
-    <dimen name="_tt25dp">34dp</dimen>
+    <dimen name="_tt25dp">35dp</dimen>
     <dimen name="_t25_30dp">30dp</dimen>
     <dimen name="_tt30dp">35dp</dimen>
 

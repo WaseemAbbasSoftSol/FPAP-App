@@ -26,7 +26,7 @@
         android:layout_marginStart="@dimen/_20dp"
         android:layout_marginEnd="@dimen/_20dp"
         android:fontFamily="@font/poppins_semi_bold"
-        android:text="@string/label_start_with_pre_test"
+        tools:text="@string/label_start_with_pre_test"
         android:textColor="@color/black"
         android:textSize="@dimen/_16sp"
         android:layout_marginTop="@dimen/_10dp"

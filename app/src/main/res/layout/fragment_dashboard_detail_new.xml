@@ -40,7 +40,7 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/guideDetailImage"
                         android:layout_width="match_parent"
-                        android:layout_height="320dp"
+                        android:layout_height="280dp"
                         android:scaleType="fitXY"
                         tools:src="@drawable/im_dashboard_detail"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -97,6 +97,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--Progress bar status layout-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_progress"
         android:layout_width="match_parent"
@@ -235,7 +236,7 @@
 
 
                 <include
-
+                    android:visibility="gone"
                     android:id="@+id/bottom_layout"
                     layout="@layout/layout_start_test_new"
                     android:layout_width="match_parent"
@@ -284,7 +285,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_content"
-                    android:layout_marginStart="@dimen/_20dp"
+                    android:layout_marginStart="@dimen/_10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_detail2_post"/>
 
@@ -329,15 +330,17 @@
                     />
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:visibility="gone"
                     android:id="@+id/iv_key_msg"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_iv_key_msg"
-                    android:layout_marginStart="@dimen/_20dp"
+                    android:layout_marginStart="@dimen/_10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_detail2_post"/>
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/tv_key_m"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -350,6 +353,7 @@
                     android:fontFamily="@font/poppins_semi_bold"
                     />
                 <View
+                    android:visibility="gone"
                     android:id="@+id/view2"
                     android:layout_width="@dimen/_1dp"
                     android:layout_height="0dp"
@@ -362,6 +366,7 @@
                     app:layout_constraintEnd_toEndOf="@id/iv_content"/>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/ll_key"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -375,6 +380,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_detail2_post">
 
                     <TextView
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10dp"
@@ -387,6 +393,7 @@
                 </LinearLayout>
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/tv_detail_key_msg"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -414,6 +421,7 @@
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <include
                 android:visibility="gone"
                 android:layout_marginTop="@dimen/_10dp"
