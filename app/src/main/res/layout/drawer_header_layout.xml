@@ -42,7 +42,7 @@
             android:fontFamily="@font/poppins_semi_bold"
             android:text="Jolliya Rafique"
             android:includeFontPadding="false"
-            android:textColor="@color/purple"
+            android:textColor="@color/white"
             android:textSize="@dimen/_18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -76,6 +76,7 @@
              />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="gone"
             android:id="@+id/cl"
             app:layout_constraintStart_toStartOf="@id/back"
             app:layout_constraintTop_toBottomOf="@id/line"
@@ -125,6 +126,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
+            android:visibility="gone"
             android:id="@+id/line2"
             android:background="@color/grey_lite"
             android:layout_width="match_parent"

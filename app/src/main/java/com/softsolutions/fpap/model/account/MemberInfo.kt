@@ -73,7 +73,9 @@ data class MemberInfo (
     @SerializedName("GenderName")
     val gender:String,
     @SerializedName("EmailId")
-    val email:String
+    val email:String,
+    @SerializedName("IsLanguage")
+    val isUrduMedium:Boolean
 
 ){
     val dateOfBirth:String

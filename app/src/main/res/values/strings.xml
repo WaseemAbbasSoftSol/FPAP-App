@@ -105,4 +105,6 @@
     <string name="key_message" translatable="false">Key\nMessage</string>
     <string name="key_message2" translatable="false">Key Message</string>
     <string name="download" translatable="false">Download</string>
+    <string name="mcqs" translatable="false">Mcqs</string>
+    <string name="question" translatable="false">Question</string>
 </resources>

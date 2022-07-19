@@ -93,4 +93,6 @@
     <string name="key_message" translatable="false">اہم پیغام</string>
     <string name="key_message2" translatable="false">اہم پیغام</string>
     <string name="download" translatable="false">ڈاؤن لوڈ کریں</string>
+    <string name="mcqs" translatable="false">متعدد انتخابی سوالات</string>
+    <string name="question" translatable="false">سوال نمبر</string>
 </resources>

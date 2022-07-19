@@ -16,6 +16,8 @@ class FpapRepository(private val fpapApi: FpapApi) {
  suspend fun getRegionList()=fpapApi.getRegionList()
  suspend fun getCitiesList()=fpapApi.getCitiesList()
  suspend fun getDashboardData(memberId:Int)=fpapApi.getDashboardData(memberId)
+ suspend fun getCountedUsers()=fpapApi.getCountedUsers()
+ suspend fun updateLanguage(memberId: Int, isUrduMedium:Boolean)=fpapApi.updateLanguage(memberId,isUrduMedium)
  suspend fun getDashboardDetail(memberId: Int,classId:Int, subjectId:Int, medium:Boolean)=fpapApi.getDashboardDetail(memberId,classId,subjectId, medium)
  suspend fun update(update:UpdateProfile)=fpapApi.update(update)
  suspend fun updateProfileImage(memberId: RequestBody, image: MultipartBody.Part?) = fpapApi.updateProfileImage(memberId, image)

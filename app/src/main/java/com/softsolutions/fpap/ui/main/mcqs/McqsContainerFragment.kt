@@ -1,10 +1,12 @@
 package com.softsolutions.fpap.ui.main.mcqs
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -17,6 +19,7 @@ import com.softsolutions.fpap.ui.common.SubmitDialog
 import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.ui.main.dashboard.detail.DashboardDetailFragment
 import com.softsolutions.fpap.utils.exitFullScreenMode
+import com.softsolutions.fpap.utils.hideProgressOnButton
 import com.softsolutions.fpap.utils.makeProgressOnButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -41,6 +44,7 @@ class McqsContainerFragment:Fragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,6 +53,7 @@ class McqsContainerFragment:Fragment() {
         binding = FragmentMcqsMainContainerBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         requireActivity().exitFullScreenMode()
+        binding.toolbarLayout.tvToolbar.text=getString(R.string.mcqs)
         if (isUrduMedium) {
             binding.toolbarLayout.back.setImageDrawable(
                 ContextCompat.getDrawable(
@@ -120,6 +125,12 @@ class McqsContainerFragment:Fragment() {
             if (it=="Certificate Detail found"){
                 findNavController().navigate(McqsContainerFragmentDirections.actionMcqToDashboardDetailFragment(DashboardDetailFragment.subjectId,
                 DashboardDetailFragment.subjectName))
+            }
+        }
+        mViewModel.errorMessage.observe(viewLifecycleOwner){
+            if (it!=null){
+                hideProgressOnButton(binding.btnSubmit,"Submit")
+                Toast.makeText(requireContext(),it.toString(),Toast.LENGTH_SHORT).show()
             }
         }
     }

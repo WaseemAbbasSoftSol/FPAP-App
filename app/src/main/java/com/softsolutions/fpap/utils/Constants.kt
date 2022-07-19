@@ -8,6 +8,7 @@ const val MEMBER_SIGNUP_SUCCESSFULLY = "Member signup successfully"
 const val MEMBER_SIGNIN_SUCCESSFULLY = "Member signin successfully"
 const val PASSWORD_SEND_TO_EMAIL = "Your Account Password send To Your Email"
 const val MEMBER_UPDATED = "Member Update successfully"
+const val LANGUAGE_UPDATED_SUCCESSFULLY = "Update Language Medium Successfully!"
 
 const val REQUEST_IMAGE = 1839
 const val REQUEST_VIDEO = 1843

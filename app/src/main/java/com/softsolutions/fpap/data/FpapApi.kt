@@ -1,9 +1,6 @@
 package com.softsolutions.fpap.data
 
-import com.softsolutions.fpap.model.BaseResponse
-import com.softsolutions.fpap.model.CourseCertificate
-import com.softsolutions.fpap.model.DashboardDetail
-import com.softsolutions.fpap.model.UpdateProfile
+import com.softsolutions.fpap.model.*
 import com.softsolutions.fpap.model.account.ForgotPassword
 import com.softsolutions.fpap.model.account.Login
 import com.softsolutions.fpap.model.account.Register
@@ -51,6 +48,16 @@ interface FpapApi {
     suspend fun getDashboardData(
         @Query("MemberID")memberId:Int
     ):Response<BaseResponse<User>>
+
+    @POST("countuserdata")
+    suspend fun getCountedUsers(
+    ):Response<BaseResponse<CountedUsers>>
+
+    @POST("updatelanguage")
+    suspend fun updateLanguage(
+        @Query("MemberId") memberId: Int,
+        @Query("IsUrdumedium") isUrduMedium:Boolean
+    ):Response<BaseResponse<Dashboard>>
 
     @POST("getCoursedetail")
     suspend fun getDashboardDetail(

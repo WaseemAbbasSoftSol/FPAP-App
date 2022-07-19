@@ -4,3 +4,4 @@ import androidx.lifecycle.MutableLiveData
 
 var isUrduMedium = false
 var isProfileImageChanged=MutableLiveData<Boolean>()
+var isNewStudentRegistering=false

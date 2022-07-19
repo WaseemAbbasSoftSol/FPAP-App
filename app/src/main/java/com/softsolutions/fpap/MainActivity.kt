@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         switchCompat.isChecked = isUrduMedium
         if (isUrduMedium) {
             back.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_back_right))
+            binding.navigationView.background=resources.getDrawable(R.drawable.bg_drawer_urdu)
         }
 
         switchCompat.setOnCheckedChangeListener { _, isChecked ->

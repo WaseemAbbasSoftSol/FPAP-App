@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentMcqsOptionsBinding
 import com.softsolutions.fpap.model.mcq.Mcq
 import com.softsolutions.fpap.model.mcq.McqsOption
@@ -28,10 +30,17 @@ class McqsOptionsFragment:Fragment(), McqsOptionAdapter.OnMcqsOptionClickListene
         qNo= bundle.getInt("questionNo")
         questionText= bundle.getString("question").toString()
         qNo += 1
-        binding.tvQuestionNo.text = "Question $qNo"
+        val questionNo= getString(R.string.question)
+        binding.tvQuestionNo.text = "$questionNo $qNo"
         binding.tvQuestion.text=questionText
         //val adapter=McqsOptionAdapter(requireContext(),mcq!!.answer, this)
-        val adapter=McqsOptionAdapter(requireContext(),mcq!!.answer, this,mcq!!)
+        val answer= arrayListOf<McqsOption>()
+        for ((i,value) in mcq!!.answer.withIndex()){
+            if (value.answerText.isNotEmpty()){
+                answer.add(value)
+            }
+        }
+        val adapter=McqsOptionAdapter(requireContext(),answer, this,mcq!!)
         binding.rvMcqs.adapter=adapter
 
         return binding.root

@@ -18,9 +18,12 @@ import com.softsolutions.fpap.MainActivity
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentLoginBinding
 import com.softsolutions.fpap.model.account.Login
+import com.softsolutions.fpap.ui.common.isNewStudentRegistering
+import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.utils.MEMBER_SIGNIN_SUCCESSFULLY
 import com.softsolutions.fpap.utils.hideProgressOnButton
 import com.softsolutions.fpap.utils.makeProgressOnButton
+import com.softsolutions.fpap.utils.setLocate
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -34,6 +37,7 @@ class LoginFragment: Fragment() {
     ): View? {
         binding= FragmentLoginBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
+        isNewStudentRegistering=false
         binding.toolbar.tvToolbar.text="Login"
         binding.toolbar.back.visibility=View.GONE
        binding.tvForgotPass.setOnClickListener{
@@ -58,6 +62,9 @@ class LoginFragment: Fragment() {
         binding.viewModel=mViewModel
         mViewModel.user.observe(viewLifecycleOwner, Observer {
             if (it!=null){
+                isUrduMedium=it.memberInfo.isUrduMedium
+                if (it.memberInfo.isUrduMedium)  setLocate("ur", requireActivity())
+                else  setLocate("en", requireActivity())
                 if (it.isRegistered){
                     mViewModel.deleteUser()
                     mViewModel.saveUser(it)

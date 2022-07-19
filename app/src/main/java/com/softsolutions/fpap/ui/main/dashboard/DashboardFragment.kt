@@ -22,9 +22,11 @@ import androidx.navigation.fragment.findNavController
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentDashboardBinding
 import com.softsolutions.fpap.model.SubjectList
-import com.softsolutions.fpap.ui.common.FragmentOnBackPressed
-import com.softsolutions.fpap.ui.common.OnListItemClickListener
+import com.softsolutions.fpap.ui.common.*
+import com.softsolutions.fpap.utils.LANGUAGE_UPDATED_SUCCESSFULLY
 import com.softsolutions.fpap.utils.exitFullScreenMode
+import com.softsolutions.fpap.utils.makeProgressOnButton
+import com.softsolutions.fpap.utils.setLocate
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -32,6 +34,7 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
     private lateinit var binding: FragmentDashboardBinding
     private val mViewModel: DashboardViewModel by viewModel()
     private var back = 0
+    private var selectedLanguage=""
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,12 +46,53 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
         requireActivity().exitFullScreenMode()
         binding.subjectClickListener = OnDashboardSubjectClickListener()
         getNumberAndMakePhoneCall()
+
+        if (isNewStudentRegistering){
+            val dialog = SelectMediumDialog()
+            dialog.show(requireActivity().supportFragmentManager, "")
+            dialog.setDialogPositiveClick(object :
+                SelectMediumDialog.OnDialogPositiveButtonClickListener {
+                override fun onyesButtonClik(isUrduMediumSelected: Boolean) {
+                    isNewStudentRegistering=false
+                    if (isUrduMediumSelected){
+                        isUrduMedium=true
+                        mViewModel.updateLanguage(true)
+                        selectedLanguage = "ur"
+                    }
+                    else {
+                        mViewModel.updateLanguage(false)
+                        selectedLanguage = "en"
+                        isUrduMedium=true
+                    }
+                }
+            })
+        }
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel=mViewModel
+        mViewModel.updateLanguageMsg.observe(viewLifecycleOwner){
+            if (it == LANGUAGE_UPDATED_SUCCESSFULLY){
+                if (selectedLanguage=="ur"){
+                    setLocate("ur", requireActivity())
+                    requireActivity().finish()
+                    requireActivity().overridePendingTransition(0, 0);
+                    startActivity(requireActivity().intent);
+                    requireActivity().overridePendingTransition(0, 0);
+                }else{
+                    setLocate("en", requireActivity())
+//                    requireActivity().finish()
+//                    requireActivity().overridePendingTransition(0, 0);
+//                    startActivity(requireActivity().intent);
+//                    requireActivity().overridePendingTransition(0, 0);
+                    mViewModel.getDashboardData()
+                }
+
+            }
+        }
     }
 
     inner class OnDashboardSubjectClickListener : OnListItemClickListener<SubjectList> {

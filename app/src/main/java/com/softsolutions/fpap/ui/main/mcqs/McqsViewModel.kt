@@ -61,6 +61,7 @@ class McqsViewModel(
                     }
                 } else {
                     response.errorBody().let {
+                        _errorMessage.postValue(it!!.string())
                         Log.d(APP_TAG, it!!.string())
                     }
                 }

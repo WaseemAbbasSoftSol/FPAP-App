@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.softsolutions.fpap.data.PrefRepository
+import com.softsolutions.fpap.ui.common.isNewStudentRegistering
 import com.softsolutions.fpap.ui.common.isUrduMedium
 
 private const val SPLASH_TIME_OUT=1000L
@@ -15,6 +16,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         prefRepository= PrefRepository(application)
+        isNewStudentRegistering=false
 
         isUrduMedium = if (prefRepository.getMedium()!=null){
             prefRepository.getMedium()=="ur"

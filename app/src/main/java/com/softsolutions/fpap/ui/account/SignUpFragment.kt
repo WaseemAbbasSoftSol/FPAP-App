@@ -20,6 +20,7 @@ import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentSignupBinding
 import com.softsolutions.fpap.model.account.Register
 import com.softsolutions.fpap.model.common.BaseCommonList
+import com.softsolutions.fpap.ui.common.isNewStudentRegistering
 import com.softsolutions.fpap.utils.MEMBER_SIGNUP_SUCCESSFULLY
 import com.softsolutions.fpap.utils.hideProgressOnButton
 import com.softsolutions.fpap.utils.makeProgressOnButton
@@ -49,6 +50,7 @@ class SignUpFragment : Fragment() {
     ): View? {
         binding = FragmentSignupBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
+        isNewStudentRegistering=true
         binding.toolbar.tvToolbar.text="New User Registration"
         binding.tvExistingUser.setOnClickListener {
             findNavController().navigate(SignUpFragmentDirections.actionSignupFragmentToLoginFragment())

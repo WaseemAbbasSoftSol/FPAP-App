@@ -7,9 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.softsolutions.fpap.data.FpapRepository
 import com.softsolutions.fpap.data.PrefRepository
+import com.softsolutions.fpap.model.CountedUsers
 import com.softsolutions.fpap.model.RequestState
 import com.softsolutions.fpap.model.SubjectList
 import com.softsolutions.fpap.model.account.User
+import com.softsolutions.fpap.ui.common.isNewStudentRegistering
+import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.utils.APP_TAG
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,15 +30,22 @@ class DashboardViewModel(
     private val _subjects = MutableLiveData<List<SubjectList>>()
     val subjects: LiveData<List<SubjectList>> = _subjects
 
+    private val _countedUser = MutableLiveData<CountedUsers>()
+    val countedUser: LiveData<CountedUsers> = _countedUser
+
+    private val _updateLanguageMsg = MutableLiveData<String>()
+    val updateLanguageMsg: LiveData<String> = _updateLanguageMsg
+
     private var memberId = 0
 
     init {
         memberId = prefRepository.getUser()!!.memberId
         _subjects.value= emptyList()
-        getDashboardData()
+        if (!isNewStudentRegistering) getDashboardData()
+        getAllCountedUsers()
     }
 
-    private fun getDashboardData() {
+    fun getDashboardData() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 _state.postValue(RequestState.LOADING)
@@ -44,8 +54,56 @@ class DashboardViewModel(
                     response.body().let {
                         _user.postValue(it!!.data)
                         _subjects.postValue(it.data.subjectList)
+                        isUrduMedium=it!!.data.memberInfo.isUrduMedium
                     }
                 } else response.errorBody().let {
+                    Log.d(APP_TAG, it!!.string())
+                }
+                _state.postValue(RequestState.DONE)
+            } catch (e: Exception) {
+                _state.postValue(RequestState.ERROR)
+                e.printStackTrace()
+            } catch (t: Throwable) {
+                _state.postValue(RequestState.ERROR)
+                t.printStackTrace()
+            }
+        }
+    }
+
+    private fun getAllCountedUsers() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                _state.postValue(RequestState.LOADING)
+                val response = repository.getCountedUsers()
+                if (response.isSuccessful) {
+                    response.body().let {
+                        _countedUser.postValue(it!!.data)
+                    }
+                } else response.errorBody().let {
+                    Log.d(APP_TAG, it!!.string())
+                }
+                _state.postValue(RequestState.DONE)
+            } catch (e: Exception) {
+                _state.postValue(RequestState.ERROR)
+                e.printStackTrace()
+            } catch (t: Throwable) {
+                _state.postValue(RequestState.ERROR)
+                t.printStackTrace()
+            }
+        }
+    }
+
+    fun updateLanguage(isUrduMediumSelected:Boolean) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                _state.postValue(RequestState.LOADING)
+                val response = repository.updateLanguage(memberId, isUrduMediumSelected)
+                if (response.isSuccessful) {
+                    response.body().let {
+                        _updateLanguageMsg.postValue(it!!.responseMessage)
+                    }
+                } else response.errorBody().let {
+                    _updateLanguageMsg.postValue(it!!.string())
                     Log.d(APP_TAG, it!!.string())
                 }
                 _state.postValue(RequestState.DONE)
