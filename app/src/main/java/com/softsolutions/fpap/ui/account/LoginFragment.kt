@@ -62,10 +62,10 @@ class LoginFragment: Fragment() {
         binding.viewModel=mViewModel
         mViewModel.user.observe(viewLifecycleOwner, Observer {
             if (it!=null){
-                isUrduMedium=it.memberInfo.isUrduMedium
-                if (it.memberInfo.isUrduMedium)  setLocate("ur", requireActivity())
-                else  setLocate("en", requireActivity())
                 if (it.isRegistered){
+                    isUrduMedium=it.memberInfo.isUrduMedium
+                    if (it.memberInfo.isUrduMedium)  setLocate("ur", requireActivity())
+                    else  setLocate("en", requireActivity())
                     mViewModel.deleteUser()
                     mViewModel.saveUser(it)
                 }

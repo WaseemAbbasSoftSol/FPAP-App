@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.softsolutions.fpap.R
@@ -127,12 +130,7 @@ class McqsContainerFragment:Fragment() {
                 DashboardDetailFragment.subjectName))
             }
         }
-        mViewModel.errorMessage.observe(viewLifecycleOwner){
-            if (it!=null){
-                hideProgressOnButton(binding.btnSubmit,"Submit")
-                Toast.makeText(requireContext(),it.toString(),Toast.LENGTH_SHORT).show()
-            }
-        }
+
     }
 
     private fun setQuestion(mcq : Mcq?, animEnter: Int, animExit: Int) {
@@ -160,7 +158,12 @@ class McqsContainerFragment:Fragment() {
                 isAnySelected:Boolean
             ) {
                 if (isAnySelected){
-                    Toast.makeText(requireContext(),"you cannot select multiple options", Toast.LENGTH_SHORT).show()
+                    val toast: Toast = Toast.makeText(context, R.string.cant_select_multiple_option, Toast.LENGTH_SHORT)
+                    val toastLayout = toast.view as LinearLayout?
+                    val toastTV = toastLayout!!.getChildAt(0) as TextView
+                    val typeface = ResourcesCompat.getFont(requireContext(), R.font.poppins_regular)
+                    toastTV.typeface = typeface
+                    toast.show()
                     return
                 }
                 val submitMcq = SubmitMcq(mViewModel.memberId, testId, questionId, item.id)

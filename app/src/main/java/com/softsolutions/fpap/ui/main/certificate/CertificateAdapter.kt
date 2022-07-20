@@ -62,16 +62,16 @@ class CertificateAdapter(
             holder.tvsubjectName.text=item.subjectName
             holder.tvstatus.text=item.status
         }
-
+        val dd=splitDateAndTime(item.date)
         if (item.status=="Passed"){
             holder.date.visibility=View.VISIBLE
             holder.view.visibility=View.VISIBLE
-           // val dd=splitDateAndTime(item.date)
-            holder.date.text=item.date
+
+            holder.date.text=dd
 
         }else if (item.status=="Failed"){
             holder.tvstatus.setTextColor(context.getColor(R.color.red))
-            holder.date.text=item.date
+            holder.date.text=dd
             holder.date.visibility=View.VISIBLE
             holder.view.visibility=View.VISIBLE
         }else if (item.status=="In Progress" || item.status=="Not Attempt")holder.tvstatus.setTextColor(context.getColor(R.color.yellow))

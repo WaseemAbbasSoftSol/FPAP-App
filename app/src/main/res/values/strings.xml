@@ -107,4 +107,5 @@
     <string name="download" translatable="false">Download</string>
     <string name="mcqs" translatable="false">Mcqs</string>
     <string name="question" translatable="false">Question</string>
+    <string name="cant_select_multiple_option" translatable="false">you cannot select multiple options</string>
 </resources>

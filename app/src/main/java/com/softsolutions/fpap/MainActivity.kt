@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity() {
                     binding.toolbar.navHamMenu.visibility=View.VISIBLE
                     binding.toolbar.back.visibility=View.GONE
                 }
-                R.id.dashboard_detail_fragment, R.id.mcqs_fragment,R.id.result_fragment,R.id.fragment_certificate -> {
+                R.id.dashboard_detail_fragment,R.id.result_fragment,R.id.fragment_certificate -> {
                     binding.toolbar.root.visibility= View.GONE
                     binding.toolbar.navHamMenu.visibility=View.GONE
                 }

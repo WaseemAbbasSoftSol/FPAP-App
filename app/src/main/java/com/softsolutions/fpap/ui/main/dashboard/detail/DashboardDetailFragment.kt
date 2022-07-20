@@ -117,6 +117,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                 Log.d(APP_TAG,"ddd "+imageLink)
                 binding.bottomLayoutPost.tv_step1.text = getString(R.string.label_step2)
                 binding.bottomLayoutPost.tv_pre_test.text = getString(R.string.label_post_test)
+                binding.bottomLayout.tv_no_of_question.text=it.totalQuestions.toString()
 
 
                 if (it.isSumbmittedPreTest){
@@ -124,8 +125,8 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                     binding.bottomLayout.btn_start_test.visibility=View.GONE
                     binding.bottomLayout.cl_inner.visibility=View.VISIBLE
                     binding.bottomLayout.tv_no_of_corrent_answer.text=it.preCorrectAns.toString()
+                    binding.bottomLayoutPost.tv_no_of_question.text=it.totalQuestions.toString()
                     binding.bottomLayout.tv_no_of_incorrent_answer.text=it.preIncorrectAns.toString()
-                    binding.bottomLayout.tv_no_of_question.text=it.totalQuestions.toString()
                     binding.clPost.visibility=View.VISIBLE
                     binding.tvDetail2Post.text = getHtmlText(it.courseContent)
                     binding.tvDetailKeyMsg.text = getHtmlText(it.courseContent)

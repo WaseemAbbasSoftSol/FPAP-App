@@ -95,4 +95,5 @@
     <string name="download" translatable="false">ڈاؤن لوڈ کریں</string>
     <string name="mcqs" translatable="false">متعدد انتخابی سوالات</string>
     <string name="question" translatable="false">سوال نمبر</string>
+    <string name="cant_select_multiple_option" translatable="false">آپ ایک سے زیادہ آپشن منتخب نہیں کر سکتے</string>
 </resources>
