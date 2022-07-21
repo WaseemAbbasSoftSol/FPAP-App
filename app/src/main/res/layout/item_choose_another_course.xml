@@ -65,7 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:elevation="@dimen/_10dp"
-        android:src="@drawable/ic_contact_support_24"/>
+        android:src="@drawable/ic_correct_answeers"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

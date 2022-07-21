@@ -108,4 +108,5 @@
     <string name="mcqs" translatable="false">Mcqs</string>
     <string name="question" translatable="false">Question</string>
     <string name="cant_select_multiple_option" translatable="false">you cannot select multiple options</string>
+    <string name="test_already_taken" translatable="false">Test already taken</string>
 </resources>

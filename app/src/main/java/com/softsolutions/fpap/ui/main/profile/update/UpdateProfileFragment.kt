@@ -37,7 +37,8 @@ import java.util.*
 class UpdateProfileFragment : Fragment() {
     private lateinit var binding: FragmentUpdateProfileBinding
     private val mViewModel: ProfileViewModel by viewModel()
-    private val countryCode="92"
+    private var countryCode="92"
+    private var countryNameCode="pk"
     private val myCalendar: Calendar = Calendar.getInstance()
     private var dob=""
 
@@ -50,6 +51,13 @@ class UpdateProfileFragment : Fragment() {
         binding = FragmentUpdateProfileBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
+        if (mViewModel.getCountryCodeNameFromPref()!=null){
+            countryNameCode=mViewModel.getCountryCodeNameFromPref()!!
+        }
+        binding.ccp.setDefaultCountryUsingNameCode(countryNameCode)
+        binding.ccp.resetToDefaultCountry()
+        mViewModel.countryCode=binding.ccp.defaultCountryCode
+
         binding.frameLayout.setOnClickListener {
             FilePicker(this).launch(1)
         }
@@ -57,7 +65,7 @@ class UpdateProfileFragment : Fragment() {
             makeProgressOnButton(binding.btnUpdate, R.string.plz_wait)
             val phoneNumber=countryCode+binding.edNumber.text.toString()
             val update= UpdateProfile(mViewModel.memberId,binding.edName.text.toString().trim(), binding.edEmail.text.toString().trim(),
-            phoneNumber,mViewModel.qualificationId,mViewModel.regionId,mViewModel.cityId,dob,mViewModel.genderId)
+            phoneNumber,mViewModel.qualificationId,mViewModel.regionId,mViewModel.cityId,dob,mViewModel.genderId,countryNameCode)
             mViewModel.update(update)
         }
 
@@ -114,6 +122,12 @@ class UpdateProfileFragment : Fragment() {
                 myCalendar.get(Calendar.DAY_OF_MONTH)
             ).show()
 
+        }
+
+        binding.ccp.setOnCountryChangeListener { selectedCountry ->
+            countryCode = selectedCountry.phoneCode
+            countryNameCode=selectedCountry.iso
+            mViewModel.saveCountryCode(countryNameCode)
         }
         return binding.root
     }

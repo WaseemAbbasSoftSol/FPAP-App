@@ -33,6 +33,12 @@
         <action
             android:id="@+id/action_dashboard_detail_to_mcqs_fragment"
             app:destination="@id/mcqs_fragment_main"/>
+
+        <action
+            android:id="@+id/action_dashboard_detail_to_dashboard_detail_itself"
+            app:destination="@id/dashboard_detail_fragment"
+            app:popUpTo="@id/dashboard_detail_fragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment

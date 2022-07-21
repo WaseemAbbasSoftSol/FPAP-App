@@ -205,4 +205,6 @@ class AccountViewModel(
         BaseCommonList("Female", "Female"),
         BaseCommonList("Transgender", "Trans Gender"),
     )
+
+    fun saveCountryCode(code:String)=prefRepository.saveCountryCodeName(code)
 }

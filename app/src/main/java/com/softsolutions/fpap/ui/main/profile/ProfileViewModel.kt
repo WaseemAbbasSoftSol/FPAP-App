@@ -59,6 +59,7 @@ class ProfileViewModel(
     var regionId=0
     var cityId=0
     var genderId=""
+    var countryCode="92"
 
     init {
         memberId=prefRepository.getUser()!!.memberId
@@ -214,5 +215,16 @@ class ProfileViewModel(
         return if (genderId=="Trans Gender")
             "Transgender"
         else genderId
+    }
+
+    fun saveCountryCode(code:String)=prefRepository.saveCountryCodeName(code)
+    fun getCountryCodeNameFromPref()=prefRepository.getCountryCodeNameFromPref()
+
+    fun removeCountryCodeFromPhoneNumber(number:String):String{
+        var num:String=number
+        if (number.contains(countryCode.toString())){
+            num = number.removePrefix(countryCode.toString())
+        }
+        return num
     }
 }

@@ -104,6 +104,8 @@
                         android:textColor="@color/black"
                         android:fontFamily="@font/poppins_semi_bold"
                         android:layout_marginStart="@dimen/_20dp"
+                        android:layout_marginEnd="@dimen/_20dp"
+                        android:justificationMode="inter_word"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"

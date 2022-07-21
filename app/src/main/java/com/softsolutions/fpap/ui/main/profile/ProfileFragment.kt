@@ -19,6 +19,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ProfileFragment:Fragment() {
     private lateinit var binding:FragmentProfileBinding
     private val mViewModel:ProfileViewModel by viewModel()
+    private var countryNameCode="pk"
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,6 +27,9 @@ class ProfileFragment:Fragment() {
     ): View? {
         binding= FragmentProfileBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
+        if (mViewModel.getCountryCodeNameFromPref()!=null){
+            countryNameCode=mViewModel.getCountryCodeNameFromPref()!!
+        }
         binding.llEdit.setOnClickListener {
            goToUpdateProfile()
         }

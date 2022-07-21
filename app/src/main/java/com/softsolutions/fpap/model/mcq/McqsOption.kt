@@ -1,6 +1,7 @@
 package com.softsolutions.fpap.model.mcq
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class McqsOption(
     @SerializedName("ID")
@@ -11,4 +12,4 @@ data class McqsOption(
     val answerImage: String,
     @SerializedName("Correct")
     val isCorrect: Boolean,
-)
+):Serializable

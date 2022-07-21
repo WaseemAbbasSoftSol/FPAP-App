@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.softsolutions.fpap.R
@@ -42,7 +43,6 @@ class ChoseAnotherCourseAdapter(
         holder.title.text = item.subName()
         if (item.isPassed) holder.support.visibility=View.VISIBLE
         holder.cardView.setOnClickListener {
-            if (item.isPassed)return@setOnClickListener
             listener.onItemClick(item,position)
         }
     }

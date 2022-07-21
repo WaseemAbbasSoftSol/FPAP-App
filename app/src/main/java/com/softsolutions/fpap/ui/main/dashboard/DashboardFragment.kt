@@ -84,11 +84,11 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
                     requireActivity().overridePendingTransition(0, 0);
                 }else{
                     setLocate("en", requireActivity())
-//                    requireActivity().finish()
-//                    requireActivity().overridePendingTransition(0, 0);
-//                    startActivity(requireActivity().intent);
-//                    requireActivity().overridePendingTransition(0, 0);
-                    mViewModel.getDashboardData()
+                    requireActivity().finish()
+                    requireActivity().overridePendingTransition(0, 0);
+                    startActivity(requireActivity().intent);
+                    requireActivity().overridePendingTransition(0, 0);
+                   // mViewModel.getDashboardData()
                 }
 
             }

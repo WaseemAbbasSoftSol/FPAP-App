@@ -36,7 +36,8 @@ class SignUpFragment : Fragment() {
 
     private val myCalendar: Calendar = Calendar.getInstance()
 
-    private val countryCode="92"
+    private var countryCode="92"
+    private var countryNameCode="pk"
     private var qualificationId=0
     private var regionId=0
     private var cityId=0
@@ -118,10 +119,18 @@ class SignUpFragment : Fragment() {
                 val mobileNumber="$countryCode$number"
                 val register=Register(binding.edName.text.toString().trim(),binding.edEmail.text.toString(),mobileNumber,qualificationId,regionId,cityId,
                     binding.edPass.text.toString()
-                ,dob,gender)
+                ,dob,gender, countryNameCode)
                 mViewModel.register(register)
             }
+
         }
+
+        binding.ccp.setOnCountryChangeListener { selectedCountry ->
+            countryCode = selectedCountry.phoneCode
+            countryNameCode=selectedCountry.iso
+            mViewModel.saveCountryCode(countryNameCode)
+        }
+
         binding.edEmail.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}

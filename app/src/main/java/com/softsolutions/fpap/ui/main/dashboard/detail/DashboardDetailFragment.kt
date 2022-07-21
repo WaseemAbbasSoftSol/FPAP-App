@@ -1,6 +1,5 @@
 package com.softsolutions.fpap.ui.main.dashboard.detail
 
-import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.text.Html
@@ -11,9 +10,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.*
+import android.webkit.WebResourceError
+import android.webkit.WebResourceRequest
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -22,16 +27,12 @@ import com.bumptech.glide.Glide
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.softsolutions.fpap.R
-import com.softsolutions.fpap.databinding.FragmentDashboardDetailBinding
 import com.softsolutions.fpap.databinding.FragmentDashboardDetailNewBinding
-import com.softsolutions.fpap.databinding.FragmentDashboardDetailNewBindingImpl
 import com.softsolutions.fpap.model.SubjectList
 import com.softsolutions.fpap.ui.common.OnListItemClickListener
 import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.utils.APP_TAG
-import com.softsolutions.fpap.utils.ChromeWebView
 import com.softsolutions.fpap.utils.makeStatusBarTransparent
-import com.softsolutions.fpap.utils.setWebView
 import kotlinx.android.synthetic.main.layout_start_test_bottom.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -213,7 +214,17 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
     }
 
     override fun onItemClick(item: SubjectList, pos: Int) {
-        Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_SHORT).show()
+        if (item.isPassed){
+            val toast: Toast = Toast.makeText(context, R.string.test_already_taken, Toast.LENGTH_SHORT)
+            val toastLayout = toast.view as LinearLayout?
+            val toastTV = toastLayout!!.getChildAt(0) as TextView
+            val typeface = ResourcesCompat.getFont(requireContext(), R.font.poppins_regular)
+            toastTV.typeface = typeface
+            toast.show()
+            return
+        }
+        val subjeName= if (!item.subName().isNullOrEmpty())item.subName() else ""
+       findNavController().navigate(DashboardDetailFragmentDirections.actionDashboardDetailToDashboardDetailItself(item.id,subjeName))
     }
 
     fun View.fadeVisibility(visibility: Int, duration: Long = 400) {

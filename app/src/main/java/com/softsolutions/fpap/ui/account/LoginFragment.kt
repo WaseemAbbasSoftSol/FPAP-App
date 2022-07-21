@@ -63,6 +63,7 @@ class LoginFragment: Fragment() {
         mViewModel.user.observe(viewLifecycleOwner, Observer {
             if (it!=null){
                 if (it.isRegistered){
+                    if (null != it.memberInfo!!.countryCodeName) mViewModel.saveCountryCode(it.memberInfo!!.countryCodeName)
                     isUrduMedium=it.memberInfo.isUrduMedium
                     if (it.memberInfo.isUrduMedium)  setLocate("ur", requireActivity())
                     else  setLocate("en", requireActivity())

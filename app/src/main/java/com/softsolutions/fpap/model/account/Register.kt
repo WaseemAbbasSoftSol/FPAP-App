@@ -21,4 +21,6 @@ data class Register(
     val dob: String,
     @SerializedName("GenderName")
     val gender: String,
+    @SerializedName("CountryName")
+    val countryCodeName:String
 )

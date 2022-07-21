@@ -21,5 +21,7 @@ data class UpdateProfile(
     val dob:String,
     @SerializedName("GenderName")
     val genderName:String,
+    @SerializedName("CountryName")
+    val countryCodeName:String
 ) {
 }

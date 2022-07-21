@@ -379,7 +379,7 @@
                             style="@style/AppTheme.Field"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@{viewModel.user.removeCountryCodeFromNumber()}"
+                            android:text="@{viewModel.removeCountryCodeFromPhoneNumber(viewModel.user.phoneNumber)}"
                             android:hint="@string/label_number"
                             android:inputType="number" />
 
