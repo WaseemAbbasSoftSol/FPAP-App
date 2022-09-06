@@ -6,48 +6,65 @@
 
     </data>
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawerlayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/ic_bg_whole"
-        >
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.softsolutions.fpap.utils.BaseStatusBar
+            android:visibility="gone"
+            android:id="@+id/statusbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <include
-                android:id="@+id/toolbar"
-                layout="@layout/base_toolbar"/>
-
-            <fragment
-                android:id="@+id/nav_host_main"
-                android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:defaultNavHost="true"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:navGraph="@navigation/nav_graph_main" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigation_view"
-            android:layout_width="200dp"
-            android:background="@drawable/bg_drawer_eng"
-            android:backgroundTint="@color/green"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:itemTextAppearance="@style/NavigationDrawerText"
-            app:itemTextColor="@color/white"
-            app:itemIconTint="@color/white"
-            android:paddingTop="@dimen/_16dp"
-            android:paddingBottom="@dimen/_16dp"
-            app:menu="@menu/dashboard_drawer_menu"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/green"
             />
-    </androidx.drawerlayout.widget.DrawerLayout>
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/drawerlayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/statusbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/ic_bg_whole"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include
+                    android:id="@+id/toolbar"
+                    layout="@layout/base_toolbar"/>
+
+                <fragment
+                    android:id="@+id/nav_host_main"
+                    android:name="androidx.navigation.fragment.NavHostFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:defaultNavHost="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/toolbar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:navGraph="@navigation/nav_graph_main" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <com.google.android.material.navigation.NavigationView
+                android:id="@+id/navigation_view"
+                android:layout_width="200dp"
+                android:background="@drawable/bg_drawer_eng"
+                android:backgroundTint="@color/green"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                app:itemTextAppearance="@style/NavigationDrawerText"
+                app:itemTextColor="@color/white"
+                app:itemIconTint="@color/white"
+                android:paddingTop="@dimen/_16dp"
+                android:paddingBottom="@dimen/_16dp"
+                app:menu="@menu/dashboard_drawer_menu"
+                />
+        </androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>

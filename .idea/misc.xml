@@ -43,6 +43,7 @@
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/layout_start_test_bottom.xml" value="0.18645833333333334" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/layout/layout_start_test_new.xml" value="0.22" />
         <entry key="..\:/Rizwan Projects/FPAP-App/app/src/main/res/menu/dashboard_drawer_menu.xml" value="0.18645833333333334" />
+        <entry key="app/src/main/res/drawable-v24/cardview_solid_border_color.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/ic_edit.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_drawer_eng.xml" value="0.166" />
@@ -51,8 +52,10 @@
         <entry key="app/src/main/res/drawable/bg_rounded_cornor.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_rounded_view.xml" value="0.136" />
         <entry key="app/src/main/res/drawable/bg_underline_country_code.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/cardview_solid_border_color.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_bg_blue.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_bg_drawer_urdu.xml" value="0.115" />
+        <entry key="app/src/main/res/drawable/ic_bg_gb.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_bg_whole.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_calling.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_certificate.xml" value="0.104" />
@@ -64,11 +67,15 @@
         <entry key="app/src/main/res/drawable/ic_drop_down_arrow.xml" value="0.187" />
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_home_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_im_login_top.xml" value="0.1335" />
         <entry key="app/src/main/res/drawable/ic_login_back.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/ic_profile_menu.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_signout.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/ic_signup_back.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_tick.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/im_login_top.xml" value="0.121" />
+        <entry key="app/src/main/res/drawable/im_signup_top.xml" value="0.11" />
         <entry key="app/src/main/res/layout/activity_account.xml" value="0.16576086956521738" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
@@ -77,10 +84,10 @@
         <entry key="app/src/main/res/layout/dialog_update_language.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/drawer_header_layout.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/fragment_certificate.xml" value="0.19427083333333334" />
-        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.12962962962962962" />
         <entry key="app/src/main/res/layout/fragment_dashboard_detail.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/fragment_dashboard_detail_new.xml" value="0.19427083333333334" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.22688564476885645" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_mcqs.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/fragment_mcqs_main_container.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/fragment_mcqs_options.xml" value="0.19427083333333334" />
@@ -95,6 +102,7 @@
         <entry key="app/src/main/res/layout/item_course_certificate.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/item_course_certificate_new.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_dashboard.xml" value="0.19427083333333334" />
+        <entry key="app/src/main/res/layout/item_dashboard_two.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/item_mcqs_options.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/layout_start_test_bottom.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/layout_start_test_new.xml" value="0.19427083333333334" />

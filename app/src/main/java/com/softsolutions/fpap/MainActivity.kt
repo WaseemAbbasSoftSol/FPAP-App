@@ -104,6 +104,7 @@ class MainActivity : AppCompatActivity() {
                     binding.toolbar.root.visibility= View.VISIBLE
                     binding.toolbar.navHamMenu.visibility=View.VISIBLE
                     binding.toolbar.back.visibility=View.GONE
+                    binding.toolbar.profile.visibility=View.VISIBLE
                 }
                 R.id.dashboard_detail_fragment,R.id.result_fragment,R.id.fragment_certificate -> {
                     binding.toolbar.root.visibility= View.GONE
@@ -130,5 +131,7 @@ class MainActivity : AppCompatActivity() {
         tvName.text = prefRepository.getUser()!!.memberInfo.name
         val img = prefRepository.getUser()!!.memberInfo.image
         Glide.with(this).load(img).into(memberImage)
+        Glide.with(this).load(img).into(binding.toolbar.profile)
+
     }
 }

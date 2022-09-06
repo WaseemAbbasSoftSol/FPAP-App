@@ -58,7 +58,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/label_name"
-                        android:inputType="textPersonName" />
+                        android:inputType="textVisiblePassword" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,7 +78,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/label_email"
-                        android:inputType="textEmailAddress" />
+                        android:inputType="textVisiblePassword" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -155,7 +155,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/label_number"
-                            android:inputType="number" />
+                            android:inputType="textVisiblePassword"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -197,6 +197,7 @@
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/sp_region"
                         style="@style/AppTheme.Field"
+                        android:inputType="textVisiblePassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         isSpinner="@{true}"
@@ -206,7 +207,7 @@
                         android:focusable="false"
                         android:drawableEnd="@drawable/ic_drop_down_arrow"
                         android:hint="@string/label_region"
-                        android:inputType="textPersonName" />
+                       />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -305,10 +306,10 @@
                     <EditText
                         android:id="@+id/ed_email2"
                         style="@style/AppTheme.Field"
+                        android:inputType="textVisiblePassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/label_email"
-                        android:inputType="textEmailAddress" />
+                        android:hint="@string/label_email" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

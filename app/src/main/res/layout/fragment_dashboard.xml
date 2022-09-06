@@ -36,7 +36,7 @@
                     android:fontFamily="@font/poppins_semi_bold"
                     android:text="@string/label_welcome_text"
                     android:textColor="@color/purple"
-                    android:textSize="@dimen/_16sp"
+                    android:textSize="@dimen/_20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -751,10 +751,133 @@
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                         </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_national"
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_5dp"
+                            android:layout_marginTop="@dimen/_10dp"
+                            app:cardCornerRadius="@dimen/_10dp"
+                            android:elevation="@dimen/_3dp"
+                            app:layout_constraintEnd_toStartOf="@id/guide1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/cv_peshawar">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingBottom="@dimen/_20dp"
+                                android:background="@drawable/ic_bg_national"
+                                >
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/iv_national"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    android:layout_marginTop="@dimen/_10dp"
+                                    android:background="@drawable/bg_circle"
+                                    android:src="@drawable/ic_help_call"
+                                    app:civ_border_width="10dp"
+                                    app:civ_border_color="@color/grey_001"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/tv_national"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_tt25dp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="@string/national"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_14sp"
+                                    android:layout_marginTop="@dimen/_5dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/iv_national" />
+
+                                <TextView
+                                    android:id="@+id/tv_national_no"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_tt25dp"
+                                    android:text="080069457"
+                                    android:textColor="@color/purple"
+                                    android:fontFamily="@font/poppins_semi_bold_only"
+                                    android:textSize="16sp"
+                                    app:layout_constraintStart_toStartOf="@id/tv_national"
+                                    app:layout_constraintTop_toBottomOf="@id/tv_national"
+                                    app:layout_constraintEnd_toEndOf="@id/tv_national"/>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_punjab"
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5dp"
+                            android:layout_marginTop="@dimen/_10dp"
+                            app:cardCornerRadius="@dimen/_10dp"
+                            android:elevation="@dimen/_3dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@id/guide1"
+                            app:layout_constraintTop_toBottomOf="@id/cv_gb">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingBottom="@dimen/_20dp"
+                                android:background="@drawable/ic_bg_punjab"
+                                >
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/iv_punjab"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    android:layout_marginTop="@dimen/_10dp"
+                                    android:background="@drawable/bg_circle"
+                                    android:src="@drawable/ic_help_call"
+                                    app:civ_border_width="10dp"
+                                    app:civ_border_color="@color/grey_001"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/tv_punjab"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_tt25dp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="@string/punjab"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_14sp"
+                                    android:layout_marginTop="@dimen/_5dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/iv_punjab" />
+
+                                <TextView
+                                    android:id="@+id/tv_punjab_no"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_tt25dp"
+                                    android:text="080088812"
+                                    android:textColor="@color/purple"
+                                    android:fontFamily="@font/poppins_semi_bold_only"
+                                    android:textSize="16sp"
+                                    app:layout_constraintStart_toStartOf="@id/tv_punjab"
+                                    app:layout_constraintTop_toBottomOf="@id/tv_punjab"
+                                    app:layout_constraintEnd_toEndOf="@id/tv_punjab"/>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.cardview.widget.CardView>
+
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_5dp"
-                            app:layout_constraintTop_toBottomOf="@id/cv_gb"/>
+                            app:layout_constraintTop_toBottomOf="@id/cv_national"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
