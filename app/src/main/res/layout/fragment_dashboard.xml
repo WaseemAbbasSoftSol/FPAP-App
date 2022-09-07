@@ -238,6 +238,7 @@
                                 android:fontFamily="@font/poppins_regular"
                                 android:text="@string/label_partial"
                                 android:textColor="@color/white"
+                                android:maxLines="2"
                                 android:textSize="@dimen/_12sp"
                                 app:layout_constraintStart_toStartOf="@id/tv_no_of_partial"
                                 app:layout_constraintTop_toBottomOf="@id/tv_no_of_partial" />

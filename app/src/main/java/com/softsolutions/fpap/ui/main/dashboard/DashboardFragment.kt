@@ -47,26 +47,26 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
         binding.subjectClickListener = OnDashboardSubjectClickListener()
         getNumberAndMakePhoneCall()
 
-        if (isNewStudentRegistering){
-            val dialog = SelectMediumDialog()
-            dialog.show(requireActivity().supportFragmentManager, "")
-            dialog.setDialogPositiveClick(object :
-                SelectMediumDialog.OnDialogPositiveButtonClickListener {
-                override fun onyesButtonClik(isUrduMediumSelected: Boolean) {
-                    isNewStudentRegistering=false
-                    if (isUrduMediumSelected){
-                        isUrduMedium=true
-                        mViewModel.updateLanguage(true)
-                        selectedLanguage = "ur"
-                    }
-                    else {
-                        mViewModel.updateLanguage(false)
-                        selectedLanguage = "en"
-                        isUrduMedium=true
-                    }
-                }
-            })
-        }
+//        if (isNewStudentRegistering){
+//            val dialog = SelectMediumDialog()
+//            dialog.show(requireActivity().supportFragmentManager, "")
+//            dialog.setDialogPositiveClick(object :
+//                SelectMediumDialog.OnDialogPositiveButtonClickListener {
+//                override fun onyesButtonClik(isUrduMediumSelected: Boolean) {
+//                    isNewStudentRegistering=false
+//                    if (isUrduMediumSelected){
+//                        isUrduMedium=true
+//                        mViewModel.updateLanguage(true)
+//                        selectedLanguage = "ur"
+//                    }
+//                    else {
+//                        mViewModel.updateLanguage(false)
+//                        selectedLanguage = "en"
+//                        isUrduMedium=true
+//                    }
+//                }
+//            })
+//        }
 
         return binding.root
     }
@@ -148,6 +148,14 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
         }
         binding.tvGbNo.setOnClickListener {
             val no = binding.tvGbNo.text.toString().trim()
+            makePhoneCall(no)
+        }
+        binding.tvNationalNo.setOnClickListener {
+            val no = binding.tvNationalNo.text.toString().trim()
+            makePhoneCall(no)
+        }
+        binding.tvPunjabNo.setOnClickListener {
+            val no = binding.tvPunjabNo.text.toString().trim()
             makePhoneCall(no)
         }
     }

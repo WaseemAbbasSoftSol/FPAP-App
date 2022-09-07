@@ -3,8 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-    android:background="@drawable/ic_bg_whole"
+
     tools:context=".SplashActivity">
 
+    <com.softsolutions.fpap.utils.BaseStatusBar
+        android:id="@+id/statusbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/green"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_0dp"
+        app:layout_constraintTop_toBottomOf="@id/statusbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/ic_bg_whole"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

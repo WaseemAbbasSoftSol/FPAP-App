@@ -54,7 +54,7 @@ class DashboardViewModel(
                     response.body().let {
                         _user.postValue(it!!.data)
                         _subjects.postValue(it.data.subjectList)
-                        isUrduMedium=it!!.data.memberInfo.isUrduMedium
+                       // isUrduMedium=it!!.data.memberInfo.isUrduMedium
                     }
                 } else response.errorBody().let {
                     Log.d(APP_TAG, it!!.string())

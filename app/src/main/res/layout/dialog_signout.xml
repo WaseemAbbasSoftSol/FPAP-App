@@ -33,7 +33,7 @@
                 android:textSize="20sp"
                 android:gravity="center"
                 android:fontFamily="@font/poppins_semi_bold"
-                android:textColor="@color/black"
+                android:textColor="@color/purple"
                 android:text="@string/label_sign_out" />
 
 

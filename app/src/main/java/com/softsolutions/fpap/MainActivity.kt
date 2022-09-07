@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var prefRepository: PrefRepository
     private lateinit var tvName: TextView
+    private lateinit var tvClass: TextView
     private lateinit var memberImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,24 +50,27 @@ class MainActivity : AppCompatActivity() {
         val headerView = binding.navigationView.inflateHeaderView(R.layout.drawer_header_layout)
 
         tvName = headerView.findViewById(R.id.tv_nav_header_name)
+        tvClass = headerView.findViewById(R.id.tv_nav_header_class)
         memberImage = headerView.findViewById(R.id.profile_image)
         setNavHeaderViews()
         val switchCompat = headerView.findViewById<SwitchCompat>(R.id.sth_med)
         val back = headerView.findViewById<ImageFilterView>(R.id.back)
         switchCompat.isChecked = isUrduMedium
         if (isUrduMedium) {
-            back.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_back_right))
+            back.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_back_right_white))
             binding.navigationView.background=resources.getDrawable(R.drawable.bg_drawer_urdu)
         }
 
         switchCompat.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
+                isUrduMedium=true
                 setLocate("ur", this)
                 finish()
                 overridePendingTransition(0, 0);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
             } else {
+                isUrduMedium=false
                 setLocate("en", this)
                 finish()
                 overridePendingTransition(0, 0);
@@ -129,6 +133,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun setNavHeaderViews() {
         tvName.text = prefRepository.getUser()!!.memberInfo.name
+        tvClass.text = prefRepository.getUser()!!.memberInfo.className
         val img = prefRepository.getUser()!!.memberInfo.image
         Glide.with(this).load(img).into(memberImage)
         Glide.with(this).load(img).into(binding.toolbar.profile)

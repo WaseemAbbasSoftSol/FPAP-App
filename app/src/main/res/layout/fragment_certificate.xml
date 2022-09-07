@@ -15,7 +15,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_toolbar"
             android:layout_width="match_parent"
-            android:background="@color/primary"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_height="?actionBarSize">
 
@@ -37,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semi_bold"
                 android:text="@string/toolbar"
-                android:textColor="@color/black"
+                android:textColor="@color/purple"
                 android:textSize="@dimen/_20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

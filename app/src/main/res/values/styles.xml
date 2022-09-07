@@ -42,6 +42,11 @@
         <item name="android:drawableTint" tools:ignore="NewApi">@android:color/white</item>
     </style>
 
+    <style name="AppTheme.ContainedButtonWhite" parent="AppTheme.ButtonWhite">
+        <item name="android:background">@drawable/bg_rounded_button_white</item>
+        <item name="android:drawableTint" tools:ignore="NewApi">@android:color/white</item>
+    </style>
+
     <!--    Button Styles-->
     <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Colored">
         <item name="android:textColor">@android:color/white</item>
@@ -52,12 +57,21 @@
         <item name="android:layout_marginRight">@dimen/_20dp</item>
     </style>
 
+    <style name="AppTheme.ButtonWhite" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:layout_marginLeft">@dimen/_20dp</item>
+        <item name="android:layout_marginRight">@dimen/_20dp</item>
+    </style>
+
     <!--SwitchCompat Style-->
     <style name="SCBSwitch" parent="Theme.AppCompat.Light">
         <!-- active thumb & track color (30% transparency) -->
-        <item name="colorControlActivated">@color/green</item>
+        <item name="colorControlActivated">@color/white</item>
         <!-- inactive thumb color -->
-        <item name="colorSwitchThumbNormal">@color/primary
+        <item name="colorSwitchThumbNormal">@color/white
         </item>
         <!-- inactive track color (30% transparency) -->
         <item name="android:colorForeground">#42221f1f
@@ -69,5 +83,7 @@
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textSize">14sp</item>
     </style>
-
+    <style name="NavigationViewMenuListDivederColor" >
+        <item name="android:listDivider">@color/white</item>
+    </style>
 </resources>

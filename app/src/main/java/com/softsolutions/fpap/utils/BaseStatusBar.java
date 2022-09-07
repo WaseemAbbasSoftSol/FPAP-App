@@ -24,7 +24,7 @@ public class BaseStatusBar extends View {
     @Override
     public WindowInsets onApplyWindowInsets(WindowInsets insets) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mStatusBarHeight = dpToPx(24.0f);
+            mStatusBarHeight = dpToPx(30.0f);
             return insets.consumeSystemWindowInsets();
         }
         return insets;

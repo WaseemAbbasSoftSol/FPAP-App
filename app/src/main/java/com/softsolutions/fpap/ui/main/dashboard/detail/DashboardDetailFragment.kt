@@ -1,6 +1,7 @@
 package com.softsolutions.fpap.ui.main.dashboard.detail
 
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Html
 import android.transition.Fade
@@ -21,24 +22,32 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentDashboardDetailNewBinding
+import com.softsolutions.fpap.databinding.FragmentDashboardDetailNewUpdatedBinding
 import com.softsolutions.fpap.model.SubjectList
 import com.softsolutions.fpap.ui.common.OnListItemClickListener
 import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.utils.APP_TAG
 import com.softsolutions.fpap.utils.makeStatusBarTransparent
 import kotlinx.android.synthetic.main.layout_start_test_bottom.view.*
+import kotlinx.android.synthetic.main.layout_start_test_bottom.view.btn_start_test
+import kotlinx.android.synthetic.main.layout_start_test_bottom.view.tv_no_of_question
+import kotlinx.android.synthetic.main.layout_start_test_bottom.view.tv_pre_test
+import kotlinx.android.synthetic.main.layout_start_test_bottom.view.tv_start_test
+import kotlinx.android.synthetic.main.layout_start_test_pre_new_updated.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList> {
-    private lateinit var binding: FragmentDashboardDetailNewBinding
+    private lateinit var binding: FragmentDashboardDetailNewUpdatedBinding
     private val mViewModel: DashboardDetailViewModel by viewModel()
     private var imageLink = "https://ikddata.ilmkidunya.com/images/subjectimages/"
     private var testId = 0
@@ -61,11 +70,11 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentDashboardDetailNewBinding.inflate(inflater,container,false)
+        binding= FragmentDashboardDetailNewUpdatedBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
         requireActivity().makeStatusBarTransparent()
         if (isUrduMedium) {
-            binding.back.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_back_right))
+            binding.back.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_back_right_white))
         }
         binding.bottomLayout.btn_start_test.setOnClickListener {
            goToMcqsFragment()
@@ -97,6 +106,33 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
             }
         })
 
+        binding.clVideo.setOnClickListener{
+            binding.clContent.background=ContextCompat.getDrawable(requireContext(),R.drawable.ic_bg_grey)
+            binding.tvContentTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.black))
+            binding.tvContentTab.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_content_black, 0, 0, 0)
+
+            binding.clVideo.background=ContextCompat.getDrawable(requireContext(),R.drawable.bg_green)
+            binding.tvVideoTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.white))
+            binding.tvVideoTab.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_video, 0, 0, 0)
+
+            binding.viewpager.currentItem = 1
+        }
+        binding.clContent.setOnClickListener{
+            binding.clVideo.background=ContextCompat.getDrawable(requireContext(),R.drawable.ic_bg_grey)
+            binding.tvVideoTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.black))
+            binding.tvVideoTab.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_video_black, 0, 0, 0)
+
+            binding.clContent.background=ContextCompat.getDrawable(requireContext(),R.drawable.bg_green)
+            binding.tvContentTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.white))
+            binding.tvContentTab.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_content_white, 0, 0, 0)
+
+            binding.viewpager.currentItem = 0
+        }
+
+        val pagerAdapter = activity?.let { ScreenSlidePagerAdapter(it) }
+        binding.viewpager.adapter = pagerAdapter
+        binding.viewpager.isUserInputEnabled = false
+
         return binding.root
     }
 
@@ -120,17 +156,17 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                 binding.bottomLayoutPost.tv_pre_test.text = getString(R.string.label_post_test)
                 binding.bottomLayout.tv_no_of_question.text=it.totalQuestions.toString()
 
-
+                binding.bottomLayout.tv_no_of_question.text=it.totalQuestions.toString()+" Questions"
                 if (it.isSumbmittedPreTest){
-                    binding.bottomLayout.tv_start_test.text=getString(R.string.label_start_with_pre_test_result)
-                    binding.bottomLayout.btn_start_test.visibility=View.GONE
-                    binding.bottomLayout.cl_inner.visibility=View.VISIBLE
-                    binding.bottomLayout.tv_no_of_corrent_answer.text=it.preCorrectAns.toString()
-                    binding.bottomLayoutPost.tv_no_of_question.text=it.totalQuestions.toString()
-                    binding.bottomLayout.tv_no_of_incorrent_answer.text=it.preIncorrectAns.toString()
+                    binding.bottomLayout.l_first.visibility=View.GONE
+                    binding.bottomLayout.l_second.visibility=View.VISIBLE
+                    binding.bottomLayout.tv_no_of_questions.text=it.totalQuestions.toString()+" Questions"
+                    binding.bottomLayout.tv_no_of_correct_answer.text=it.preCorrectAns.toString()
+                    binding.bottomLayout.tv_no_of_incorrect_answer.text=it.preIncorrectAns.toString()
+
                     binding.clPost.visibility=View.VISIBLE
-                    binding.tvDetail2Post.text = getHtmlText(it.courseContent)
-                    binding.tvDetailKeyMsg.text = getHtmlText(it.courseContent)
+                  //  binding.tvDetail2Post.text = getHtmlText(it.courseContent)
+                   // binding.tvDetailKeyMsg.text = getHtmlText(it.courseContent)
                     if (null!=it.video){
 //                        binding.cvPost.visibility=View.VISIBLE
 //                        setWebView(requireContext(),requireActivity(), binding.webviewPost)
@@ -138,7 +174,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
 //                        binding.webviewPost.loadUrl(it.video)
                     }
                 }else{
-                    binding.bottomLayout.tv_start_test.text=getString(R.string.label_start_with_pre_test)
+                  //  binding.bottomLayout.tv_start_test.text=getString(R.string.label_start_with_pre_test)
                 }
 
                 if (it.isSubmittedPostTest){
@@ -233,6 +269,18 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
         transition.addTarget(this)
         TransitionManager.beginDelayedTransition(this.parent as ViewGroup, transition)
         this.visibility = visibility
+    }
+
+    private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
+        override fun getItemCount(): Int = 2
+
+        override fun createFragment(position: Int): Fragment {
+            return when (position) {
+                0 -> ContentAndVideoSubFragment(true)
+                1 -> ContentAndVideoSubFragment(false)
+                else -> ContentAndVideoSubFragment(true)
+            }
+        }
     }
 
 }
