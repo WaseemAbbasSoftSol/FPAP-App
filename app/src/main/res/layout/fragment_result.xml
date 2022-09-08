@@ -28,19 +28,43 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1dp"
+                    android:layout_marginStart="@dimen/_20dp"
+                    android:layout_marginEnd="@dimen/_20dp"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:background="@color/grey_lite"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/im_test_passed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view"
+                    android:layout_marginTop="@dimen/_10dp"/>
+
+
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_test_passed"
-                    android:textSize="@dimen/_18sp"
+                    android:textSize="@dimen/_22sp"
                     android:layout_marginStart="@dimen/_20dp"
                     android:layout_marginEnd="@dimen/_20dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/purple"
                     android:fontFamily="@font/poppins_semi_bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_result"
                     />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -48,8 +72,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_congo"
-                    android:textSize="@dimen/_15sp"
-                    android:textColor="@color/purple"
+                    android:textSize="@dimen/_18sp"
+                    android:textColor="@color/green"
                     android:fontFamily="@font/poppins_semi_bold"
                     app:layout_constraintStart_toStartOf="@id/tv_status"
                     app:layout_constraintEnd_toEndOf="@id/tv_status"
@@ -87,6 +111,7 @@
                     app:layout_constraintTop_toBottomOf="@id/btn_test_again"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:visibility="gone"
                     android:id="@+id/cl_another_course"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -95,13 +120,12 @@
                     app:layout_constraintTop_toBottomOf="@id/btn_test_again">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:visibility="gone"
                         android:id="@+id/tv_choose_another_course"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_chose_another_course"
-                        android:textSize="@dimen/_18sp"
-                        android:textColor="@color/black"
+                        android:text="@string/label_your_journey"
+                        android:textSize="@dimen/_20sp"
+                        android:textColor="@color/purple"
                         android:fontFamily="@font/poppins_semi_bold"
                         android:layout_marginStart="@dimen/_20dp"
                         android:layout_marginEnd="@dimen/_20dp"
@@ -113,7 +137,6 @@
                         />
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:visibility="gone"
                         android:id="@+id/rv_another_course"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -126,7 +149,11 @@
                      android:layout_marginStart="@dimen/_20dp"
                         android:layout_marginEnd="@dimen/_20dp"
                         />
-
+  <View
+      android:layout_marginTop="@dimen/_5dp"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_10dp"
+    app:layout_constraintTop_toBottomOf="@id/rv_another_course"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

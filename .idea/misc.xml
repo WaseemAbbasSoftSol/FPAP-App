@@ -54,6 +54,7 @@
         <entry key="app/src/main/res/drawable/bg_rounded_view.xml" value="0.136" />
         <entry key="app/src/main/res/drawable/bg_underline_country_code.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/cardview_solid_border_color.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/cardview_solid_border_color_purple.xml" value="0.104" />
         <entry key="app/src/main/res/drawable/ic_back.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_back_right.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_back_right_white.xml" value="0.1" />
@@ -119,9 +120,11 @@
         <entry key="app/src/main/res/layout/item_dashboard.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/item_dashboard_two.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/item_mcqs_options.xml" value="0.19427083333333334" />
-        <entry key="app/src/main/res/layout/layout_start_test_bottom.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/layout_start_test_bottom.xml" value="0.1" />
         <entry key="app/src/main/res/layout/layout_start_test_new.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/layout_start_test_new_updated.xml" value="0.19427083333333334" />
+        <entry key="app/src/main/res/layout/layout_start_test_post_new_updated.xml" value="0.145703125" />
+        <entry key="app/src/main/res/layout/layout_start_test_pre_new_updated.xml" value="0.25" />
         <entry key="app/src/main/res/layout/partial_app_bar.xml" value="0.11" />
         <entry key="app/src/main/res/menu/dashboard_drawer_menu.xml" value="0.19427083333333334" />
       </map>

@@ -14,12 +14,13 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview"
-        app:cardCornerRadius="@dimen/_5dp"
-        android:elevation="@dimen/_2dp"
-        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="@dimen/_10dp"
+        android:elevation="@dimen/_5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:foreground="@drawable/cardview_solid_border_color"
+        android:backgroundTint="@color/green"
         android:padding="@dimen/_5dp"
         android:layout_margin="@dimen/_5dp"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -42,7 +43,7 @@
                 android:layout_height="wrap_content"
                 tools:text="@string/label_human_rights"
                 android:textSize="@dimen/_12sp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:padding="@dimen/_10dp"
                 android:maxLines="2"
                 android:ellipsize="end"

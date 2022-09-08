@@ -3,16 +3,18 @@ package com.softsolutions.fpap.ui.main.dashboard.detail
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.*
 import android.widget.Toast
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import com.softsolutions.fpap.databinding.FragmentContentAndVideoBinding
 import com.softsolutions.fpap.utils.ChromeWebView
 
-class ContentAndVideoSubFragment(val isContent:Boolean):Fragment() {
+class ContentAndVideoSubFragment(val isContent:Boolean, val contentText:String, var videoLink:String):Fragment() {
     private lateinit var binding:FragmentContentAndVideoBinding
     val dummyVideo = "https://www.youtube.com/watch?v=fu3JcXBxxxY&ab_channel=ilmkidunya"
 
@@ -27,13 +29,16 @@ class ContentAndVideoSubFragment(val isContent:Boolean):Fragment() {
         if (isContent){
             binding.nestedscroll.visibility=View.VISIBLE
             binding.clVideo.visibility=View.GONE
+            binding.tvDetail.text=getHtmlText(contentText)
         } else{
             binding.nestedscroll.visibility=View.GONE
             binding.clVideo.visibility=View.VISIBLE
+            setWebView()
+            if (videoLink.isNullOrEmpty()) videoLink= dummyVideo
+            binding.webViewLecture.loadUrl(dummyVideo)
         }
 
-        setWebView()
-        binding.webViewLecture.loadUrl(dummyVideo)
+
         return binding.root
     }
 
@@ -70,6 +75,14 @@ class ContentAndVideoSubFragment(val isContent:Boolean):Fragment() {
             super.onReceivedError(view, request, error)
             // Toast.makeText(requireContext(), "Error:$error", Toast.LENGTH_SHORT).show()
             // progressDialog.dismiss()
+        }
+    }
+
+    private fun getHtmlText(description: String): CharSequence {
+        return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            Html.fromHtml(description, Html.FROM_HTML_MODE_COMPACT).trim()
+        } else {
+            HtmlCompat.fromHtml(description, HtmlCompat.FROM_HTML_MODE_COMPACT).trim()
         }
     }
 }

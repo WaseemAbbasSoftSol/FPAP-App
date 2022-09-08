@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
    <!-- <color name="primary">#F0F0FE</color>-->
-    <color name="primary">#333BB052</color>
+    <color name="primary">@color/green</color>
     <!--<color name="primary">#5d5df5</color>-->
     <color name="black">#080808</color>
     <color name="grey">#3B3B3B</color>

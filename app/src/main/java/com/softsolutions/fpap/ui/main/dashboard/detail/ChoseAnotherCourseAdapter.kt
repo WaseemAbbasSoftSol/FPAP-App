@@ -1,6 +1,8 @@
 package com.softsolutions.fpap.ui.main.dashboard.detail
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +10,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.model.SubjectList
 import com.softsolutions.fpap.ui.common.OnListItemClickListener
@@ -41,7 +45,12 @@ class ChoseAnotherCourseAdapter(
     override fun onBindViewHolder(holder: ItemRecyclerViewHolder, position: Int) {
         val item = list[position]
         holder.title.text = item.subName()
-        if (item.isPassed) holder.support.visibility=View.VISIBLE
+        Glide.with(context).load(item.image1).into(holder.iv)
+        if (item.isPassed) {
+            holder.support.visibility=View.VISIBLE
+            holder.cardView.background.setTint(ContextCompat.getColor(context,R.color.purple))
+            holder.cardView.foreground=context.resources.getDrawable(R.drawable.cardview_solid_border_color_purple)
+        }
         holder.cardView.setOnClickListener {
             listener.onItemClick(item,position)
         }

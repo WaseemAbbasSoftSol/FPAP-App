@@ -42,7 +42,12 @@ import kotlinx.android.synthetic.main.layout_start_test_bottom.view.btn_start_te
 import kotlinx.android.synthetic.main.layout_start_test_bottom.view.tv_no_of_question
 import kotlinx.android.synthetic.main.layout_start_test_bottom.view.tv_pre_test
 import kotlinx.android.synthetic.main.layout_start_test_bottom.view.tv_start_test
+import kotlinx.android.synthetic.main.layout_start_test_post_new_updated.view.*
 import kotlinx.android.synthetic.main.layout_start_test_pre_new_updated.view.*
+import kotlinx.android.synthetic.main.layout_start_test_pre_new_updated.view.l_first
+import kotlinx.android.synthetic.main.layout_start_test_pre_new_updated.view.l_second
+import kotlinx.android.synthetic.main.layout_start_test_pre_new_updated.view.tv_no_of_correct_answer
+import kotlinx.android.synthetic.main.layout_start_test_pre_new_updated.view.tv_no_of_incorrect_answer
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -52,6 +57,8 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
     private var imageLink = "https://ikddata.ilmkidunya.com/images/subjectimages/"
     private var testId = 0
     private var unitId = 0
+    private var contentText=""
+    private var videoLink=""
     companion object {
         var subjectId = 0
         var subjectName = ""
@@ -98,7 +105,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                     binding.tvToolbar.visibility=View.VISIBLE
                   //  binding.clProgress.fadeVisibility(View.VISIBLE,4000)
                     isShow = true
-                } else if (isShow) {
+                } else if (!isShow) {
                     binding.tvHeader.visibility=View.VISIBLE
                     binding.tvToolbar.visibility=View.GONE
                   //  binding.clProgress.fadeVisibility(View.GONE,500)
@@ -142,6 +149,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
         mViewModel.dashboardData.observe(viewLifecycleOwner){
             if (it!=null){
                 binding.bottomLayout.visibility=View.VISIBLE
+                binding.guideDetailImage.visibility=View.VISIBLE
                 testId=it.testId
                 unitId=it.unitId
                 binding.tvToolbar.text=subjectName
@@ -152,9 +160,6 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
 
                 Glide.with(requireContext()).load(imageLink).into(binding.guideDetailImage)
                 Log.d(APP_TAG,"ddd "+imageLink)
-                binding.bottomLayoutPost.tv_step1.text = getString(R.string.label_step2)
-                binding.bottomLayoutPost.tv_pre_test.text = getString(R.string.label_post_test)
-                binding.bottomLayout.tv_no_of_question.text=it.totalQuestions.toString()
 
                 binding.bottomLayout.tv_no_of_question.text=it.totalQuestions.toString()+" Questions"
                 if (it.isSumbmittedPreTest){
@@ -163,35 +168,26 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                     binding.bottomLayout.tv_no_of_questions.text=it.totalQuestions.toString()+" Questions"
                     binding.bottomLayout.tv_no_of_correct_answer.text=it.preCorrectAns.toString()
                     binding.bottomLayout.tv_no_of_incorrect_answer.text=it.preIncorrectAns.toString()
-
                     binding.clPost.visibility=View.VISIBLE
-                  //  binding.tvDetail2Post.text = getHtmlText(it.courseContent)
-                   // binding.tvDetailKeyMsg.text = getHtmlText(it.courseContent)
-                    if (null!=it.video){
-//                        binding.cvPost.visibility=View.VISIBLE
-//                        setWebView(requireContext(),requireActivity(), binding.webviewPost)
-//                        binding.webviewPost.webViewClient = Browser_home()
-//                        binding.webviewPost.loadUrl(it.video)
-                    }
-                }else{
-                  //  binding.bottomLayout.tv_start_test.text=getString(R.string.label_start_with_pre_test)
+                  contentText=it.courseContent
+                    if (!it.video.isNullOrEmpty())videoLink=it.video
                 }
 
                 if (it.isSubmittedPostTest){
-                    binding.bottomLayoutPost.tv_start_test.text=getString(R.string.label_start_with_post_test_result)
+               binding.bottomLayoutPost.visibility=View.GONE
                     binding.bottomLayoutPost.btn_start_test.visibility=View.GONE
-                    binding.bottomLayoutPost.cl_inner.visibility=View.VISIBLE
-                    binding.bottomLayoutPost.tv_no_of_corrent_answer.text=it.postCorrectAns.toString()
-                    binding.bottomLayoutPost.tv_no_of_incorrent_answer.text=it.postIncorrectAns.toString()
-                    binding.bottomLayoutPost.tv_no_of_question.text=it.totalQuestions.toString()
-                   // binding.tvDetail2Post.text = getDescriptionText(it.courseContent)
-                }else{
-                    binding.bottomLayoutPost.tv_start_test.text=getString(R.string.label_start_with_post_test)
+
                 }
                 if (it.isPassed) {
+
+                    binding.bottomLayoutPost.l_first.visibility=View.GONE
+                    binding.bottomLayoutPost.l_second.visibility=View.VISIBLE
+                    binding.bottomLayoutPost.tv_no_of_qs.text=it.totalQuestions.toString()
+                    binding.bottomLayoutPost.tv_no_of_correct_answer.text=it.postCorrectAns.toString()
+                    binding.bottomLayoutPost.tv_no_of_incorrect_answer.text=it.postIncorrectAns.toString()
+
                     binding.resultLayout.root.visibility = View.VISIBLE
-                    binding.resultLayout.tvChooseAnotherCourse.visibility = View.VISIBLE
-                    binding.resultLayout.rvAnotherCourse.visibility = View.VISIBLE
+                    binding.resultLayout.clAnotherCourse.visibility = View.VISIBLE
 
                     val adapter = ChoseAnotherCourseAdapter(requireContext(), it.subjectList, this)
                     val layoutManager=GridLayoutManager(requireContext(),3)
@@ -199,10 +195,18 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                     binding.resultLayout.rvAnotherCourse.adapter = adapter
                 }
                 else if (it.isFailed){
+                    binding.bottomLayoutPost.l_first.visibility=View.GONE
+                    binding.bottomLayoutPost.l_second.visibility=View.VISIBLE
+                    binding.bottomLayoutPost.tv_no_of_qs.text=it.totalQuestions.toString()
+                    binding.bottomLayoutPost.tv_no_of_correct_answer.text=it.postCorrectAns.toString()
+                    binding.bottomLayoutPost.tv_no_of_incorrect_answer.text=it.postIncorrectAns.toString()
+
                     binding.resultLayout.root.visibility=View.VISIBLE
                     binding.resultLayout.btnTestAgain.visibility=View.VISIBLE
                     binding.resultLayout.tvStatus.text=getString(R.string.label_test_failed)
                     binding.resultLayout.tvCongo.text = getString(R.string.label_ops)
+                    binding.resultLayout.tvCongo.setTextColor(ContextCompat.getColor(requireContext(),R.color.red))
+                    binding.resultLayout.tvStatus.setTextColor(ContextCompat.getColor(requireContext(),R.color.red))
                     binding.resultLayout.tvDesc.text = getString(R.string.label_desc_failed)
                 }
             }
@@ -276,9 +280,9 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
 
         override fun createFragment(position: Int): Fragment {
             return when (position) {
-                0 -> ContentAndVideoSubFragment(true)
-                1 -> ContentAndVideoSubFragment(false)
-                else -> ContentAndVideoSubFragment(true)
+                0 -> ContentAndVideoSubFragment(true,contentText,videoLink)
+                1 -> ContentAndVideoSubFragment(false,contentText,videoLink)
+                else -> ContentAndVideoSubFragment(true,contentText,videoLink)
             }
         }
     }

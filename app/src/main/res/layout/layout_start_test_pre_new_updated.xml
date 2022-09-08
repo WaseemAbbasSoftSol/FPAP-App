@@ -48,7 +48,7 @@
                 android:layout_marginStart="@dimen/_20dp"
                 android:layout_marginEnd="@dimen/_20dp"
                 android:fontFamily="@font/poppins_medium"
-                tools:text="@string/label_start_with_pre_test"
+                android:text="@string/label_start_with_pre_test"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_18sp"
                 android:layout_marginTop="@dimen/_10dp"
@@ -165,52 +165,85 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.50" />
 
-          <androidx.constraintlayout.widget.ConstraintLayout
-              android:layout_width="@dimen/_0dp"
-              android:layout_height="130dp"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toTopOf="parent"
-              android:background="@drawable/ic_bg_correct_ans"
-              android:layout_marginEnd="@dimen/_5dp"
-              app:layout_constraintEnd_toStartOf="@id/first_guide">
+            <ImageView
+                android:id="@+id/iv_correct_ans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/cl_correct_ans"
+                app:layout_constraintEnd_toEndOf="@id/cl_correct_ans"
+                android:src="@drawable/ic_correct_ans"
+                app:layout_constraintTop_toTopOf="parent"
+                android:elevation="@dimen/_5dp"
 
-              <TextView
-                  android:id="@+id/tv_correct_answer"
-                  android:layout_width="wrap_content"
-                  android:layout_height="@dimen/_t25_30dp"
-                  android:text="@string/label_correct_ans"
-                  android:textSize="@dimen/_12sp"
-                  android:fontFamily="@font/poppins_regular"
-                  android:textColor="@color/white"
-                  app:layout_constraintStart_toStartOf="parent"
-                  app:layout_constraintEnd_toEndOf="parent"
-                  app:layout_constraintTop_toTopOf="parent"
-                  app:layout_constraintBottom_toBottomOf="parent"
-                  android:layout_marginTop="@dimen/_25dp"/>
-
-              <TextView
-                  android:id="@+id/tv_no_of_correct_answer"
-                  android:layout_width="wrap_content"
-                  android:layout_height="@dimen/_t25_30dp"
-                  android:text="08"
-                  android:textSize="@dimen/_14sp"
-                  android:fontFamily="@font/poppins_medium"
-                  android:textColor="@color/white"
-                  app:layout_constraintStart_toStartOf="parent"
-                  app:layout_constraintEnd_toEndOf="parent"
-                  app:layout_constraintTop_toBottomOf="@id/tv_correct_answer"
-                  />
-
-          </androidx.constraintlayout.widget.ConstraintLayout>
+                />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_correct_ans"
                 android:layout_width="@dimen/_0dp"
-                android:layout_height="130dp"
-                app:layout_constraintStart_toEndOf="@id/first_guide"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintHorizontal_bias="1.0"
+                android:layout_marginEnd="@dimen/_5dp"
+                android:background="@drawable/bg_cl_rectangle"
+                app:layout_constraintEnd_toStartOf="@id/first_guide"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_correct_ans">
+
+                <TextView
+                    android:id="@+id/tv_correct_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_t25_30dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/label_correct_ans"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sp"
+                    android:layout_marginBottom="@dimen/_5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_no_of_correct_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_t25_30dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="08"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_correct_answer" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_10dp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_no_of_correct_answer"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/iv_incorrect_ans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/cl_incorrect_ans"
+                app:layout_constraintEnd_toEndOf="@id/cl_incorrect_ans"
+                android:src="@drawable/ic_incorrect_ans"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:elevation="@dimen/_5dp"
+
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_incorrect_ans"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:layout_marginStart="@dimen/_5dp"
-                android:background="@drawable/ic_bg_incorrect_ans"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/first_guide"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/bg_cl_rectangle"
+                android:backgroundTint="@color/red_001"
                 >
 
                 <TextView
@@ -219,13 +252,14 @@
                     android:layout_height="@dimen/_t25_30dp"
                     android:text="@string/label_incorrect_ans"
                     android:textSize="@dimen/_12sp"
+                    android:layout_marginBottom="@dimen/_5dp"
                     android:fontFamily="@font/poppins_regular"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginTop="@dimen/_25dp"/>
+                    />
 
                 <TextView
                     android:id="@+id/tv_no_of_incorrect_answer"
@@ -239,7 +273,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_incorrect_answer"
                     />
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_10dp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_no_of_incorrect_answer"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

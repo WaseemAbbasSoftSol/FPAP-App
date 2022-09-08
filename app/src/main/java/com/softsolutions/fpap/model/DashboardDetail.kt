@@ -1,6 +1,7 @@
 package com.softsolutions.fpap.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class DashboardDetail(
     @SerializedName("IntroContent")
@@ -43,4 +44,4 @@ data class DashboardDetail(
     val isFailed:Boolean,
     @SerializedName("subjlist")
     val subjectList:List<SubjectList>
-)
+):Serializable
