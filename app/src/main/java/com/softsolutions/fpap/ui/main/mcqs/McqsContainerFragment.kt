@@ -20,6 +20,7 @@ import com.softsolutions.fpap.model.mcq.McqsOption
 import com.softsolutions.fpap.model.mcq.SubmitMcq
 import com.softsolutions.fpap.ui.common.SubmitDialog
 import com.softsolutions.fpap.ui.common.isUrduMedium
+import com.softsolutions.fpap.ui.common.mcqSubmittedAndShowResultAtBottom
 import com.softsolutions.fpap.ui.main.dashboard.detail.DashboardDetailFragment
 import com.softsolutions.fpap.utils.exitFullScreenMode
 import com.softsolutions.fpap.utils.hideProgressOnButton
@@ -128,6 +129,7 @@ class McqsContainerFragment:Fragment() {
             if (it=="Certificate Detail found"){
                 findNavController().navigate(McqsContainerFragmentDirections.actionMcqToDashboardDetailFragment(DashboardDetailFragment.subjectId,
                 DashboardDetailFragment.subjectName))
+                mcqSubmittedAndShowResultAtBottom=true
             }
         }
 

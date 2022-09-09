@@ -31,7 +31,7 @@
     <string name="label_signout" translatable="false">Signout</string>
     <string name="label_english_med" translatable="false">English med</string>
     <string name="label_urdu_med" translatable="false">Urdu med</string>
-    <string name="label_internal_personal" translatable="false">Intepersonal Relationships</string>
+    <string name="label_internal_personal" translatable="false">Interpersonal Relationships</string>
     <string name="label_lorem_ipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</string>
     <string name="label_start_with_pre_test" translatable="false">To start this course, you need to attempt a Pre-Test</string>
     <string name="label_start_post_test" translatable="false">Start your post-Test</string>
@@ -117,4 +117,5 @@
     <string name="question" translatable="false">Question</string>
     <string name="cant_select_multiple_option" translatable="false">you cannot select multiple options</string>
     <string name="test_already_taken" translatable="false">Test already taken</string>
+    <string name="label_pass_all_course" translatable="false">Pass all courses to be eligible for All Courses\nAchievement Certificate</string>
 </resources>

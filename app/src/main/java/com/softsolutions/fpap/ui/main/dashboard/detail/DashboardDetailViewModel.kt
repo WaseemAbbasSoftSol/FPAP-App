@@ -27,9 +27,11 @@ class DashboardDetailViewModel(
     private var classId=0
     var subjectId=0
     private var memberId=0
+    var gender = ""
 
     init {
         classId=prefRepository.getUser()!!.memberInfo.classId
+        gender=prefRepository.getUser()!!.memberInfo.gender
         memberId=prefRepository.getUser()!!.memberId
      getDashboardDetailData()
     }

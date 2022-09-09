@@ -25,7 +25,10 @@ class CertificateFragment:Fragment() {
         binding= FragmentCertificateBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
         binding.tvToolbar.text=getString(R.string.label_certificate)
-        binding.clBottom.visibility= View.GONE
+       // binding.clBottom.visibility= View.GONE
+        binding.tvCongo.visibility=View.GONE
+        binding.tvDesc.text = getString(R.string.label_pass_all_course)
+        binding.btnDownload.visibility=View.GONE
         if (isUrduMedium) {
             binding.back.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_back_right))
         }

@@ -1,7 +1,6 @@
 package com.softsolutions.fpap.ui.main.dashboard.detail
 
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Html
 import android.transition.Fade
@@ -16,32 +15,29 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.softsolutions.fpap.R
-import com.softsolutions.fpap.databinding.FragmentDashboardDetailNewBinding
 import com.softsolutions.fpap.databinding.FragmentDashboardDetailNewUpdatedBinding
 import com.softsolutions.fpap.model.SubjectList
 import com.softsolutions.fpap.ui.common.OnListItemClickListener
 import com.softsolutions.fpap.ui.common.isUrduMedium
+import com.softsolutions.fpap.ui.common.mcqSubmittedAndShowResultAtBottom
 import com.softsolutions.fpap.utils.APP_TAG
 import com.softsolutions.fpap.utils.makeStatusBarTransparent
+import com.softsolutions.fpap.utils.setWebView
 import kotlinx.android.synthetic.main.layout_start_test_bottom.view.*
 import kotlinx.android.synthetic.main.layout_start_test_bottom.view.btn_start_test
-import kotlinx.android.synthetic.main.layout_start_test_bottom.view.tv_no_of_question
-import kotlinx.android.synthetic.main.layout_start_test_bottom.view.tv_pre_test
-import kotlinx.android.synthetic.main.layout_start_test_bottom.view.tv_start_test
 import kotlinx.android.synthetic.main.layout_start_test_post_new_updated.view.*
 import kotlinx.android.synthetic.main.layout_start_test_pre_new_updated.view.*
 import kotlinx.android.synthetic.main.layout_start_test_pre_new_updated.view.l_first
@@ -49,6 +45,7 @@ import kotlinx.android.synthetic.main.layout_start_test_pre_new_updated.view.l_s
 import kotlinx.android.synthetic.main.layout_start_test_pre_new_updated.view.tv_no_of_correct_answer
 import kotlinx.android.synthetic.main.layout_start_test_pre_new_updated.view.tv_no_of_incorrect_answer
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.regex.Pattern
 
 
 class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList> {
@@ -57,8 +54,8 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
     private var imageLink = "https://ikddata.ilmkidunya.com/images/subjectimages/"
     private var testId = 0
     private var unitId = 0
-    private var contentText=""
     private var videoLink=""
+    private var tempList= arrayListOf<SubjectList>()
     companion object {
         var subjectId = 0
         var subjectName = ""
@@ -79,10 +76,12 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
     ): View? {
         binding= FragmentDashboardDetailNewUpdatedBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
-        requireActivity().makeStatusBarTransparent()
+      //  requireActivity().makeStatusBarTransparent()
         if (isUrduMedium) {
             binding.back.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_back_right_white))
         }
+        setWebView(requireContext(),requireActivity(),binding.webViewLecture)
+        binding.webViewLecture.webViewClient = Browser_home()
         binding.bottomLayout.btn_start_test.setOnClickListener {
            goToMcqsFragment()
         }
@@ -122,7 +121,10 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
             binding.tvVideoTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.white))
             binding.tvVideoTab.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_video, 0, 0, 0)
 
-            binding.viewpager.currentItem = 1
+            binding.nestedscroll.visibility=View.GONE
+            binding.clVideos.visibility=View.VISIBLE
+            binding.webViewLecture.onResume()
+
         }
         binding.clContent.setOnClickListener{
             binding.clVideo.background=ContextCompat.getDrawable(requireContext(),R.drawable.ic_bg_grey)
@@ -133,12 +135,13 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
             binding.tvContentTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.white))
             binding.tvContentTab.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_content_white, 0, 0, 0)
 
-            binding.viewpager.currentItem = 0
+            binding.nestedscroll.visibility=View.VISIBLE
+            binding.clVideos.visibility=View.GONE
+            binding.webViewLecture.onPause()
+
         }
 
-        val pagerAdapter = activity?.let { ScreenSlidePagerAdapter(it) }
-        binding.viewpager.adapter = pagerAdapter
-        binding.viewpager.isUserInputEnabled = false
+
 
         return binding.root
     }
@@ -148,6 +151,11 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
         binding.viewModel=mViewModel
         mViewModel.dashboardData.observe(viewLifecycleOwner){
             if (it!=null){
+                tempList= it.subjectList as ArrayList<SubjectList>
+
+
+
+
                 binding.bottomLayout.visibility=View.VISIBLE
                 binding.guideDetailImage.visibility=View.VISIBLE
                 testId=it.testId
@@ -161,24 +169,51 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                 Glide.with(requireContext()).load(imageLink).into(binding.guideDetailImage)
                 Log.d(APP_TAG,"ddd "+imageLink)
 
-                binding.bottomLayout.tv_no_of_question.text=it.totalQuestions.toString()+" Questions"
+                binding.bottomLayout.tv_no_of_question.text=it.totalQuestions.toString()+" "+getString(R.string.label_question)
                 if (it.isSumbmittedPreTest){
                     binding.bottomLayout.l_first.visibility=View.GONE
                     binding.bottomLayout.l_second.visibility=View.VISIBLE
-                    binding.bottomLayout.tv_no_of_questions.text=it.totalQuestions.toString()+" Questions"
+                    binding.bottomLayout.tv_no_of_questions.text=it.totalQuestions.toString()+" "+getString(R.string.label_question)
                     binding.bottomLayout.tv_no_of_correct_answer.text=it.preCorrectAns.toString()
                     binding.bottomLayout.tv_no_of_incorrect_answer.text=it.preIncorrectAns.toString()
                     binding.clPost.visibility=View.VISIBLE
-                  contentText=it.courseContent
-                    if (!it.video.isNullOrEmpty())videoLink=it.video
+                    binding.tvDetails.text=getDescriptionText(it.courseContent)
+                    if (!it.video.isNullOrEmpty()){
+                        videoLink=it.video
+                        val embedcode = it.video
+                        val matcher = Pattern.compile("src=\"([^\"]+)\"").matcher(embedcode)
+                        matcher.find()
+                        var link = matcher.group(1)!!
+                        binding.webViewLecture.loadUrl(link)
+                    }
                 }
 
                 if (it.isSubmittedPostTest){
-               binding.bottomLayoutPost.visibility=View.GONE
                     binding.bottomLayoutPost.btn_start_test.visibility=View.GONE
+                    if (mcqSubmittedAndShowResultAtBottom){
+                        binding.appbar.setExpanded(false, true)
+                        binding.scrollview.post(Runnable { binding.scrollview.fullScroll(ScrollView.FOCUS_DOWN) })
+                        mcqSubmittedAndShowResultAtBottom=false
+                    }
 
                 }
                 if (it.isPassed) {
+
+                    if (mViewModel.gender=="Male                                              "){
+                        for ((i,value )in tempList.withIndex()){
+                            if (value.id==765){
+                                tempList.remove(value)
+                                break
+                            }
+                        }
+                    }else{
+                        for ((i,value )in tempList.withIndex()){
+                            if (value.id==762){
+                                tempList.remove(value)
+                                break
+                            }
+                        }
+                    }
 
                     binding.bottomLayoutPost.l_first.visibility=View.GONE
                     binding.bottomLayoutPost.l_second.visibility=View.VISIBLE
@@ -189,10 +224,11 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                     binding.resultLayout.root.visibility = View.VISIBLE
                     binding.resultLayout.clAnotherCourse.visibility = View.VISIBLE
 
-                    val adapter = ChoseAnotherCourseAdapter(requireContext(), it.subjectList, this)
+                    val adapter = ChoseAnotherCourseAdapter(requireContext(), tempList, this)
                     val layoutManager=GridLayoutManager(requireContext(),3)
                     binding.resultLayout.rvAnotherCourse.layoutManager=layoutManager
                     binding.resultLayout.rvAnotherCourse.adapter = adapter
+
                 }
                 else if (it.isFailed){
                     binding.bottomLayoutPost.l_first.visibility=View.GONE
@@ -208,6 +244,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                     binding.resultLayout.tvCongo.setTextColor(ContextCompat.getColor(requireContext(),R.color.red))
                     binding.resultLayout.tvStatus.setTextColor(ContextCompat.getColor(requireContext(),R.color.red))
                     binding.resultLayout.tvDesc.text = getString(R.string.label_desc_failed)
+
                 }
             }
         }
@@ -228,17 +265,25 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
         }
     }
 
+    fun getDescriptionText(description: String): CharSequence? {
+        return  if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            Html.fromHtml(description,Html.FROM_HTML_MODE_COMPACT).trim()
+        } else {
+            HtmlCompat.fromHtml(description, HtmlCompat.FROM_HTML_MODE_COMPACT).trim()
+        }
+    }
+
 
 
     inner class Browser_home : WebViewClient() {
         override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
             super.onPageStarted(view, url, favicon)
-        //    binding.progressbar.visibility = View.VISIBLE
+            binding.progressbar.visibility = View.VISIBLE
         }
 
         override fun onPageFinished(view: WebView, url: String) {
             super.onPageFinished(view, url)
-         //  binding.progressbar.visibility = View.GONE
+           binding.progressbar.visibility = View.GONE
          //   binding.webviewPost.loadUrl("javascript:(function() { document.getElementsByTagName('video')[0].play(); })()");
         }
 
@@ -275,16 +320,6 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
         this.visibility = visibility
     }
 
-    private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
-        override fun getItemCount(): Int = 2
 
-        override fun createFragment(position: Int): Fragment {
-            return when (position) {
-                0 -> ContentAndVideoSubFragment(true,contentText,videoLink)
-                1 -> ContentAndVideoSubFragment(false,contentText,videoLink)
-                else -> ContentAndVideoSubFragment(true,contentText,videoLink)
-            }
-        }
-    }
 
 }

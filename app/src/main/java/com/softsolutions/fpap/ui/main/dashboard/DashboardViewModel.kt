@@ -37,9 +37,11 @@ class DashboardViewModel(
     val updateLanguageMsg: LiveData<String> = _updateLanguageMsg
 
     private var memberId = 0
+    private var gender=""
 
     init {
         memberId = prefRepository.getUser()!!.memberId
+        gender=prefRepository.getUser()!!.memberInfo.gender
         _subjects.value= emptyList()
         if (!isNewStudentRegistering) getDashboardData()
         getAllCountedUsers()
@@ -53,7 +55,25 @@ class DashboardViewModel(
                 if (response.isSuccessful) {
                     response.body().let {
                         _user.postValue(it!!.data)
-                        _subjects.postValue(it.data.subjectList)
+                        var tempList= arrayListOf<SubjectList>()
+                        tempList.addAll(it.data.subjectList)
+                        if (gender=="Male                                              "){
+                            for ((i,value )in tempList.withIndex()){
+                                if (value.id==765){
+                                    tempList.remove(value)
+                                    break
+                                }
+                            }
+                        }else{
+                            for ((i,value )in tempList.withIndex()){
+                                if (value.id==762){
+                                    tempList.remove(value)
+                                    break
+                                }
+                            }
+                        }
+
+                        _subjects.postValue(tempList)
                        // isUrduMedium=it!!.data.memberInfo.isUrduMedium
                     }
                 } else response.errorBody().let {
