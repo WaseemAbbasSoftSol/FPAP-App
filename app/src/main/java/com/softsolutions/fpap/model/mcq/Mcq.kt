@@ -17,7 +17,9 @@ data class Mcq(
     @SerializedName("Answers")
     val answer: List<McqsOption>,
     var isAnySelected:Boolean=false,
-    var isOp:Int=0,
+    var isOp:Int=0,//isOp is number of selection of an mcq. user can select one option only at one time.
     var wrongSelectedPosition:Int=-1,
-    var isWrongSelected:Boolean=false
+    var isWrongSelected:Boolean=false,
+
+    var userSelectedPos:Int=-1
 ):Serializable

@@ -48,8 +48,8 @@ class ChoseAnotherCourseAdapter(
         Glide.with(context).load(item.image1).into(holder.iv)
         if (item.isPassed) {
             holder.support.visibility=View.VISIBLE
-            holder.cardView.background.setTint(ContextCompat.getColor(context,R.color.purple))
-            holder.cardView.foreground=context.resources.getDrawable(R.drawable.cardview_solid_border_color_purple)
+           // holder.cardView.background.setTint(ContextCompat.getColor(context,R.color.purple))
+           // holder.cardView.foreground=context.resources.getDrawable(R.drawable.cardview_solid_border_color_purple)
         }
         holder.cardView.setOnClickListener {
             listener.onItemClick(item,position)

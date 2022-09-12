@@ -45,6 +45,7 @@ class McqsOptionAdapter(
         holder.tvoption.setOption(position)
         holder.itemView.setOnClickListener {
             currentSelectedPosition = position
+            mcq.userSelectedPos=position
             listener.onOptionClick(position, item)
             mcq.isOp=mcq.isOp+1
             for ((i,value ) in options.withIndex()){
@@ -56,24 +57,24 @@ class McqsOptionAdapter(
             notifyDataSetChanged()
         }
 
-        if (mcq.isOp==1){
+        if (mcq.isOp==1){//mcq.isOp is number of selection of an mcq. user can select one option only at one time.
             if (currentSelectedPosition == position) {
                 holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
                 holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
-                if (item.isCorrect) {
+              //  if (item.isCorrect) {
                     holder.cardView.setBackgroundResource(R.color.green)
-                }
-                else{
-                    holder.cardView.setBackgroundResource(R.color.red)
-                   mcq.wrongSelectedPosition=position
-                    mcq.isWrongSelected=true
-                }
+              //  }
+//                else{
+//                    holder.cardView.setBackgroundResource(R.color.green)
+//                   mcq.wrongSelectedPosition=position
+//                    mcq.isWrongSelected=true
+//                }
             }
-            else if (correctPosition==position){
-                holder.cardView.setBackgroundResource(R.color.green)
-                holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
-                holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
-            }
+//            else if (correctPosition==position){
+//                holder.cardView.setBackgroundResource(R.color.green)
+//                holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
+//                holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
+//            }
 
             else{
                 holder.cardView.setBackgroundResource(R.color.grey_001)
@@ -82,16 +83,26 @@ class McqsOptionAdapter(
             }
         }
             if (isAnySelected()){
-                if (item.isCorrect) {
+                if (mcq.userSelectedPos==position){
                     holder.cardView.setBackgroundResource(R.color.green)
                     holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
                     holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
                 }
-                else if (mcq.wrongSelectedPosition==position && mcq.isWrongSelected){
-                    holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
-                    holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
-                    holder.cardView.setBackgroundResource(R.color.red)
+                else{
+                    holder.cardView.setBackgroundResource(R.color.grey_001)
+                    holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.black))
+                    holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.black))
                 }
+//                if (item.isCorrect) {
+//                    holder.cardView.setBackgroundResource(R.color.green)
+//                    holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
+//                    holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
+//                }
+//                else if (mcq.wrongSelectedPosition==position && mcq.isWrongSelected){
+//                    holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
+//                    holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
+//                    holder.cardView.setBackgroundResource(R.color.red)
+//                }
 
             }
     }

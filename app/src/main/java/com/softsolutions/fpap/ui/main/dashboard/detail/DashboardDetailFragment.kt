@@ -100,13 +100,13 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
 
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    binding.tvHeader.visibility=View.GONE
-                    binding.tvToolbar.visibility=View.VISIBLE
-                  //  binding.clProgress.fadeVisibility(View.VISIBLE,4000)
-                    isShow = true
-                } else if (!isShow) {
                     binding.tvHeader.visibility=View.VISIBLE
                     binding.tvToolbar.visibility=View.GONE
+                  //  binding.clProgress.fadeVisibility(View.VISIBLE,4000)
+                    isShow = true
+                } else if (isShow) {
+                    binding.tvHeader.visibility=View.GONE
+                    binding.tvToolbar.visibility=View.VISIBLE
                   //  binding.clProgress.fadeVisibility(View.GONE,500)
                 }
             }

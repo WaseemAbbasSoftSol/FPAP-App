@@ -165,7 +165,7 @@ class McqsContainerFragment:Fragment() {
                     val toastTV = toastLayout!!.getChildAt(0) as TextView
                     val typeface = ResourcesCompat.getFont(requireContext(), R.font.poppins_regular)
                     toastTV.typeface = typeface
-                    toast.show()
+                    //toast.show()
                     return
                 }
                 val submitMcq = SubmitMcq(mViewModel.memberId, testId, questionId, item.id)

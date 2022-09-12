@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.constraintlayout.utils.widget.ImageFilterView
@@ -55,6 +56,9 @@ class MainActivity : AppCompatActivity() {
         setNavHeaderViews()
         val switchCompat = headerView.findViewById<SwitchCompat>(R.id.sth_med)
         val back = headerView.findViewById<ImageFilterView>(R.id.back)
+        back.setOnClickListener {
+           hideNavigation()
+        }
         switchCompat.isChecked = isUrduMedium
         if (isUrduMedium) {
             back.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_back_right_white))
