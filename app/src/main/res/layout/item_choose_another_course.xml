@@ -10,7 +10,7 @@
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="@dimen/_150_160dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview"
@@ -20,9 +20,9 @@
         android:foreground="@drawable/cardview_solid_border_color"
         android:backgroundTint="@color/green"
         android:padding="@dimen/_5dp"
-        android:layout_margin="@dimen/_5dp"
+        android:layout_margin="@dimen/_10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

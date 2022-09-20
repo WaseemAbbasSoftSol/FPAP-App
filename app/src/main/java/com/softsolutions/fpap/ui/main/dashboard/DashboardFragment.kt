@@ -23,10 +23,7 @@ import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentDashboardBinding
 import com.softsolutions.fpap.model.SubjectList
 import com.softsolutions.fpap.ui.common.*
-import com.softsolutions.fpap.utils.LANGUAGE_UPDATED_SUCCESSFULLY
-import com.softsolutions.fpap.utils.exitFullScreenMode
-import com.softsolutions.fpap.utils.makeProgressOnButton
-import com.softsolutions.fpap.utils.setLocate
+import com.softsolutions.fpap.utils.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -41,6 +38,7 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        loadLocate(requireActivity())
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         requireActivity().exitFullScreenMode()

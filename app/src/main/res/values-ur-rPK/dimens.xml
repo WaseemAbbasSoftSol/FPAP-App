@@ -45,6 +45,8 @@
     <dimen name="_t25_30dp">30dp</dimen>
     <dimen name="_tt30dp">35dp</dimen>
 
+    <dimen name="_150_160dp">160dp</dimen>
+
 
     <dimen name="grid_expected_size">120dp</dimen>
 </resources>

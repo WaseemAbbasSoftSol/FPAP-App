@@ -1,5 +1,6 @@
 package com.softsolutions.fpap.ui.main.dashboard.detail
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.text.Html
@@ -33,9 +34,7 @@ import com.softsolutions.fpap.model.SubjectList
 import com.softsolutions.fpap.ui.common.OnListItemClickListener
 import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.ui.common.mcqSubmittedAndShowResultAtBottom
-import com.softsolutions.fpap.utils.APP_TAG
-import com.softsolutions.fpap.utils.makeStatusBarTransparent
-import com.softsolutions.fpap.utils.setWebView
+import com.softsolutions.fpap.utils.*
 import kotlinx.android.synthetic.main.layout_start_test_bottom.view.*
 import kotlinx.android.synthetic.main.layout_start_test_bottom.view.btn_start_test
 import kotlinx.android.synthetic.main.layout_start_test_post_new_updated.view.*
@@ -62,6 +61,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        loadLocate(requireActivity())
         arguments.let {
             val args = DashboardDetailFragmentArgs.fromBundle(it!!)
             mViewModel.subjectId = args.subjectId
@@ -69,11 +69,14 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
             subjectName=args.subjectName
         }
     }
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        loadLocate(requireActivity())
         binding= FragmentDashboardDetailNewUpdatedBinding.inflate(inflater,container,false)
         binding.lifecycleOwner=this
       //  requireActivity().makeStatusBarTransparent()
@@ -112,7 +115,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
             }
         })
 
-        binding.clVideo.setOnClickListener{
+       /* binding.clVideo.setOnClickListener{
             binding.clContent.background=ContextCompat.getDrawable(requireContext(),R.drawable.ic_bg_grey)
             binding.tvContentTab.setTextColor(ContextCompat.getColor(requireContext(),R.color.black))
             binding.tvContentTab.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_content_black, 0, 0, 0)
@@ -139,7 +142,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
             binding.clVideos.visibility=View.GONE
             binding.webViewLecture.onPause()
 
-        }
+        }*/
 
 
 
@@ -148,6 +151,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loadLocate(requireActivity())
         binding.viewModel=mViewModel
         mViewModel.dashboardData.observe(viewLifecycleOwner){
             if (it!=null){
@@ -176,16 +180,23 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                     binding.bottomLayout.tv_no_of_questions.text=it.totalQuestions.toString()+" "+getString(R.string.label_question)
                     binding.bottomLayout.tv_no_of_correct_answer.text=it.preCorrectAns.toString()
                     binding.bottomLayout.tv_no_of_incorrect_answer.text=it.preIncorrectAns.toString()
-                    binding.clPost.visibility=View.VISIBLE
-                    binding.tvDetails.text=getDescriptionText(it.courseContent)
-                    if (!it.video.isNullOrEmpty()){
-                        videoLink=it.video
-                        val embedcode = it.video
-                        val matcher = Pattern.compile("src=\"([^\"]+)\"").matcher(embedcode)
-                        matcher.find()
-                        var link = matcher.group(1)!!
-                        binding.webViewLecture.loadUrl(link)
-                    }
+
+                    binding.bottomLayoutPost.visibility=View.VISIBLE
+                    binding.clPostNew.visibility=View.VISIBLE
+                    setWebView(requireContext(),requireActivity(),binding.webView)
+                    binding.webView.webViewClient = Browser_home()
+                    binding.webView.loadUrl(it.courseContentLinkDetail)
+
+
+                   // binding.tvDetails.text=getDescriptionText(it.courseContent)
+//                    if (!it.video.isNullOrEmpty()){
+//                        videoLink=it.video
+//                        val embedcode = it.video
+//                        val matcher = Pattern.compile("src=\"([^\"]+)\"").matcher(embedcode)
+//                        matcher.find()
+//                        var link = matcher.group(1)!!
+//                        binding.webViewLecture.loadUrl(link)
+//                    }
                 }
 
                 if (it.isSubmittedPostTest){
@@ -229,6 +240,16 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                     binding.resultLayout.rvAnotherCourse.layoutManager=layoutManager
                     binding.resultLayout.rvAnotherCourse.adapter = adapter
 
+                    if (isUrduMedium){
+                        binding.resultLayout.tvCongo.text="مبارک ہو"
+                        binding.resultLayout.tvStatus.text="امتحان پاس کیا"
+                        binding.resultLayout.tvDesc.text="آپ نے امتحان پاس کر لیا ہے۔"
+                        binding.resultLayout.tvChooseAnotherCourse.text="آپ کا LSBE کورس کا سفر"
+                        setTextViewFont(binding.resultLayout.tvCongo,R.font.alvi_nastaleeq_regular,requireContext(),24)
+                        setTextViewFont(binding.resultLayout.tvStatus,R.font.alvi_nastaleeq_regular,requireContext(),28)
+                        setTextViewFont(binding.resultLayout.tvDesc,R.font.alvi_nastaleeq_regular,requireContext(),18)
+                        setTextViewFont(binding.resultLayout.tvChooseAnotherCourse,R.font.alvi_nastaleeq_regular,requireContext(),26)
+                    }
                 }
                 else if (it.isFailed){
                     binding.bottomLayoutPost.l_first.visibility=View.GONE
@@ -244,6 +265,17 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                     binding.resultLayout.tvCongo.setTextColor(ContextCompat.getColor(requireContext(),R.color.red))
                     binding.resultLayout.tvStatus.setTextColor(ContextCompat.getColor(requireContext(),R.color.red))
                     binding.resultLayout.tvDesc.text = getString(R.string.label_desc_failed)
+
+                    if (isUrduMedium){
+                        binding.resultLayout.tvCongo.text="اوپس"
+                        binding.resultLayout.tvStatus.text="ناکام ہو چکے ہیں"
+                        binding.resultLayout.tvDesc.text="آپ امتحان میں ناکام ہو گئے ہیں"
+                        binding.resultLayout.tvChooseAnotherCourse.text="آپ کا LSBE کورس کا سفر"
+                        setTextViewFont(binding.resultLayout.tvCongo,R.font.alvi_nastaleeq_regular,requireContext(),24)
+                        setTextViewFont(binding.resultLayout.tvStatus,R.font.alvi_nastaleeq_regular,requireContext(),28)
+                        setTextViewFont(binding.resultLayout.tvDesc,R.font.alvi_nastaleeq_regular,requireContext(),18)
+                        setTextViewFont(binding.resultLayout.tvChooseAnotherCourse,R.font.alvi_nastaleeq_regular,requireContext(),26)
+                    }
 
                 }
             }
@@ -279,11 +311,13 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
         override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
             super.onPageStarted(view, url, favicon)
             binding.progressbar.visibility = View.VISIBLE
+            binding.progressbars.visibility = View.VISIBLE
         }
 
         override fun onPageFinished(view: WebView, url: String) {
             super.onPageFinished(view, url)
            binding.progressbar.visibility = View.GONE
+           binding.progressbars.visibility = View.GONE
          //   binding.webviewPost.loadUrl("javascript:(function() { document.getElementsByTagName('video')[0].play(); })()");
         }
 
@@ -320,6 +354,23 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
         this.visibility = visibility
     }
 
+    override fun onStart() {
+        super.onStart()
+        loadLocate(requireActivity())
+    }
 
+    override fun onResume() {
+        super.onResume()
+        loadLocate(requireActivity())
+    }
 
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        loadLocate(requireActivity())
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        loadLocate(requireActivity())
+    }
 }

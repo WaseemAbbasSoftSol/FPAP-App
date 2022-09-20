@@ -85,7 +85,7 @@ private fun ContentResolver.getFileName(fileUri: Uri): String {
 fun setTextViewFont(textView:TextView,font:Int,context:Context,textSize:Int=0){
     val typeface = ResourcesCompat.getFont(context, font)
     textView.typeface = typeface
-    //if (textSize!=0) textView.textSize=textSize.toFloat()
+    if (textSize!=0) textView.textSize=textSize.toFloat()
 }
 
 fun setTextViewFont(button:AppCompatButton,font:Int,context:Context,textSize:Int=0){
