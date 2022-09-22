@@ -32,6 +32,7 @@ import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentDashboardDetailNewUpdatedBinding
 import com.softsolutions.fpap.model.SubjectList
 import com.softsolutions.fpap.ui.common.OnListItemClickListener
+import com.softsolutions.fpap.ui.common.isPostTest
 import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.ui.common.mcqSubmittedAndShowResultAtBottom
 import com.softsolutions.fpap.utils.*
@@ -89,9 +90,11 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
            goToMcqsFragment()
         }
         binding.bottomLayoutPost.btn_start_test.setOnClickListener {
+            isPostTest=true
             goToMcqsFragment()
         }
         binding.resultLayout.btnTestAgain.setOnClickListener {
+            isPostTest=true
             goToMcqsFragment()
         }
         binding.appbar.addOnOffsetChangedListener(object : OnOffsetChangedListener {
@@ -201,11 +204,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
 
                 if (it.isSubmittedPostTest){
                     binding.bottomLayoutPost.btn_start_test.visibility=View.GONE
-                    if (mcqSubmittedAndShowResultAtBottom){
-                        binding.appbar.setExpanded(false, true)
-                        binding.scrollview.post(Runnable { binding.scrollview.fullScroll(ScrollView.FOCUS_DOWN) })
-                        mcqSubmittedAndShowResultAtBottom=false
-                    }
+
 
                 }
                 if (it.isPassed) {
@@ -265,11 +264,13 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                     binding.resultLayout.tvCongo.setTextColor(ContextCompat.getColor(requireContext(),R.color.red))
                     binding.resultLayout.tvStatus.setTextColor(ContextCompat.getColor(requireContext(),R.color.red))
                     binding.resultLayout.tvDesc.text = getString(R.string.label_desc_failed)
+                    binding.resultLayout.tvDesc.visibility=View.GONE
 
                     if (isUrduMedium){
-                        binding.resultLayout.tvCongo.text="اوپس"
+                        binding.resultLayout.tvCongo.text="دوبارہ کوشش کریں"
                         binding.resultLayout.tvStatus.text="ناکام ہو چکے ہیں"
                         binding.resultLayout.tvDesc.text="آپ امتحان میں ناکام ہو گئے ہیں"
+                        binding.resultLayout.tvDesc.visibility=View.GONE
                         binding.resultLayout.tvChooseAnotherCourse.text="آپ کا LSBE کورس کا سفر"
                         setTextViewFont(binding.resultLayout.tvCongo,R.font.alvi_nastaleeq_regular,requireContext(),24)
                         setTextViewFont(binding.resultLayout.tvStatus,R.font.alvi_nastaleeq_regular,requireContext(),28)
@@ -318,6 +319,13 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
             super.onPageFinished(view, url)
            binding.progressbar.visibility = View.GONE
            binding.progressbars.visibility = View.GONE
+
+            if (mcqSubmittedAndShowResultAtBottom && isPostTest==true){
+                binding.appbar.setExpanded(false, true)
+                binding.scrollview.post(Runnable { binding.scrollview.fullScroll(ScrollView.FOCUS_DOWN) })
+                mcqSubmittedAndShowResultAtBottom=false
+                isPostTest=false
+            }
          //   binding.webviewPost.loadUrl("javascript:(function() { document.getElementsByTagName('video')[0].play(); })()");
         }
 

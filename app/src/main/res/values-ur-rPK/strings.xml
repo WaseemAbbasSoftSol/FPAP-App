@@ -46,7 +46,7 @@
     <string name="label_test_passed" translatable="false">امتحان پاس کیا</string>
     <string name="label_test_failed" translatable="false">ناکام ہو چکے ہیں</string>
     <string name="label_congo" translatable="false">مبارک ہو</string>
-    <string name="label_ops" translatable="false">اوپس</string>
+    <string name="label_ops" translatable="false">دوبارہ کوشش کریں</string>
     <string name="label_desc" translatable="false">آپ نے امتحان پاس کر لیا ہے۔</string>
     <string name="label_desc_failed" translatable="false">آپ امتحان میں ناکام ہو گئے ہیں</string>
     <string name="label_download_certificate" translatable="false">سرٹیفکیٹ ڈاؤن لوڈ کریں۔</string>

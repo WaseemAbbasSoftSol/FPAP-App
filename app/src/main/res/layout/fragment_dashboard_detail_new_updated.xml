@@ -161,7 +161,7 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:descendantFocusability="blocksDescendants"
-
+                            android:visibility="gone"
                             android:id="@+id/cl_post_new"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"

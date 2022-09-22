@@ -54,7 +54,7 @@
     <string name="label_test_passed" translatable="false">Test Passed</string>
     <string name="label_test_failed" translatable="false">Test Failed</string>
     <string name="label_congo" translatable="false">Congratulations</string>
-    <string name="label_ops" translatable="false">Ops</string>
+    <string name="label_ops" translatable="false">Try Again</string>
     <string name="label_desc" translatable="false">You have passed the test.</string>
     <string name="label_desc_failed" translatable="false">You have failed the test.</string>
     <string name="label_desc1" translatable="false">You have passed the test. Now you can\ndownload all courses achievements certificate.</string>

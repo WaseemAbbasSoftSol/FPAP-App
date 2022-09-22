@@ -159,16 +159,24 @@ class McqsContainerFragment:Fragment() {
                 testId: Int,
                 isAnySelected:Boolean
             ) {
+                val submitMcq = SubmitMcq(mViewModel.memberId, testId, questionId, item.id)
                 if (isAnySelected){
-                    val toast: Toast = Toast.makeText(context, R.string.cant_select_multiple_option, Toast.LENGTH_SHORT)
+                   /* val toast: Toast = Toast.makeText(context, R.string.cant_select_multiple_option, Toast.LENGTH_SHORT)
                     val toastLayout = toast.view as LinearLayout?
                     val toastTV = toastLayout!!.getChildAt(0) as TextView
                     val typeface = ResourcesCompat.getFont(requireContext(), R.font.poppins_regular)
                     toastTV.typeface = typeface
                     //toast.show()
-                    return
+                    return*/
+
+                    val iterator = attemptedMcqsList.iterator()
+                    for(i in iterator){
+                        if(i.questionId== submitMcq.questionId){
+                            iterator.remove()
+                        }
+                    }
                 }
-                val submitMcq = SubmitMcq(mViewModel.memberId, testId, questionId, item.id)
+
                 attemptedMcqsList.add(submitMcq)
             }
         })

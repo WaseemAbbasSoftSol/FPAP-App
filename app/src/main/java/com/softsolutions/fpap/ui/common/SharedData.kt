@@ -6,3 +6,4 @@ var isUrduMedium = false
 var isProfileImageChanged=MutableLiveData<Boolean>()
 var isNewStudentRegistering=false
 var mcqSubmittedAndShowResultAtBottom=false
+var isPostTest=false

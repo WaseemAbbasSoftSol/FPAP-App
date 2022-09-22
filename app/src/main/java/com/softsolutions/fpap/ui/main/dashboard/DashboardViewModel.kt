@@ -43,7 +43,8 @@ class DashboardViewModel(
         memberId = prefRepository.getUser()!!.memberId
         gender=prefRepository.getUser()!!.memberInfo.gender
         _subjects.value= emptyList()
-        if (!isNewStudentRegistering) getDashboardData()
+       // if (!isNewStudentRegistering) getDashboardData()
+        getDashboardData()
         getAllCountedUsers()
     }
 
