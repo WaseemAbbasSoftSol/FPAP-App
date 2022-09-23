@@ -84,7 +84,7 @@ interface FpapApi {
     @POST("getCourseCertificate")
     suspend fun getCourseCertificate(
        @Query("MemberID") memberId: Int
-    ): Response<BaseResponse<List<CourseCertificate>>>
+    ): Response<BaseResponse<Certificates>>
 
 
     @POST("fpapMCQsTest")

@@ -11,6 +11,7 @@ import android.os.Build
 import android.provider.OpenableColumns
 import android.view.View
 import android.view.WindowManager
+import android.webkit.MimeTypeMap
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.widget.Button
@@ -48,6 +49,15 @@ fun setLocate(Lang: String,activity: Activity) {
          setLocate(prefRepository.getMedium()!!, activity)
      }
 
+}
+
+fun getMimeType(url: String): String? {
+    var type: String? = null
+    val extension = MimeTypeMap.getFileExtensionFromUrl(url)
+    if (extension != null) {
+        type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension)
+    }
+    return type
 }
 
 fun createSelectedFileCopy(uri: Uri, context: Context): File? {

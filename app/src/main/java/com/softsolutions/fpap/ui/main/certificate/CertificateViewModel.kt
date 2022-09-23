@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.softsolutions.fpap.data.FpapRepository
 import com.softsolutions.fpap.data.PrefRepository
-import com.softsolutions.fpap.model.CourseCertificate
+import com.softsolutions.fpap.model.Certificates
 import com.softsolutions.fpap.model.RequestState
 import com.softsolutions.fpap.utils.APP_TAG
 import kotlinx.coroutines.Dispatchers
@@ -26,8 +26,8 @@ class CertificateViewModel(
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage
 
-    private val _certificate = MutableLiveData<List<CourseCertificate>>()
-    val certificate: LiveData<List<CourseCertificate>> = _certificate
+    private val _certificate = MutableLiveData<Certificates>()
+    val certificate: LiveData<Certificates> = _certificate
 
     private var memberId=0
 

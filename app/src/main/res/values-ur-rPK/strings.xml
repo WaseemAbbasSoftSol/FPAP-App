@@ -107,4 +107,6 @@
     <string name="test_already_taken" translatable="false">ٹیسٹ پہلے ہی لیا گیا ہے۔</string>
     <string name="label_pass_all_course" translatable="false">تمام کورسز اچیومنٹ سرٹیفکیٹ کے اہل ہونے کے لیے تمام\nکورسز پاس کریں۔</string>
     <string name="label_course_achievement" translatable="false">تمام کورس کی کامیابی کا سرٹیفکیٹ</string>
+    <string name="congratulations" translatable="false">مبارک ہو</string>
+    <string name="label_desc1" translatable="false">آپ نے امتحان پاس کر لیا ہے۔ اب آپ سرٹیفکیٹ\nڈاؤن لوڈ کرسکتے ہیں۔</string>
 </resources>

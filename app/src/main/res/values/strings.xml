@@ -118,4 +118,7 @@
     <string name="cant_select_multiple_option" translatable="false">you cannot select multiple options</string>
     <string name="test_already_taken" translatable="false">Test already taken</string>
     <string name="label_pass_all_course" translatable="false">Pass all courses to be eligible for All Courses\nAchievement Certificate</string>
+    <string name="saved" translatable="false">File saved successfully</string>
+    <string name="error_download" translatable="false">Error while downloading</string>
+    <string name="congratulations" translatable="false">Congratulations</string>
 </resources>

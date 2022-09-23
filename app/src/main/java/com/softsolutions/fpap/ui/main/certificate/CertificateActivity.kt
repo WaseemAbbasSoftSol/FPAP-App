@@ -32,14 +32,14 @@ class CertificateActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        mViewModel.certificate.observe(this){
-            if (it.isNotEmpty()){
-                val layoutManager= LinearLayoutManager(this)
-                val adapter= CertificateAdapter(this,it)
-                binding.rvCertificate.layoutManager=layoutManager
-                binding.rvCertificate.adapter=adapter
-            }
-        }
+//        mViewModel.certificate.observe(this){
+//            if (it.isNotEmpty()){
+//                val layoutManager= LinearLayoutManager(this)
+//                val adapter= CertificateAdapter(this,it)
+//                binding.rvCertificate.layoutManager=layoutManager
+//                binding.rvCertificate.adapter=adapter
+//            }
+//        }
     }
 
     override fun onBackPressed() {

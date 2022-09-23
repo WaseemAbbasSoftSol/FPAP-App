@@ -2,7 +2,7 @@ package com.softsolutions.fpap.model
 
 import com.google.gson.annotations.SerializedName
 
-data class CourseCertificate(
+data class CertificateDetail(
     @SerializedName("SubjectId")
     val subjectId: Int,
     @SerializedName("SubjectName")
@@ -16,3 +16,4 @@ data class CourseCertificate(
     @SerializedName("SubjectUrduName")
     val urduName:String
 )
+

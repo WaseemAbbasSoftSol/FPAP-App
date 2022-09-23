@@ -118,10 +118,11 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_congo"
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semi_bold"
-                        android:text="Congratulations"
+                        android:text="@string/congratulations"
                         android:textColor="@color/purple"
                         android:textSize="@dimen/_16sp"
                         app:layout_constraintStart_toStartOf="@id/tv_all_course_achievements"
@@ -132,7 +133,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="@string/label_desc1"
+                        android:text="@string/label_pass_all_course"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sp"
                         android:layout_marginEnd="@dimen/_20dp"
@@ -140,18 +141,31 @@
                         app:layout_constraintTop_toBottomOf="@id/tv_congo" />
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:visibility="gone"
                         android:id="@+id/btn_download"
                         style="@style/AppTheme.ContainedButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10dp"
-                        android:text="Download"
+                        android:text="@string/label_download"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_desc" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.github.ybq.android.spinkit.SpinKitView
+                    android:id="@+id/progressbar"
+                    style="@style/SpinKitView.Large.Circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    app:SpinKit_Color="@color/green"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

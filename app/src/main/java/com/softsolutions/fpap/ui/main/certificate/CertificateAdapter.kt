@@ -11,14 +11,14 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.softsolutions.fpap.R
-import com.softsolutions.fpap.model.CourseCertificate
+import com.softsolutions.fpap.model.CertificateDetail
+import com.softsolutions.fpap.model.Certificates
 import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.utils.splitDateAndTime
-import java.security.cert.Certificate
 
 class CertificateAdapter(
     val context: Context,
-    private val list: List<CourseCertificate>
+    private val list: List<CertificateDetail>
 
 ) :
     RecyclerView.Adapter<CertificateAdapter.ItemRecyclerViewHolder>() {
@@ -47,7 +47,7 @@ class CertificateAdapter(
         val item=list[position]
         if (isUrduMedium){
             holder.tvsubjectName.text=item.urduName
-            if (item.status=="Not Attempt"){
+            if (item.status=="Not Attempted"){
                 holder.tvstatus.text="ٹیسٹ نہیں دیا"
             }else if (item.status=="Passed"){
                 holder.tvstatus.text="پاس"
@@ -59,8 +59,14 @@ class CertificateAdapter(
 
         }
         else{
-            holder.tvsubjectName.text=item.subjectName
-            holder.tvstatus.text=item.status
+            if (item.status=="Not Attempted"){
+                holder.tvstatus.text="Not given"
+                holder.tvsubjectName.text=item.subjectName
+            }else{
+                holder.tvsubjectName.text=item.subjectName
+                holder.tvstatus.text=item.status
+            }
+
         }
         val dd=splitDateAndTime(item.date)
         if (item.status=="Passed"){
