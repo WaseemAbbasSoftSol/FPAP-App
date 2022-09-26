@@ -9,7 +9,7 @@ import com.softsolutions.fpap.data.PrefRepository
 import com.softsolutions.fpap.ui.common.isNewStudentRegistering
 import com.softsolutions.fpap.ui.common.isUrduMedium
 
-private const val SPLASH_TIME_OUT=1000L
+private const val SPLASH_TIME_OUT=2000L
 class SplashActivity : AppCompatActivity() {
     private lateinit var prefRepository: PrefRepository
     override fun onCreate(savedInstanceState: Bundle?) {

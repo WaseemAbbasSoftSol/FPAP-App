@@ -59,6 +59,12 @@ interface FpapApi {
         @Query("IsUrdumedium") isUrduMedium:Boolean
     ):Response<BaseResponse<Dashboard>>
 
+    @POST("updatetransgendersubject")
+    suspend fun updateTransgenderSubject(
+        @Query("MemberId") memberId: Int,
+        @Query("subjectId") subjectId:Int
+    ):Response<BaseResponse<SimpleStringObject>>
+
     @POST("getCoursedetail")
     suspend fun getDashboardDetail(
         @Query("MemberId")memberId: Int,

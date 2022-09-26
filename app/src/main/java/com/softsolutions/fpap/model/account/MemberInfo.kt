@@ -77,7 +77,9 @@ data class MemberInfo (
     @SerializedName("IsLanguage")
     val isUrduMedium:Boolean,
     @SerializedName("CountryName")
-    val countryCodeName:String
+    val countryCodeName:String,
+    @SerializedName("TrangendersubjectId")
+    val transgenderSubjectId:Int
 
 ){
     val dateOfBirth:String

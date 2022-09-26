@@ -39,7 +39,6 @@ class LoginFragment: Fragment() {
         binding.lifecycleOwner=this
         isNewStudentRegistering=false
         binding.toolbar.tvToolbar.text="Login"
-        binding.toolbar.back.visibility=View.GONE
        binding.tvForgotPass.setOnClickListener{
           findNavController().navigate(LoginFragmentDirections.actionLoginfragmentToRecoverPasswordFragment())
        }

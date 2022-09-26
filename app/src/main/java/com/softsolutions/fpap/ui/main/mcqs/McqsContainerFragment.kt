@@ -21,6 +21,7 @@ import com.softsolutions.fpap.model.mcq.SubmitMcq
 import com.softsolutions.fpap.ui.common.SubmitDialog
 import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.ui.common.mcqSubmittedAndShowResultAtBottom
+import com.softsolutions.fpap.ui.main.dashboard.DashboardFragment.Companion.courseName
 import com.softsolutions.fpap.ui.main.dashboard.detail.DashboardDetailFragment
 import com.softsolutions.fpap.utils.exitFullScreenMode
 import com.softsolutions.fpap.utils.hideProgressOnButton
@@ -57,7 +58,7 @@ class McqsContainerFragment:Fragment() {
         binding = FragmentMcqsMainContainerBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         requireActivity().exitFullScreenMode()
-        binding.toolbarLayout.tvToolbar.text=getString(R.string.mcqs)
+        binding.toolbarLayout.tvToolbar.text=courseName
         if (isUrduMedium) {
             binding.toolbarLayout.back.setImageDrawable(
                 ContextCompat.getDrawable(

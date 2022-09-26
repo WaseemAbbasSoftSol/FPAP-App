@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-
+android:background="@drawable/splash_screen"
     tools:context=".SplashActivity">
 
     <com.softsolutions.fpap.utils.BaseStatusBar
@@ -14,11 +14,16 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/green"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_0dp"
-        app:layout_constraintTop_toBottomOf="@id/statusbar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/ic_bg_whole"
-        />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/toplogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

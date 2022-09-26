@@ -109,4 +109,8 @@
     <string name="label_course_achievement" translatable="false">تمام کورس کی کامیابی کا سرٹیفکیٹ</string>
     <string name="congratulations" translatable="false">مبارک ہو</string>
     <string name="label_desc1" translatable="false">آپ نے امتحان پاس کر لیا ہے۔ اب آپ سرٹیفکیٹ\nڈاؤن لوڈ کرسکتے ہیں۔</string>
+    <string name="male" translatable="false">مرد</string>
+    <string name="female" translatable="false">عورت</string>
+    <string name="choose_course" translatable="false">کورس کا انتخاب کریں</string>
+    <string name="plz_choose_course" translatable="false">صحت اور حفظان صحت کے کورس کے مواد کو منتخب کریں:</string>
 </resources>

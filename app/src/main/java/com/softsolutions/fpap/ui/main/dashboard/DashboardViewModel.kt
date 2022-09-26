@@ -1,6 +1,7 @@
 package com.softsolutions.fpap.ui.main.dashboard
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,6 +15,7 @@ import com.softsolutions.fpap.model.account.User
 import com.softsolutions.fpap.ui.common.isNewStudentRegistering
 import com.softsolutions.fpap.ui.common.isUrduMedium
 import com.softsolutions.fpap.utils.APP_TAG
+import com.softsolutions.fpap.utils.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -36,8 +38,11 @@ class DashboardViewModel(
     private val _updateLanguageMsg = MutableLiveData<String>()
     val updateLanguageMsg: LiveData<String> = _updateLanguageMsg
 
+    private val _updateTrasnsgenderSubjectMsg = SingleLiveEvent<String>()
+    val updateTrasnsgenderSubjectMsg: LiveData<String> = _updateTrasnsgenderSubjectMsg
+
     private var memberId = 0
-    private var gender=""
+    var gender=""
 
     init {
         memberId = prefRepository.getUser()!!.memberId
@@ -65,7 +70,15 @@ class DashboardViewModel(
                                     break
                                 }
                             }
-                        }else{
+                        }else if (gender=="Trans Gender                                      "){
+                            for ((i,value )in tempList.withIndex()){
+                                if (value.id==765){
+                                    tempList.remove(value)
+                                    break
+                                }
+                            }
+                        }
+                        else{
                             for ((i,value )in tempList.withIndex()){
                                 if (value.id==762){
                                     tempList.remove(value)
@@ -85,6 +98,29 @@ class DashboardViewModel(
                 _state.postValue(RequestState.ERROR)
                 e.printStackTrace()
             } catch (t: Throwable) {
+                _state.postValue(RequestState.ERROR)
+                t.printStackTrace()
+            }
+        }
+    }
+
+    fun updateTransgenderSubject(subjectId:Int){
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                _state.postValue(RequestState.LOADING)
+                val response=repository.updateTransgenderSubject(memberId, subjectId)
+                if (response.isSuccessful){
+                    response.body().let {
+                        _updateTrasnsgenderSubjectMsg.postValue(it!!.data.message)
+                    }
+                }else response.errorBody().let {
+                  Log.d(APP_TAG, it!!.string())
+                    }
+                _state.postValue(RequestState.DONE)
+            }catch (e:Exception){
+                _state.postValue(RequestState.ERROR)
+                e.printStackTrace()
+            }catch (t:Throwable){
                 _state.postValue(RequestState.ERROR)
                 t.printStackTrace()
             }

@@ -52,6 +52,7 @@ class SignUpFragment : Fragment() {
         binding = FragmentSignupBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         isNewStudentRegistering=true
+        binding.toolbar.back.visibility=View.GONE
         binding.toolbar.tvToolbar.text="New User Registration"
         binding.tvExistingUser.setOnClickListener {
             findNavController().navigate(SignUpFragmentDirections.actionSignupFragmentToLoginFragment())
@@ -194,17 +195,17 @@ class SignUpFragment : Fragment() {
             }
         })
 
-        hideValidation(binding.edName,binding.etName)
-        hideValidation(binding.edEmail,binding.etEmail)
-        hideValidation(binding.edNumber,binding.etNumber)
-        hideValidation(binding.tvDob,binding.etDob)
-        hideValidation(binding.edEmail2,binding.etEmail2)
-        hideValidation(binding.edPass,binding.etPass)
-        hideValidation(binding.edConfirmPass,binding.etConfirmPass)
-        hideValidation(binding.spQualification,binding.etQualification)
-        hideValidation(binding.spRegion,binding.etRegion)
-        hideValidation(binding.spCity,binding.etCity)
-        hideValidation(binding.spGender,binding.etGender)
+//        hideValidation(binding.edName,binding.etName)
+//        hideValidation(binding.edEmail,binding.etEmail)
+//        hideValidation(binding.edNumber,binding.etNumber)
+//        hideValidation(binding.tvDob,binding.etDob)
+//        hideValidation(binding.edEmail2,binding.etEmail2)
+//        hideValidation(binding.edPass,binding.etPass)
+//        hideValidation(binding.edConfirmPass,binding.etConfirmPass)
+//        hideValidation(binding.spQualification,binding.etQualification)
+//        hideValidation(binding.spRegion,binding.etRegion)
+//        hideValidation(binding.spCity,binding.etCity)
+//        hideValidation(binding.spGender,binding.etGender)
     }
 
     private fun validateFields():Boolean{

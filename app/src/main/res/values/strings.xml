@@ -121,4 +121,8 @@
     <string name="saved" translatable="false">File saved successfully</string>
     <string name="error_download" translatable="false">Error while downloading</string>
     <string name="congratulations" translatable="false">Congratulations</string>
+    <string name="male" translatable="false">Male</string>
+    <string name="female" translatable="false">Female</string>
+    <string name="choose_course" translatable="false">Choose Course</string>
+    <string name="plz_choose_course" translatable="false">Select  Health and Hygiene course content for:</string>
 </resources>

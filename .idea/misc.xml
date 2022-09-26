@@ -76,6 +76,7 @@
         <entry key="app/src/main/res/drawable/ic_drawer_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_drop_down_arrow.xml" value="0.187" />
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_fpap_splash_screen.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/ic_home_menu.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_im_login_top.xml" value="0.1335" />
         <entry key="app/src/main/res/drawable/ic_login_back.xml" value="0.1" />
@@ -87,6 +88,7 @@
         <entry key="app/src/main/res/drawable/ic_tick.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_video.xml" value="0.1305" />
         <entry key="app/src/main/res/drawable/ic_video_black.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/icon.xml" value="0.1065" />
         <entry key="app/src/main/res/drawable/im_login_top.xml" value="0.121" />
         <entry key="app/src/main/res/drawable/im_signup_top.xml" value="0.11" />
         <entry key="app/src/main/res/layout/activity_account.xml" value="0.16576086956521738" />
@@ -96,13 +98,14 @@
         <entry key="app/src/main/res/layout/base_toolbar.xml" value="0.1260135135135135" />
         <entry key="app/src/main/res/layout/dialog_signout.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/dialog_update_language.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/dialog_update_transgener_subject.xml" value="0.18125" />
         <entry key="app/src/main/res/layout/drawer_header_layout.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/fragment_certificate.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/fragment_content_and_video.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.12962962962962962" />
         <entry key="app/src/main/res/layout/fragment_dashboard_detail.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/fragment_dashboard_detail_new.xml" value="0.19427083333333334" />
-        <entry key="app/src/main/res/layout/fragment_dashboard_detail_new_updated.xml" value="0.11" />
+        <entry key="app/src/main/res/layout/fragment_dashboard_detail_new_updated.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_detail_new_updated.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_mcqs.xml" value="0.19322916666666667" />

@@ -18,6 +18,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.softsolutions.fpap.R
 import com.softsolutions.fpap.databinding.FragmentDashboardBinding
@@ -31,6 +32,7 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
     private lateinit var binding: FragmentDashboardBinding
     private val mViewModel: DashboardViewModel by viewModel()
     private var back = 0
+    private var transgenderSubjectId=0
     private var selectedLanguage=""
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreateView(
@@ -44,6 +46,11 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
         requireActivity().exitFullScreenMode()
         binding.subjectClickListener = OnDashboardSubjectClickListener()
         getNumberAndMakePhoneCall()
+
+        if (isTransgenderSubjectSelectedAndUpdateDashboardData){
+            mViewModel.getDashboardData()
+            isTransgenderSubjectSelectedAndUpdateDashboardData=false
+        }
 
 //        if (isNewStudentRegistering){
 //            val dialog = SelectMediumDialog()
@@ -72,6 +79,21 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel=mViewModel
+        mViewModel.user.observe(viewLifecycleOwner, Observer {
+            if (it!=null){
+                transgenderSubjectId=it.memberInfo.transgenderSubjectId
+            }
+        })
+        mViewModel.updateTrasnsgenderSubjectMsg.observe(viewLifecycleOwner, Observer {
+            if (it=="Transgender subject updated sucessfully"){
+                findNavController().navigate(
+                    DashboardFragmentDirections.actionDashboardToDashboardDetailFragment(
+                        subjectId, courseName
+                    )
+                )
+                isTransgenderSubjectSelectedAndUpdateDashboardData=true
+            }
+        })
         mViewModel.updateLanguageMsg.observe(viewLifecycleOwner){
             if (it == LANGUAGE_UPDATED_SUCCESSFULLY){
                 if (selectedLanguage=="ur"){
@@ -95,10 +117,27 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
 
     inner class OnDashboardSubjectClickListener : OnListItemClickListener<SubjectList> {
         override fun onItemClick(item: SubjectList, pos: Int) {
+        if (mViewModel.gender=="Trans Gender                                      " && transgenderSubjectId==0){
+            if (item.id==765 || item.id==762){
+            val dialog = DialogUpdateTransgenderSubject()
+            dialog.show(requireActivity().supportFragmentManager, "")
+            dialog.setTransgenderUpdateButtonClick(object :
+                DialogUpdateTransgenderSubject.UpdateTransgenderSubjectButtonClickListener {
+                override fun onButtonClick(subject: String) {
+                    subjectId=if (subject=="male") 762 else 765
+                  mViewModel.updateTransgenderSubject(subjectId)
+                }
+            })
+                return
+            }
+        }else if(mViewModel.gender=="Trans Gender                                      "){
+            subjectId=transgenderSubjectId
+        }else subjectId = item.id
             val subjeName= if (!item.subName().isNullOrEmpty())item.subName() else ""
+            courseName=subjeName
             findNavController().navigate(
                 DashboardFragmentDirections.actionDashboardToDashboardDetailFragment(
-                    item.id,subjeName
+                    subjectId,subjeName
                 )
             )
         }
@@ -172,5 +211,10 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
             val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$phoneNumber"))
             startActivity(intent)
         }
+    }
+
+    companion object{
+        var courseName = ""
+        var subjectId=0
     }
 }
