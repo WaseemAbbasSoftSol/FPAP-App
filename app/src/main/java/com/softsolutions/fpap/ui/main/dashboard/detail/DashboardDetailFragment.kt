@@ -342,12 +342,13 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
 
     override fun onItemClick(item: SubjectList, pos: Int) {
         if (item.isPassed){
-            val toast: Toast = Toast.makeText(context, R.string.test_already_taken, Toast.LENGTH_SHORT)
-            val toastLayout = toast.view as LinearLayout?
-            val toastTV = toastLayout!!.getChildAt(0) as TextView
-            val typeface = ResourcesCompat.getFont(requireContext(), R.font.poppins_regular)
-            toastTV.typeface = typeface
-            toast.show()
+//            val toast: Toast = Toast.makeText(context, R.string.test_already_taken, Toast.LENGTH_SHORT)
+//            val toastLayout = toast.view as LinearLayout?
+//            val toastTV = toastLayout!!.getChildAt(0) as TextView
+//            val typeface = ResourcesCompat.getFont(requireContext(), R.font.poppins_regular)
+//            toastTV.typeface = typeface
+//            toast.show()
+           Toast.makeText(context, R.string.test_already_taken, Toast.LENGTH_SHORT).show()
             return
         }
         val subjeName= if (!item.subName().isNullOrEmpty())item.subName() else ""

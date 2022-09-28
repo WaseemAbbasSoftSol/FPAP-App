@@ -146,13 +146,13 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
     override fun onBackPressed() {
         if (back==0){
 
-            val toast: Toast = Toast.makeText(context, R.string.press_back_again, Toast.LENGTH_SHORT)
-            val toastLayout = toast.view as LinearLayout?
-            val toastTV = toastLayout!!.getChildAt(0) as TextView
-            val typeface = ResourcesCompat.getFont(requireContext(), R.font.poppins_regular)
-            toastTV.typeface = typeface
-            toast.show()
-
+//            val toast: Toast = Toast.makeText(context, R.string.press_back_again, Toast.LENGTH_SHORT)
+//            val toastLayout = toast.view as LinearLayout?
+//            val toastTV = toastLayout!!.getChildAt(0) as TextView
+//            val typeface = ResourcesCompat.getFont(requireContext(), R.font.poppins_regular)
+//            toastTV.typeface = typeface
+//            toast.show()
+            Toast.makeText(context, R.string.press_back_again, Toast.LENGTH_SHORT).show()
             back++
             Handler(Looper.getMainLooper()).postDelayed({
                 back = 0
