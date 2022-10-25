@@ -5,11 +5,11 @@
     tools:context=".ui.guide.details.GuideDetailFragment">
 
     <data>
-        <import type="com.softsolutions.fpap.model.RequestState" />
+        <import type="com.ilmkidunya.fpap.model.RequestState" />
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.softsolutions.fpap.ui.main.dashboard.detail.DashboardDetailViewModel" />
+            type="com.ilmkidunya.fpap.ui.main.dashboard.detail.DashboardDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -4,13 +4,13 @@
 
     <data>
 
-        <import type="com.softsolutions.fpap.model.RequestState" />
+        <import type="com.ilmkidunya.fpap.model.RequestState" />
 
         <import type="android.view.View" />
 
         <variable
             name="viewModel"
-            type="com.softsolutions.fpap.ui.main.mcqs.McqsViewModel" />
+            type="com.ilmkidunya.fpap.ui.main.mcqs.McqsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/account_graph"
-    app:startDestination="@id/signup_fragment">
+    app:startDestination="@id/login_fragment">
 
     <fragment
         android:id="@+id/login_fragment"
-        android:name="com.softsolutions.fpap.ui.account.LoginFragment"
+        android:name="com.ilmkidunya.fpap.ui.account.LoginFragment"
         tools:layout="@layout/fragment_login" >
 
         <action
@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@+id/signup_fragment"
-        android:name="com.softsolutions.fpap.ui.account.SignUpFragment"
+        android:name="com.ilmkidunya.fpap.ui.account.SignUpFragment"
         tools:layout="@layout/fragment_signup" >
         <action
             android:id="@+id/action_signup_fragment_to_login_fragment"
@@ -38,7 +38,7 @@
 
     <fragment
         android:id="@+id/recover_password_fragment"
-        android:name="com.softsolutions.fpap.ui.account.RecoverPasswordFragment"
+        android:name="com.ilmkidunya.fpap.ui.account.RecoverPasswordFragment"
         tools:layout="@layout/fragment_recover_password"/>
 
 </navigation>

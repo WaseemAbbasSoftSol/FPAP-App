@@ -8,7 +8,7 @@
 android:background="@drawable/splash_screen"
     tools:context=".SplashActivity">
 
-    <com.softsolutions.fpap.utils.BaseStatusBar
+    <com.ilmkidunya.fpap.utils.BaseStatusBar
         android:id="@+id/statusbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

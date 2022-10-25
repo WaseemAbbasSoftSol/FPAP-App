@@ -6,7 +6,7 @@
     <data>
 <variable
     name="viewModel"
-    type="com.softsolutions.fpap.ui.main.profile.ProfileViewModel" />
+    type="com.ilmkidunya.fpap.ui.main.profile.ProfileViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

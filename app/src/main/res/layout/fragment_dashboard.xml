@@ -7,10 +7,10 @@
 
         <variable
             name="viewModel"
-            type="com.softsolutions.fpap.ui.main.dashboard.DashboardViewModel" />
+            type="com.ilmkidunya.fpap.ui.main.dashboard.DashboardViewModel" />
         <variable
             name="subjectClickListener"
-            type="com.softsolutions.fpap.ui.main.dashboard.DashboardFragment.OnDashboardSubjectClickListener" />
+            type="com.ilmkidunya.fpap.ui.main.dashboard.DashboardFragment.OnDashboardSubjectClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -7,7 +7,7 @@
         <import type="android.view.View"/>
        <variable
            name="obj"
-           type="com.softsolutions.fpap.model.SubjectList" />
+           type="com.ilmkidunya.fpap.model.SubjectList" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

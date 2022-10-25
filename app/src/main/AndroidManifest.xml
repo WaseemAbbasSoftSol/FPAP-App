@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.softsolutions.fpap">
+    package="com.ilmkidunya.fpap">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
-        android:name=".FPAP_App"
+        android:name="com.ilmkidunya.fpap.FPAP_App"
         android:allowBackup="false"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
@@ -16,10 +16,10 @@
         android:hardwareAccelerated="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.ilmkidunya.fpap.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name="com.ilmkidunya.fpap.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,11 +28,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AccountActivity"
+            android:name="com.ilmkidunya.fpap.AccountActivity"
             android:exported="false" />
-        <activity android:name=".ui.main.profile.ProfileActivity"
+        <activity android:name="com.ilmkidunya.fpap.ui.main.profile.ProfileActivity"
             android:exported="false"/>
-        <activity android:name=".ui.main.certificate.CertificateActivity"
+        <activity android:name="com.ilmkidunya.fpap.ui.main.certificate.CertificateActivity"
             android:exported="false"/>
     </application>
 
