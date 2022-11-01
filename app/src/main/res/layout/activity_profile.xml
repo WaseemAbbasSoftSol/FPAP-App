@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.ilmkidunya.fpap.utils.BaseStatusBar
+            <com.lmslsbe.utils.BaseStatusBar
 
                 android:id="@+id/statusbar"
                 android:layout_width="match_parent"

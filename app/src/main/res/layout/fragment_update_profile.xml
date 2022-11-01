@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.ilmkidunya.fpap.ui.main.profile.ProfileViewModel" />
+            type="com.lmslsbe.ui.main.profile.ProfileViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -162,6 +162,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/label_email"
+                        android:editable="false"
+                        android:focusable="false"
                         android:text="@{viewModel.user.memberInfo.email}"
                         android:inputType="textEmailAddress" />
 

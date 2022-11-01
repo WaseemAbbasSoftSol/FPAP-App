@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.ilmkidunya.fpap.ui.account.AccountViewModel" />
+            type="com.lmslsbe.ui.account.AccountViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

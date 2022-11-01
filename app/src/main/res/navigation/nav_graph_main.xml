@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dashboard_fragment"
-        android:name="com.ilmkidunya.fpap.ui.main.dashboard.DashboardFragment"
+        android:name="com.lmslsbe.ui.main.dashboard.DashboardFragment"
         tools:layout="@layout/fragment_dashboard">
 
         <action
@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/dashboard_detail_fragment"
-        android:name="com.ilmkidunya.fpap.ui.main.dashboard.detail.DashboardDetailFragment"
+        android:name="com.lmslsbe.ui.main.dashboard.detail.DashboardDetailFragment"
         tools:layout="@layout/fragment_dashboard_detail">
         <argument
             android:name="subjectId"
@@ -43,7 +43,7 @@
 
     <fragment
         android:id="@+id/mcqs_fragment_main"
-        android:name="com.ilmkidunya.fpap.ui.main.mcqs.McqsContainerFragment"
+        android:name="com.lmslsbe.ui.main.mcqs.McqsContainerFragment"
         tools:layout="@layout/fragment_mcqs_main_container">
         <argument
             android:name="testId"
@@ -60,12 +60,12 @@
 
     <fragment
         android:id="@+id/fragment_certificate"
-        android:name="com.ilmkidunya.fpap.ui.main.certificate.CertificateFragment"
+        android:name="com.lmslsbe.ui.main.certificate.CertificateFragment"
         tools:layout="@layout/fragment_certificate"/>
 
     <fragment
         android:id="@+id/result_fragment"
-        android:name="com.ilmkidunya.fpap.ui.main.ResultFragment"
+        android:name="com.lmslsbe.ui.main.ResultFragment"
         tools:layout="@layout/fragment_result"/>
 
 </navigation>
