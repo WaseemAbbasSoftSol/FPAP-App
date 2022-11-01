@@ -207,7 +207,9 @@ class ProfileViewModel(
     val genderList= arrayListOf<BaseCommonList>(
         BaseCommonList("Male", "Male"),
         BaseCommonList("Female", "Female"),
-        BaseCommonList("Transgender", "Trans Gender"),
+        BaseCommonList("Transgender", "Transgender"),
+       // BaseCommonList("Transgender", "Trans Gender"),
+       
     )
 
     fun genderText():String{
