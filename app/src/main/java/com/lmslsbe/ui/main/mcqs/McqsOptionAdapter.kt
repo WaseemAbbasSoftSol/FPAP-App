@@ -2,6 +2,8 @@ package com.lmslsbe.ui.main.mcqs
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,7 +43,12 @@ class McqsOptionAdapter(
     @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: ItemRecyclerViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val item = options[position]
-        holder.tvq.text = item.answerText
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            holder.tvq.setText(Html.fromHtml(item.answerText, Html.FROM_HTML_MODE_LEGACY));
+        } else {
+            holder.tvq.setText(Html.fromHtml(item.answerText));
+        }
+       // holder.tvq.text = item.answerText
         holder.tvoption.setOption(position)
         holder.itemView.setOnClickListener {
             currentSelectedPosition = position

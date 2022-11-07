@@ -55,6 +55,7 @@
                 tools:text="@string/dummy_question" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:nestedScrollingEnabled="false"
                 android:id="@+id/rv_mcqs"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

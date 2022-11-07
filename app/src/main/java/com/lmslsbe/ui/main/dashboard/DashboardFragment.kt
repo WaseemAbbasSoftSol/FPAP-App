@@ -17,13 +17,11 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.lmslsbe.MainActivity
 import com.lmslsbe.R
 import com.lmslsbe.databinding.FragmentDashboardBinding
 import com.lmslsbe.model.SubjectList
-import com.lmslsbe.ui.common.DialogUpdateTransgenderSubject
-import com.lmslsbe.ui.common.FragmentOnBackPressed
-import com.lmslsbe.ui.common.OnListItemClickListener
-import com.lmslsbe.ui.common.isTransgenderSubjectSelectedAndUpdateDashboardData
+import com.lmslsbe.ui.common.*
 import com.lmslsbe.utils.LANGUAGE_UPDATED_SUCCESSFULLY
 import com.lmslsbe.utils.exitFullScreenMode
 import com.lmslsbe.utils.loadLocate
@@ -52,6 +50,7 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         requireActivity().exitFullScreenMode()
+        isCollapsed=false
       //  binding.subjectClickListener=OnDashboardSubjectClickListener()
         binding.subjectClickListener=OnDashboardSubjectClickListener()
         getNumberAndMakePhoneCall()
@@ -88,6 +87,7 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel=mViewModel
+
         mViewModel.user.observe(viewLifecycleOwner, Observer {
             if (it!=null){
                 transgenderSubjectId=it.memberInfo.transgenderSubjectId
@@ -127,7 +127,7 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
     inner class OnDashboardSubjectClickListener : OnListItemClickListener<SubjectList> {
         @SuppressLint("SuspiciousIndentation")
         override fun onItemClick(item: SubjectList, pos: Int) {
-        if (mViewModel.gender=="Trans Gender                                      " && transgenderSubjectId==0){
+        if (mViewModel.gender=="Transgender                                       " && transgenderSubjectId==0){
             if (item.id==765 || item.id==762){
             val dialog = DialogUpdateTransgenderSubject()
             dialog.show(requireActivity().supportFragmentManager, "")
@@ -140,13 +140,14 @@ class DashboardFragment : Fragment(), FragmentOnBackPressed {
             })
                 return
             }
-            else if(mViewModel.gender=="Trans Gender                                      "){
+            else if(mViewModel.gender=="Transgender                                       "){
                 subjectId =item.id
             }
         }
         else subjectId = item.id
             val subjeName= if (!item.subName().isNullOrEmpty())item.subName() else ""
             courseName =subjeName
+            shardCourseName=subjeName
             findNavController().navigate(
                 DashboardFragmentDirections.actionDashboardToDashboardDetailFragment(
                     subjectId,subjeName

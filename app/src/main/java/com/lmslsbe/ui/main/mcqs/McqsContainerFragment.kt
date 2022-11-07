@@ -9,14 +9,14 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.lmslsbe.MainActivity
 import com.lmslsbe.R
 import com.lmslsbe.databinding.FragmentMcqsMainContainerBinding
 import com.lmslsbe.model.mcq.Mcq
 import com.lmslsbe.model.mcq.McqsOption
 import com.lmslsbe.model.mcq.SubmitMcq
-import com.lmslsbe.ui.common.SubmitDialog
-import com.lmslsbe.ui.common.isUrduMedium
-import com.lmslsbe.ui.common.mcqSubmittedAndShowResultAtBottom
+import com.lmslsbe.ui.common.*
+import com.lmslsbe.ui.main.dashboard.DashboardFragment
 import com.lmslsbe.ui.main.dashboard.DashboardFragment.Companion.courseName
 import com.lmslsbe.ui.main.dashboard.detail.DashboardDetailFragment
 import com.lmslsbe.utils.exitFullScreenMode
@@ -53,7 +53,8 @@ class McqsContainerFragment:Fragment() {
         binding = FragmentMcqsMainContainerBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         requireActivity().exitFullScreenMode()
-        binding.toolbarLayout.tvToolbar.text=courseName
+        binding.toolbarLayout.tvToolbar.text= shardCourseName
+        isCollapsed=true
         if (isUrduMedium) {
             binding.toolbarLayout.back.setImageDrawable(
                 ContextCompat.getDrawable(
@@ -112,6 +113,7 @@ class McqsContainerFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+      //  (requireActivity() as MainActivity).binding.toolbar.tvToolbar.text = shardCourseName
         mViewModel.mcq.observe(viewLifecycleOwner){
             if (it.isNotEmpty()){
                 totalQuestion=it.size

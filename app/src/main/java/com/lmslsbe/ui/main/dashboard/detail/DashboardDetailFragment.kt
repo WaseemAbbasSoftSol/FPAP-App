@@ -25,13 +25,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
+import com.lmslsbe.MainActivity
 import com.lmslsbe.R
 import com.lmslsbe.databinding.FragmentDashboardDetailNewUpdatedBinding
 import com.lmslsbe.model.SubjectList
-import com.lmslsbe.ui.common.OnListItemClickListener
-import com.lmslsbe.ui.common.isPostTest
-import com.lmslsbe.ui.common.isUrduMedium
-import com.lmslsbe.ui.common.mcqSubmittedAndShowResultAtBottom
+import com.lmslsbe.ui.common.*
 import com.lmslsbe.utils.APP_TAG
 import com.lmslsbe.utils.loadLocate
 import com.lmslsbe.utils.setTextViewFont
@@ -113,6 +111,16 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                     binding.tvToolbar.visibility=View.VISIBLE
                   //  binding.clProgress.fadeVisibility(View.GONE,500)
                 }
+                if (isCollapsed){
+                    if (isShow){
+                        binding.tvHeader.visibility=View.GONE
+                        binding.tvToolbar.visibility=View.VISIBLE
+                    }else{
+                        binding.tvHeader.visibility=View.VISIBLE
+                        binding.tvToolbar.visibility=View.GONE
+                    }
+
+                }
             }
         })
 
@@ -154,6 +162,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
         super.onViewCreated(view, savedInstanceState)
         loadLocate(requireActivity())
         binding.viewModel=mViewModel
+        (requireActivity() as MainActivity). binding.toolbar.tvToolbar.text = resources.getString(R.string.dashboard_toolbar)
         mViewModel.dashboardData.observe(viewLifecycleOwner){
             if (it!=null){
                 tempList= it.subjectList as ArrayList<SubjectList>
@@ -350,6 +359,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
             return
         }
         val subjeName= if (!item.subName().isNullOrEmpty())item.subName() else ""
+        shardCourseName=subjeName
        findNavController().navigate(DashboardDetailFragmentDirections.actionDashboardDetailToDashboardDetailItself(item.id,subjeName))
     }
 

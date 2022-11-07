@@ -67,7 +67,7 @@ class DashboardViewModel(
                                     break
                                 }
                             }
-                        }else if (gender=="Trans Gender                                      "){
+                        }else if (gender=="Transgender                                       "){
                             for ((i,value )in tempList.withIndex()){
                                 if (value.id==765){
                                     tempList.remove(value)

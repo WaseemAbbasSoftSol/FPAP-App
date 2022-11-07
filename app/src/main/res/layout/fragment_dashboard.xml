@@ -33,10 +33,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_20dp"
                     android:layout_marginEnd="@dimen/_20dp"
-                    android:fontFamily="@font/poppins_semi_bold"
+                    android:fontFamily="@font/poppins_semibold_with_jameel"
                     android:text="@string/label_welcome_text"
                     android:textColor="@color/purple"
-                    android:textSize="@dimen/_20sp"
+                    android:textSize="@dimen/_20_24sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

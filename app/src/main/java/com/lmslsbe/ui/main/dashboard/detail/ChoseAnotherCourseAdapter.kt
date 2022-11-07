@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.lmslsbe.R
 import com.lmslsbe.model.SubjectList
 import com.lmslsbe.ui.common.OnListItemClickListener
+import com.lmslsbe.ui.common.shardCourseName
 import de.hdodenhof.circleimageview.CircleImageView
 
 class ChoseAnotherCourseAdapter(
@@ -41,6 +42,7 @@ class ChoseAnotherCourseAdapter(
     override fun onBindViewHolder(holder: ItemRecyclerViewHolder, position: Int) {
         val item = list[position]
         holder.title.text = item.subName()
+
         Glide.with(context).load(item.image1).into(holder.iv)
         if (item.isPassed) {
             holder.support.visibility=View.VISIBLE

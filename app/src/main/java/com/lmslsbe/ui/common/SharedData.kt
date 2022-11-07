@@ -8,3 +8,5 @@ var isNewStudentRegistering=false
 var mcqSubmittedAndShowResultAtBottom=false
 var isPostTest=false
 var isTransgenderSubjectSelectedAndUpdateDashboardData=false
+var isCollapsed=false
+var shardCourseName=""

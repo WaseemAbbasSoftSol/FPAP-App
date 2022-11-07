@@ -1,6 +1,8 @@
 package com.lmslsbe.ui.main.mcqs
 
+import android.os.Build
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,7 +33,12 @@ class McqsOptionsFragment:Fragment(), McqsOptionAdapter.OnMcqsOptionClickListene
         qNo += 1
         val questionNo= getString(R.string.question)
         binding.tvQuestionNo.text = "$questionNo $qNo"
-        binding.tvQuestion.text=questionText
+       // binding.tvQuestion.text=questionText
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+           binding.tvQuestion.setText(Html.fromHtml(questionText, Html.FROM_HTML_MODE_LEGACY));
+        } else {
+            binding.tvQuestion.setText(Html.fromHtml(questionText));
+        }
         //val adapter=McqsOptionAdapter(requireContext(),mcq!!.answer, this)
         val answer= arrayListOf<McqsOption>()
         for ((i,value) in mcq!!.answer.withIndex()){
