@@ -56,7 +56,7 @@
     <string name="label_congo" translatable="false">Congratulations</string>
     <string name="label_ops" translatable="false">Try Again</string>
     <string name="label_desc" translatable="false">You have passed the test.</string>
-    <string name="label_desc_failed" translatable="false">You have failed the test.</string>
+    <string name="label_desc_failed" translatable="false">You have failed in this test. Please prepare\nand take the test again</string>
     <string name="label_desc1" translatable="false">You have passed the test. Now you can\ndownload all courses achievements certificate.</string>
     <string name="label_download_certificate" translatable="false">Download Certificate</string>
     <string name="label_test_again" translatable="false">Test Again</string>
@@ -92,7 +92,7 @@
     <string name="opn_c" translatable="false">C:</string>
     <string name="opn_d" translatable="false">D:</string>
     <string name="label_are_you_sure_submit" translatable="false">Are you sure you want\nto submit?</string>
-    <string name="helpline_desc" translatable="false"><![CDATA[For more information you can contact for free at youth helpline number of FPAP & get information from male & female counselors.]]></string>
+    <string name="helpline_desc" translatable="false"><![CDATA[For more information you can contact for free at youth helpline number of UNFPA & FPAP & get information from male & female counselors.]]></string>
     <string name="service_u_can_access" translatable="false">Services you can access Rahnuma-FPAP Youth Helpline Dial toll free</string>
     <string name="registered_students" translatable="false">Registered Students</string>
     <string name="label_complete" translatable="false">Complete LSBE Certifications</string>

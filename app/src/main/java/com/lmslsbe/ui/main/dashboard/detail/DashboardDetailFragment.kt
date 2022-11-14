@@ -249,12 +249,12 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                     if (isUrduMedium){
                         binding.resultLayout.tvCongo.text="مبارک ہو"
                         binding.resultLayout.tvStatus.text="امتحان پاس کیا"
-                        binding.resultLayout.tvDesc.text="آپ نے امتحان پاس کر لیا ہے۔"
+                        binding.resultLayout.tvDesc.text="آپ نے امتحان پاس کر لیا ہے۔ اب آپ \nاس کورس کے لیے اپنا پاسنگ سرٹیفکیٹ\n ڈاؤن لوڈ کر سکتے ہیں۔"
                         binding.resultLayout.tvChooseAnotherCourse.text="آپ کا LSBE کورس کا سفر"
                         setTextViewFont(binding.resultLayout.tvCongo,R.font.alvi_nastaleeq_regular,requireContext(),24)
                         setTextViewFont(binding.resultLayout.tvStatus,R.font.alvi_nastaleeq_regular,requireContext(),28)
-                        setTextViewFont(binding.resultLayout.tvDesc,R.font.alvi_nastaleeq_regular,requireContext(),18)
-                        setTextViewFont(binding.resultLayout.tvChooseAnotherCourse,R.font.alvi_nastaleeq_regular,requireContext(),26)
+                        setTextViewFont(binding.resultLayout.tvDesc,R.font.jameel_nastaleeq_regular,requireContext(),18)
+                        setTextViewFont(binding.resultLayout.tvChooseAnotherCourse,R.font.jameel_nastaleeq_regular,requireContext(),26)
                     }
                 }
                 else if (it.isFailed){
@@ -266,20 +266,20 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
 
                     binding.resultLayout.root.visibility=View.VISIBLE
                     binding.resultLayout.btnTestAgain.visibility=View.VISIBLE
-                    binding.resultLayout.tvStatus.text=getString(R.string.label_test_failed)
-                    binding.resultLayout.tvCongo.text = getString(R.string.label_ops)
+                    binding.resultLayout.tvStatus.text=getString(R.string.label_ops)
+                    binding.resultLayout.tvCongo.text = "Opps!"
                     binding.resultLayout.tvCongo.setTextColor(ContextCompat.getColor(requireContext(),R.color.red))
                     binding.resultLayout.tvStatus.setTextColor(ContextCompat.getColor(requireContext(),R.color.red))
                     binding.resultLayout.tvDesc.text = getString(R.string.label_desc_failed)
-                    binding.resultLayout.tvDesc.visibility=View.GONE
+                   // binding.resultLayout.tvDesc.visibility=View.GONE
 
                     if (isUrduMedium){
-                        binding.resultLayout.tvCongo.text="دوبارہ کوشش کریں"
-                        binding.resultLayout.tvStatus.text="ناکام ہو چکے ہیں"
+                        binding.resultLayout.tvStatus.text="دوبارہ کوشش کریں"
+                        binding.resultLayout.tvCongo.text="آپ امتحان میں ناکام ہو گئے ہیں\n براہ کرم دوبارہ امتحان دیں۔"
                         binding.resultLayout.tvDesc.text="آپ امتحان میں ناکام ہو گئے ہیں"
                         binding.resultLayout.tvDesc.visibility=View.GONE
                         binding.resultLayout.tvChooseAnotherCourse.text="آپ کا LSBE کورس کا سفر"
-                        setTextViewFont(binding.resultLayout.tvCongo,R.font.alvi_nastaleeq_regular,requireContext(),24)
+                        setTextViewFont(binding.resultLayout.tvCongo,R.font.jameel_nastaleeq_regular,requireContext(),24)
                         setTextViewFont(binding.resultLayout.tvStatus,R.font.alvi_nastaleeq_regular,requireContext(),28)
                         setTextViewFont(binding.resultLayout.tvDesc,R.font.alvi_nastaleeq_regular,requireContext(),18)
                         setTextViewFont(binding.resultLayout.tvChooseAnotherCourse,R.font.alvi_nastaleeq_regular,requireContext(),26)

@@ -111,6 +111,7 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.dashboard_fragment -> {
                     binding.toolbar.root.visibility= View.VISIBLE
+                    binding.toolbar.toplogo.visibility=View.VISIBLE
                     binding.toolbar.navHamMenu.visibility=View.VISIBLE
                     binding.toolbar.back.visibility=View.GONE
                     binding.toolbar.profile.visibility=View.VISIBLE
