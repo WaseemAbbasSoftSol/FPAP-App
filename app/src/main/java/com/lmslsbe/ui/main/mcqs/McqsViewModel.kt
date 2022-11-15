@@ -76,11 +76,11 @@ class McqsViewModel(
         }
     }
 
-    fun submitMcqsList(list:List<SubmitMcq>) {
+    fun submitMcqsList(list:List<SubmitMcq>, totalQuestions:Int) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 _state.postValue(RequestState.LOADING)
-                val response = repository.submitMcq(list)
+                val response = repository.submitMcq(list, totalQuestions)
                 if (response.isSuccessful) {
                     response.body().let {
                         _submitMcqs.postValue(it!!.data)

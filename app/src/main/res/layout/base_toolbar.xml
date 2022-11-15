@@ -11,7 +11,8 @@
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatImageView
-
+android:visibility="gone"
+            android:layout_marginTop="@dimen/_10dp"
             android:id="@+id/toplogo"
             android:src="@drawable/toplogo"
             android:layout_marginStart="40dp"

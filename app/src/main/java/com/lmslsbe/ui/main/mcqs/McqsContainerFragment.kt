@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -104,7 +105,7 @@ class McqsContainerFragment:Fragment() {
                 SubmitDialog.OnDialogPositiveButtonClickListener {
                 override fun onyesButtonClik(isClicked: Boolean) {
                     makeProgressOnButton(binding.btnSubmit,R.string.plz_wait)
-                    if (isClicked) mViewModel.submitMcqsList(attemptedMcqsList)
+                    if (isClicked) mViewModel.submitMcqsList(attemptedMcqsList, mcqList.size)
                 }
             })
         }
@@ -159,24 +160,34 @@ class McqsContainerFragment:Fragment() {
                 isAnySelected:Boolean
             ) {
                 val submitMcq = SubmitMcq(mViewModel.memberId, testId, questionId, item.id)
-                if (isAnySelected){
-                   /* val toast: Toast = Toast.makeText(context, R.string.cant_select_multiple_option, Toast.LENGTH_SHORT)
-                    val toastLayout = toast.view as LinearLayout?
-                    val toastTV = toastLayout!!.getChildAt(0) as TextView
-                    val typeface = ResourcesCompat.getFont(requireContext(), R.font.poppins_regular)
-                    toastTV.typeface = typeface
-                    //toast.show()
-                    return*/
+                if (isPostTest){
+                    if (isAnySelected) {
+                        Toast.makeText(context, R.string.cant_select_multiple_option, Toast.LENGTH_SHORT).show()
+                        return
+                    }
+                        val iterator = attemptedMcqsList.iterator()
+                        for(i in iterator){
+                            if(i.questionId== submitMcq.questionId){
+                                iterator.remove()
+                            }
+                        }
 
-                    val iterator = attemptedMcqsList.iterator()
-                    for(i in iterator){
-                        if(i.questionId== submitMcq.questionId){
-                            iterator.remove()
+
+                    attemptedMcqsList.add(submitMcq)
+
+                }else{
+                    if (isAnySelected){
+                        val iterator = attemptedMcqsList.iterator()
+                        for(i in iterator){
+                            if(i.questionId== submitMcq.questionId){
+                                iterator.remove()
+                            }
                         }
                     }
+
+                    attemptedMcqsList.add(submitMcq)
                 }
 
-                attemptedMcqsList.add(submitMcq)
             }
         })
     }

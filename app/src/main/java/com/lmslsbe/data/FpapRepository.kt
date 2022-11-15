@@ -24,5 +24,5 @@ class FpapRepository(private val fpapApi: FpapApi) {
  suspend fun updateProfileImage(memberId: RequestBody, image: MultipartBody.Part?) = fpapApi.updateProfileImage(memberId, image)
  suspend fun getCourseCertificate(memberId: Int)=fpapApi.getCourseCertificate(memberId)
  suspend fun getMcqsList(unitId:Int, testId:Int)=fpapApi.getMcqsList(unitId, testId)
- suspend fun submitMcq(mcqsList:List<SubmitMcq>)=fpapApi.submitMcqsTest(mcqsList)
+ suspend fun submitMcq(mcqsList:List<SubmitMcq>, totalQuestions:Int)=fpapApi.submitMcqsTest(mcqsList, totalQuestions)
 }

@@ -79,6 +79,7 @@
         <entry key="app/src/main/res/drawable/ic_fpap_splash_screen.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/ic_home_menu.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_im_login_top.xml" value="0.1335" />
+        <entry key="app/src/main/res/drawable/ic_incorrect_ans.xml" value="0.161" />
         <entry key="app/src/main/res/drawable/ic_login_back.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/ic_profile_menu.xml" value="0.1" />
@@ -91,6 +92,8 @@
         <entry key="app/src/main/res/drawable/icon.xml" value="0.1065" />
         <entry key="app/src/main/res/drawable/im_login_top.xml" value="0.121" />
         <entry key="app/src/main/res/drawable/im_signup_top.xml" value="0.11" />
+        <entry key="app/src/main/res/drawable/im_test_failed.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/im_test_passed.xml" value="0.161" />
         <entry key="app/src/main/res/font/poppins_semi_bold_with_jameel_nastaleeq.xml" value="0.20461538461538462" />
         <entry key="app/src/main/res/layout/activity_account.xml" value="0.16576086956521738" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />

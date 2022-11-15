@@ -83,6 +83,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
         setWebView(requireContext(),requireActivity(),binding.webViewLecture)
         binding.webViewLecture.webViewClient = Browser_home()
         binding.bottomLayout.btn_start_test.setOnClickListener {
+            isPostTest=false
            goToMcqsFragment()
         }
         binding.bottomLayoutPost.btn_start_test.setOnClickListener {
@@ -263,7 +264,7 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
                     binding.bottomLayoutPost.tv_no_of_qs.text=it.totalQuestions.toString()
                     binding.bottomLayoutPost.tv_no_of_correct_answer.text=it.postCorrectAns.toString()
                     binding.bottomLayoutPost.tv_no_of_incorrect_answer.text=it.postIncorrectAns.toString()
-
+                    binding.resultLayout.ivResult.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.im_test_failed))
                     binding.resultLayout.root.visibility=View.VISIBLE
                     binding.resultLayout.btnTestAgain.visibility=View.VISIBLE
                     binding.resultLayout.tvStatus.text=getString(R.string.label_ops)

@@ -8,12 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.lmslsbe.R
 import com.lmslsbe.model.mcq.Mcq
 import com.lmslsbe.model.mcq.McqsOption
+import com.lmslsbe.ui.common.isPostTest
 
 class McqsOptionAdapter(
     val context: Context,
@@ -51,17 +53,35 @@ class McqsOptionAdapter(
        // holder.tvq.text = item.answerText
         holder.tvoption.setOption(position)
         holder.itemView.setOnClickListener {
-            currentSelectedPosition = position
-            mcq.userSelectedPos=position
-            listener.onOptionClick(position, item)
-            mcq.isOp=mcq.isOp+1
-            for ((i,value ) in options.withIndex()){
-                if (value.isCorrect){
-                    correctPosition=i
-                    break
+            if (isPostTest){
+                if (mcq.isOp==0){
+                    currentSelectedPosition = position
+                    mcq.userSelectedPos=position
+                    listener.onOptionClick(position, item)
+                    mcq.isOp=mcq.isOp+1
+                    for ((i,value ) in options.withIndex()){
+                        if (value.isCorrect){
+                            correctPosition=i
+                            break
+                        }
+                    }
+                    notifyDataSetChanged()
+                }else  Toast.makeText(context, R.string.cant_select_multiple_option, Toast.LENGTH_SHORT).show()
+
+            }else{
+                currentSelectedPosition = position
+                mcq.userSelectedPos=position
+                listener.onOptionClick(position, item)
+                mcq.isOp=mcq.isOp+1
+                for ((i,value ) in options.withIndex()){
+                    if (value.isCorrect){
+                        correctPosition=i
+                        break
+                    }
                 }
+                notifyDataSetChanged()
             }
-            notifyDataSetChanged()
+
         }
 
         if (mcq.isOp==1){//mcq.isOp is number of selection of an mcq. user can select one option only at one time.
@@ -91,7 +111,12 @@ class McqsOptionAdapter(
         }
             if (isAnySelected()){
                 if (mcq.userSelectedPos==position){
-                    holder.cardView.setBackgroundResource(R.color.green)
+                    if (isPostTest){
+                        if (item.isCorrect) holder.cardView.setBackgroundResource(R.color.green)
+                        else  holder.cardView.setBackgroundResource(R.color.red)
+                    }else{
+                        holder.cardView.setBackgroundResource(R.color.blue_01)
+                    }
                     holder.tvoption.setTextColor(ContextCompat.getColor(context, R.color.white))
                     holder.tvq.setTextColor(ContextCompat.getColor(context, R.color.white))
                 }

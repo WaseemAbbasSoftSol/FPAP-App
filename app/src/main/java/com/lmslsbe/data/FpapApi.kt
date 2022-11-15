@@ -102,6 +102,7 @@ interface FpapApi {
 
     @POST("MCqsSubmit")
     suspend fun submitMcqsTest(
-        @Body params:List<SubmitMcq>
+        @Body params:List<SubmitMcq>,
+        @Query("TotalQuestion") totalQuestions:Int
     ): Response<BaseResponse<SubmittedMcq>>
 }
