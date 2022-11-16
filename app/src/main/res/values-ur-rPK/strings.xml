@@ -83,7 +83,7 @@
     <string name="helpline_desc" translatable="false">مزید معلومات کے لیے آپ UNFPA اور FPAP کے یوتھ ہیلپ لائن نمبر پر مفت رابطہ کر سکتے ہیں اور مرد اور خواتین کونسلرز سے معلومات حاصل کر سکتے ہیں۔</string>
     <string name="service_u_can_access" translatable="false">وہ خدمات جن تک آپ Rahnuma-FPAP یوتھ ہیلپ لائن ڈائل کر سکتے ہیں۔</string>
     <string name="registered_students" translatable="false">رجسٹرڈ طلباء</string>
-    <string name="label_complete" translatable="false">مکمل LSBE سرٹیفیکیشن</string>
+    <string name="label_complete" translatable="false"> مکمل شدہ آن لائن کورس</string>
     <string name="label_partial" translatable="false">جزوی طور پر مکمل شدہ</string>
     <string name="label_single" translatable="false">سنگل کورس مکمل کیا۔</string>
     <string name="label_helpline" translatable="false">یوتھ ہیلپ لائن</string>
@@ -95,7 +95,7 @@
     <string name="national" translatable="false">قومی یوتھ</string>
     <string name="gilgit_baltistan" translatable="false">گلگت بلتستان</string>
     <string name="punjab" translatable="false">پنجاب یوتھ</string>
-    <string name="label_report" translatable="false">رپورٹس</string>
+    <string name="label_report" translatable="false">لائیو سرٹیفیکیشن کی حیثیت</string>
     <string name="content" translatable="false">مواد</string>
     <string name="video" translatable="false">ویڈیو</string>
     <string name="key_message" translatable="false">اہم پیغام</string>

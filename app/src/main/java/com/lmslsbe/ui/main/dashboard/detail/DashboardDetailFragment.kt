@@ -249,8 +249,8 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
 
                     if (isUrduMedium){
                         binding.resultLayout.tvCongo.text="مبارک ہو"
-                        binding.resultLayout.tvStatus.text="امتحان پاس کیا"
-                        binding.resultLayout.tvDesc.text="آپ نے امتحان پاس کر لیا ہے۔ اب آپ \nاس کورس کے لیے اپنا پاسنگ سرٹیفکیٹ\n ڈاؤن لوڈ کر سکتے ہیں۔"
+                        binding.resultLayout.tvStatus.text="ٹیسٹ پاس کر لیا"
+                        binding.resultLayout.tvDesc.text="آپ نے اس سبق کا امتحان پاس کر لیا ہے۔\nاگلا سبق شروع کریں۔"
                         binding.resultLayout.tvChooseAnotherCourse.text="آپ کا LSBE کورس کا سفر"
                         setTextViewFont(binding.resultLayout.tvCongo,R.font.alvi_nastaleeq_regular,requireContext(),24)
                         setTextViewFont(binding.resultLayout.tvStatus,R.font.alvi_nastaleeq_regular,requireContext(),28)

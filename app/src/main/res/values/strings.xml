@@ -95,7 +95,7 @@
     <string name="helpline_desc" translatable="false"><![CDATA[For more information you can contact for free at youth helpline number of UNFPA & FPAP & get information from male & female counselors.]]></string>
     <string name="service_u_can_access" translatable="false">Services you can access Rahnuma-FPAP Youth Helpline Dial toll free</string>
     <string name="registered_students" translatable="false">Registered Students</string>
-    <string name="label_complete" translatable="false">Complete LSBE Certifications</string>
+    <string name="label_complete" translatable="false">Complete LSBE online course</string>
     <string name="label_partial" translatable="false">Partially completed LSBE Course</string>
     <string name="label_single" translatable="false">Completed single LSBE Course</string>
     <string name="label_helpline" translatable="false">Youth Helpline</string>
@@ -107,7 +107,7 @@
     <string name="national" translatable="false">NATIONAL YOUTH</string>
     <string name="gilgit_baltistan" translatable="false">GILGIT BALTISTAN</string>
     <string name="punjab" translatable="false">PUNJAB YOUTH</string>
-    <string name="label_report" translatable="false">Reports</string>
+    <string name="label_report" translatable="false">Live Certifications Status</string>
     <string name="content" translatable="false">Content</string>
     <string name="video" translatable="false">Video</string>
     <string name="key_message" translatable="false">Key\nMessage</string>
