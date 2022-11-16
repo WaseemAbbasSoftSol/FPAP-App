@@ -85,7 +85,7 @@
     <string name="registered_students" translatable="false">رجسٹرڈ طلباء</string>
     <string name="label_complete" translatable="false"> مکمل شدہ آن لائن کورس</string>
     <string name="label_partial" translatable="false">جزوی طور پر مکمل شدہ</string>
-    <string name="label_single" translatable="false">سنگل کورس مکمل کیا۔</string>
+    <string name="label_single" translatable="false">مکمل شدہ سنگل کورس</string>
     <string name="label_helpline" translatable="false">یوتھ ہیلپ لائن</string>
     <string name="lahore" translatable="false">لاہور</string>
     <string name="islamabad" translatable="false">اسلام آباد</string>
