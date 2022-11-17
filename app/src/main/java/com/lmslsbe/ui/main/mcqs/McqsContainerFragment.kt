@@ -129,7 +129,7 @@ class McqsContainerFragment:Fragment() {
                 findNavController().navigate(McqsContainerFragmentDirections.actionMcqToDashboardDetailFragment(
                     DashboardDetailFragment.subjectId,
                 DashboardDetailFragment.subjectName))
-                mcqSubmittedAndShowResultAtBottom =true
+               if (isPostTest) mcqSubmittedAndShowResultAtBottom =true
             }
         }
 

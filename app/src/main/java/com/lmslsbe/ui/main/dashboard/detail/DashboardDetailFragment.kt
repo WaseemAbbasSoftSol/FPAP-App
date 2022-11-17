@@ -328,11 +328,11 @@ class DashboardDetailFragment : Fragment(), OnListItemClickListener<SubjectList>
            binding.progressbar.visibility = View.GONE
            binding.progressbars.visibility = View.GONE
 
-            if (mcqSubmittedAndShowResultAtBottom && isPostTest ==true){
+            if (mcqSubmittedAndShowResultAtBottom && isPostTest){
                 binding.appbar.setExpanded(false, true)
                 binding.scrollview.post(Runnable { binding.scrollview.fullScroll(ScrollView.FOCUS_DOWN) })
                 mcqSubmittedAndShowResultAtBottom =false
-                isPostTest =false
+               // isPostTest =false
             }
          //   binding.webviewPost.loadUrl("javascript:(function() { document.getElementsByTagName('video')[0].play(); })()");
         }
