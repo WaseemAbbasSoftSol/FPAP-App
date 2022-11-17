@@ -61,11 +61,13 @@ class UpdateProfileFragment : Fragment() {
             FilePicker(this).launch(1)
         }
         binding.btnUpdate.setOnClickListener {
-            makeProgressOnButton(binding.btnUpdate, R.string.plz_wait)
-            val phoneNumber=countryCode+binding.edNumber.text.toString()
-            val update= UpdateProfile(mViewModel.memberId,binding.edName.text.toString().trim(), binding.edEmail.text.toString().trim(),
-            phoneNumber,mViewModel.qualificationId,mViewModel.regionId,mViewModel.cityId,dob,mViewModel.genderId,countryNameCode)
-            mViewModel.update(update)
+            if (validateFields()){
+                makeProgressOnButton(binding.btnUpdate, R.string.plz_wait)
+                val phoneNumber=countryCode+binding.edNumber.text.toString()
+                val update= UpdateProfile(mViewModel.memberId,binding.edName.text.toString().trim(), binding.edEmail.text.toString().trim(),
+                    phoneNumber,mViewModel.qualificationId,mViewModel.regionId,mViewModel.cityId,dob,mViewModel.genderId,countryNameCode)
+                mViewModel.update(update)
+            }
         }
 
         binding.spQualification.onItemClickListener =
@@ -233,4 +235,29 @@ class UpdateProfileFragment : Fragment() {
         dob=dateFormatForServer.format(myCalendar.time)
         binding.tvDob.setText(dateFormat.format(myCalendar.time))
     }
+
+    private fun validateFields():Boolean{
+        return when {
+            binding.edName.text.toString().trim().isEmpty() -> {
+                binding.etName.error=getString(R.string.label_field_required)
+                false
+            }
+            binding.edEmail.text.toString().trim().isEmpty() -> {
+                binding.etEmail.error=getString(R.string.label_field_required)
+                false
+            }
+            binding.edNumber.text.toString().trim().isEmpty() -> {
+                binding.etNumber.error=getString(R.string.label_field_required)
+                false
+            }
+            binding.edNumber.text.toString().trim().length<10 -> {
+                binding.etNumber.error=getString(R.string.label_incomplete_no)
+                false
+            }
+
+            else -> true
+        }
+    }
+
+
 }

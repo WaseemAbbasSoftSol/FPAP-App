@@ -20,6 +20,12 @@ data class User(
     val subjectList : List<SubjectList>,
 ){
     fun removeCountryCodeFromNumber():String{
-        return  phoneNumber.substring(2)
+        var no=""
+        try {
+            no=  phoneNumber.substring(2)
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+        return  no
     }
 }

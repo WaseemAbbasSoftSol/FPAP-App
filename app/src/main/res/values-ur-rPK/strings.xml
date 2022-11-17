@@ -113,4 +113,6 @@
     <string name="female" translatable="false">عورت</string>
     <string name="choose_course" translatable="false">کورس کا انتخاب کریں</string>
     <string name="plz_choose_course" translatable="false">صحت اور حفظان صحت کے کورس کے مواد کو منتخب کریں:</string>
+    <string name="label_incomplete_no" translatable="false">نمبر نامکمل ہے</string>
+    <string name="label_valid_email" translatable="false">برائے مہربانی درست ای میل ایڈریس لکھیں</string>
 </resources>

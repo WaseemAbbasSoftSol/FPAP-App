@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -217,8 +218,16 @@ class SignUpFragment : Fragment() {
                 binding.etEmail.error=getString(R.string.label_field_required)
                 false
             }
+            !binding.edEmail.text.isValidEmail()->{
+                binding.etEmail.error = getString(R.string.label_valid_email)
+                return false
+            }
             binding.edNumber.text.toString().trim().isEmpty() -> {
                 binding.etNumber.error=getString(R.string.label_field_required)
+                false
+            }
+            binding.edNumber.text.toString().trim().length<10 -> {
+                binding.etNumber.error=getString(R.string.label_incomplete_no)
                 false
             }
             qualificationId==0->{
@@ -270,4 +279,6 @@ class SignUpFragment : Fragment() {
             }
         })
     }
+
+    private fun CharSequence?.isValidEmail() = !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
 }
