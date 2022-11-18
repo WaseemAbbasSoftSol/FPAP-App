@@ -64,6 +64,8 @@
         <entry key="app/src/main/res/drawable/ic_bg_gb.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_bg_video.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_bg_whole.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_bg_yellow.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/ic_calendar.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_calling.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_certificate.xml" value="0.104" />
         <entry key="app/src/main/res/drawable/ic_certificate_menu.xml" value="0.1" />
@@ -106,7 +108,7 @@
         <entry key="app/src/main/res/layout/drawer_header_layout.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/fragment_certificate.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/fragment_content_and_video.xml" value="0.19427083333333334" />
-        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.12962962962962962" />
+        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_dashboard_detail.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/fragment_dashboard_detail_new.xml" value="0.19427083333333334" />
         <entry key="app/src/main/res/layout/fragment_dashboard_detail_new_updated.xml" value="0.1" />

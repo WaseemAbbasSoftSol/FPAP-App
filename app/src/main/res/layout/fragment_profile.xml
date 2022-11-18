@@ -226,7 +226,7 @@
                 android:text="@{viewModel.user.memberInfo.dateOfBirth}"
                 android:cursorVisible="false"
                 android:focusable="false"
-                android:drawableEnd="@drawable/ic_question_mark"
+                android:drawableEnd="@drawable/ic_calendar"
                 android:hint="@string/label_dob" />
 
         </com.google.android.material.textfield.TextInputLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FPAP</string>
+    <string name="app_name">LSBE</string>
     <string name="toolbar" translatable="false">ٹول بار</string>
     <string name="access_token" translatable="false">31bf3856ad364e35</string>
     <string name="label_set_acc" translatable="false">ویب سائٹ اور ایپ کے لیے اکاؤنٹ کی تفصیلات سیٹ کریں۔</string>

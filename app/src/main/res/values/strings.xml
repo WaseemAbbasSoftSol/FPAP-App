@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FPAP</string>
+    <string name="app_name">LSBE</string>
     <string name="toolbar" translatable="false">Toolbar</string>
     <string name="access_token" translatable="false">31bf3856ad364e35</string>
     <string name="label_email" translatable="false">Email ID</string>
