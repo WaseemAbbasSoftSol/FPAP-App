@@ -126,7 +126,7 @@
                             <TextView
                                 android:id="@+id/tv_no_of_registered"
                                 android:layout_width="wrap_content"
-                                android:layout_height="@dimen/_tt30dp"
+                                android:layout_height="@dimen/_tt30_35dp"
                                 android:layout_marginStart="@dimen/_20dp"
                                 android:layout_marginEnd="@dimen/_20dp"
                                 android:layout_marginTop="@dimen/_10dp"
@@ -174,7 +174,7 @@
                             <TextView
                                 android:id="@+id/tv_no_of_completed"
                                 android:layout_width="wrap_content"
-                                android:layout_height="@dimen/_tt30dp"
+                                android:layout_height="@dimen/_tt30_35dp"
                                 android:layout_marginStart="@dimen/_20dp"
                                 android:layout_marginTop="@dimen/_10dp"
                                 android:fontFamily="@font/poppins_semi_bold"
@@ -220,7 +220,7 @@
                             <TextView
                                 android:id="@+id/tv_no_of_partial"
                                 android:layout_width="wrap_content"
-                                android:layout_height="@dimen/_tt30dp"
+                                android:layout_height="@dimen/_tt30_35dp"
                                 android:layout_marginStart="@dimen/_20dp"
                                 android:layout_marginTop="@dimen/_10dp"
                                 android:fontFamily="@font/poppins_semi_bold"
@@ -267,7 +267,7 @@
                             <TextView
                                 android:id="@+id/tv_no_of_singal"
                                 android:layout_width="wrap_content"
-                                android:layout_height="@dimen/_tt30dp"
+                                android:layout_height="@dimen/_tt30_35dp"
                                 android:layout_marginStart="@dimen/_20dp"
                                 android:layout_marginTop="@dimen/_10dp"
                                 android:fontFamily="@font/poppins_semi_bold"

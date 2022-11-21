@@ -13,6 +13,7 @@ import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.github.razir.progressbutton.hideProgress
 import com.lmslsbe.MainActivity
 import com.lmslsbe.R
 import com.lmslsbe.databinding.FragmentUpdateProfileBinding
@@ -64,8 +65,9 @@ class UpdateProfileFragment : Fragment() {
             if (validateFields()){
                 makeProgressOnButton(binding.btnUpdate, R.string.plz_wait)
                 val phoneNumber=countryCode+binding.edNumber.text.toString()
+                val pass=binding.edPass.text.toString().trim()
                 val update= UpdateProfile(mViewModel.memberId,binding.edName.text.toString().trim(), binding.edEmail.text.toString().trim(),
-                    phoneNumber,mViewModel.qualificationId,mViewModel.regionId,mViewModel.cityId,dob,mViewModel.genderId,countryNameCode)
+                    phoneNumber,mViewModel.qualificationId,mViewModel.regionId,mViewModel.cityId,dob,mViewModel.genderId,countryNameCode,pass)
                 mViewModel.update(update)
             }
         }
@@ -154,6 +156,9 @@ class UpdateProfileFragment : Fragment() {
                 Toast.makeText(requireContext(),it.toString(),Toast.LENGTH_SHORT).show()
                 startActivity(Intent(requireContext(), MainActivity::class.java))
                 requireActivity().finish()
+            } else{
+                binding.btnUpdate.hideProgress("Update")
+                Toast.makeText(requireContext(),it.toString(),Toast.LENGTH_SHORT).show()
             }
         }
         mViewModel.errorMessage.observe(viewLifecycleOwner){
@@ -252,6 +257,10 @@ class UpdateProfileFragment : Fragment() {
             }
             binding.edNumber.text.toString().trim().length<10 -> {
                 binding.etNumber.error=getString(R.string.label_incomplete_no)
+                false
+            }
+            binding.edPass.text.toString().trim().length<6 -> {
+                binding.etPass.error = getString(R.string.lbl_min_pass)
                 false
             }
 

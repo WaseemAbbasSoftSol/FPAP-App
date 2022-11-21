@@ -127,4 +127,5 @@
     <string name="plz_choose_course" translatable="false">Select  Health and Hygiene course content for:</string>
     <string name="label_incomplete_no" translatable="false">Number is incomplete</string>
     <string name="label_valid_email" translatable="false">Please enter a valid email address</string>
+    <string name="lbl_min_pass" translatable="false">Password should be minimum 6 characters</string>
 </resources>

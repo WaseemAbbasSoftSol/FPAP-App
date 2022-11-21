@@ -258,6 +258,10 @@ class SignUpFragment : Fragment() {
                 binding.etPass.error=getString(R.string.label_field_required)
                 false
             }
+            binding.edPass.text.toString().trim().length<6 -> {
+                binding.etPass.error = getString(R.string.lbl_min_pass)
+                false
+            }
             binding.edConfirmPass.text.toString().trim() != binding.edPass.text.toString().trim() -> {
                 binding.etConfirmPass.error=getString(R.string.label_pass_not_matched)
                 false

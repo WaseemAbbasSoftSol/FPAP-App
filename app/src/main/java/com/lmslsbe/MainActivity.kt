@@ -87,7 +87,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.dashboard -> hideNavigation()
                // R.id.certificate-> startActivity(Intent(this, CertificateActivity::class.java))
                 R.id.certificate -> findNavController(R.id.nav_host_main).navigate(R.id.action_dashboard_certificate_fragment)
-                R.id.profile -> startActivity(Intent(this, ProfileActivity::class.java))
+                R.id.profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    finish()
+                }
                 R.id.signout -> {
                     val dialog = SignoutDialog()
                     dialog.show(supportFragmentManager, "")

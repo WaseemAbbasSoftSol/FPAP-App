@@ -79,7 +79,9 @@ data class MemberInfo (
     @SerializedName("CountryName")
     val countryCodeName:String,
     @SerializedName("TrangendersubjectId")
-    val transgenderSubjectId:Int
+    val transgenderSubjectId:Int,
+    @SerializedName("Password")
+    val password:String
 
 ){
     val dateOfBirth:String

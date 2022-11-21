@@ -22,6 +22,8 @@ data class UpdateProfile(
     @SerializedName("GenderName")
     val genderName:String,
     @SerializedName("CountryName")
-    val countryCodeName:String
+    val countryCodeName:String,
+    @SerializedName("Password")
+    val password:String
 ) {
 }

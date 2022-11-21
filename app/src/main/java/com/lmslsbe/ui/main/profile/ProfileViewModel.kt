@@ -152,6 +152,7 @@ class ProfileViewModel(
                 } else {
                     response.errorBody().let {
                         Log.d(APP_TAG, it!!.string())
+                        _message.postValue("An error has occurred")
                     }
                 }
                 _state.postValue(RequestState.DONE)
