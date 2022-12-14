@@ -21,7 +21,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-private const val BASE_URL = "https://api.fares.pk/"
+//private const val BASE_URL = "https://api.fares.pk/"
+private const val BASE_URL = "https://appfpap.superstudy.pk"
 
 val viewModelsModule= module {
     viewModel { AccountViewModel(get(), get()) }
